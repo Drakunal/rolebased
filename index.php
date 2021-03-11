@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+	session_start();
     include "connection.php";
 ?>
 <html lang="en">
@@ -101,6 +102,7 @@
 
 
 	<?php 
+
         if(isset($_POST['login']))
         {
             $username=$_POST['username'];
@@ -142,23 +144,27 @@
                 $row=mysqli_fetch_assoc($res);
 
                 $_SESSION['login_user']=$row['user_id'];
+				$_SESSION['role']=$row['role'];
 				// print_r($row);
 				// echo $row['role'];
 
 
-                if($row['role']=="admin")
+                if($_SESSION['role']=="admin")
                 {
-                    echo "<meta http-equiv=Refresh content=0.2;url=Admin_Panel.php>";
+					// header("location:admin-panel.php");
+                    echo "<meta http-equiv=Refresh content=0.2;url=admin-panel.php>";
                 }
 
-                elseif($row['role']=="employee")
+                elseif($_SESSION['role']=="employee")
                 {
-                    echo "<meta http-equiv=Refresh content=0.2;url=User_Panel.php>";
+					// header("locationemployee-panel.php");
+                    echo "<meta http-equiv=Refresh content=0.2;url=employee-panel.php>";
                 }
 
-				elseif($row['role']=="customer")
+				elseif($_SESSION['role']=="customer")
                 {
-                    echo "<meta http-equiv=Refresh content=0.2;url=Customer_Panel.php>";
+					// header("location:customer-panel.php");
+                    echo "<meta http-equiv=Refresh content=0.2;url=customer-panel.php>";
                 }
                 
             }
