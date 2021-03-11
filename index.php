@@ -35,7 +35,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="post">
+				<form class="login100-form validate-form" action= "" method="post">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -62,9 +62,11 @@
 					</div> -->
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" value="login" name="login">
 							Login
 						</button>
+
+						
 					</div>
 
 					<!-- <div class="text-center p-t-90">
@@ -105,30 +107,33 @@
             $password=$_POST['pass'];
            
 
-            if($_SESSION['UserType']=="staff")
-            {
-                $res=mysqli_query($db,"SELECT * from `staff` where Username='$username' && Password='$password';");
-            }
+           
+                $res=mysqli_query($db,"SELECT * from `users` where user_id='$username' && password='$password';");
+            
 
-            elseif($_SESSION['UserType']=="user")
-            {
-                $res=mysqli_query($db,"SELECT * from `user` where Username='$username' && Password='$password';");
-            }
+           
             
             $count=mysqli_num_rows($res);
+			// echo $count;
             
 
-            if(!$count)
+            if($count==0)
             {
                 ?>
-                    <script type="text/javascript">
+
+						<script>
+						
+						alert("Invalid credentials");
+					
+						</script>
+                    <!-- <script type="text/javascript">
                         Swal.fire({
                             title: 'Error!',
                             text: 'The Username and Password doest not match.....',
                             type: 'error',
                             confirmButtonText: 'Try Again'
                         })
-                    </script>
+                    </script> -->
                 <?php
             }
 
@@ -136,16 +141,24 @@
             {
                 $row=mysqli_fetch_assoc($res);
 
-                $_SESSION['login_user']=$row['User_ID'];
+                $_SESSION['login_user']=$row['user_id'];
+				// print_r($row);
+				// echo $row['role'];
 
-                if($_SESSION['UserType']=="staff")
+
+                if($row['role']=="admin")
                 {
                     echo "<meta http-equiv=Refresh content=0.2;url=Admin_Panel.php>";
                 }
 
-                elseif($_SESSION['UserType']=="user")
+                elseif($row['role']=="employee")
                 {
                     echo "<meta http-equiv=Refresh content=0.2;url=User_Panel.php>";
+                }
+
+				elseif($row['role']=="customer")
+                {
+                    echo "<meta http-equiv=Refresh content=0.2;url=Customer_Panel.php>";
                 }
                 
             }
