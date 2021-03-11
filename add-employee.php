@@ -1,3 +1,11 @@
+<?php
+session_start();
+include "connection.php";
+if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
+{
+    header("location:index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,99 +32,9 @@
           <span class="align-middle">AdminKit</span>
         </a>
 
-				<ul class="sidebar-nav">
-					<li class="sidebar-header">
-						Pages
-					</li>
+		<?php include("sidebar.php"); ?>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-settings.html">
-              <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-invoice.html">
-              <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Invoice</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-blank.html">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-            </a>
-					</li>
-
-					<li class="sidebar-header">
-						Tools & Components
-					</li>
-					<li class="sidebar-item">
-						<a data-target="#ui" data-toggle="collapse" class="sidebar-link collapsed">
-              <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">UI Elements</span>
-            </a>
-						<ul id="ui" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">Alerts</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="ui-buttons.html">Buttons</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="ui-cards.html">Cards</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="ui-general.html">General</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="ui-grid.html">Grid</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="ui-modals.html">Modals</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="ui-typography.html">Typography</a></li>
-						</ul>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item active">
-						<a data-target="#forms" data-toggle="collapse" class="sidebar-link">
-              <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Forms</span>
-            </a>
-						<ul id="forms" class="sidebar-dropdown list-unstyled collapse show" data-parent="#sidebar">
-							<li class="sidebar-item active"><a class="sidebar-link" href="forms-layouts.html">Form Layouts</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html">Basic Inputs</a></li>
-						</ul>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="tables-bootstrap.html">
-              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span>
-            </a>
-					</li>
-
-					<li class="sidebar-header">
-						Plugins & Addons
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
-            </a>
-					</li>
-				</ul>
-
-				<div class="sidebar-cta">
+				<!-- <div class="sidebar-cta">
 					<div class="sidebar-cta-content">
 						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
 						<div class="mb-3 text-sm">
@@ -124,7 +42,7 @@
 						</div>
 						<a href="https://adminkit.io/pricing" target="_blank" class="btn btn-primary btn-block">Upgrade to Pro</a>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</nav>
 
@@ -142,161 +60,8 @@
             </button>
 					</div>
 				</form>
-
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 New Notifications
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-danger" data-feather="alert-circle"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-												<div class="text-muted small mt-1">30m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-warning" data-feather="bell"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Lorem ipsum</div>
-												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-primary" data-feather="home"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Login from 192.186.1.8</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-success" data-feather="user-plus"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Christina accepted your request.</div>
-												<div class="text-muted small mt-1">14h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all notifications</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="message-square"></i>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="messagesDropdown">
-								<div class="dropdown-menu-header">
-									<div class="position-relative">
-										4 New Messages
-									</div>
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-											</div>
-											<div class="col-10 pl-2">
-												<div class="text-dark">Vanessa Tucker</div>
-												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
-												<div class="text-muted small mt-1">15m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
-											</div>
-											<div class="col-10 pl-2">
-												<div class="text-dark">William Harris</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
-											</div>
-											<div class="col-10 pl-2">
-												<div class="text-dark">Christina Mason</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
-												<div class="text-muted small mt-1">4h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-											</div>
-											<div class="col-10 pl-2">
-												<div class="text-dark">Sharon Lessman</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all messages</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
-
-							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
-              </a>
-							<div class="dropdown-menu dropdown-menu-right">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="pages-settings.html"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
-								<a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i> Help Center</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Log out</a>
-							</div>
-						</li>
-					</ul>
-				</div>
+				<?php include("navbar.php"); ?>
+				
 			</nav>
 
 			<main class="content">
@@ -315,32 +80,32 @@
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
 											<label class="form-label">Email address</label>
-											<input type="email" class="form-control" placeholder="Email">
+											<input type="email" name="email" class="form-control" placeholder="Email">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input type="password" class="form-control" placeholder="Password">
+											<input type="password"  name="password"class="form-control" placeholder="Password">
 										</div>
                                         <div class="mb-3">
 											<label class="form-label">Name</label>
-											<input type="text" class="form-control" placeholder="Name">
+											<input type="text" name="name" class="form-control" placeholder="Name">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Textarea</label>
 											<textarea class="form-control" placeholder="Textarea" rows="1"></textarea>
 										</div> -->
-										<div class="mb-3">
+										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
-											<input type="file">
+											<input type="file" name="image"> -->
 											<!-- <small class="form-text text-muted">Example block-level help text here.</small> -->
-										</div>
+										<!-- </div> -->
 										<!-- <div class="mb-3">
 											<label class="form-check m-0">
                                             <input type="checkbox" class="form-check-input">
                                             <span class="form-check-label">Check me out</span>
                                             </label>
 										</div> -->
-										<button type="submit" class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
 									</form>
 								</div>
 							</div>
@@ -503,6 +268,91 @@
 
 				</div>
 			</main>
+
+
+
+			<?php
+			if(isset($_POST['submit']))
+			{
+					$email=$_POST['email'];
+					$password=$_POST['password'];
+					$name=$_POST['name'];
+					$role="employee";
+					$Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
+					if(mysqli_num_rows($Existing_Username)!=0)
+						{
+							?>
+								<script>
+									
+									alert("Email already exists!");
+								
+									</script>
+									<?php
+						}
+						else{
+					// 		$target_dir = "uploads/";
+					// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+					// $uploadOk = 1;
+					// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+					// // Check if image file is a actual image or fake image
+					// if(isset($_POST["submit"])) {
+					// $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+					// if($check !== false) {
+					// 	echo "File is an image - " . $check["mime"] . ".";
+					// 	$uploadOk = 1;
+					// } else {
+					// 	echo "File is not an image.";
+					// 	$uploadOk = 0;
+					// }
+					// }
+
+					// // Check if file already exists
+					// if (file_exists($target_file)) {
+					// echo "Sorry, file already exists.";
+					// $uploadOk = 0;
+					// }
+
+					// // Check file size
+					// if ($_FILES["fileToUpload"]["size"] > 500000) {
+					// echo "Sorry, your file is too large.";
+					// $uploadOk = 0;
+					// }
+
+					// // Allow certain file formats
+					// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+					// && $imageFileType != "gif" ) {
+					// echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+					// $uploadOk = 0;
+					// }
+
+					// // Check if $uploadOk is set to 0 by an error
+					// if ($uploadOk == 0) {
+					// echo "Sorry, your file was not uploaded.";
+					// // if everything is ok, try to upload file
+					// } else {
+					// if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+					// 	echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+					// } else {
+					// 	echo "Sorry, there was an error uploading your file.";
+					// }
+					// }
+
+					mysqli_query($db,"INSERT INTO `users` (user_id, password, role, name) VALUES('$email', '$password','$role', '$name');");
+				
+					?>
+								<script>
+									
+									alert("Employee Saved");
+								
+									</script>
+									<?php
+
+						}
+		
+					
+				}
+				?>
 
 			<footer class="footer">
 				<div class="container-fluid">
