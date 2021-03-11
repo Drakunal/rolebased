@@ -143,6 +143,7 @@
             {
                 $row=mysqli_fetch_assoc($res);
 
+				$_SESSION['name']=$row['name'];
                 $_SESSION['login_user']=$row['user_id'];
 				$_SESSION['role']=$row['role'];
 				// print_r($row);

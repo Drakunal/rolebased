@@ -1,12 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
-{
-    header("location:index.php");
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,47 +30,39 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					</li>
 
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="admin-panel.php">
+						<a class="sidebar-link" href="index.html">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a data-target="#employee" data-toggle="collapse" class="sidebar-link collapsed">
-              <i class="align-middle" data-feather="users"></i> <span class="align-middle">Employee Section</span>
+						<a class="sidebar-link" href="pages-profile.html">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
-						<ul id="employee" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Employee List</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></li>
-						</ul>
 					</li>
 
 					<li class="sidebar-item">
-						<a data-target="#customer" data-toggle="collapse" class="sidebar-link collapsed">
-              <i class="align-middle" data-feather="target"></i> <span class="align-middle">Customer Section</span>
+						<a class="sidebar-link" href="pages-settings.html">
+              <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
             </a>
-						<ul id="customer" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Customer List</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></li>
-						</ul>
 					</li>
 
-					<!-- <li class="sidebar-item">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-invoice.html">
               <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Invoice</span>
             </a>
-					</li> -->
+					</li>
 
-					<!-- <li class="sidebar-item">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-blank.html">
               <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
             </a>
-					</li> -->
+					</li>
 
-					<!-- <li class="sidebar-header">
+					<li class="sidebar-header">
 						Tools & Components
-					</li> -->
-					<!-- <li class="sidebar-item">
+					</li>
+					<li class="sidebar-item">
 						<a data-target="#ui" data-toggle="collapse" class="sidebar-link collapsed">
               <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">UI Elements</span>
             </a>
@@ -92,13 +75,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							<li class="sidebar-item"><a class="sidebar-link" href="ui-modals.html">Modals</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="ui-typography.html">Typography</a></li>
 						</ul>
-					</li> -->
+					</li>
 
-					<!-- <li class="sidebar-item">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="icons-feather.html">
               <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
             </a>
-					</li> -->
+					</li>
 
 					<li class="sidebar-item">
 						<a data-target="#forms" data-toggle="collapse" class="sidebar-link collapsed">
@@ -116,7 +99,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
             </a>
 					</li>
 
-					<!-- <li class="sidebar-header">
+					<li class="sidebar-header">
 						Plugins & Addons
 					</li>
 
@@ -130,10 +113,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<a class="sidebar-link" href="maps-google.html">
               <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
             </a>
-					</li> -->
+					</li>
 				</ul>
 
-				<!-- <div class="sidebar-cta">
+				<div class="sidebar-cta">
 					<div class="sidebar-cta-content">
 						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
 						<div class="mb-3 text-sm">
@@ -141,7 +124,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						</div>
 						<a href="https://adminkit.io/pricing" target="_blank" class="btn btn-primary btn-block">Upgrade to Pro</a>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</nav>
 
@@ -300,7 +283,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" /> <span class="text-dark"><?= $_SESSION['name'] ?></span>
+                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
@@ -309,7 +292,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<a class="dropdown-item" href="pages-settings.html"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="logout.php">Log out</a>
+								<a class="dropdown-item" href="#">Log out</a>
 							</div>
 						</li>
 					</ul>
