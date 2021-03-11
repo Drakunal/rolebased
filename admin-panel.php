@@ -49,8 +49,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
               <i class="align-middle" data-feather="users"></i> <span class="align-middle">Employee Section</span>
             </a>
 						<ul id="employee" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Employee List</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="employee-list.html">Employee List</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></li>
 						</ul>
 					</li>
 
@@ -162,7 +162,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
+						<!-- <li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="bell"></i>
@@ -226,8 +226,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<a href="#" class="text-muted">Show all notifications</a>
 								</div>
 							</div>
-						</li>
-						<li class="nav-item dropdown">
+						</li> -->
+						<!-- <li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="message-square"></i>
@@ -293,7 +293,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<a href="#" class="text-muted">Show all messages</a>
 								</div>
 							</div>
-						</li>
+						</li> -->
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
