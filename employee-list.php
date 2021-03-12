@@ -58,7 +58,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Tables</h1>
+					<h1 class="h3 mb-3">Employee List</h1>
 
 					<div class="row">
 						
@@ -72,7 +72,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Employee Table</h5>
+									<!-- <h5 class="card-title">Employee Table</h5> -->
 									<!-- <h6 class="card-subtitle text-muted">Add <code>.table-bordered</code> for borders on all sides of the table and cells.</h6> -->
 								</div>
 								<table class="table table-bordered">
@@ -94,7 +94,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                              <?php
                                                 // output data of each row
                                                 while($row = $result->fetch_assoc()) {
-                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'><a ><i class='align-middle' data-feather='edit-2'></i></a></td></tr>";
+                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'><a href='edit-employee.php?id=".$row['user_id']."'><i class='align-middle' data-feather='edit-2'></i></a></td></tr>";
                                                 ?>
                                                 <!-- <tr>
                                                     <td>Vanessa Tucker</td>
