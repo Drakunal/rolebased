@@ -65,7 +65,7 @@
                         </a>
                                 </li> -->
 
-                                <li class="sidebar-item">
+                                <!-- <li class="sidebar-item">
                                     <a data-target="#forms" data-toggle="collapse" class="sidebar-link collapsed">
                         <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Forms</span>
                         </a>
@@ -73,13 +73,13 @@
                                         <li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Form Layouts</a></li>
                                         <li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html">Basic Inputs</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
 
-                                <li class="sidebar-item">
+                                <!-- <li class="sidebar-item">
                                     <a class="sidebar-link" href="tables-bootstrap.html">
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span>
                         </a>
-                                </li>
+                                </li> -->
 
                                         <!-- <li class="sidebar-header">
                                             Plugins & Addons

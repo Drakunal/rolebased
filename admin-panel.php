@@ -86,7 +86,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							</nav>
 						</div>
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row">
@@ -151,9 +151,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
@@ -214,7 +214,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="row">
 						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
