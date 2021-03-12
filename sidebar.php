@@ -14,7 +14,7 @@
                         <i class="align-middle" data-feather="users"></i> <span class="align-middle">Employee Section</span>
                         </a>
                                     <ul id="employee" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="employee-list.html">Employee List</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="employee-list.php">Employee List</a></li>
                                         <li class="sidebar-item"><a class="sidebar-link" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></li>
                                     </ul>
                                 </li>

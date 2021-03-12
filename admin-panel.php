@@ -21,7 +21,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+	<title>RoleBased System</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
