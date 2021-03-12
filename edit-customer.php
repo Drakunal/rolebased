@@ -47,6 +47,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 		</nav>
 
 		<div class="main">
+            <?php
+                $user_id = $_GET['id'];
+                
+                $result = mysqli_query($db,"SELECT name,user_id,password from `users` where user_id='$user_id';");
+                $res = mysqli_fetch_assoc($result);
+            // print_r($res);
+                
+            ?>
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
           <i class="hamburger align-self-center"></i>
@@ -67,28 +75,28 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Employee form</h1>
+					<h1 class="h3 mb-3">Edit Customer form</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
-									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Add your employees here.</h6>
+									<!-- <h5 class="card-title">Edit Employee form</h5> -->
+									<h6 class="card-subtitle text-muted">Edit your employees here.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Email address</label>
-											<input type="email" name="email" class="form-control" placeholder="Email">
+											<label class="form-label">Customer ID</label>
+											<input type="text" name="email" class="form-control" placeholder="customer id" value="<?php echo $res['user_id'] ?>">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input type="password"  name="password"class="form-control" placeholder="Password">
+											<input type="password"  name="password"class="form-control" placeholder="Password" value="<?php echo $res['password'] ?>">
 										</div>
                                         <div class="mb-3">
 											<label class="form-label">Name</label>
-											<input type="text" name="name" class="form-control" placeholder="Name">
+											<input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo $res['name'] ?>">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Textarea</label>
@@ -267,29 +275,25 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					</div>
 
 				</div>
-			</main>
-
-
-
-			<?php
+                <?php
 			if(isset($_POST['submit']))
 			{
-					$email=$_POST['email'];
+					$emailo=$_POST['email'];
 					$password=$_POST['password'];
 					$name=$_POST['name'];
-					$role="employee";
-					$Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
-					if(mysqli_num_rows($Existing_Username)!=0)
-						{
+					$role="customer";
+					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
+					// if(mysqli_num_rows($Existing_Username)!=0)
+					// 	{
 							?>
-								<script>
+								<!-- <script>
 									
 									alert("Email already exists!");
 								
-									</script>
+									</script> -->
 									<?php
-						}
-						else{
+						// }
+						// else{
 					// 		$target_dir = "uploads/";
 					// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 					// $uploadOk = 1;
@@ -337,24 +341,33 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// 	echo "Sorry, there was an error uploading your file.";
 					// }
 					// }
-
-					mysqli_query($db,"INSERT INTO `users` (user_id, password, role, name) VALUES('$email', '$password','$role', '$name');");
-				
+                    // UPDATE Customers
+                    // SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+                    // WHERE CustomerID = 1;
+					$p=mysqli_query($db,"UPDATE `users` SET user_id = '$emailo', password = '$password', role = '$role', name = '$name' WHERE user_id='$user_id' ;");
+				// echo $emailo;
+                // echo $user_id;
+                // echo "HO";
 					?>
 								<script>
 									
-									alert("Employee Saved");
-									
-                                    window.location.href = "employee-list.php";
-								
+									alert("Customer Updted");
+                                    window.location.href = "customer-list.php";
 									</script>
 									<?php
+                                    
 
 						}
 		
 					
-				}
+				
 				?>
+			</main>
+
+
+
+			
+                
 
 			<footer class="footer">
 				<div class="container-fluid">

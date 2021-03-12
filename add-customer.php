@@ -67,20 +67,20 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Employee form</h1>
+					<h1 class="h3 mb-3">Add Customer form</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Add your employees here.</h6>
+									<h6 class="card-subtitle text-muted">Add your customers here.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Email address</label>
-											<input type="email" name="email" class="form-control" placeholder="Email">
+											<label class="form-label">Customer Id</label>
+											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
@@ -90,6 +90,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<label class="form-label">Name</label>
 											<input type="text" name="name" class="form-control" placeholder="Name">
 										</div>
+                                        
 										<!-- <div class="mb-3">
 											<label class="form-label">Textarea</label>
 											<textarea class="form-control" placeholder="Textarea" rows="1"></textarea>
@@ -277,14 +278,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					$email=$_POST['email'];
 					$password=$_POST['password'];
 					$name=$_POST['name'];
-					$role="employee";
+					$role="customer";
 					$Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 					if(mysqli_num_rows($Existing_Username)!=0)
 						{
 							?>
 								<script>
 									
-									alert("Email already exists!");
+									alert("Customer ID already exists!");
 								
 									</script>
 									<?php
@@ -343,9 +344,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					?>
 								<script>
 									
-									alert("Employee Saved");
-									
-                                    window.location.href = "employee-list.php";
+									alert("Customer Saved");
+                                    window.location.href = "customer-list.php";
 								
 									</script>
 									<?php

@@ -58,7 +58,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Employee</h1>
+					<h1 class="h3 mb-3">Customers List</h1>
 
 					<div class="row">
 						
@@ -81,23 +81,20 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<th style="width:40%;">Email ID</th>
 											<th style="width:25%">Name</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Role</th>
-                                            <th>Password</th>
+											<th>Actions</th>
 										</tr>
 									</thead>
 									<tbody>
                                    
                                         <?php 
-                                        $user_id = $_GET['id'];
-            $role="employee";
-            $sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
-            $result = mysqli_query($db,"SELECT user_id,name,role,password from `users` where user_id='$user_id';");
-            // echo $result;
-            if ($result) {?>
+            $role="customer";
+            $sql = "SELECT user_id, name FROM users WHERE role=`customer`";
+            $result = mysqli_query($db,"SELECT user_id,name from `users` where role='$role';");
+            if ($result->num_rows > 0) {?>
                                              <?php
                                                 // output data of each row
                                                 while($row = $result->fetch_assoc()) {
-                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'>".$row["role"]."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
+                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'><a href='edit-customer.php?id=".$row['user_id']."'><i class='align-middle' data-feather='edit-2'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href='view-customer.php?id=".$row['user_id']."'><i class='align-middle' data-feather='eye'></i></a></td></tr>";
                                                 ?>
                                                 <!-- <tr>
                                                     <td>Vanessa Tucker</td>

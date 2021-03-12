@@ -24,8 +24,8 @@
                         <i class="align-middle" data-feather="target"></i> <span class="align-middle">Customer Section</span>
                         </a>
                                     <ul id="customer" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Customer List</a></li>
-                                        <li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="customer-list.php">Customer List</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></li>
                                     </ul>
                                 </li>
 

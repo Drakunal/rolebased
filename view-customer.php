@@ -58,7 +58,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Employee</h1>
+					<h1 class="h3 mb-3">Customer</h1>
 
 					<div class="row">
 						
@@ -78,7 +78,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
+											<th style="width:40%;">Customer ID</th>
 											<th style="width:25%">Name</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
 											<th>Role</th>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                    
                                         <?php 
                                         $user_id = $_GET['id'];
-            $role="employee";
+            $role="customer";
             $sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
             $result = mysqli_query($db,"SELECT user_id,name,role,password from `users` where user_id='$user_id';");
             // echo $result;
