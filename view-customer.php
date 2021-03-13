@@ -91,12 +91,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         $user_id = $_GET['id'];
             $role="customer";
             $sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
-            $result = mysqli_query($db,"SELECT user_id,name,role,password from `users` where user_id='$user_id';");
+            $result = mysqli_query($db,"SELECT id,user_id,name,role,password from `users` where user_id='$user_id';");
+			$row = $result->fetch_assoc();
+			$idd=$row["id"];
+			$result2 = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$idd';");
+			$row2 = $result2->fetch_assoc();
             // echo $result;
             if ($result) {?>
                                              <?php
                                                 // output data of each row
-                                                while($row = $result->fetch_assoc()) {
+                                                
                                                 echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'>".$row["role"]."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
                                                 ?>
                                                 <!-- <tr>
@@ -126,13 +130,26 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                 </tr>
                                                 <?php
 
-                                                }
+                                                
                                                 
                                             }
                                             ?>
 										
 									</tbody>
 								</table>
+								</br></br></br>
+								<?php if($row2){
+									?>
+								
+								<h4>Additional Details</h4>
+								<p>Details :</p> <?php echo $row2["details"]; ?>
+								<p>Time Alloted :</p> <?php echo $row2["time_alloted"]; ?> minutes
+								<?php } 
+								else{
+									?>
+									<h4>No Additional Details present</h4>
+									<?php } ?>
+								
 							</div>
 						</div>
 
