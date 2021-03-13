@@ -343,9 +343,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				
 					?>
 								<script>
+								// console.log("add-customer-details.php?id=<?php echo $email ?>");
 									
 									alert("Customer Saved");
-                                    window.location.href = "add-customer-details.php?id=".$row['user_id'];
+                                    window.location.href = "add-customer-details.php?id=<?php echo $email ?>";
 								
 									</script>
 									<?php

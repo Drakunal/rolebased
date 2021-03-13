@@ -78,22 +78,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										<div class="mb-3">
+										<!-- <div class="mb-3">
 											<label class="form-label">Customer Id</label>
 											<input type="text" name="email" class="form-control" placeholder="customer id">
-										</div>
+										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Number of hours allocated</label>
-											<input type="time"  name="password"class="form-control" placeholder="number of hours">
+											<input type="time"  name="time"class="form-control" placeholder="number of hours">
 										</div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
 											<input type="text" name="name" class="form-control" placeholder="Name">
-										</div>
+										</div> -->
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
-											<textarea class="form-control" placeholder="Details" rows="1"></textarea>
+											<textarea class="form-control"name="details" placeholder="Details" rows="1"></textarea>
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
@@ -276,22 +276,24 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			if(isset($_POST['submit']))
 			{
                     $user_email_id = $_GET['id'];
-					$email=$_POST['email'];
-					$password=$_POST['password'];
-					$name=$_POST['name'];
-					$role="customer";
-					$Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
-					if(mysqli_num_rows($Existing_Username)!=0)
-						{
+					$time=$_POST['time'];
+					$details=$_POST['details'];
+                    $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
+                    $row = $result->fetch_assoc();
+                    $user_id=$row['id'];
+					
+					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
+					// if(mysqli_num_rows($Existing_Username)!=0)
+						// {
 							?>
-								<script>
+								<!-- <script>
 									
 									alert("Customer ID already exists!");
 								
-									</script>
+									</script> -->
 									<?php
-						}
-						else{
+						// }
+						// else{
 					// 		$target_dir = "uploads/";
 					// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 					// $uploadOk = 1;
@@ -340,13 +342,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					mysqli_query($db,"INSERT INTO `customer-details` (user_id, details, time_allocated) VALUES('$email', '$details','$time_allocated', '$name');");
+					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted) VALUES('$user_id', '$details','$time_allocated');");
 				
 					?>
 								<script>
 									
 									alert("Customer Details Saved");
-                                    window.location.href = "add-customer-details.php?id=".$row['user_id'];
+                                    window.location.href = "customer-list.php";
 								
 									</script>
 									<?php
@@ -354,7 +356,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						}
 		
 					
-				}
+				
 				?>
 
 			<footer class="footer">
