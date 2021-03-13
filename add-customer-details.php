@@ -83,8 +83,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Number of hours allocated</label>
-											<input type="time"  name="time"class="form-control" placeholder="number of hours">
+											<label class="form-label">Time alloted in minutes</label>
+											<input type="number"  name="time"class="form-control" placeholder="number of hours">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
@@ -342,7 +342,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted) VALUES('$user_id', '$details','$time_allocated');");
+					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted) VALUES('$user_id', '$details','$time');");
 				
 					?>
 								<script>
