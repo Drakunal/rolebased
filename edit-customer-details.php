@@ -28,9 +28,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
-        </a>
+				
 
 		<?php include("sidebar.php"); ?>
 
@@ -50,7 +48,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
         <?php
                 $user_id = $_GET['id'];
                 
-                $result = mysqli_query($db,"SELECT details,time_alloted from `customer-details` where user_id='$user_id';");
+                $result = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$user_id';");
                 $res = mysqli_fetch_assoc($result);
             // print_r($res);
                 
@@ -289,12 +287,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                     // $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
                     // $row = $result->fetch_assoc();
                     // $user_id=$row['id'];
-                    $details=res['details'];
-					$time_alloted=res['time_alloted'];
+                    $details=$_POST['details'];
+					$time_alloted=$_POST['time'];
+					
 					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 					// if(mysqli_num_rows($Existing_Username)!=0)
 						// {
 							?>
+							
 								<!-- <script>
 									
 									alert("Customer ID already exists!");
@@ -351,7 +351,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					$p=mysqli_query($db,"UPDATE `customer-details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
+					$p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
 				
 					?>
 								<script>

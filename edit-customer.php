@@ -28,9 +28,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
-        </a>
+				
 
 		<?php include("sidebar.php"); ?>
 
@@ -50,8 +48,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
             <?php
                 $user_id = $_GET['id'];
                 
-                $result = mysqli_query($db,"SELECT name,user_id,password from `users` where user_id='$user_id';");
+                $result = mysqli_query($db,"SELECT id,name,user_id,password from `users` where user_id='$user_id';");
                 $res = mysqli_fetch_assoc($result);
+				$id=$res['id'];
             // print_r($res);
                 
             ?>
@@ -352,7 +351,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<script>
 									
 									alert("Customer Updted");
-                                    window.location.href = "add-customer-details.php?id=<?php echo $user_id ?>";
+                                    window.location.href = "add-customer-details.php?id=<?php echo $id ?>";
 									</script>
 									<?php
                                     

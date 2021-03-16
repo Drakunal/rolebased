@@ -1,3 +1,6 @@
+<a class="sidebar-brand" href="index.html">
+          <span class="align-middle"><img width="200em" src="img/logo.png"></span>
+        </a>
 <ul class="sidebar-nav">
 					        <li class="sidebar-header">
                                     Pages
