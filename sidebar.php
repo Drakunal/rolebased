@@ -1,4 +1,4 @@
-<a class="sidebar-brand" href="index.html">
+<a class="sidebar-brand" href="admin-panel.php">
           <span class="align-middle"><img width="200em" src="img/logo.png"></span>
         </a>
 <ul class="sidebar-nav">
