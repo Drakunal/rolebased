@@ -49,7 +49,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                 $user_id = $_GET['id'];
                 
                 $result = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$user_id';");
-                $res = mysqli_fetch_assoc($result);
+                $res = $result->fetch_assoc();
+				// print_r($res);
+echo $res['details'];
+			// 	$result2 = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$idd';");
+			// $row2 = $result2->fetch_assoc();
             // print_r($res);
                 
             ?>
@@ -65,14 +69,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Customer Details form</h1>
+					<h1 class="h3 mb-3">Edit Customer Details form</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Add your customer details here.</h6>
+									<h6 class="card-subtitle text-muted">Edit your customer details here.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
@@ -82,7 +86,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Time alloted in minutes</label>
-											<input type="number"  name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted'] ?>">
+											<input type="number"  name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
@@ -91,7 +95,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
-											<textarea class="form-control"name="details" placeholder="Details" rows="1" value="<?php echo $res['details'] ?>"></textarea>
+											<textarea class="form-control"name="details" placeholder="Details" rows="1" ><?php echo $res['details']; ?></textarea>
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>

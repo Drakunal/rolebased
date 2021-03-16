@@ -131,8 +131,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									?>
 								
 								<h4>Additional Details</h4>
-								<p>Details :</p> <?php echo $row2["details"]; ?>
-								<p>Time Alloted :</p> <?php echo $row2["time_alloted"]; ?> minutes
+								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
+								<p><strong>Time Alloted :</strong></p> <?php echo $row2["time_alloted"]; ?> minutes
 								<?php } 
 								else{
 									?>

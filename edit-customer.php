@@ -343,7 +343,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<script>
 									
 									alert("Customer Updted");
-                                    window.location.href = "add-customer-details.php?id=<?php echo $id ?>";
+                                    window.location.href = "edit-customer-details.php?id=<?php echo $id ?>";
 									</script>
 									<?php
                                     
