@@ -47,10 +47,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 		</nav>
 
 		<div class="main">
-            <?php
+        <?php
                 $user_id = $_GET['id'];
                 
-                $result = mysqli_query($db,"SELECT name,user_id,password from `users` where user_id='$user_id';");
+                $result = mysqli_query($db,"SELECT details,time_alloted from `customer-details` where user_id='$user_id';");
                 $res = mysqli_fetch_assoc($result);
             // print_r($res);
                 
@@ -75,33 +75,34 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Edit Customer form</h1>
+					<h1 class="h3 mb-3">Add Customer Details form</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
-									<!-- <h5 class="card-title">Edit Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Edit your employees here.</h6>
+									<!-- <h5 class="card-title">Add Employee form</h5> -->
+									<h6 class="card-subtitle text-muted">Add your customer details here.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										<div class="mb-3">
-											<label class="form-label">Customer ID</label>
-											<input type="text" name="email" class="form-control" placeholder="customer id" value="<?php echo $res['user_id'] ?>">
-										</div>
-										<div class="mb-3">
-											<label class="form-label">Password</label>
-											<input type="password"  name="password"class="form-control" placeholder="Password" value="<?php echo $res['password'] ?>">
-										</div>
-                                        <div class="mb-3">
-											<label class="form-label">Name</label>
-											<input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo $res['name'] ?>">
-										</div>
 										<!-- <div class="mb-3">
-											<label class="form-label">Textarea</label>
-											<textarea class="form-control" placeholder="Textarea" rows="1"></textarea>
+											<label class="form-label">Customer Id</label>
+											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
+										<div class="mb-3">
+											<label class="form-label">Time alloted in minutes</label>
+											<input type="number"  name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted'] ?>">
+										</div>
+                                        <!-- <div class="mb-3">
+											<label class="form-label">Name</label>
+											<input type="text" name="name" class="form-control" placeholder="Name">
+										</div> -->
+                                        
+										<div class="mb-3">
+											<label class="form-label">Details</label>
+											<textarea class="form-control"name="details" placeholder="Details" rows="1" value="<?php echo $res['details'] ?>"></textarea>
+										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
 											<input type="file" name="image"> -->
@@ -275,20 +276,28 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					</div>
 
 				</div>
-                <?php
+			</main>
+
+
+
+			<?php
 			if(isset($_POST['submit']))
 			{
-					$emailo=$_POST['email'];
-					$password=$_POST['password'];
-					$name=$_POST['name'];
-					$role="customer";
+                    // $user_email_id = $_GET['id'];
+					// $time=$_POST['time'];
+					// $details=$_POST['details'];
+                    // $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
+                    // $row = $result->fetch_assoc();
+                    // $user_id=$row['id'];
+                    $details=res['details'];
+					$time_alloted=res['time_alloted'];
 					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 					// if(mysqli_num_rows($Existing_Username)!=0)
-					// 	{
+						// {
 							?>
 								<!-- <script>
 									
-									alert("Email already exists!");
+									alert("Customer ID already exists!");
 								
 									</script> -->
 									<?php
@@ -341,33 +350,23 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// 	echo "Sorry, there was an error uploading your file.";
 					// }
 					// }
-                    // UPDATE Customers
-                    // SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
-                    // WHERE CustomerID = 1;
-					$p=mysqli_query($db,"UPDATE `users` SET user_id = '$emailo', password = '$password', role = '$role', name = '$name' WHERE user_id='$user_id' ;");
-				// echo $emailo;
-                // echo $user_id;
-                // echo "HO";
+
+					$p=mysqli_query($db,"UPDATE `customer-details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
+				
 					?>
 								<script>
 									
-									alert("Customer Updted");
-                                    window.location.href = "add-customer-details.php?id=<?php echo $user_id ?>";
+									alert("Customer Details Saved");
+                                    window.location.href = "customer-list.php";
+								
 									</script>
 									<?php
-                                    
 
 						}
 		
 					
 				
 				?>
-			</main>
-
-
-
-			
-                
 
 			<footer class="footer">
 				<div class="container-fluid">
