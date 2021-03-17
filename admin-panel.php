@@ -218,7 +218,6 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<div class="align-self-center w-100">
 										<div class="chart">
 											<div id="datetimepicker-dashboard">
-											<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FStockholm&amp;src=Nm1udDVyMHVuaTZyMTBwdWluMzlrc3Bjbmd2YmNzdnBAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23D50000&amp;showTz=0&amp;showPrint=0&amp;showCalendars=0&amp;showTabs=0&amp;showNav=1" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe></div>
 										</div>
 									</div>
 								</div>
