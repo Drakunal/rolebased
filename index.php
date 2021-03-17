@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+
 <?php
 	session_start();
     include "connection.php";
-?>
+?><!DOCTYPE html>
+
 <html lang="en">
 <head>
 	<title>Login V3</title>
