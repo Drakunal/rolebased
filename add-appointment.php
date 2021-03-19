@@ -61,12 +61,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					<?php
 						$role='employee';
 						$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
-						while($row = $result->fetch_assoc())
-						print_r($row['name']);
+						// while($row = $result->fetch_assoc())
+						// print_r($row['name']);
 					?>
-//!highlight_file
-//?wordwrap
-//*sadsa
+
+
+
 					<div class="row">
 						<div class="">
 							<div class="card">
@@ -78,12 +78,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<form enctype="multipart/form-data" method="post" action="">
 									<label class="form-label">Employee</label>
 									<select class="form-control mb-3">
-										<?php echo "<option>".$row['name']."</option>" ?>
+									<option selected>Select an Employee</option>
+										<?php while($row = $result->fetch_assoc())
+										echo "<option value='".$row['id']."'>".$row['name']."</option>" ?>
 									<!-- echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'></td></tr>"; -->
-										<option selected>Select an Employee</option>
-										<option>One</option>
-										<option>Two</option>
-										<option>Three</option>
+										
        								 </select>
 										<!-- <div class="mb-3">
 											<label class="form-label">Customer Id</label>
