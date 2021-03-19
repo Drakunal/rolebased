@@ -59,8 +59,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 					<h1 class="h3 mb-3">Add Customer Appointment</h1>
 					<?php
+						$customer_id = $_GET['id'];
 						$role='employee';
 						$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+						$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
+						// echo ($customer_query);
+						$customer_row= $customer_query->fetch_assoc();
+						echo $customer_row['name'];
 						// while($row = $result->fetch_assoc())
 						// print_r($row['name']);
 					?>
@@ -89,8 +94,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Time alloted in minutes</label>
-											<input type="number"  name="time"class="form-control" placeholder="number of minutes">
+											<label class="form-label">Customer Name</label>
+											<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $customer_row['name'];?>">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
@@ -98,8 +103,19 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
                                         
 										<div class="mb-3">
-											<label class="form-label">Details</label>
-											<textarea class="form-control"name="details" placeholder="Details" rows="1"></textarea>
+											<label class="form-label">Appointment Type</label>
+											<label class="form-check">
+            <input class="form-check-input" type="radio" value="option1" name="radios-example" checked>
+            <span class="form-check-label">
+              Option one is this and that&mdash;be sure to include why it's great
+            </span>
+          </label>
+										<label class="form-check">
+            <input class="form-check-input" type="radio" value="option2" name="radios-example">
+            <span class="form-check-label">
+              Option two can be something else and selecting it will deselect option one
+            </span>
+          </label>
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
