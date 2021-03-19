@@ -50,14 +50,6 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					<h1 class="h3 mb-3">Customer</h1>
 
 					<div class="row">
-						
-
-					
-
-					
-
-					
-
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
@@ -145,9 +137,31 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<?php } ?>
 								
 							</div>
+
 							<div class='card'>
 								<div class="mb-3">
-									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>
+
+								<?php 
+								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
+								$row3 = $result3->fetch_assoc();
+								if($row3){
+									?>
+								
+								<h4>Appointment Details</h4>
+								<p><strong>Time :</strong></p> <?php 
+								echo date('g:ia', strtotime($row3["time"]));
+								 ?></br></br>
+								<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
+								<p><strong>Employee-id :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
+								<?php } 
+								else{
+									?>
+									<h4>No Appointment present</h4>
+									
+								<div class="mb-3">
+								<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>								</div>
+									<?php } ?>
+									
 								</div>
 							</div>
 						</div>

@@ -85,6 +85,21 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<label class="form-label">Details</label>
 											<textarea class="form-control"name="details" placeholder="Details" rows="1"></textarea>
 										</div>
+										<div class="mb-3">
+											<label class="form-label">Appointment Type</label>
+												<label class="form-check">
+													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
+														<span class="form-check-label">
+															Bi-weekly
+														</span>
+												</label>
+												<label class="form-check">
+            										<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
+           												 <span class="form-check-label">
+             												 Monthly
+           												 </span>
+        										  </label>
+										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
 											<input type="file" name="image"> -->
@@ -267,6 +282,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			{
                     $user_email_id = $_GET['id'];
 					$time=$_POST['time'];
+					$appointment_type=$_POST['appointment-type'];
 					$details=$_POST['details'];
                     $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
                     $row = $result->fetch_assoc();
@@ -332,7 +348,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted) VALUES('$user_id', '$details','$time');");
+					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type) VALUES('$user_id', '$details','$time','$appointment_type');");
 				
 					?>
 								<script>

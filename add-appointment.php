@@ -65,7 +65,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
 						// echo ($customer_query);
 						$customer_row= $customer_query->fetch_assoc();
-						echo $customer_row['name'];
+						// echo $customer_row['name'];
 						// while($row = $result->fetch_assoc())
 						// print_r($row['name']);
 					?>
@@ -82,8 +82,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 									<label class="form-label">Employee</label>
-									<select class="form-control mb-3">
-									<option selected>Select an Employee</option>
+									<select class="form-control mb-3" name="employee-id">
+									<option value="0"selected>Select an Employee</option>
 										<?php while($row = $result->fetch_assoc())
 										echo "<option value='".$row['id']."'>".$row['name']."</option>" ?>
 									<!-- echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'></td></tr>"; -->
@@ -97,26 +97,29 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<label class="form-label">Customer Name</label>
 											<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $customer_row['name'];?>">
 										</div>
-                                        <!-- <div class="mb-3">
-											<label class="form-label">Name</label>
-											<input type="text" name="name" class="form-control" placeholder="Name">
-										</div> -->
-                                        
-										<div class="mb-3">
-											<label class="form-label">Appointment Type</label>
-											<label class="form-check">
-            <input class="form-check-input" type="radio" value="option1" name="radios-example" checked>
-            <span class="form-check-label">
-              Option one is this and that&mdash;be sure to include why it's great
-            </span>
-          </label>
-										<label class="form-check">
-            <input class="form-check-input" type="radio" value="option2" name="radios-example">
-            <span class="form-check-label">
-              Option two can be something else and selecting it will deselect option one
-            </span>
-          </label>
+                                        <div class="mb-3">
+											<label class="form-label">Date</label>
+											<input type="date" name="date" class="form-control" placeholder="appointment-date">
 										</div>
+                                        <div class="mb-3">
+											<label class="form-label">Time</label>
+											<input type="time" name="time" class="form-control" placeholder="appointment-time">
+										</div>
+										<!-- <div class="mb-3">
+											<label class="form-label">Appointment Type</label>
+												<label class="form-check">
+													<input class="form-check-input" type="radio" value="option1" name="radios-example" checked>
+														<span class="form-check-label">
+															Bi-weekly
+														</span>
+												</label>
+												<label class="form-check">
+            										<input class="form-check-input" type="radio" value="option2" name="radios-example">
+           												 <span class="form-check-label">
+             												 Monthly
+           												 </span>
+        										  </label>
+										</div> -->
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
 											<input type="file" name="image"> -->
@@ -297,12 +300,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<?php
 			if(isset($_POST['submit']))
 			{
-                    $user_email_id = $_GET['id'];
+                    // $user_email_id = $_GET['id'];
+					$customer_id=$customer_row['id'];
+					$employee_id=$_POST['employee-id'];
 					$time=$_POST['time'];
-					$details=$_POST['details'];
-                    $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
-                    $row = $result->fetch_assoc();
-                    $user_id=$row['id'];
+					$date=$_POST['date'];
+                    // $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
+                    // $row = $result->fetch_assoc();
+                    // $user_id=$row['id'];
 					
 					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 					// if(mysqli_num_rows($Existing_Username)!=0)
@@ -364,7 +369,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted) VALUES('$user_id', '$details','$time');");
+					mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");
 				
 					?>
 								<script>
