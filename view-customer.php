@@ -78,15 +78,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                    
                                         <?php 
                                         $user_id = $_GET['id'];
-            $role="customer";
-            $sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
-            $result = mysqli_query($db,"SELECT id,user_id,name,role,password from `users` where user_id='$user_id';");
-			$row = $result->fetch_assoc();
-			$idd=$row["id"];
-			$result2 = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$idd';");
-			$row2 = $result2->fetch_assoc();
-            // echo $result;
-            if ($result) {?>
+										$role="customer";
+										$sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
+										$result = mysqli_query($db,"SELECT id,user_id,name,role,password from `users` where user_id='$user_id';");
+										$row = $result->fetch_assoc();
+										$idd=$row["id"];
+										$result2 = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$idd';");
+										$row2 = $result2->fetch_assoc();
+										// echo $result;
+										if ($result) {?>
                                              <?php
                                                 // output data of each row
                                                 
@@ -143,6 +143,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 									<?php } ?>
 								
+							</div>
+							<div class='card'>
+								<div class="mb-3">
+									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Add Customer Appointment</a></button>
+								</div>
 							</div>
 						</div>
 
