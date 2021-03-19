@@ -146,7 +146,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							</div>
 							<div class='card'>
 								<div class="mb-3">
-									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Add Customer Appointment</a></button>
+									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $row['user_id'] ?>">Add Customer Appointment</a></button>
 								</div>
 							</div>
 						</div>

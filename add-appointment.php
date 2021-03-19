@@ -57,8 +57,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Customer Details form</h1>
-
+					<h1 class="h3 mb-3">Add Customer Appointment</h1>
+					<?php
+						$role='employee';
+						$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+						while($row = $result->fetch_assoc())
+						print_r($row['name']);
+					?>
+//!highlight_file
+//?wordwrap
+//*sadsa
 					<div class="row">
 						<div class="">
 							<div class="card">
@@ -68,6 +76,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
+									<label class="form-label">Employee</label>
+									<select class="form-control mb-3">
+										<?php echo "<option>".$row['name']."</option>" ?>
+									<!-- echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'></td></tr>"; -->
+										<option selected>Select an Employee</option>
+										<option>One</option>
+										<option>Two</option>
+										<option>Three</option>
+       								 </select>
 										<!-- <div class="mb-3">
 											<label class="form-label">Customer Id</label>
 											<input type="text" name="email" class="form-control" placeholder="customer id">
