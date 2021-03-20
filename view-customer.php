@@ -37,8 +37,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
-          <i class="hamburger align-self-center"></i>
-        </a>
+          			<i class="hamburger align-self-center"></i>
+        		</a>
 
 				
 				<?php include("navbar.php"); ?>
