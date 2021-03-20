@@ -75,6 +75,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					<div class="row">
 						<div class="">
 							<div class="card">
+							<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FStockholm&amp;src=ZzYzMGhkdjRmOWFhM2o3NDU0NDdoc29tMmNiaGlxM3BAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23D50000&amp;showPrint=0&amp;showTitle=1&amp;showTabs=0&amp;showTz=0&amp;showNav=0&amp;showCalendars=0" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 								<div class="card-header">
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
 									<h6 class="card-subtitle text-muted">Add your customer details here.</h6>
