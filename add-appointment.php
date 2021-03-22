@@ -55,13 +55,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						</div>
 					</div>
 					<div class="row">
-						<div class="card">
-						<div class="ajax">
-						</div>
-						</div>
+						
 					</div>
 					<div class="row">
-						<div class="">
+						<div class="col-md-6">
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-subtitle text-muted">Add your customer details here.</h4>
@@ -76,10 +73,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											// echo "<option value='".$row['id']."'>".$row['name']."</option>"
 											 ?>
 										</select>
-										<!-- <select id="appointments">
-        	<option value=""></option>
-        </select> -->
-										<!-- <input type="hidden" name="hidden_country" id="hidden_country" /> -->
+										
 											<div class="mb-3">
 												<label class="form-label">Customer Name</label>
 												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $customer_row['name'];?>">
@@ -94,20 +88,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											</div>
 											<button type="submit" name="submit"class="btn btn-primary">Submit</button>
 									</form>
-									<table class="table table-bordered" >
-									<thead>
-									<tr>
-										<th>Id</th>
-										<th>Customer Name</th>
-									</tr>
-									</thead>
-									<tbody id ="appointments">
-									</tbody>
-								</table>
+									
 								</div>
 							</div>
 						</div>
+						<div class="col-md-6">
+						<div class="card">
+						<div class="ajax">
+						
+						<div id="appointments">
+						
+
+						</div>
+						</div>
+						</div></div>
 					</div>
+
 				</div>
 			</main>
 
