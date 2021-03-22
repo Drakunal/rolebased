@@ -55,6 +55,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						</div>
 					</div>
 					<div class="row">
+						<div class="card">
+						<div class="ajax">
+						</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
@@ -63,11 +69,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<label class="form-label">Employee</label>
-										<select class="form-control mb-3" name="employee-id">
+										<select class="form-control mb-3" id="employee_id" name="employee-id">
 											<option value="0"selected>Select an Employee</option>
-											<?php while($row = $result->fetch_assoc())
-											echo "<option value='".$row['id']."'>".$row['name']."</option>" ?>
+											<?php 
+											// while($row = $result->fetch_assoc())
+											// echo "<option value='".$row['id']."'>".$row['name']."</option>"
+											 ?>
 										</select>
+										<select id="appointments">
+        	<option value=""></option>
+        </select>
+										<!-- <input type="hidden" name="hidden_country" id="hidden_country" /> -->
 											<div class="mb-3">
 												<label class="form-label">Customer Name</label>
 												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $customer_row['name'];?>">
@@ -117,6 +129,42 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<?php include("footer.php"); ?>
 		</div>
 	</div>
+	<script type="text/javascript" src="jquery/jquery.js"></script>
 	<script src="js/app.js"></script>
+	<script type="text/javascript">
+  $(document).ready(function(){
+  	function loadData(type, category_id){
+  		$.ajax({
+  			url : "employee-ajax.php",
+  			type : "POST",
+  			data: {type : type, id : category_id},
+  			success : function(data){
+  				if(type == "stateData"){
+  					$("#appointments").html(data);
+  				}else{
+  					$("#employee_id").append(data);
+  				}
+  				
+  			}
+  		});
+  	}
+
+  	loadData();
+
+  	$("#employee_id").on("change",function(){
+  		var country = $("#employee_id").val();
+
+  		if(country != ""){
+  			loadData("stateData", country);
+  		}else{
+  			$("#appointments").html("");
+  		}
+
+  		
+  	})
+  });
+</script>
+
+
 </body>
 </html>
