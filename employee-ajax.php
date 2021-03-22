@@ -21,7 +21,7 @@ else if($_POST['type'] == "stateData"){
 
     $str = "";
     while($row = mysqli_fetch_assoc($query)){
-      $str .= "<option value='{$row['id']}'>{$row['id']}</option>";
+      $str .= "<tr><td>{$row['id']}</td><td>{$row['customer_id']}</td></tr>";
     }
 }
 echo $str;

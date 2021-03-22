@@ -76,9 +76,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											// echo "<option value='".$row['id']."'>".$row['name']."</option>"
 											 ?>
 										</select>
-										<select id="appointments">
+										<!-- <select id="appointments">
         	<option value=""></option>
-        </select>
+        </select> -->
 										<!-- <input type="hidden" name="hidden_country" id="hidden_country" /> -->
 											<div class="mb-3">
 												<label class="form-label">Customer Name</label>
@@ -94,6 +94,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											</div>
 											<button type="submit" name="submit"class="btn btn-primary">Submit</button>
 									</form>
+									<table class="table table-bordered" >
+									<thead>
+									<tr>
+										<th>Id</th>
+										<th>Customer Name</th>
+									</tr>
+									</thead>
+									<tbody id ="appointments">
+									</tbody>
+								</table>
 								</div>
 							</div>
 						</div>
