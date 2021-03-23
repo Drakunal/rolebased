@@ -28,9 +28,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
-        </a>
+				
 
 		<?php include("sidebar.php"); ?>
 
@@ -52,15 +50,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
           <i class="hamburger align-self-center"></i>
         </a>
 
-				<form class="d-none d-sm-inline-block">
-					<div class="input-group input-group-navbar">
-						<input type="text" class="form-control" placeholder="Search…" aria-label="Search">
-						<button class="btn" type="button">
-              <i class="align-middle" data-feather="search"></i>
-            </button>
-					</div>
-				</form>
-				<?php include("navbar.php"); ?>
+								<?php include("navbar.php"); ?>
 				
 			</nav>
 
@@ -84,7 +74,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Time alloted in minutes</label>
-											<input type="number"  name="time"class="form-control" placeholder="number of hours">
+											<input type="number" required name="time"class="form-control" placeholder="number of minutes">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
@@ -93,7 +83,35 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
-											<textarea class="form-control"name="details" placeholder="Details" rows="1"></textarea>
+											<textarea required class="form-control"name="details" placeholder="Details" rows="1"></textarea>
+										</div>
+										<div class="mb-3">
+											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
+														<span class="form-check-label">
+															Not Regular
+														</span></label>
+											<label class="form-check">
+													<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
+														<span class="form-check-label">
+															Regular
+														</span>
+												</label>
+												<div  id="ifYes" style="display:none">
+												<label class="form-check">
+													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
+														<span class="form-check-label">
+															Bi-weekly
+														</span>
+												</label>
+												<label class="form-check">
+            										<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
+           												 <span class="form-check-label">
+             												 Monthly
+           												 </span>
+        										  </label>
+
+												</div>
+												
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
@@ -277,6 +295,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			{
                     $user_email_id = $_GET['id'];
 					$time=$_POST['time'];
+					$appointment_type=$_POST['appointment-type'];
+					$regularity=$_POST['yesno'];
+					if($regularity=="not-regular"){
+						$appointment_type=$regularity;
+					}
 					$details=$_POST['details'];
                     $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
                     $row = $result->fetch_assoc();
@@ -342,7 +365,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted) VALUES('$user_id', '$details','$time');");
+					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type) VALUES('$user_id', '$details','$time','$appointment_type');");
 				
 					?>
 								<script>
@@ -359,37 +382,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				
 				?>
 
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-left">
-							<p class="mb-0">
-								<a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
-							</p>
-						</div>
-						<div class="col-6 text-right">
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Terms</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
+<?php include("footer.php"); ?>
 		</div>
 	</div>
 
 	<script src="js/app.js"></script>
+	<script type="text/javascript">
+
+		function yesnoCheck() {
+			if (document.getElementById('yesCheck').checked) {
+				document.getElementById('ifYes').style.display = 'block';
+			}
+			else document.getElementById('ifYes').style.display = 'none';
+
+		}
+
+	</script>
 
 </body>
 

@@ -28,9 +28,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
-        </a>
+				
 
 		<?php include("sidebar.php"); ?>
 
@@ -52,15 +50,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
           <i class="hamburger align-self-center"></i>
         </a>
 
-				<form class="d-none d-sm-inline-block">
-					<div class="input-group input-group-navbar">
-						<input type="text" class="form-control" placeholder="Search…" aria-label="Search">
-						<button class="btn" type="button">
-              <i class="align-middle" data-feather="search"></i>
-            </button>
-					</div>
-				</form>
-				<?php include("navbar.php"); ?>
+								<?php include("navbar.php"); ?>
 				
 			</nav>
 
@@ -80,15 +70,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
 											<label class="form-label">Customer Id</label>
-											<input type="text" name="email" class="form-control" placeholder="customer id">
+											<input type="text" required name="email" class="form-control" placeholder="customer id">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input type="password"  name="password"class="form-control" placeholder="Password">
+											<input type="password" required  name="password"class="form-control" placeholder="Password">
 										</div>
                                         <div class="mb-3">
 											<label class="form-label">Name</label>
-											<input type="text" name="name" class="form-control" placeholder="Name">
+											<input type="text" required name="name" class="form-control" placeholder="Name">
 										</div>
                                         
 										<!-- <div class="mb-3">
@@ -357,33 +347,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				}
 				?>
 
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-left">
-							<p class="mb-0">
-								<a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
-							</p>
-						</div>
-						<div class="col-6 text-right">
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Terms</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
+<?php include("footer.php"); ?>
 		</div>
 	</div>
 
