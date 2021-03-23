@@ -97,6 +97,34 @@ echo $res['details'];
 											<label class="form-label">Details</label>
 											<textarea class="form-control"name="details" placeholder="Details" rows="1" ><?php echo $res['details']; ?></textarea>
 										</div>
+										<div class="mb-3">
+											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
+														<span class="form-check-label">
+															Not Regular
+														</span></label>
+											<label class="form-check">
+													<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
+														<span class="form-check-label">
+															Regular
+														</span>
+												</label>
+												<div  id="ifYes" style="display:none">
+												<label class="form-check">
+													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
+														<span class="form-check-label">
+															Bi-weekly
+														</span>
+												</label>
+												<label class="form-check">
+            										<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
+           												 <span class="form-check-label">
+             												 Monthly
+           												 </span>
+        										  </label>
+
+												</div>
+												
+										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
 											<input type="file" name="image"> -->
@@ -285,6 +313,11 @@ echo $res['details'];
                     // $user_id=$row['id'];
                     $details=$_POST['details'];
 					$time_alloted=$_POST['time'];
+					$appointment_type=$_POST['appointment-type'];
+					$regularity=$_POST['yesno'];
+					if($regularity=="not-regular"){
+						$appointment_type=$regularity;
+					}
 					
 					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 					// if(mysqli_num_rows($Existing_Username)!=0)
@@ -347,8 +380,9 @@ echo $res['details'];
 					// }
 					// }
 
-					$p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
-				
+					// $p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
+					$p=mysqli_query($db,"UPDATE `customer_details` SET appointment_type = '$appointment_type', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
+
 					?>
 								<script>
 									
@@ -369,6 +403,17 @@ echo $res['details'];
 	</div>
 
 	<script src="js/app.js"></script>
+	<script type="text/javascript">
+
+		function yesnoCheck() {
+			if (document.getElementById('yesCheck').checked) {
+				document.getElementById('ifYes').style.display = 'block';
+			}
+			else document.getElementById('ifYes').style.display = 'none';
+
+		}
+
+	</script>
 
 </body>
 
