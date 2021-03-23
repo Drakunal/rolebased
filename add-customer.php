@@ -70,15 +70,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
 											<label class="form-label">Customer Id</label>
-											<input type="text" name="email" class="form-control" placeholder="customer id">
+											<input type="text" required name="email" class="form-control" placeholder="customer id">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input type="password"  name="password"class="form-control" placeholder="Password">
+											<input type="password" required  name="password"class="form-control" placeholder="Password">
 										</div>
                                         <div class="mb-3">
 											<label class="form-label">Name</label>
-											<input type="text" name="name" class="form-control" placeholder="Name">
+											<input type="text" required name="name" class="form-control" placeholder="Name">
 										</div>
                                         
 										<!-- <div class="mb-3">

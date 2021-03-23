@@ -74,7 +74,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Time alloted in minutes</label>
-											<input type="number"  name="time"class="form-control" placeholder="number of minutes">
+											<input type="number" required name="time"class="form-control" placeholder="number of minutes">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
@@ -83,7 +83,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
-											<textarea class="form-control"name="details" placeholder="Details" rows="1"></textarea>
+											<textarea required class="form-control"name="details" placeholder="Details" rows="1"></textarea>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Appointment Type</label>
