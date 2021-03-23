@@ -86,7 +86,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<textarea required class="form-control"name="details" placeholder="Details" rows="1"></textarea>
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Appointment Type</label>
+											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
+														<span class="form-check-label">
+															Not Regular
+														</span></label>
+											<label class="form-check">
+													<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
+														<span class="form-check-label">
+															Regular
+														</span>
+												</label>
+												<div  id="ifYes" style="display:none">
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
 														<span class="form-check-label">
@@ -99,6 +109,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
              												 Monthly
            												 </span>
         										  </label>
+
+												</div>
+												
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
@@ -283,6 +296,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                     $user_email_id = $_GET['id'];
 					$time=$_POST['time'];
 					$appointment_type=$_POST['appointment-type'];
+					$regularity=$_POST['yesno'];
+					if($regularity=="not-regular"){
+						$appointment_type=$regularity;
+					}
 					$details=$_POST['details'];
                     $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
                     $row = $result->fetch_assoc();
@@ -370,6 +387,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	</div>
 
 	<script src="js/app.js"></script>
+	<script type="text/javascript">
+
+		function yesnoCheck() {
+			if (document.getElementById('yesCheck').checked) {
+				document.getElementById('ifYes').style.display = 'block';
+			}
+			else document.getElementById('ifYes').style.display = 'none';
+
+		}
+
+	</script>
 
 </body>
 
