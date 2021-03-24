@@ -110,7 +110,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 											}
 											else{?>
-											<input type="number" value="0" name="appointment-duration" hidden class="form-control">
+											<input type="number" value="1" name="appointment-duration" hidden class="form-control">
 											<?php
 
 											}
@@ -152,7 +152,34 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			?>
 								
 			<?php
-				mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
+				if($customer_details_row['appointment_type']=='bi-weekly')
+				{
+					for ($x = 1; $x <= 2*$appointment_duration; $x++) {
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
+					
+						$date=date('Y-m-d', strtotime($date. ' + 15 days'));
+					}
+					
+				}
+				elseif($customer_details_row['appointment_type']=='monthly')
+				{
+					for ($x = 1; $x <= $appointment_duration; $x++) {
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
+					
+						$date=date('Y-m-d', strtotime($date. ' + 30 days'));
+					}
+					
+				}
+				elseif($customer_details_row['appointment_type']=='not-regular')
+				{
+					
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
+					
+					
+					
+					
+				}
+				
 			?>
 			<script>
 				
