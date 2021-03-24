@@ -139,19 +139,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								{
 									echo "Not-regular";
 								} ?>
-								<?php } 
-								else{
-									?>
-									<h4>No Additional Details present</h4>
-									
-								<div class="mb-3">
-									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Add Customer details</a></button>
-								</div>
-									<?php } ?>
-								
-							</div>
-
-							<div class='card'>
+								<div class='card'>
 								<div class="mb-3">
 
 								<?php 
@@ -177,6 +165,19 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									
 								</div>
 							</div>
+								<?php } 
+								else{
+									?>
+									<h4>No Additional Details present</h4>
+									
+								<div class="mb-3">
+									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Add Customer details</a></button>
+								</div>
+									<?php } ?>
+								
+							</div>
+
+					
 						</div>
 
 						

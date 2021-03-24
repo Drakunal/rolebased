@@ -45,9 +45,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<?php
 							$customer_id = $_GET['id'];
 							$role='employee';
+							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id from `customer_details` where user_id='$customer_id';");
 							$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
 							$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
 							$customer_row= $customer_query->fetch_assoc();
+							$customer_details_row= $customer_details->fetch_assoc();
+							// echo $customer_details_row['appointment_type'];
+							// echo $customer_id;
+							// if($customer_details_row>0)
+							// echo "bye";
+							// else
+							// echo "Tata";
 						?>
 					<div class="row">
 						<div class="card">
@@ -61,7 +69,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<div class="col-md-6">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-subtitle text-muted">Add your customer details here.</h4>
+									<h4 class="card-subtitle text-muted">Add Appointment for this customer.</h4>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
@@ -86,6 +94,27 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												<label class="form-label">Time</label>
 												<input type="time" name="time" class="form-control" placeholder="appointment-time">
 											</div>
+											<?php 
+											if($customer_details_row['appointment_type']!='not-regular'){
+												?>
+											<div class="mb-3">
+												<label class="form-label">Fix the Duration of the appointment</label>
+												<select class="form-control mb-3" id="appointment-duration" name="appointment-duration">
+													<option value="3"selected>3 Months</option>
+													<option value="6">6 Months</option>
+													<option value="9">9 Months</option>
+													<option value="12">12 Months</option>
+												</select>
+											</div>
+											<?php
+
+											}
+											else{?>
+											<input type="number" value="0" name="appointment-duration" hidden class="form-control">
+											<?php
+
+											}
+											?>
 											<button type="submit" name="submit"class="btn btn-primary">Submit</button>
 									</form>
 									
@@ -117,6 +146,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$employee_id=$_POST['employee-id'];
 						$time=$_POST['time'];
 						$date=$_POST['date'];
+						$appointment_duration=$_POST['appointment-duration'];
+						echo $appointment_duration;
                     
 			?>
 								
