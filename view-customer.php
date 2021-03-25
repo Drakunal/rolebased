@@ -143,7 +143,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="mb-3">
 
 								<?php 
-								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
+								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month;");
 								$row3 = $result3->fetch_assoc();
 								if($row3){
 									?>
@@ -154,10 +154,28 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								 ?></br></br>
 								<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
 								<p><strong>Employee-id :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
-								<?php } 
+								<?php
+									if($row2["appointment_type"]=="bi-weekly"){
+										// $result4 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
+										$row3 = $result3->fetch_assoc();
+										if($row3){
+											?>
+										
+										<h4>Second Appointment Details</h4>
+										<p><strong>Time :</strong></p> <?php 
+										echo date('g:ia', strtotime($row3["time"]));
+										 ?></br></br>
+										<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
+										<p><strong>Employee-id :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
+										<?php
+
+										}
+										
+									}
+									 } 
 								else{
 									?>
-									<h4>No Appointment present</h4>
+									<h4>No Second Appointment present</h4>
 									
 								<div class="mb-3">
 								<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>								</div>
