@@ -15,7 +15,8 @@ if($_POST['type'] == ""){
 }
 else if($_POST['type'] == "stateData"){
 
-    $sql = "SELECT * FROM appointments WHERE employee_id = {$_POST['id']}";
+
+    $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
 
     $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
  
