@@ -174,11 +174,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											?>
 											<h4>No Second Appointment present</h4>
 											
-										<div class="mb-3">
-										<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>								</div>
+										
 											<?php }
 										
 									}
+									 }
+									 else{
+										 ?>
+										 <div class="mb-3">
+										<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>
+										</div>
+										<?php
 									 } 
 								 ?>
 									
