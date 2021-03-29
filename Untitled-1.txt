@@ -1,0 +1,323 @@
+When do you think part 2 could be done? Or at least the calendar function?
+
+k
+Me
+Mar 17, 6:39 PM
+part 2 will contain the employee ui and the customer ui ,with the appointment function. I should tell you that it might not be possible to see appointment in that small calender, so I will provide a different section which will act as a calendar and will help in adding or viewing appointments in a calendar fashion
+
+M
+macprime
+Mar 17, 6:41 PM
+ReportSpam
+If you want, we could divide like this: Part 2, possible for admin to add appointments in the calendar and view calendar , assign appointments to customer # and employee. Then part 3 we can do the UI for customer & employee?
+
+k
+Me
+Mar 17, 6:41 PM
+sounds perfect to me
+
+k
+Me
+Mar 17, 6:41 PM
+and one more thing..is there anything else in part 3?
+
+k
+Me
+Mar 17, 6:50 PM
+One more thing I would like to know - how will admin calculate hours of work for a particular employee? I mean Admin gives EmpA appointment with CustA and Cust2 for 1 hour each, so should we assume that he has worked for 2 hours here? or is there any other way for that?
+
+k
+Me
+Mar 17, 6:52 PM
+and when will you need the part 2?? I mean I will say a MAXIMUM of 12 days for this one, but if everything is normal, then I can complete it in a week or even less
+
+k
+Me
+Mar 17, 6:52 PM
+but you should still consider the maximum time,just in case
+
+M
+macprime
+Mar 17, 6:56 PM
+ReportSpam
+I would like the part 2 asap, as long as you feel you can do it.. you can start whenever, so its up to you.
+
+So, my colleague wanted to set hours per customer. So in the customer field (where you edit #123 for example) should have a field of: Hours. Admin should be able to set this "Hours" to amount of hours they always spend at this customer. Because they are always at the customer for same amount of time.
+
+So if i edit "Customer A" admin should be able to set decided amount of hours on Customer A, meaning everything Customer A shows in scheduel, it should show the amount of hours.
+
+M
+macprime
+Mar 17, 6:57 PM
+ReportSpam
+But amount of hours should be able to be changed seperately at certain ocations, because it happens VERY rarely that they spend 0.5 hours more or 0.5 hours less at Customer A. Then admin should be able to change this seperately. But Customer A should always by standard be set to "Fixed amount of hours"
+
+M
+macprime
+Mar 17, 6:57 PM
+ReportSpam
+I hope you understand what I mean
+
+k
+Me
+Mar 17, 7:05 PM
+Ok, I understand now that the amount of hours is fixed always..Ok..still when would you need it?
+
+k
+Me
+Mar 17, 7:07 PM
+and will empA always serve custA or can any emp be appointed for any customer?
+
+M
+macprime
+Mar 17, 7:07 PM
+ReportSpam
+CustA can be served by any employee
+
+M
+macprime
+Mar 17, 7:08 PM
+ReportSpam
+It would be great IF before 29th of march, but I undertsand if it takes more time
+
+k
+Me
+Mar 17, 7:09 PM
+ok no problem I will try my best.. and i will keep contacting you with anything if I need, will make the order before delivery or now? same amount as the previous one for this part..
+
+k
+Me
+Mar 17, 7:10 PM
+one more thing..can appointments be cancelled or rescheduled?
+
+M
+macprime
+Mar 17, 7:11 PM
+ReportSpam
+We can make order maybe this weekend if ok with you?
+Yeah appointments should be able to send to another employee if some employee is sick etc, or cancelled yes
+
+k
+Me
+Mar 17, 7:15 PM
+okk..and number of hours an emplyee has worked, will be based on the number of appointments and amount of hour for each customers..
+
+M
+macprime
+Mar 17, 7:20 PM
+ReportSpam
+Yes, totals of hours worked each months should be updated real time if possible on dashboard maybe? And we also need to calculate the costs.. Because each hour cost a certain amount. Hourly charge
+
+M
+macprime
+Mar 17, 7:21 PM
+ReportSpam
+This would be the best: Add a field on each customer, hourly cost: and it should be set to 350 as standard, but IF admin want to change for certain customer, he can just go to that customer and change it
+
+M
+macprime
+Mar 17, 7:22 PM
+ReportSpam
+So admin can see : Total of hours worked per month, total costs each month, profit, etc
+
+k
+Me
+Mar 17, 7:22 PM
+yes it can be calculated, but how can the data of 10 employees be shown on the main dashboard? I mean, I can show it, it won't be a problem, but won't it look a bit cramped?
+
+k
+Me
+Mar 17, 7:22 PM
+and how will the profit be calculate?
+
+M
+macprime
+Mar 17, 7:24 PM
+ReportSpam
+Dashboard can show: total profits and total hours. But then maybe have another tab, that is called: Summary
+
+k
+Me
+Mar 17, 7:25 PM
+yeah sure, and each emplyees detais ...or maybe another section..will contain these details of which employee worked for how many hours and what is his cost..like that
+
+M
+macprime
+Mar 17, 7:26 PM
+ReportSpam
+yes exactly
+
+M
+macprime
+Mar 17, 7:27 PM
+ReportSpam
+So total of income should be: Hourly cost X amount of working hours
+
+k
+Me
+Mar 17, 7:28 PM
+default hourly price for customer will be 350, which can be changed by admin? and is there default hourly income for the employee as well?
+
+M
+macprime
+Mar 17, 7:29 PM
+ReportSpam
+Yes, tehre should be for employee as well, but can we do this further ahead? I have to check with my colleague in order to give you a good answer there, becuase he wants it in a certain way.. But we can start with total of income, total of working hours,
+
+k
+Me
+Mar 17, 7:30 PM
+ok sure, and how to calculate the profit part?
+
+M
+macprime
+Mar 17, 7:30 PM
+ReportSpam
+PART 3 can be: More totals, and other summarys , employe UI & Customer UI
+
+M
+macprime
+Mar 17, 7:31 PM
+ReportSpam
+There should be like 4-5 fields of different fields of Totals, (total working hours, total costs, total income, etc) and profit is gonna be calculated in a specific way. I believe we can take this in part 3. (The profit and last Total steps).
+
+k
+Me
+Mar 17, 7:32 PM
+Ok sure, no problem with that.
+
+M
+macprime
+Mar 17, 7:32 PM
+ReportSpam
+Because in Sweden we have a way for businesses working with this type of job, that the customer gets 50% price off, this is paid by the government instead. Thats why we have to calculate it in another way. But this we can take as last step
+
+k
+Me
+Mar 17, 7:33 PM
+okk..I understood that..then I will start working on part 2 and send you the offer this weekend?
+
+M
+macprime
+Mar 17, 7:33 PM
+ReportSpam
+Yes sounds great
+
+M
+macprime
+Mar 17, 7:34 PM
+ReportSpam
+Main focus is calendar function right now, thats like the biggest part I believe
+
+k
+Me
+Mar 17, 7:35 PM
+ok, do you need holidays to be shown too? i mean to do that one would need to add the holidays manually to it
+
+M
+macprime
+Mar 17, 7:35 PM
+ReportSpam
+Holidays should be marked with red
+
+M
+macprime
+Mar 17, 7:35 PM
+ReportSpam
+Doesnt it work to just use a swedish calendar?
+
+k
+Me
+Mar 17, 7:37 PM
+it won't work that way actually, i mean if there was something like swedish calendar api..then I could have got the holiday data from there..without any manual updation, but that type of api does not exist, so adding holidays would be a bit difficult, but can be added in a similar way as everything is being added now
+
+M
+macprime
+Mar 17, 7:38 PM
+ReportSpam
+hmm okay. Do without red on holidays as of now
+
+M
+macprime
+Mar 17, 7:38 PM
+ReportSpam
+just make everyday calendar
+
+k
+Me
+Mar 17, 7:38 PM
+ok sure, thanks
+
+k
+Me
+Mar 18, 3:10 PM
+Hi..just to let you know, I have got an idea of how to show the holidays in the calendar, will try to implement that thing..and let you know how it turns out.
+
+M
+macprime
+Mar 18, 3:15 PM
+ReportSpam
+Hey!! That sounds great man :) You are awesome, never forget that!
+
+M
+macprime
+Mar 18, 3:17 PM
+ReportSpam
+1 thing that we would need in creating customer, is a tick box or drop down, that lets you choose if the customer is gonna have bi -weekly or once a month appointment. Because same employee is usually at the same customer 1 or 2 times each month. So if you can have a thing in the customer options that let you decide this, then it would automatically show for that employee on the same date every month
+
+M
+macprime
+Mar 18, 3:18 PM
+ReportSpam
+So if Employee1 is gonna clean Kunaldeys house, 2 times every month, it should be a box that the admin can fill in what date every month for the rest of the coming months.
+
+M
+macprime
+Mar 18, 3:18 PM
+ReportSpam
+So admin doesnt have to create a new calendar object every 2 weeks, if you understand what I mean? Is this possible?
+
+k
+Me
+Mar 18, 3:24 PM
+Yes I understood it..so you mean, that for 2 tines the emp1 will be fixed for that particular month, unless the admin changes it for some reason, right?
+
+k
+Me
+Mar 18, 3:24 PM
+*times
+
+M
+macprime
+Mar 18, 3:34 PM
+ReportSpam
+It will be fixed for entire future, til admin changes it
+
+M
+macprime
+Mar 18, 3:35 PM
+ReportSpam
+Employee1 will come clean your house bi-weekly forever, til admin changes or stops it
+
+k
+Me
+Mar 18, 3:38 PM
+Ok..I understood ..and bi weekly means? Twice in a week? So will it be always monday Thursday for example or it can be monday Friday or something like that?
+
+M
+macprime
+Mar 18, 3:44 PM
+ReportSpam
+Bi-weekly means every other week. So 2 times a month
+
+M
+macprime
+Mar 18, 3:44 PM
+ReportSpam
+for example, they clean your house 8th march & 22th march this months
+
+M
+macprime
+Mar 18, 3:45 PM
+ReportSpam
+month**
