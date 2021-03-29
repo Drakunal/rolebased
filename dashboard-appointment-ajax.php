@@ -50,14 +50,26 @@ if($_POST['type'] == "stateData"){
     while($row = mysqli_fetch_assoc($query)){
         // echo $row['employee_id'];
         $employee_id=$row['employee_id'];
-        echo $employee_id;
+        // echo $employee_id;
         // $role="employee";
         $sql1="SELECT name from `users` where id=$employee_id";
         $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
         $row1 = mysqli_fetch_assoc($query1);
+
+
+
+        $customer_id=$row['customer_id'];
+        // echo $employee_id;
+        // $role="employee";
+        $sql2="SELECT name from `users` where id=$customer_id";
+        $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
+        $row2 = mysqli_fetch_assoc($query2);
+
+
+        
         
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$time}</td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$time}</td></tr>";
     }
     $str .= "</tbody>
     </table>";
