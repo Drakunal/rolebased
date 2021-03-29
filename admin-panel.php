@@ -1,8 +1,7 @@
 <?php
 session_start();
 include "connection.php";
-if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
-{
+if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
     header("location:index.php");
 }
 ?>
@@ -30,9 +29,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				
-		<?php include("sidebar.php"); ?>
-				
+
+		<?php include "sidebar.php";?>
+
 
 				<!-- <div class="sidebar-cta">
 					<div class="sidebar-cta-content">
@@ -52,31 +51,29 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
           <i class="hamburger align-self-center"></i>
         </a>
 
-				
-			
-				<?php include("navbar.php"); ?>
-			
+
+
+				<?php include "navbar.php";?>
+
 			</nav>
 
 			<main class="content">
 				<?php
 
-				//for employee count
-				$role_e="employee";
-				// $sql = "SELECT user_id, name FROM users WHERE role=`employee`";
-				$employee = mysqli_query($db,"SELECT count(id) from `users` where role='$role_e';");
-				$employee_count = $employee->fetch_assoc();
-				// echo $employee_count['count(id)'];
+//for employee count
+$role_e = "employee";
+// $sql = "SELECT user_id, name FROM users WHERE role=`employee`";
+$employee = mysqli_query($db, "SELECT count(id) from `users` where role='$role_e';");
+$employee_count = $employee->fetch_assoc();
+// echo $employee_count['count(id)'];
 
-				//for customer count
-				$role_c="customer";
-				$customer = mysqli_query($db,"SELECT count(id) from `users` where role='$role_c';");
-				$customer_count = $customer->fetch_assoc();
-				// echo $customer_count['count(id)'];
+//for customer count
+$role_c = "customer";
+$customer = mysqli_query($db, "SELECT count(id) from `users` where role='$role_c';");
+$customer_count = $customer->fetch_assoc();
+// echo $customer_count['count(id)'];
 
-
-				
-				?>
+?>
 				<div class="container-fluid p-0">
 
 					<div class="row mb-2 mb-xl-3">
@@ -224,6 +221,347 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							</div>
 						</div>
 					</div>
+
+
+					<div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+							<div class="card flex-fill">
+								<div class="card-header">
+									<div class="flatpickr-months">
+										<!-- <span class="flatpickr-prev-month">
+											<span class="fas fa-chevron-left" title="Previous month"></span>
+										</span> -->
+										<div class="flatpickr-month">
+											<div class="flatpickr-current-month">
+														<?php
+															$month= date("F");
+														?>
+													<select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1">
+														<?php
+															if($month=="January"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1" selected>January</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">January</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="February"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1" selected>February</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">February</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="March"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1" selected>March</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">March</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="April"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="4" tabindex="-1" selected>April</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">April</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="May"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1" selected>May</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">May</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="June"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1" selected>June</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">June</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="July"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1" selected>July</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">July</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="August"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1" selected>August</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">August</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="September"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="9" tabindex="-1" selected>September</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">September</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="October"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1" selected>October</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">October</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="November"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="11" tabindex="-1" selected>November</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">November</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($month=="December"){
+														?>
+														<option class="flatpickr-monthDropdown-month" value="12" tabindex="-1" selected>December</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="flatpickr-monthDropdown-month" value="12" tabindex="-1">December</option>
+															<?php
+														}
+														?>
+														
+													</select>
+													<div class="numInputWrapper">
+																												<!-- <input class="numInput cur-year" type="number" tabindex="-1"aria-label="Year" value="2021"> -->
+														<select class="a" aria-label="Month" tabindex="-1">
+															<?php
+
+															$year=date("Y");
+
+															?>
+
+<?php
+															if($year==2020){
+														?>
+														<option class="numInput cur-year" value="2021" tabindex="-1" selected>2020</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2021" tabindex="-1">2020</option>
+															<?php
+														}
+														?>
+
+														<?php
+															if($year==2021){
+														?>
+														<option class="numInput cur-year" value="2021" tabindex="-1" selected>2021</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2021" tabindex="-1">2021</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2022){
+														?>
+														<option class="numInput cur-year" value="2022" tabindex="-1" selected>2022</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2022" tabindex="-1">2022</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2023){
+														?>
+														<option class="numInput cur-year" value="2023" tabindex="-1" selected>2023</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2023" tabindex="-1">2023</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2024){
+														?>
+														<option class="numInput cur-year" value="2024" tabindex="-1" selected>2024</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2024" tabindex="-1">2024</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2025){
+														?>
+														<option class="numInput cur-year" value="2025" tabindex="-1" selected>2025</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2025" tabindex="-1">2025</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2026){
+														?>
+														<option class="numInput cur-year" value="2026" tabindex="-1" selected>2026</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2026" tabindex="-1">2026</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2027){
+														?>
+														<option class="numInput cur-year" value="2027" tabindex="-1" selected>2027</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2027" tabindex="-1">2027</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2028){
+														?>
+														<option class="numInput cur-year" value="2028" tabindex="-1" selected>2028</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2028" tabindex="-1">2028</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2029){
+														?>
+														<option class="numInput cur-year" value="2029" tabindex="-1" selected>2029</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2029" tabindex="-1">2029</option>
+															<?php
+														}
+														?>
+
+<?php
+															if($year==2030){
+														?>
+														<option class="numInput cur-year" value="2030" tabindex="-1" selected>2030</option>
+														<?php }
+														else{
+															?>
+															
+															<option class="numInput cur-year" value="2030" tabindex="-1">2030</option>
+															<?php
+														}
+														?>
+
+
+
+															
+															
+														</select>
+														<!-- <span class="arrowUp"></span>
+														<span class="arrowDown"></span> -->
+													</div>
+											</div>
+										</div>
+										<!-- <span class="flatpickr-next-month">
+											<span class="fas fa-chevron-right" title="Next month"></span>
+										</span> -->
+									</div>
+								</div>
+							</div>
+						</div>
 					<!-- <div class="row">
 						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
 							<div class="card flex-fill">
@@ -319,8 +657,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 				</div>
 			</main>
-			<?php include("footer.php"); ?>
-			
+			<?php include "footer.php";?>
+
 		</div>
 	</div>
 
