@@ -897,8 +897,9 @@ $customer_count = $customer->fetch_assoc();
   			}
   		});
   	}
-
-  	loadData();
+	  var country = $("#employee_id").val();
+	  var year = $("#year").val();
+  	  loadData("stateData", country,year);
 
   	$("#employee_id").on("change",function(){
   		var country = $("#employee_id").val();

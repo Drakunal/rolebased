@@ -5,12 +5,16 @@ include "connection.php";
 if($_POST['type'] == ""){
     $month= date("F");
     $year=date("Y");
-    $query = mysqli_query($db,"SELECT * from `appointments` where Month(date)=$month AND Year(date)=$year;");
-
+    $query = mysqli_query($db,"SELECT * from `appointments` where Month(date)=$month AND Year(date)=$year;")or die("Query Unsuccessful.");
+    echo $month;
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
-
+    if(mysqli_num_rows ( $query )==0){
+        $str="<div class='card-header'>
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+    </div> <p>No appointments available</p>";
+    }else{
     $str = "<div class='card-header'>
-    <h4 class='card-subtitle text-muted'>Appointments for the selected employee</h4>
+    <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
 </div><table class='table table-bordered' ><thead>
 <tr>
     <th>Employee Name</th>
@@ -21,7 +25,7 @@ if($_POST['type'] == ""){
 </thead><tbody>";
     while($row = mysqli_fetch_assoc($query)){
         $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$time}</td></tr>";
-    }
+    }}
 }
 if($_POST['type'] == "stateData"){
 
@@ -33,12 +37,12 @@ if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments for the selected employee</h4>
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments for the selected employee</h4>
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div><table class='table table-bordered' ><thead>
     <tr>
         <th>Employee Name</th>
@@ -89,12 +93,12 @@ if($_POST['type'] == "yearData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments for the selected employee</h4>
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments for the selected employee</h4>
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div><table class='table table-bordered' ><thead>
     <tr>
         <th>Employee Name</th>
