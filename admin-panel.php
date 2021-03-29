@@ -395,7 +395,7 @@ $customer_count = $customer->fetch_assoc();
 													</select>
 													<div class="numInputWrapper">
 																												<!-- <input class="numInput cur-year" type="number" tabindex="-1"aria-label="Year" value="2021"> -->
-														<select class="numInputWrapper" aria-label="Month" tabindex="-1">
+														<select class="numInputWrapper"  id="year" aria-label="Month" tabindex="-1">
 															<?php
 
 															$year=date("Y");
@@ -882,13 +882,13 @@ $customer_count = $customer->fetch_assoc();
 	<script type="text/javascript" src="jquery/jquery.js"></script>
 	<script type="text/javascript">
   $(document).ready(function(){
-  	function loadData(type, category_id){
+  	function loadData(type, category_id, year_id){
   		$.ajax({
   			url : "dashboard-appointment-ajax.php",
   			type : "POST",
-  			data: {type : type, id : category_id},
+  			data: {type : type, id : category_id, year : year_id},
   			success : function(data){
-  				if(type == "stateData"){
+  				if(type == "stateData"||type == "yearData"){
   					$("#appointments").html(data);
   				}else{
   					$("#employee_id").append(data);
@@ -902,9 +902,23 @@ $customer_count = $customer->fetch_assoc();
 
   	$("#employee_id").on("change",function(){
   		var country = $("#employee_id").val();
-console.log(country);
+		  var year = $("#year").val();
+	console.log(country);
   		if(country != ""){
-  			loadData("stateData", country);
+  			loadData("stateData", country,year);
+  		}else{
+  			$("#appointments").html("");
+  		}
+
+  		
+  	})
+
+	  $("#year").on("change",function(){
+		var country = $("#employee_id").val();
+  		var year = $("#year").val();
+	console.log(year);
+  		if(year != ""){
+  			loadData("yearData",country, year);
   		}else{
   			$("#appointments").html("");
   		}
