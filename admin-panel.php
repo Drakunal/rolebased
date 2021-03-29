@@ -249,7 +249,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="February"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1" selected>February</option>
@@ -262,7 +262,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="March"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1" selected>March</option>
@@ -275,7 +275,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="April"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="4" tabindex="-1" selected>April</option>
@@ -288,7 +288,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="May"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1" selected>May</option>
@@ -301,7 +301,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="June"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1" selected>June</option>
@@ -314,7 +314,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="July"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1" selected>July</option>
@@ -327,7 +327,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="August"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1" selected>August</option>
@@ -340,7 +340,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="September"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="9" tabindex="-1" selected>September</option>
@@ -353,7 +353,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="October"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1" selected>October</option>
@@ -366,7 +366,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="November"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="11" tabindex="-1" selected>November</option>
@@ -379,7 +379,7 @@ $customer_count = $customer->fetch_assoc();
 														}
 														?>
 
-<?php
+														<?php
 															if($month=="December"){
 														?>
 														<option class="flatpickr-monthDropdown-month" value="12" tabindex="-1" selected>December</option>
@@ -393,168 +393,175 @@ $customer_count = $customer->fetch_assoc();
 														?>
 														
 													</select>
-													<div class="numInputWrapper">
-																												<!-- <input class="numInput cur-year" type="number" tabindex="-1"aria-label="Year" value="2021"> -->
+													
+											
+										
+							
+													
+													
+													
+											</div>
+										</div>
+										<div class="numInputWrapper">
+														<div>													<!-- <input class="numInput cur-year" type="number" tabindex="-1"aria-label="Year" value="2021"> -->
 														<select class="form-control mb-3"  id="year" aria-label="Month" tabindex="-1">
-															<?php
+																	<?php
 
-															$year=date("Y");
+																	$year=date("Y");
 
-															?>
+																	?>
 
-<?php
-															if($year==2020){
-														?>
-														<option  value="2020" tabindex="-1" selected>2020</option>
-														<?php }
-														else{
-															?>
+																<?php
+																	if($year==2020){
+																?>
+																<option  value="2020" tabindex="-1" selected>2020</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2020" tabindex="-1">2020</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2021){
+																?>
+																<option  value="2021" tabindex="-1" selected>2021</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2021" tabindex="-1">2021</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2022){
+																?>
+																<option  value="2022" tabindex="-1" selected>2022</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2022" tabindex="-1">2022</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2023){
+																?>
+																<option  value="2023" tabindex="-1" selected>2023</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2023" tabindex="-1">2023</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2024){
+																?>
+																<option  value="2024" tabindex="-1" selected>2024</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2024" tabindex="-1">2024</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2025){
+																?>
+																<option  value="2025" tabindex="-1" selected>2025</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2025" tabindex="-1">2025</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2026){
+																?>
+																<option  value="2026" tabindex="-1" selected>2026</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2026" tabindex="-1">2026</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2027){
+																?>
+																<option  value="2027" tabindex="-1" selected>2027</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2027" tabindex="-1">2027</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2028){
+																?>
+																<option  value="2028" tabindex="-1" selected>2028</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2028" tabindex="-1">2028</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2029){
+																?>
+																<option  value="2029" tabindex="-1" selected>2029</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2029" tabindex="-1">2029</option>
+																	<?php
+																}
+																?>
+
+																<?php
+																	if($year==2030){
+																?>
+																<option  value="2030" tabindex="-1" selected>2030</option>
+																<?php }
+																else{
+																	?>
+																	
+																	<option  value="2030" tabindex="-1">2030</option>
+																	<?php
+																}
+																?>
+
+
+
 															
-															<option  value="2020" tabindex="-1">2020</option>
-															<?php
-														}
-														?>
-
-														<?php
-															if($year==2021){
-														?>
-														<option  value="2021" tabindex="-1" selected>2021</option>
-														<?php }
-														else{
-															?>
 															
-															<option  value="2021" tabindex="-1">2021</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2022){
-														?>
-														<option  value="2022" tabindex="-1" selected>2022</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2022" tabindex="-1">2022</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2023){
-														?>
-														<option  value="2023" tabindex="-1" selected>2023</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2023" tabindex="-1">2023</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2024){
-														?>
-														<option  value="2024" tabindex="-1" selected>2024</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2024" tabindex="-1">2024</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2025){
-														?>
-														<option  value="2025" tabindex="-1" selected>2025</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2025" tabindex="-1">2025</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2026){
-														?>
-														<option  value="2026" tabindex="-1" selected>2026</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2026" tabindex="-1">2026</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2027){
-														?>
-														<option  value="2027" tabindex="-1" selected>2027</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2027" tabindex="-1">2027</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2028){
-														?>
-														<option  value="2028" tabindex="-1" selected>2028</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2028" tabindex="-1">2028</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2029){
-														?>
-														<option  value="2029" tabindex="-1" selected>2029</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2029" tabindex="-1">2029</option>
-															<?php
-														}
-														?>
-
-<?php
-															if($year==2030){
-														?>
-														<option  value="2030" tabindex="-1" selected>2030</option>
-														<?php }
-														else{
-															?>
-															
-															<option  value="2030" tabindex="-1">2030</option>
-															<?php
-														}
-														?>
-
-
-
-															
-															
-														</select>
+														</select></div>	
 														<!-- <span class="arrowUp"></span>
 														<span class="arrowDown"></span> -->
 													</div>
-											</div>
-										</div>
 										<!-- <span class="flatpickr-next-month">
 											<span class="fas fa-chevron-right" title="Next month"></span>
 										</span> -->
