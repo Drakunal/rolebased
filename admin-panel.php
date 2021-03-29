@@ -160,7 +160,7 @@ $customer_count = $customer->fetch_assoc();
 					</div>
 
 					<div class="row">
-						<div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+						<!-- <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
@@ -193,7 +193,7 @@ $customer_count = $customer->fetch_assoc();
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
@@ -205,7 +205,7 @@ $customer_count = $customer->fetch_assoc();
 								</div>
 							</div>
 						</div> -->
-						<div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+						<!-- <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
 							<div class="card flex-fill">
 								<div class="card-header">
 
@@ -220,10 +220,10 @@ $customer_count = $customer->fetch_assoc();
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 
-					<div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+					<div class="col-12 col-md-12 col-xxl-3 d-flex order-1 order-xxl-1">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<div class="flatpickr-months">
@@ -395,7 +395,7 @@ $customer_count = $customer->fetch_assoc();
 													</select>
 													<div class="numInputWrapper">
 																												<!-- <input class="numInput cur-year" type="number" tabindex="-1"aria-label="Year" value="2021"> -->
-														<select class="numInputWrapper"  id="year" aria-label="Month" tabindex="-1">
+														<select class="form-control mb-3"  id="year" aria-label="Month" tabindex="-1">
 															<?php
 
 															$year=date("Y");
@@ -405,12 +405,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2020){
 														?>
-														<option class="numInput cur-year" value="2020" tabindex="-1" selected>2020</option>
+														<option  value="2020" tabindex="-1" selected>2020</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2020" tabindex="-1">2020</option>
+															<option  value="2020" tabindex="-1">2020</option>
 															<?php
 														}
 														?>
@@ -418,12 +418,12 @@ $customer_count = $customer->fetch_assoc();
 														<?php
 															if($year==2021){
 														?>
-														<option class="numInput cur-year" value="2021" tabindex="-1" selected>2021</option>
+														<option  value="2021" tabindex="-1" selected>2021</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2021" tabindex="-1">2021</option>
+															<option  value="2021" tabindex="-1">2021</option>
 															<?php
 														}
 														?>
@@ -431,12 +431,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2022){
 														?>
-														<option class="numInput cur-year" value="2022" tabindex="-1" selected>2022</option>
+														<option  value="2022" tabindex="-1" selected>2022</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2022" tabindex="-1">2022</option>
+															<option  value="2022" tabindex="-1">2022</option>
 															<?php
 														}
 														?>
@@ -444,12 +444,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2023){
 														?>
-														<option class="numInput cur-year" value="2023" tabindex="-1" selected>2023</option>
+														<option  value="2023" tabindex="-1" selected>2023</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2023" tabindex="-1">2023</option>
+															<option  value="2023" tabindex="-1">2023</option>
 															<?php
 														}
 														?>
@@ -457,12 +457,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2024){
 														?>
-														<option class="numInput cur-year" value="2024" tabindex="-1" selected>2024</option>
+														<option  value="2024" tabindex="-1" selected>2024</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2024" tabindex="-1">2024</option>
+															<option  value="2024" tabindex="-1">2024</option>
 															<?php
 														}
 														?>
@@ -470,12 +470,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2025){
 														?>
-														<option class="numInput cur-year" value="2025" tabindex="-1" selected>2025</option>
+														<option  value="2025" tabindex="-1" selected>2025</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2025" tabindex="-1">2025</option>
+															<option  value="2025" tabindex="-1">2025</option>
 															<?php
 														}
 														?>
@@ -483,12 +483,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2026){
 														?>
-														<option class="numInput cur-year" value="2026" tabindex="-1" selected>2026</option>
+														<option  value="2026" tabindex="-1" selected>2026</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2026" tabindex="-1">2026</option>
+															<option  value="2026" tabindex="-1">2026</option>
 															<?php
 														}
 														?>
@@ -496,12 +496,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2027){
 														?>
-														<option class="numInput cur-year" value="2027" tabindex="-1" selected>2027</option>
+														<option  value="2027" tabindex="-1" selected>2027</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2027" tabindex="-1">2027</option>
+															<option  value="2027" tabindex="-1">2027</option>
 															<?php
 														}
 														?>
@@ -509,12 +509,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2028){
 														?>
-														<option class="numInput cur-year" value="2028" tabindex="-1" selected>2028</option>
+														<option  value="2028" tabindex="-1" selected>2028</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2028" tabindex="-1">2028</option>
+															<option  value="2028" tabindex="-1">2028</option>
 															<?php
 														}
 														?>
@@ -522,12 +522,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2029){
 														?>
-														<option class="numInput cur-year" value="2029" tabindex="-1" selected>2029</option>
+														<option  value="2029" tabindex="-1" selected>2029</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2029" tabindex="-1">2029</option>
+															<option  value="2029" tabindex="-1">2029</option>
 															<?php
 														}
 														?>
@@ -535,12 +535,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2030){
 														?>
-														<option class="numInput cur-year" value="2030" tabindex="-1" selected>2030</option>
+														<option  value="2030" tabindex="-1" selected>2030</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2030" tabindex="-1">2030</option>
+															<option  value="2030" tabindex="-1">2030</option>
 															<?php
 														}
 														?>
@@ -559,6 +559,7 @@ $customer_count = $customer->fetch_assoc();
 											<span class="fas fa-chevron-right" title="Next month"></span>
 										</span> -->
 									</div>
+									</br>
 									<div class="ajax">
 						
 									<div id="appointments">
