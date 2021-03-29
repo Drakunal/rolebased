@@ -235,7 +235,7 @@ $customer_count = $customer->fetch_assoc();
 														<?php
 															$month= date("F");
 														?>
-													<select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1">
+													<select class="flatpickr-monthDropdown-months" id="employee_id" aria-label="Month" tabindex="-1">
 														<?php
 															if($month=="January"){
 														?>
@@ -559,6 +559,13 @@ $customer_count = $customer->fetch_assoc();
 											<span class="fas fa-chevron-right" title="Next month"></span>
 										</span> -->
 									</div>
+									<div class="ajax">
+						
+									<div id="appointments">
+									<!-- <p>hi</p> -->
+
+									</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -872,6 +879,41 @@ $customer_count = $customer->fetch_assoc();
 			});
 		});
 	</script>
+	<script type="text/javascript" src="jquery/jquery.js"></script>
+	<script type="text/javascript">
+  $(document).ready(function(){
+  	function loadData(type, category_id){
+  		$.ajax({
+  			url : "dashboard-appointment-ajax.php",
+  			type : "POST",
+  			data: {type : type, id : category_id},
+  			success : function(data){
+  				if(type == "stateData"){
+  					$("#appointments").html(data);
+  				}else{
+  					$("#employee_id").append(data);
+  				}
+  				
+  			}
+  		});
+  	}
+
+  	loadData();
+
+  	$("#employee_id").on("change",function(){
+  		var country = $("#employee_id").val();
+console.log(country);
+  		if(country != ""){
+  			loadData("stateData", country);
+  		}else{
+  			$("#appointments").html("");
+  		}
+
+  		
+  	})
+  });
+</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			document.getElementById("datetimepicker-dashboard").flatpickr({
