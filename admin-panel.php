@@ -395,7 +395,7 @@ $customer_count = $customer->fetch_assoc();
 													</select>
 													<div class="numInputWrapper">
 																												<!-- <input class="numInput cur-year" type="number" tabindex="-1"aria-label="Year" value="2021"> -->
-														<select class="a" aria-label="Month" tabindex="-1">
+														<select class="numInputWrapper" aria-label="Month" tabindex="-1">
 															<?php
 
 															$year=date("Y");
@@ -405,12 +405,12 @@ $customer_count = $customer->fetch_assoc();
 <?php
 															if($year==2020){
 														?>
-														<option class="numInput cur-year" value="2021" tabindex="-1" selected>2020</option>
+														<option class="numInput cur-year" value="2020" tabindex="-1" selected>2020</option>
 														<?php }
 														else{
 															?>
 															
-															<option class="numInput cur-year" value="2021" tabindex="-1">2020</option>
+															<option class="numInput cur-year" value="2020" tabindex="-1">2020</option>
 															<?php
 														}
 														?>
