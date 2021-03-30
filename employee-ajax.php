@@ -16,7 +16,7 @@ if($_POST['type'] == ""){
 else if($_POST['type'] == "stateData"){
 
 
-    $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
+    $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND deleted_at is NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
 
     $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
  
@@ -36,8 +36,15 @@ else if($_POST['type'] == "stateData"){
     </tr>
     </thead><tbody>";
     while($row = mysqli_fetch_assoc($query)){
+
+        $customer_id=$row['customer_id'];
+        // echo $employee_id;
+        // $role="employee";
+        $sql2="SELECT name from `users` where id=$customer_id";
+        $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
+        $row2 = mysqli_fetch_assoc($query2);
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$time}</td></tr>";
+      $str .= "<tr><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$time}</td></tr>";
     }
     $str .= "</tbody>
     </table>";

@@ -5,7 +5,8 @@ include "connection.php";
 if($_POST['type'] == ""){
     $month= date("F");
     $year=date("Y");
-    $query = mysqli_query($db,"SELECT * from `appointments` where Month(date)=$month AND Year(date)=$year;")or die("Query Unsuccessful.");
+    $null=null;
+    $query = mysqli_query($db,"SELECT * from `appointments` where Month(date)=$month AND Year(date)=$year AND deleted_at is NULL;")or die("Query Unsuccessful.");
     echo $month;
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
@@ -31,16 +32,16 @@ if($_POST['type'] == ""){
 }
 if($_POST['type'] == "stateData"){
 
-
+    $null=null;
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
     $employee_id1=$_POST['e_id'];
     if($employee_id1!=0){
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 ";
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 AND deleted_at is NULL ";
 
 
     }
     else{
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']}";
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND deleted_at is NULL";
 
     }
     $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
@@ -95,17 +96,17 @@ if($_POST['type'] == "stateData"){
 
 
 if($_POST['type'] == "yearData"){
-
+    $null=null;
 
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
     $employee_id1=$_POST['e_id'];
     if($employee_id1!=0){
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 ";
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 AND deleted_at is NULL ";
 
 
     }
     else{
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']}";
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND deleted_at is NULL";
 
     }
     $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
@@ -157,16 +158,16 @@ if($_POST['type'] == "yearData"){
 
 if($_POST['type'] == "employeeData"){
 
-
+    $null=null;
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
     $employee_id1=$_POST['e_id'];
     if($employee_id1!=0){
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 ";
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 AND deleted_at is NULL ";
 
 
     }
     else{
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']}";
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND deleted_at is NULL";
 
     }    $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
  
