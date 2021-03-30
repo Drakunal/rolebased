@@ -31,8 +31,16 @@ if($_POST['type'] == "stateData"){
 
 
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
+    $employee_id1=$_POST['e_id'];
+    if($employee_id1!=0){
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 ";
 
-    $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']}";
+
+    }
+    else{
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']}";
+
+    }
     $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
  
     if(mysqli_num_rows ( $query )==0){
@@ -87,9 +95,76 @@ if($_POST['type'] == "yearData"){
 
 
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
+    $employee_id1=$_POST['e_id'];
+    if($employee_id1!=0){
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 ";
 
-    $sql="SELECT * from `appointments` where Year(date)={$_POST['year']} AND MONTH(date)={$_POST['id']}";
+
+    }
+    else{
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']}";
+
+    }
     $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
+ 
+    if(mysqli_num_rows ( $query )==0){
+        $str="<div class='card-header'>
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+    </div> <p>No appointments available</p>";
+    }
+    else{
+        $str = "<div class='card-header'>
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+    </div><table class='table table-bordered' ><thead>
+    <tr>
+        <th>Employee Name</th>
+        <th>Customer Name</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    </thead><tbody>";
+    while($row = mysqli_fetch_assoc($query)){
+
+        // echo $row['employee_id'];
+        $employee_id=$row['employee_id'];
+        // echo $employee_id;
+        // $role="employee";
+        $sql1="SELECT name from `users` where id=$employee_id";
+        $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
+        $row1 = mysqli_fetch_assoc($query1);
+
+
+
+        $customer_id=$row['customer_id'];
+        // echo $employee_id;
+        // $role="employee";
+        $sql2="SELECT name from `users` where id=$customer_id";
+        $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
+        $row2 = mysqli_fetch_assoc($query2);
+        $time=date('g:ia', strtotime($row['time']));
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$time}</td></tr>";
+    }
+    $str .= "</tbody>
+    </table>";
+    }
+
+    
+}
+
+if($_POST['type'] == "employeeData"){
+
+
+    // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
+    $employee_id1=$_POST['e_id'];
+    if($employee_id1!=0){
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 ";
+
+
+    }
+    else{
+        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']}";
+
+    }    $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>

@@ -227,6 +227,20 @@ $customer_count = $customer->fetch_assoc();
 							<div class="card flex-fill">
 								<div class="card-header">
 									<div class="flatpickr-months">
+									<div>
+									<?php 
+										$role="employee";
+										$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+									?>
+										<select class="form-control mb-3" id="e-id">
+											<option value="0"selected>All Employees</option>
+											<?php 
+											while($row = $result->fetch_assoc())
+											echo "<option value='".$row['id']."'>".$row['name']."</option>"
+											 ?>
+										</select>
+									</div>
+									
 										<!-- <span class="flatpickr-prev-month">
 											<span class="fas fa-chevron-left" title="Previous month"></span>
 										</span> -->
@@ -890,13 +904,13 @@ $customer_count = $customer->fetch_assoc();
 	<script type="text/javascript" src="jquery/jquery.js"></script>
 	<script type="text/javascript">
   $(document).ready(function(){
-  	function loadData(type, category_id, year_id){
+  	function loadData(type, category_id, year_id, e_id){
   		$.ajax({
   			url : "dashboard-appointment-ajax.php",
   			type : "POST",
-  			data: {type : type, id : category_id, year : year_id},
+  			data: {type : type, id : category_id, year : year_id, e_id:e_id},
   			success : function(data){
-  				if(type == "stateData"||type == "yearData"){
+  				if(type == "stateData"||type == "yearData"||type == "employeeData"){
   					$("#appointments").html(data);
   				}else{
   					$("#employee_id").append(data);
@@ -907,14 +921,16 @@ $customer_count = $customer->fetch_assoc();
   	}
 	  var country = $("#employee_id").val();
 	  var year = $("#year").val();
-  	  loadData("stateData", country,year);
+	  var e_id = $("#e-id").val();
+  	  loadData("stateData", country,year,e_id);
 
   	$("#employee_id").on("change",function(){
   		var country = $("#employee_id").val();
-		  var year = $("#year").val();
+		var year = $("#year").val();
+		var e_id = $("#e-id").val();
 	console.log(country);
   		if(country != ""){
-  			loadData("stateData", country,year);
+  			loadData("stateData", country,year,e_id);
   		}else{
   			$("#appointments").html("");
   		}
@@ -925,9 +941,24 @@ $customer_count = $customer->fetch_assoc();
 	  $("#year").on("change",function(){
 		var country = $("#employee_id").val();
   		var year = $("#year").val();
+		var e_id = $("#e-id").val();
 	console.log(year);
   		if(year != ""){
-  			loadData("yearData",country, year);
+  			loadData("yearData",country, year,e_id);
+  		}else{
+  			$("#appointments").html("");
+  		}
+
+  		
+  	})
+
+	  $("#e-id").on("change",function(){
+		var country = $("#employee_id").val();
+  		var year = $("#year").val();
+		var e_id = $("#e-id").val();
+	console.log(e_id);
+  		if(e_id != ""){
+  			loadData("employeeData",country, year, e_id);
   		}else{
   			$("#appointments").html("");
   		}
