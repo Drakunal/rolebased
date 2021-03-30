@@ -79,11 +79,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                    
                                         <?php 
                                         $user_id = $_GET['id'];
-            $role="employee";
-            $sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
-            $result = mysqli_query($db,"SELECT user_id,name,role,password from `users` where user_id='$user_id';");
-            // echo $result;
-            if ($result) {?>
+											$role="employee";
+											$sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
+											$result = mysqli_query($db,"SELECT user_id,name,role,password from `users` where user_id='$user_id';");
+											// echo $result;
+											if ($result) {?>
                                              <?php
                                                 // output data of each row
                                                 while($row = $result->fetch_assoc()) {
@@ -130,8 +130,27 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 						
 					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title mb-4">Employee Details</h5>
+											<h1 class="mt-1 mb-3">3</h1>
+											<div class="mb-1">
+												<!-- <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span> -->
+												<!-- <span class="text-muted">Since last week</span> -->
+											</div>
+										</div>
+									</div>
 
-				</div>
+									
+								</div>
+							</div>
+
+						</div>
+					</div>
 			</main>
 
 			<?php include("footer.php"); ?>

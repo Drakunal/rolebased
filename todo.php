@@ -1,6 +1,6 @@
 <?php
 
-//! display only the first two appointments if bi weekly and only one if monthly in the
+// ! display only the first two appointments if bi weekly and only one if monthly in the
 //! view customer and also in add appointments table
 //! sorting the appointments by date and showing them
 //! find a way to get number of completed appointments by employee 
