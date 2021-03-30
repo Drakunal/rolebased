@@ -122,10 +122,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</br></br></br>
 								<?php if($row2){
 									?>
-								
+								<div>
 								<h4>Additional Details</h4>
 								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
-								<p><strong>Time Alloted :</strong></p> <?php echo $row2["time_alloted"]; ?> minutes</br></br>
+								<p><strong>Time Alloted :</strong></p> <?php echo $row2["time_alloted"]; ?> hours</br></br>
 								<p><strong>Appointment Type :</strong></p> <?php 
 								if($row2["appointment_type"]=="monthly")
 								{
@@ -201,7 +201,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<?php } ?>
 								
 							</div>
-
+							</div>
 					
 						</div>
 

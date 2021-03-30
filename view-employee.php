@@ -154,11 +154,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 													  $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
 
 													  while($row2=$query2->fetch_assoc()){
-														  echo $row2['date'];
+														//   echo $row2['date'];
 													  }
 												   
 												?>
-												<h5>Total number of appointments completed this month</h5>
+												<!-- <h5>Total number of appointments completed this month</h5> -->
 											<?php
 												
 

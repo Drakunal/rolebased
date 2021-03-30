@@ -73,8 +73,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Time alloted in minutes</label>
-											<input type="number" required name="time"class="form-control" placeholder="number of minutes">
+											<label class="form-label">Time alloted in hours</label>
+											<input type="number" required name="time"class="form-control" placeholder="number of hours">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>

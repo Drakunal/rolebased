@@ -255,9 +255,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div> -->
 							</div>
 						</div>
-					</div>
-
-				</div>
+				
 			</main>
 
 
