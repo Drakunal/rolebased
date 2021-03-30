@@ -81,7 +81,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         $user_id = $_GET['id'];
 											$role="employee";
 											$sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
-											$result = mysqli_query($db,"SELECT user_id,name,role,password from `users` where user_id='$user_id';");
+											$result = mysqli_query($db,"SELECT id,user_id,name,role,password from `users` where user_id='$user_id';");
+											
 											// echo $result;
 											if ($result) {?>
                                              <?php
@@ -115,6 +116,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                     </td> -->
                                                 </tr>
                                                 <?php
+												$e_id=$row['id'];
+												$sql1 = "SELECT base_price FROM employee_details WHERE user_id=`$e_id`";
+												$result1 = mysqli_query($db,$sql1);
 
                                                 }
                                                 
@@ -137,7 +141,20 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<div class="card">
 										<div class="card-body">
 											<h5 class="card-title mb-4">Employee Details</h5>
-											<h1 class="mt-1 mb-3">3</h1>
+											<?php 
+											if($result1){
+												echo "hi";
+
+											}
+											else{ ?>
+												<div class="mb-3">
+													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-employee-details.php?id=<?php echo $e_id ?>">Add Customer Appointment</a></button>
+												</div>
+												
+											<?php } ?>
+
+											
+											<!-- <h1 class="mt-1 mb-3">3</h1> -->
 											<div class="mb-1">
 												<!-- <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span> -->
 												<!-- <span class="text-muted">Since last week</span> -->
