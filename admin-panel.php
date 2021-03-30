@@ -977,6 +977,16 @@ $customer_count = $customer->fetch_assoc();
 			});
 		});
 	</script>
+	<script>
+function myFunction(appointment_id) {
+
+  if (confirm("Do you want to cancel this appointment?")) {
+    console.log(appointment_id);
+	return true;
+ }
+
+}
+</script>
 
 </body>
 
