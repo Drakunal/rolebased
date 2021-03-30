@@ -19,7 +19,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Form Layouts | AdminKit Demo</title>
+	<title>Employee Details Form</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -49,21 +49,21 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Customer Details form</h1>
+					<h1 class="h3 mb-3">Add Employee Details form</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Add your customer details here.</h6>
+									<h6 class="card-subtitle text-muted">Add your Employee details here.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										
 										<div class="mb-3">
-											<label class="form-label">Time alloted in minutes</label>
-											<input type="number" required name="time"class="form-control" placeholder="number of minutes">
+											<label class="form-label">Base Price (Price per hour)</label>
+											<input type="number" required name="price"class="form-control" placeholder="Price per hour">
 										</div>
                                         
                                         
@@ -71,34 +71,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<label class="form-label">Details</label>
 											<textarea required class="form-control"name="details" placeholder="Details" rows="1"></textarea>
 										</div>
-										<div class="mb-3">
-											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
-														<span class="form-check-label">
-															Not Regular
-														</span></label>
-											<label class="form-check">
-													<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
-														<span class="form-check-label">
-															Regular
-														</span>
-												</label>
-												<div  id="ifYes" style="display:none">
-												<label class="form-check">
-													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
-														<span class="form-check-label">
-															Bi-weekly
-														</span>
-												</label>
-												<label class="form-check">
-            										<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
-           												 <span class="form-check-label">
-             												 Monthly
-           												 </span>
-        										  </label>
-
-												</div>
-												
-										</div>
+								
 										
 										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
 									</form>
@@ -108,50 +81,39 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						
 							</div>
 						</div>
-					</div>
-
-				</div>
+					
 			</main>
 
 
 
 			<?php
-			if(isset($_POST['submit']))
-			{
-                    $user_email_id = $_GET['id'];
-					$time=$_POST['time'];
-					$appointment_type=$_POST['appointment-type'];
-					$regularity=$_POST['yesno'];
-					if($regularity=="not-regular"){
-						$appointment_type=$regularity;
-					}
-					$details=$_POST['details'];
-                    $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
-                    $row = $result->fetch_assoc();
-                    $user_id=$row['id'];
-				
-						
-							?>
-								
-									<?php
-						
+                    if(isset($_POST['submit']))
+                    {
+                        $user_id = $_GET['id'];
+                        $base_price=$_POST['price'];
+                        $details=$_POST['details'];
+                       
+                    
+                            
+                                
+                            
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type) VALUES('$user_id', '$details','$time','$appointment_type');");
+                        mysqli_query($db,"INSERT INTO `employee_details` (user_id, base_price, details) VALUES('$user_id','$base_price', '$details');");
 				
-					?>
-								<script>
-									
-									alert("Customer Details Saved");
-                                    window.location.href = "customer-list.php";
-								
-									</script>
-									<?php
+			?>
+                        <script>
+                            
+                            alert("Employee Details Saved");
+                            window.location.href = "employee-list.php";
+                        
+                        </script>
+			<?php
 
-						}
-		
+				    }
+	
 					
 				
-				?>
+			?>
 
 <?php include("footer.php"); ?>
 		</div>
