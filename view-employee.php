@@ -117,7 +117,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                 </tr>
                                                 <?php
 												$e_id=$row['id'];
-												$sql1 = "SELECT base_price,details FROM employee_details WHERE user_id=$e_id";
+												$sql1 = "SELECT details FROM employee_details WHERE user_id=$e_id";
 												$result1 = mysqli_query($db,$sql1);
 												$row1=$result1->fetch_assoc();
 
@@ -145,7 +145,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<?php 
 											if($row1){
 												 ?>
-												<p><strong>Base Price : </strong><?php echo $row1['base_price']; ?> Kr</p>
+												
 												<p><strong>Details : </strong><?php echo $row1['details']; ?></p>
 
 												<?php // for appointment of the employee

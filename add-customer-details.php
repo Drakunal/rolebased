@@ -80,6 +80,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<label class="form-label">Name</label>
 											<input type="text" name="name" class="form-control" placeholder="Name">
 										</div> -->
+										<div class="mb-3">
+											<label class="form-label">Base Price (Price per hour)</label>
+											<input type="number" required name="price"class="form-control" placeholder="Price per hour">
+										</div>
+                                        
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
@@ -294,6 +299,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			if(isset($_POST['submit']))
 			{
                     $user_email_id = $_GET['id'];
+					$base_price=$_POST['price'];
 					$time=$_POST['time'];
 					$appointment_type=$_POST['appointment-type'];
 					$regularity=$_POST['yesno'];
@@ -365,7 +371,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type) VALUES('$user_id', '$details','$time','$appointment_type');");
+					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type,base_price) VALUES('$user_id', '$details','$time','$appointment_type','$base_price');");
 				
 					?>
 								<script>

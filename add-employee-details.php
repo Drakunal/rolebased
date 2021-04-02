@@ -61,11 +61,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										
-										<div class="mb-3">
-											<label class="form-label">Base Price (Price per hour)</label>
-											<input type="number" required name="price"class="form-control" placeholder="Price per hour">
-										</div>
-                                        
+										
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
@@ -90,7 +86,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                     if(isset($_POST['submit']))
                     {
                         $user_id = $_GET['id'];
-                        $base_price=$_POST['price'];
+                        
                         $details=$_POST['details'];
                        
                     
@@ -98,7 +94,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                 
                             
 
-                        mysqli_query($db,"INSERT INTO `employee_details` (user_id, base_price, details) VALUES('$user_id','$base_price', '$details');");
+                        mysqli_query($db,"INSERT INTO `employee_details` (user_id, details) VALUES('$user_id','$details');");
 				
 			?>
                         <script>

@@ -76,7 +76,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										$row = $result->fetch_assoc();
 										$idd=$row["id"];
 										// echo $idd;
-										$result2 = mysqli_query($db,"SELECT appointment_type,details,time_alloted from `customer_details` where user_id='$idd';");
+										$result2 = mysqli_query($db,"SELECT base_price,appointment_type,details,time_alloted from `customer_details` where user_id='$idd';");
 										$row2 = $result2->fetch_assoc();
 										// echo $result;
 										if ($result) {?>
@@ -125,6 +125,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div>
 								<h4>Additional Details</h4>
 								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
+								<p><strong>Base Price : </strong><?php echo $row1['base_price']; ?> Kr</p>
 								<p><strong>Time Alloted :</strong></p> <?php echo $row2["time_alloted"]; ?> hours</br></br>
 								<p><strong>Appointment Type :</strong></p> <?php 
 								if($row2["appointment_type"]=="monthly")
