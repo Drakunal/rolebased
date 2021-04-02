@@ -157,7 +157,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					for ($x = 1; $x <= 2*$appointment_duration; $x++) {
 						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
 					
-						$date=date('Y-m-d', strtotime($date. ' + 15 days'));
+						$date=date('Y-m-d', strtotime($date. ' + 14 days'));
 					}
 					
 				}
