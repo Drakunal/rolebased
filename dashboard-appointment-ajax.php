@@ -21,13 +21,15 @@ if($_POST['type'] == ""){
     <th>Employee Name</th>
     <th>Customer Name</th>
     <th>Date</th>
+    <th>Day</th>
     <th>Time</th>
     <th>Actions</th>
 </tr>
 </thead><tbody>";
     while($row = mysqli_fetch_assoc($query)){
+        $day=date("l", strtotime($row['date']));
         $appointment_id=$row['id'];
-        $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+        $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
     }}
 }
 if($_POST['type'] == "stateData"){
@@ -59,6 +61,7 @@ if($_POST['type'] == "stateData"){
         <th>Employee Name</th>
         <th>Customer Name</th>
         <th>Date</th>
+        <th>Day</th>
         <th>Time</th>
         <th>Actions</th>
     </tr>
@@ -71,9 +74,8 @@ if($_POST['type'] == "stateData"){
         $sql1="SELECT name from `users` where id=$employee_id";
         $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
         $row1 = mysqli_fetch_assoc($query1);
-
-
-
+        $day=date("l", strtotime($row['date']));
+        
         $customer_id=$row['customer_id'];
         // echo $employee_id;
         // $role="employee";
@@ -85,7 +87,7 @@ if($_POST['type'] == "stateData"){
         
         
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button  class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button  class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
     }
     $str .= "</tbody>
     </table>";
@@ -124,6 +126,7 @@ if($_POST['type'] == "yearData"){
         <th>Employee Name</th>
         <th>Customer Name</th>
         <th>Date</th>
+        <th>Day</th>
         <th>Time</th>
         <th>Actions</th>
     </tr>
@@ -139,7 +142,7 @@ if($_POST['type'] == "yearData"){
         $row1 = mysqli_fetch_assoc($query1);
         $appointment_id=$row['id'];
 
-
+        $day=date("l", strtotime($row['date']));
         $customer_id=$row['customer_id'];
         // echo $employee_id;
         // $role="employee";
@@ -147,7 +150,7 @@ if($_POST['type'] == "yearData"){
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button  class='btn btn-danger'><i class='fas fa-times'></i><a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button  class='btn btn-danger'><i class='fas fa-times'></i><a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
     }
     $str .= "</tbody>
     </table>";
@@ -184,6 +187,7 @@ if($_POST['type'] == "employeeData"){
         <th>Employee Name</th>
         <th>Customer Name</th>
         <th>Date</th>
+        <th>Day</th>
         <th>Time</th>
         <th>Actions</th>
     </tr>
@@ -200,7 +204,7 @@ if($_POST['type'] == "employeeData"){
         $row1 = mysqli_fetch_assoc($query1);
 
 
-
+        $day=date("l", strtotime($row['date']));
         $customer_id=$row['customer_id'];
         // echo $employee_id;
         // $role="employee";
@@ -208,7 +212,7 @@ if($_POST['type'] == "employeeData"){
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i> Reschedule</button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
     }
     $str .= "</tbody>
     </table>";
