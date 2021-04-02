@@ -125,7 +125,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div>
 								<h4>Additional Details</h4>
 								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
-								<p><strong>Base Price : </strong><?php echo $row1['base_price']; ?> Kr</p>
+								<p><strong>Base Price : </strong><?php echo $row2['base_price']; ?> Kr</p>
 								<p><strong>Time Alloted :</strong></p> <?php echo $row2["time_alloted"]; ?> hours</br></br>
 								<p><strong>Appointment Type :</strong></p> <?php 
 								if($row2["appointment_type"]=="monthly")
@@ -214,8 +214,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				</div>
 			</main>
 
-			<?php include("footer.php"); ?>
 		</div>
+			<?php include("footer.php"); ?>
 	</div>
 
 	<script src="js/app.js"></script>
