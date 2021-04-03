@@ -32,17 +32,17 @@
                                     </ul>
                                 </li>
 
-                                <!-- <li class="sidebar-item">
+                                <li class="sidebar-item">
                                     <a data-target="#appointment" data-toggle="collapse" class="sidebar-link collapsed">
                                      <i class="align-middle" data-feather="target"></i> <span class="align-middle">Appointment Section</span>
                                     </a>
                                     <ul id="appointment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="customer-list.php">Appointments</a></li>
-                                        <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Appointments</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php">Appointments</a></li>
+                                        <!-- <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Appointments</a></li> -->
                                     </ul>
                                 </li>
 
-                                <li class="sidebar-item">
+                                <!-- <li class="sidebar-item">
                                     <a data-target="#calendar" data-toggle="collapse" class="sidebar-link collapsed">
                                      <i class="align-middle" data-feather="target"></i> <span class="align-middle">Calendar Section</span>
                                     </a>
