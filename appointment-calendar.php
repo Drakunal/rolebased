@@ -32,12 +32,12 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             /* max-width: 900px; */
             margin: 0 auto;
         }
-        .fc-content{background-color: blue;
+        .fc-content{background-color: yellow;
 
         }
         .fc-title{
             /* background-color: black; */
-            color:white;
+            color:black;
             font-size: 12px;
         }
  
