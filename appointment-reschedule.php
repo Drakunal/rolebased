@@ -32,6 +32,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			</div>
 		</nav>
 		<div class="main">
+            <?php
+                    // $appointment_id = $_GET['id'];
+                    
+                    // $result = mysqli_query($db,"SELECT name,user_id,password from `users` where user_id='$user_id';");
+                    // $res = mysqli_fetch_assoc($result);
+                    // print_r($res);
+                
+                 ?>
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
           			<i class="hamburger align-self-center"></i>
@@ -43,13 +51,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				<div class="container-fluid p-0">
 					<h1 class="h3 mb-3">Add Customer Appointment</h1>
 						<?php
-							$customer_id = $_GET['id'];
-							$role='employee';
-							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id from `customer_details` where user_id='$customer_id';");
-							$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
-							$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
-							$customer_row= $customer_query->fetch_assoc();
-							$customer_details_row= $customer_details->fetch_assoc();
+							$appointment_id = $_GET['id'];
+                            $sql="SELECT * FROM `appointments` WHERE id=$appointment_id";
+                            $query=mysqli_query($db,$sql);
+                            $row=$query->fetch_assoc();
+
+							// $role='employee';
+							// $customer_details=mysqli_query($db,"SELECT appointment_type,user_id from `customer_details` where user_id='$customer_id';");
+							// $result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+							// $customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
+							// $customer_row= $customer_query->fetch_assoc();
+							// $customer_details_row= $customer_details->fetch_assoc();
 							// echo $customer_details_row['appointment_type'];
 							// echo $customer_id;
 							// if($customer_details_row>0)
@@ -69,7 +81,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<div class="col-md-6">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-subtitle text-muted">Add Appointment for this customer.</h4>
+									<h4 class="card-subtitle text-muted">Reschedule Appointment for this customer.</h4>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
@@ -84,20 +96,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										
 											<div class="mb-3">
 												<label class="form-label">Customer Name</label>
-												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $customer_row['name'];?>">
+												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $row['customer_id'];?>">
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Date</label>
-												<input type="date" name="date" class="form-control" placeholder="appointment-date">
+												<input type="date" name="date" class="form-control" placeholder="appointment-date" value="<?php echo $row['date'];?>"">
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Time</label>
-												<input type="time" name="time" class="form-control" placeholder="appointment-time">
+												<input type="time" name="time" class="form-control" placeholder="appointment-time"value="<?php  echo date('H:i', strtotime($row["time"]));?>">
 											</div>
+
+ 
 											<?php 
-											if($customer_details_row['appointment_type']!='not-regular'){
+											// if($customer_details_row['appointment_type']!='not-regular'){
 												?>
-											<div class="mb-3">
+											<!-- <div class="mb-3">
 												<label class="form-label">Fix the Duration of the appointment</label>
 												<select class="form-control mb-3" id="appointment-duration" name="appointment-duration">
 													<option value="3"selected>3 Months</option>
@@ -105,15 +119,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 													<option value="9">9 Months</option>
 													<option value="12">12 Months</option>
 												</select>
-											</div>
+											</div> -->
 											<?php
 
-											}
-											else{?>
-											<input type="number" value="1" name="appointment-duration" hidden class="form-control">
+											// }
+											// else{
+                                                ?>
+											<!-- <input type="number" value="1" name="appointment-duration" hidden class="form-control"> -->
 											<?php
 
-											}
+											// }
 											?>
 											<button type="submit" name="submit"class="btn btn-primary">Submit</button>
 									</form>
