@@ -29,6 +29,8 @@ while($row = $result->fetch_assoc())
   'title'   => $row["title"],
   'start'   => $row["start_event"],
   'customer_id'   => $row["customer_id"],
+  'color' => $row["color"]
+  
   // 'end'   => $row["end_event"]
  );
 }

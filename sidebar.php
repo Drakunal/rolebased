@@ -42,15 +42,15 @@
                                     </ul>
                                 </li>
 
-                                <!-- <li class="sidebar-item">
+                                <li class="sidebar-item">
                                     <a data-target="#calendar" data-toggle="collapse" class="sidebar-link collapsed">
                                      <i class="align-middle" data-feather="target"></i> <span class="align-middle">Calendar Section</span>
                                     </a>
                                     <ul id="calendar" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="calendar.php">Calendar</a></li>
-                                        <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Appointments</a></li>
+                                        <!-- <li class="sidebar-item"><a class="sidebar-link" href="calendar.php">Calendar</a></li> -->
+                                        <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Add Holidays</a></li>
                                     </ul>
-                                </li> -->
+                                </li>
 
                                 <!-- <li class="sidebar-item">
                                     <a class="sidebar-link" href="pages-invoice.html">

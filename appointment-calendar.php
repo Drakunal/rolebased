@@ -32,7 +32,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             /* max-width: 900px; */
             margin: 0 auto;
         }
-        .fc-content{background-color: yellow;
+        .fc-content{
+            /* background-color: yellow; */
 
         }
         .fc-title{
@@ -50,7 +51,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             header:{
             left:'prev,next today',
             center:'title',
-            right:''
+            right:'',
+            display:'none',
             //  right:'month,agendaWeek,agendaDay'
             },
             events: 'load.php',
