@@ -32,10 +32,10 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             /* max-width: 900px; */
             margin: 0 auto;
         }
-        .fc-content{
+        /* .fc-content{ */
             /* background-color: yellow; */
 
-        }
+        /* } */
         .fc-title{
             /* background-color: black; */
             color:black;
@@ -136,7 +136,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             // },
 
         });
-        });
+    });
    
   </script>
  </head>
