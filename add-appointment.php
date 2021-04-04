@@ -45,11 +45,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<?php
 							$customer_id = $_GET['id'];
 							$role='employee';
-							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id from `customer_details` where user_id='$customer_id';");
+							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id,time_alloted from `customer_details` where user_id='$customer_id';");
 							$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
 							$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
 							$customer_row= $customer_query->fetch_assoc();
 							$customer_details_row= $customer_details->fetch_assoc();
+
+
+							$time_alloted=$customer_details_row['time_alloted'];
+						
 							// echo $customer_details_row['appointment_type'];
 							// echo $customer_id;
 							// if($customer_details_row>0)
@@ -147,6 +151,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$time=$_POST['time'];
 						$date=$_POST['date'];
 						$appointment_duration=$_POST['appointment-duration'];
+
+						$employee_query= mysqli_query($db,"SELECT name,user_id from `users` where id='$employee_id';");
+						$employee_row= $employee_query->fetch_assoc();
+						$employee_name=$employee_row['name'];
+
+
 						// echo $appointment_duration;
                     
 			?>
@@ -160,6 +170,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
+
+						$c_id=$c_id." ".$employee_name." ".$time_alloted."hr";
 						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
 						$date=date('Y-m-d', strtotime($date. ' + 14 days'));
 					}
@@ -176,6 +188,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
+						$c_id=$c_id." ".$employee_name." ".$time_alloted."hr";
 						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
 
 						
@@ -212,6 +225,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
+						$c_id=$c_id." ".$employee_name." ".$time_alloted."hr";
 						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
 
 					

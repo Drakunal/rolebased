@@ -1,7 +1,7 @@
 <?php
 
 //! ****monthly not working****
-//! ****reschedule needs to be done****
+//* ****reschedule needs to be done**** -> done
 //! icons need to be changed
 //! **events title update**
 //! *move calendar to dashboard*
