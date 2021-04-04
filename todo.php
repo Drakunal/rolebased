@@ -1,16 +1,6 @@
 <?php
 
-! display only the first two appointments if bi weekly and only one if monthly in the
-! view customer and also in add appointments table
-! sorting the appointments by date and showing them
-! find a way to get number of completed appointments by employee 
-! number of completed appointments* number of hours in the appointments=total hours worked
-! total hours worked*base price =monthly pay
-! reschedule all or one appointment
-! cancel all or one appointment
-! number of appointments done = appointments where employee id is present, and date is before today but in current month
-! appointments in particular month = all appointment fot that emp in that month and year
-! all time progress report
+//! monthly not working
 
 // !numer of hours worked
 //!calendar
