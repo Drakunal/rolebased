@@ -105,11 +105,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							$row=$query_temp->fetch_assoc();
 							$id=$row['id'];
 							$sql2="DELETE FROM events where id=$id";
-?>
-<script>
-console.log(<?php $id?>);
-</script>
-<?php
+							?>
+							<script>
+							console.log(<?php $id?>);
+							</script>
+							<?php
 							echo $id;
 							$query2 = mysqli_query($db,$sql2);
 
