@@ -106,7 +106,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
                         for($x=0;$x<100;$x++){
                             mysqli_query($db,"INSERT INTO `events` (title,start_event,color) VALUES('$title','$date', '$color');");
-                           $date=date('Y', strtotime($date. '+1 year'));
+                            $date=date('Y-m-d', strtotime($date. '+1 year'));
                         }
 
                         
@@ -116,11 +116,19 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
                     }
 					
-					
+					?>
+					<script>
+				
+					alert("Holiday saved");
+					window.location.href = "admin-panel.php";
+			
+					</script>
+			<?php
 		
 					
 				}
 				?>
+				
 
 <?php include("footer.php"); ?>
 		</div>

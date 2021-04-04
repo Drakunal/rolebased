@@ -7,8 +7,8 @@ for ($x = 1; $x <= 12; $x++) {
     // $date_temp_week=date("d",$date_temp); // day of the date
     // $temp_week_number=ceil($date_temp_week/7); // week of the date
     // echo $date_temp_week;
-
-    $date=date('Y-m-d', strtotime($date. ' + 28 days'));
+    $date=date('Y-m-d', strtotime($date. '+1 year'));
+    // $date=date('Y-m-d', strtotime($date. ' + 28 days'));
     $date_month=date("F",strtotime($date));
     // $date_week=date("d",$date);
     // $week_number=ceil($date_week/7);
