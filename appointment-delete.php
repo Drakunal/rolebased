@@ -115,13 +115,13 @@ console.log(<?php $id?>);
 
 							if(true){
 						?>
-									<!-- <script>
+									<script>
 								
 									
 										alert("Appointment Cancelled");
 										window.location.href = "admin-panel.php";
 								
-									</script> -->
+									</script>
 									<?php } ?>
 
 	<script src="js/app.js"></script>
