@@ -161,13 +161,19 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				if(isset($_POST['submit']))
 				{
 						// $user_email_id = $_GET['id'];
-						$customer_id=$customer_row['id'];
+						// $customer_id=$customer_row['id'];
 						$employee_id=$_POST['employee-id'];
 						$time=$_POST['time'];
 						$date=$_POST['date'];
-						$appointment_duration=$_POST['appointment-duration'];
-
+                        $prev_date=$row['date'];
+                        $prev_time=$row['time'];
+						// $appointment_duration=$_POST['appointment-duration'];
+                        $customer_user_id=$row2['user_id'];
                         $p=mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id', date = '$date', time = '$time' WHERE id='$appointment_id' ;");
+                        $event_id_query=mysqli_query($db,"SELECT id FROM `events` WHERE employee_id = '$employee_id' AND date = '$prev_date' AND time = '$prev_time' AND customer_id='$customer_id' ;");
+                        $row_event=$event_id_query->fetch_assoc();
+                        $event_id=$row_event['id'];
+						mysqli_query($db,"UPDATE `events` SET title='$customer_user_id',start_event='$date', employee_id='$employee_id', date='$date', time='$time' WHERE id=$event_id;");
 
 						// echo $appointment_duration;
                     
