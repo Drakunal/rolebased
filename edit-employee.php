@@ -339,7 +339,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					?>
 								<script>
 									
-									alert("Employee Updted");
+									alert("Employee Updated");
                                     window.location.href = "employee-list.php";
 									</script>
 									<?php

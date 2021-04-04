@@ -55,6 +55,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                             $sql="SELECT * FROM `appointments` WHERE id=$appointment_id";
                             $query=mysqli_query($db,$sql);
                             $row=$query->fetch_assoc();
+                            $customer_id=$row['customer_id'];
+                            $sql2="SELECT name,user_id FROM `users` WHERE id=$customer_id";
+                            $query2=mysqli_query($db,$sql2);
+                            $row2=$query2->fetch_assoc();
 
 							// $role='employee';
 							// $customer_details=mysqli_query($db,"SELECT appointment_type,user_id from `customer_details` where user_id='$customer_id';");
@@ -96,7 +100,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										
 											<div class="mb-3">
 												<label class="form-label">Customer Name</label>
-												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $row['customer_id'];?>">
+												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $row2['name'];?>">
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Date</label>
@@ -162,79 +166,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$time=$_POST['time'];
 						$date=$_POST['date'];
 						$appointment_duration=$_POST['appointment-duration'];
+
+                        $p=mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id', date = '$date', time = '$time' WHERE id='$appointment_id' ;");
+
 						// echo $appointment_duration;
                     
 			?>
 								
-			<?php
-				if($customer_details_row['appointment_type']=='bi-weekly')
-				{
-					for ($x = 1; $x <= 2*$appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
-						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
-						// echo $customer_user_id;
-						$customer_row = $customer_user_id->fetch_assoc();
-						$c_id=$customer_row["user_id"];
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
-						$date=date('Y-m-d', strtotime($date. ' + 14 days'));
-					}
-					
-				}
-				elseif($customer_details_row['appointment_type']=='monthly')
-				{
-					for ($x = 1; $x <= $appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");
-						
-
-						//for events section
-						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
-						// echo $customer_user_id;
-						$customer_row = $customer_user_id->fetch_assoc();
-						$c_id=$customer_row["user_id"];
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
-
-						
-
-						$date_temp=date('Y-m-d', strtotime($date));
-						$date_temp_month=date("F",strtotime($date_temp));  //month
-						// $date_temp_week=date("d",$date_temp); // day of the date
-						// $temp_week_number=ceil($date_temp_week/7); // week of the date
-
-
-						$date=date('Y-m-d', strtotime($date. ' + 28 days'));
-						$date_month=date("F",strtotime($date));
-						// $date_week=date("d",$date);
-						// $week_number=ceil($date_week/7);
-						if($date_temp_month==$date_month){ // it means the previous and current appointment are in same month so add +7
-							$date=date('Y-m-d', strtotime($date. ' + 7 days'));
-						}
-						// if($week_number!=$temp_week_number){
-
-						// 	$difference=abs($week_number-$temp_week_number);
-						// 	$difference_in_days=$difference*7;
-						// 	$date=date('Y-m-d', strtotime($date. ' - '.$difference_in_days.' days'));
-
-						// }
-
-					}
-					
-				}
-				elseif($customer_details_row['appointment_type']=='not-regular')
-				{
-					
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
-						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
-						// echo $customer_user_id;
-						$customer_row = $customer_user_id->fetch_assoc();
-						$c_id=$customer_row["user_id"];
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
-
-					
-					
-					
-				}
-				
-			?>
+		
 			<script>
 				
 				alert("Customer Details Saved");
