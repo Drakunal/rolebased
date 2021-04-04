@@ -156,7 +156,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				{
 					for ($x = 1; $x <= 2*$appointment_duration; $x++) {
 						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
-					
+						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
+						// echo $customer_user_id;
+						$customer_row = $customer_user_id->fetch_assoc();
+						$c_id=$customer_row["user_id"];
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
 						$date=date('Y-m-d', strtotime($date. ' + 14 days'));
 					}
 					
@@ -172,7 +176,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,end_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date', '$date','$customer_id','$employee_id', '$date','$time');");
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
 
 						
 
@@ -204,7 +208,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				{
 					
 						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time) VALUES('$customer_id','$employee_id', '$date','$time');");	
-					
+						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
+						// echo $customer_user_id;
+						$customer_row = $customer_user_id->fetch_assoc();
+						$c_id=$customer_row["user_id"];
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time');");
+
 					
 					
 					
