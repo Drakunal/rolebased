@@ -48,7 +48,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
         <?php
                 $user_id = $_GET['id'];
                 
-                $result = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$user_id';");
+                $result = mysqli_query($db,"SELECT details,time_alloted,base_price,admin_note from `customer_details` where user_id='$user_id';");
                 $res = $result->fetch_assoc();
 				// print_r($res);
 // echo $res['details'];
@@ -85,7 +85,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Time alloted in minutes</label>
+											<label class="form-label">Time alloted in hours</label>
 											<input type="number"  name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
 										</div>
                                         <!-- <div class="mb-3">
@@ -96,6 +96,21 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										<div class="mb-3">
 											<label class="form-label">Details</label>
 											<textarea class="form-control"name="details" placeholder="Details" rows="1" ><?php echo $res['details']; ?></textarea>
+										</div>
+
+
+										<div class="mb-3">
+											<label class="form-label">Base Price</label>
+											<input type="number"  name="base-price"class="form-control" placeholder="base price" value="<?php echo $res['base_price']; ?>">
+										</div>
+										<!-- <div class="mb-3">
+											<label class="form-label">Base Price</label>
+											<textarea class="form-control"name="base-price" placeholder="Details" rows="1" ><?php echo $res['base_price']; ?></textarea>
+										</div> -->
+
+										<div class="mb-3">
+											<label class="form-label">Admin's Note</label>
+											<textarea class="form-control"name="admin_note" placeholder="only visible by admin" rows="1" ><?php echo $res['admin_note']; ?></textarea>
 										</div>
 										<div class="mb-3">
 											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
@@ -313,6 +328,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                     // $user_id=$row['id'];
                     $details=$_POST['details'];
 					$time_alloted=$_POST['time'];
+					$base_price=$_POST['base-price'];
+					$admin_note=$_POST['admin_note'];
 					$appointment_type=$_POST['appointment-type'];
 					$regularity=$_POST['yesno'];
 					if($regularity=="not-regular"){
@@ -381,7 +398,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 
 					// $p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
-					$p=mysqli_query($db,"UPDATE `customer_details` SET appointment_type = '$appointment_type', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
+					$p=mysqli_query($db,"UPDATE `customer_details` SET appointment_type = '$appointment_type', details = '$details', time_alloted = '$time_alloted', base_price='$base_price', admin_note='$admin_note' WHERE user_id='$user_id' ;");
 
 					?>
 								<script>
