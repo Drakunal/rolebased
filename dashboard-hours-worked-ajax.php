@@ -7,7 +7,11 @@ if($_POST['type'] == ""){
     $month= date("F");
     $year=date("Y");
     $null=null;
-    $query = mysqli_query($db,"SELECT * from `appointments` where Month(date)=$month AND Year(date)=$year AND deleted_at is NULL;")or die("Query Unsuccessful.");
+    $query = mysqli_query($db,"SELECT SUM(time_alloted)
+    FROM `appointments`
+    WHERE Month(date)=$month AND
+     Year(date)=$year  AND
+       deleted_at is NULL; ")or die("Query Unsuccessfuls.");
     // echo $month;
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
@@ -15,22 +19,11 @@ if($_POST['type'] == ""){
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
     }else{
-    $str = "<div class='card-header'>
-    <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-</div><table class='table table-bordered' ><thead>
-<tr>
-    <th>Employee Name</th>
-    <th>Customer Name</th>
-    <th>Date</th>
-    <th>Day</th>
-    <th>Time</th>
-    <th>Actions</th>
-</tr>
-</thead><tbody>";
+    $str = "0 hours";
     while($row = mysqli_fetch_assoc($query)){
-        $day=date("l", strtotime($row['date']));
-        $appointment_id=$row['id'];
-        $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+        // $day=date("l", strtotime($row['date']));
+        // $appointment_id=$row['id'];
+        $str = "{$row['SUM(time_alloted)']} hours";
     }}
 }
 if($_POST['type'] == "stateData"){
@@ -64,7 +57,7 @@ if($_POST['type'] == "stateData"){
     </div> <p>No appointments available</p>";
     }
     else{
-        $str = " ";
+        $str = "0 hours ";
     while($row = mysqli_fetch_assoc($query)){
         // echo $row['employee_id'];
         // $employee_id=$row['employee_id'];
@@ -86,9 +79,9 @@ if($_POST['type'] == "stateData"){
         // print_r($row) ;
         
         // $time=date('g:ia', strtotime($row['time']));
-      $str .= "{$row['SUM(time_alloted)']}";
+      $str = "{$row['SUM(time_alloted)']} hours";
     }
-    $str .= " hours";
+    $str .= "";
     }
 
     
@@ -101,15 +94,24 @@ if($_POST['type'] == "yearData"){
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
     $employee_id1=$_POST['e_id'];
     if($employee_id1!=0){
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 AND deleted_at is NULL ";
+        $sql="SELECT SUM(time_alloted)
+        FROM `appointments`
+        WHERE Month(date)={$_POST['id']} AND
+         Year(date)={$_POST['year']} AND
+          employee_id=$employee_id1 AND
+           deleted_at is NULL; ";
 
 
     }
     else{
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND deleted_at is NULL";
+        $sql="SELECT SUM(time_alloted)
+        FROM `appointments`
+        WHERE Month(date)={$_POST['id']} AND
+         Year(date)={$_POST['year']} AND
+          deleted_at is NULL;";
 
     }
-    $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
+    $query = mysqli_query($db,$sql) or die("Query Unsuccessfult.");
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
@@ -117,41 +119,29 @@ if($_POST['type'] == "yearData"){
     </div> <p>No appointments available</p>";
     }
     else{
-        $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div><table class='table table-bordered' ><thead>
-    <tr>
-        <th>Employee Name</th>
-        <th>Customer Name</th>
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
-        <th>Actions</th>
-    </tr>
-    </thead><tbody>";
+        $str = " 0 hours";
     while($row = mysqli_fetch_assoc($query)){
 
         // echo $row['employee_id'];
-        $employee_id=$row['employee_id'];
+        // $employee_id=$row['employee_id'];
         // echo $employee_id;
         // $role="employee";
-        $sql1="SELECT name from `users` where id=$employee_id";
-        $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
-        $row1 = mysqli_fetch_assoc($query1);
-        $appointment_id=$row['id'];
+        // $sql1="SELECT name from `users` where id=$employee_id";
+        // $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
+        // $row1 = mysqli_fetch_assoc($query1);
+        // $appointment_id=$row['id'];
 
-        $day=date("l", strtotime($row['date']));
-        $customer_id=$row['customer_id'];
+        // $day=date("l", strtotime($row['date']));
+        // $customer_id=$row['customer_id'];
         // echo $employee_id;
         // $role="employee";
-        $sql2="SELECT name from `users` where id=$customer_id";
-        $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
-        $row2 = mysqli_fetch_assoc($query2);
-        $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button  class='btn btn-danger'><i class='fas fa-times'></i><a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+        // $sql2="SELECT name from `users` where id=$customer_id";
+        // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
+        // $row2 = mysqli_fetch_assoc($query2);
+        // $time=date('g:ia', strtotime($row['time']));
+      $str = "{$row['SUM(time_alloted)']} hours";
     }
-    $str .= "</tbody>
-    </table>";
+    $str .= " ";
     }
 
     
@@ -163,14 +153,24 @@ if($_POST['type'] == "employeeData"){
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
     $employee_id1=$_POST['e_id'];
     if($employee_id1!=0){
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND employee_id=$employee_id1 AND deleted_at is NULL ";
+        $sql="SELECT SUM(time_alloted)
+        FROM `appointments`
+        WHERE Month(date)={$_POST['id']} AND
+         Year(date)={$_POST['year']} AND
+          employee_id=$employee_id1 AND
+           deleted_at is NULL; ";
 
 
     }
     else{
-        $sql="SELECT * from `appointments` where Month(date)={$_POST['id']} AND Year(date)={$_POST['year']} AND deleted_at is NULL";
+        $sql="SELECT SUM(time_alloted)
+        FROM `appointments`
+        WHERE Month(date)={$_POST['id']} AND
+         Year(date)={$_POST['year']} AND
+           deleted_at is NULL; ";
 
-    }    $query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
+    } 
+       $query = mysqli_query($db,$sql) or die("Query Unsuccessfula.");
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
@@ -178,42 +178,30 @@ if($_POST['type'] == "employeeData"){
     </div> <p>No appointments available</p>";
     }
     else{
-        $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div><table class='table table-bordered' ><thead>
-    <tr>
-        <th>Employee Name</th>
-        <th>Customer Name</th>
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
-        <th>Actions</th>
-    </tr>
-    </thead><tbody>";
+        $str = "0 hours ";
     while($row = mysqli_fetch_assoc($query)){
-        $appointment_id=$row['id'];
+        // $appointment_id=$row['id'];
 
         // echo $row['employee_id'];
-        $employee_id=$row['employee_id'];
+        // $employee_id=$row['employee_id'];
         // echo $employee_id;
         // $role="employee";
-        $sql1="SELECT name from `users` where id=$employee_id";
-        $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
-        $row1 = mysqli_fetch_assoc($query1);
+        // $sql1="SELECT name from `users` where id=$employee_id";
+        // $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
+        // $row1 = mysqli_fetch_assoc($query1);
 
 
-        $day=date("l", strtotime($row['date']));
-        $customer_id=$row['customer_id'];
+        // $day=date("l", strtotime($row['date']));
+        // $customer_id=$row['customer_id'];
         // echo $employee_id;
         // $role="employee";
-        $sql2="SELECT name from `users` where id=$customer_id";
-        $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
-        $row2 = mysqli_fetch_assoc($query2);
-        $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+        // $sql2="SELECT name from `users` where id=$customer_id";
+        // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
+        // $row2 = mysqli_fetch_assoc($query2);
+        // $time=date('g:ia', strtotime($row['time']));
+      $str = "{$row['SUM(time_alloted)']} hours";
     }
-    $str .= "</tbody>
-    </table>";
+    $str .= " ";
     }
 
     
