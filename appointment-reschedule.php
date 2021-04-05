@@ -89,7 +89,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										<label class="form-label">Employee</label>
+										<h3><label class="form-label">Select Employee</label></h3>
 										<select class="form-control mb-3" id="employee_id" name="employee-id">
 											<option value="0"selected>Select an Employee</option>
 											<?php 
@@ -170,10 +170,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// $appointment_duration=$_POST['appointment-duration'];
                         $customer_user_id=$row2['user_id'];
                         $p=mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id', date = '$date', time = '$time' WHERE id='$appointment_id' ;");
-                        $event_id_query=mysqli_query($db,"SELECT id FROM `events` WHERE employee_id = '$employee_id' AND date = '$prev_date' AND time = '$prev_time' AND customer_id='$customer_id' ;");
+                        $event_id_query=mysqli_query($db,"SELECT id FROM `events` WHERE date = '$prev_date' AND time = '$prev_time' AND customer_id='$customer_id' ;");
                         $row_event=$event_id_query->fetch_assoc();
                         $event_id=$row_event['id'];
-						mysqli_query($db,"UPDATE `events` SET title='$customer_user_id',start_event='$date', employee_id='$employee_id', date='$date', time='$time' WHERE id=$event_id;");
+
+						echo $event_id;
+						mysqli_query($db,"UPDATE `events` SET title='$customer_user_id',start_event='$date', date='$date', time='$time' WHERE id=$event_id;") or die("bad");
 
 						// echo $appointment_duration;
                     

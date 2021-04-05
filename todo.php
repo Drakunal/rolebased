@@ -8,3 +8,4 @@
 //! need to add warning employee in selection 
 //* ***number of hours worked*** add number of hours for each customer in appointment -> done
 
+//! EVENT UPDATE TITLE AND EVENT UPDATE not working
