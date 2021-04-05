@@ -169,13 +169,28 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                         $prev_time=$row['time'];
 						// $appointment_duration=$_POST['appointment-duration'];
                         $customer_user_id=$row2['user_id'];
+						$c_id=  $customer_user_id;
+
+
+						$customer_details=mysqli_query($db,"SELECT time_alloted from `customer_details` where user_id='$customer_id';");
+						$employee = mysqli_query($db,"SELECT id,name from `users` where id='$employee_id';");
+						$row99=$employee->fetch_assoc();
+						$employee_name=$row99['name'];
+						$customer_details_row= $customer_details->fetch_assoc();
+						$time_alloted=$customer_details_row['time_alloted'];
+						$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
+
+
+
+						
+						$c_id=$time." ".$c_id." ".$employee_name." ".$time_alloted."hr";
                         $p=mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id', date = '$date', time = '$time' WHERE id='$appointment_id' ;");
                         $event_id_query=mysqli_query($db,"SELECT id FROM `events` WHERE date = '$prev_date' AND time = '$prev_time' AND customer_id='$customer_id' ;");
                         $row_event=$event_id_query->fetch_assoc();
                         $event_id=$row_event['id'];
 
-						echo $event_id;
-						mysqli_query($db,"UPDATE `events` SET title='$customer_user_id',start_event='$date', date='$date', time='$time' WHERE id=$event_id;") or die("bad");
+						// echo $event_id;
+						mysqli_query($db,"UPDATE `events` SET title='$c_id',start_event='$date',employee_id='$employee_id', date='$date', time='$time' WHERE id=$event_id;") or die("bad");
 
 						// echo $appointment_duration;
                     

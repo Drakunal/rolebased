@@ -100,7 +100,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							$customer_id=$row['customer_id'];
 							$employee_id=$row['employee_id'];
 							$date=$row['date'];
-							$sql_temp="SELECT id from events WHERE customer_id=$customer_id AND employee_id=$employee_id AND date='$date'";
+							$sql_temp="SELECT id from `events` WHERE customer_id=$customer_id AND employee_id=$employee_id AND date='$date'";
 							$query_temp = mysqli_query($db,$sql_temp) or die("Query Unsuccessful3.");
 							$row=$query_temp->fetch_assoc();
 							$id=$row['id'];
