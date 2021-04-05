@@ -215,9 +215,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			</main>
 
 		</div>
-			<?php include("footer.php"); ?>
+		
 	</div>
-
+	<?php include("footer.php"); ?>
 	<script src="js/app.js"></script>
 
 </body>
