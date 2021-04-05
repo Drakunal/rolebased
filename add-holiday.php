@@ -49,13 +49,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Customer form</h1>
+					<h1 class="h3 mb-3">Add Holiday form</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
-									<h6 class="card-subtitle text-muted">Add your customers here.</h6>
+									<h6 class="card-subtitle text-muted">Add your holidays here.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
