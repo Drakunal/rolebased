@@ -7,7 +7,7 @@ if($_POST['type'] == ""){
     $year=date("Y");
     $null=null;
     $query = mysqli_query($db,"SELECT * from `appointments` where Month(date)=$month AND Year(date)=$year AND deleted_at is NULL;")or die("Query Unsuccessful.");
-    echo $month;
+    // echo $month;
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
