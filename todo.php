@@ -6,5 +6,5 @@
 //* **events title update** -> done
 //! *move calendar to dashboard*
 //! need to add warning employee in selection 
-//! ***number of hours worked***
+//! ***number of hours worked*** add number of hours for each customer in appointment
 

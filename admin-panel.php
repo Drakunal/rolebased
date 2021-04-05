@@ -182,14 +182,14 @@ $customer_count = $customer->fetch_assoc();
 									<div class="flatpickr-months">
 									<div>
 									<?php 
-										$role="employee";
-										$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+										$role2="employee";
+										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2';");
 									?>
 										<select class="form-control mb-3" id="e-id2">
 											<option value="0"selected>All Employees</option>
 											<?php 
-											while($row = $result->fetch_assoc())
-											echo "<option value='".$row['id']."'>".$row['name']."</option>"
+											while($row2 = $result2->fetch_assoc())
+											echo "<option value='".$row2['id']."'>".$row2['name']."</option>"
 											 ?>
 										</select>
 									</div>

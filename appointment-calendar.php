@@ -39,7 +39,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
         .fc-title{
             /* background-color: black; */
             color:black;
-            font-size: 12px;
+            font-size: 10px;
         }
  
 </style>
