@@ -123,6 +123,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<?php if($row2){
 									?>
 								<div>
+								<div class="card-body">
 								<h4>Additional Details</h4>
 								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
 								<p><strong>Base Price : </strong><?php echo $row2['base_price']; ?> Kr</p>
@@ -201,6 +202,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 									<?php } ?>
 								
+							</div>
 							</div>
 							</div>
 					

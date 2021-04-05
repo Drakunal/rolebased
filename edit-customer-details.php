@@ -51,7 +51,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                 $result = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$user_id';");
                 $res = $result->fetch_assoc();
 				// print_r($res);
-echo $res['details'];
+// echo $res['details'];
 			// 	$result2 = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$idd';");
 			// $row2 = $result2->fetch_assoc();
             // print_r($res);
