@@ -174,7 +174,7 @@ $customer_count = $customer->fetch_assoc();
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Hours Worked</h5>
+									<h5 class="card-title mb-0">Assumed Hours Worked for this month</h5>
 								</div>
 								<div class="card-body py-3">
 								<div class="card flex-fill">

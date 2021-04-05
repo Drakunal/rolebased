@@ -81,6 +81,10 @@ if($_POST['type'] == "stateData"){
         // $time=date('g:ia', strtotime($row['time']));
       $str = "{$row['SUM(time_alloted)']} hours";
     }
+    if($str==" hours")
+    {
+        $str="0 hours";
+    }
     $str .= "";
     }
 
@@ -141,6 +145,10 @@ if($_POST['type'] == "yearData"){
         // $time=date('g:ia', strtotime($row['time']));
       $str = "{$row['SUM(time_alloted)']} hours";
     }
+    if($str==" hours")
+    {
+        $str="0 hours";
+    }
     $str .= " ";
     }
 
@@ -200,6 +208,10 @@ if($_POST['type'] == "employeeData"){
         // $row2 = mysqli_fetch_assoc($query2);
         // $time=date('g:ia', strtotime($row['time']));
       $str = "{$row['SUM(time_alloted)']} hours";
+    }
+    if($str==" hours")
+    {
+        $str="0 hours";
     }
     $str .= " ";
     }
