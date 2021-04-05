@@ -35,7 +35,7 @@
    
                                 <li class="sidebar-item">
                                     <a data-target="#appointment" data-toggle="collapse" class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="target"></i> <span class="align-middle">Appointment Section</span>
+                                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Appointment Section</span>
                                     </a>
                                     <ul id="appointment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php">Appointments</a></li>
@@ -45,7 +45,7 @@
 
                                 <li class="sidebar-item">
                                     <a data-target="#calendars" data-toggle="collapse" class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="target"></i> <span class="align-middle">Calendar Section</span>
+                                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Holidays</span>
                                     </a>
                                     <ul id="calendars" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Add Holidays</a></li>
