@@ -46,6 +46,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
   <script>
    
         $(document).ready(function() {
+         var d='load.php';
         var calendar = $('#calendar').fullCalendar({
             editable:false,
             header:{
@@ -55,7 +56,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             display:'none',
             //  right:'month,agendaWeek,agendaDay'
             },
-            events: 'load.php',
+            if(True){
+                var c=2;
+                console.log(c);
+            },
+            events: d,
             
 
             selectable:false,
@@ -136,6 +141,58 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             // },
 
         });
+
+            function loadData(type, e_id){
+            $.ajax({
+                url : "dashboard-hours-worked-ajax.php",
+                type : "POST",
+                data: {type : type, e_id:e_id},
+                success : function(data){
+                    if(type == "employeeData"){
+                        $("#hours-worked").html(data);
+                    }else{
+                        $("#employee_id2").append(data);
+                    }
+                    
+                }
+            });
+        }
+
+
+        // var calendar = $('#calendar').fullCalendar({
+        //     editable:false,
+        //     header:{
+        //     left:'prev,next today',
+        //     center:'title',
+        //     right:'',
+        //     display:'none',
+        //     },
+        //     events: 'load.php',
+        //     selectable:false,
+        //     displayEventTime: false,
+        //     selectHelper:false,
+        //     weekends: true,
+        //     editable:false,
+       
+
+        // });
+
+        $("#employee-id").on("change",function(){
+  		var employee = $("#employee-id").val();
+	console.log(employee);
+  		if(employee != ""){
+              d='load.php?'+employee;
+              console.log(d);
+  			// loadData("employeeData", employee);
+  		}
+        //   else{
+  		// 	// $("#calendar").html("");
+  		// }
+
+  		
+  	})
+
+        
     });
    
   </script>
@@ -163,6 +220,19 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                     <div class="card">
                         <div class="card-body">
                             <div class="container">
+                                <div>
+									<?php 
+										$role2="employee";
+										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2';");
+									?>
+										<select class="form-control mb-3" id="employee-id">
+											<option value="0"selected>All Employees</option>
+											<?php 
+											while($row2 = $result2->fetch_assoc())
+											echo "<option value='".$row2['id']."'>".$row2['name']."</option>"
+											 ?>
+										</select>
+								</div>
                                 <div id="calendar"></div>
                             </div>
                         
