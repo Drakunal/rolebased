@@ -16,7 +16,7 @@ if($_POST['type'] == ""){
     }else{
     $str = "<div class='card-header'>
     <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-</div><table class='table table-bordered' ><thead>
+</div><div class='table-responsive'><table class='table table-bordered' ><thead>
 <tr>
     <th>Employee Name</th>
     <th>Customer Name</th>
@@ -29,7 +29,7 @@ if($_POST['type'] == ""){
     while($row = mysqli_fetch_assoc($query)){
         $day=date("l", strtotime($row['date']));
         $appointment_id=$row['id'];
-        $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+        $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger '><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }}
 }
 if($_POST['type'] == "stateData"){
@@ -56,7 +56,7 @@ if($_POST['type'] == "stateData"){
     else{
         $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div><table class='table table-bordered' ><thead>
+    </div><div class='table-responsive'><table class='table table-bordered' ><thead>
     <tr>
         <th>Employee Name</th>
         <th>Customer Name</th>
@@ -87,10 +87,10 @@ if($_POST['type'] == "stateData"){
         
         
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button  class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button  class='btn btn-danger btn-sm'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }
     $str .= "</tbody>
-    </table>";
+    </table></div>";
     }
 
     
@@ -121,7 +121,7 @@ if($_POST['type'] == "yearData"){
     else{
         $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div><table class='table table-bordered' ><thead>
+    </div>< class='table-responsive'><table class='table table-bordered' ><thead>
     <tr>
         <th>Employee Name</th>
         <th>Customer Name</th>
@@ -150,10 +150,10 @@ if($_POST['type'] == "yearData"){
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button  class='btn btn-danger'><i class='fas fa-times'></i><a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button  class='btn btn-danger btn-sm'><i class='fas fa-times'></i><a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }
     $str .= "</tbody>
-    </table>";
+    </table></div>";
     }
 
     
@@ -182,7 +182,7 @@ if($_POST['type'] == "employeeData"){
     else{
         $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div><table class='table table-bordered' ><thead>
+    </div><div class='table-responsive'><table class='table table-bordered' ><thead>
     <tr>
         <th>Employee Name</th>
         <th>Customer Name</th>
@@ -212,10 +212,10 @@ if($_POST['type'] == "employeeData"){
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $time=date('g:ia', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel Appointment</a></button></td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger btn-sm'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }
     $str .= "</tbody>
-    </table>";
+    </table></div>";
     }
 
     
