@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include "connection.php";
@@ -218,7 +219,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											 ?>
 										</select>
 								</div>
-                                <div id="calendar"></div>
+                                <!-- <div id="calendar"> -->
+                                <iframe src="appointment-calendar-ajax.php" title="W3Schools Free Online Web Tutorials">
+                                <!-- </div> -->
                             </div>
                         
                         </div>
@@ -243,5 +246,41 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
  </div>
 
  <script src="js/app.js"></script>
+ <script type="text/javascript">
+  $(document).ready(function(){
+  	function loadData(type, e_id){
+  		$.ajax({
+  			url : "dashboard-hours-worked-ajax.php",
+  			type : "POST",
+  			data: {type : type, e_id:e_id},
+  			success : function(data){
+  				if(type == "employeeData"){
+  					$("#hours-worked").html(data);
+  				}else{
+  					$("#employee_id2").append(data);
+  				}
+  				
+  			}
+  		});
+  	}
+
+
+  	$("#employee-id").on("change",function(){
+  		var employee = $("#employee-id").val();
+	console.log(employee);
+  		if(employee != ""){
+  			loadData("employeeData", employee);
+  		}
+        //   else{
+  		// 	// $("#calendar").html("");
+  		// }
+
+  		
+  	})
+
+
+	
+  });
+</script>
  </body>
 </html>

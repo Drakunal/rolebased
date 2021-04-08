@@ -186,7 +186,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
  <div class="wrapper">
         <nav  id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
-            <?php include "sidebar.php";?>
+        
             </div>
         </nav>
         
@@ -196,7 +196,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                     <i class="hamburger align-self-center"></i>
                 </a>
 
-				<?php include("navbar.php"); ?>
+				
 				
 			</nav>
            <main class="content">
@@ -235,7 +235,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
            </main>
             
             
-            <?php include("footer.php"); ?>
+        
 
         </div>
     

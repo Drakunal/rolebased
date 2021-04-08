@@ -7,5 +7,6 @@
 // // //! *move calendar to dashboard* -> krbo na
 //! need to add warning employee in selection 
 //* ***number of hours worked*** add number of hours for each customer in appointment -> done
-
+//! puro calendar taii arekta ajax e dhokabo
+//! cancel all events
 //! EVENT UPDATE TITLE AND EVENT UPDATE not working
