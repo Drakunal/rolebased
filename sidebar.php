@@ -38,7 +38,25 @@
                                      <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Appointment Section</span>
                                     </a>
                                     <ul id="appointment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php">Appointments</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php?id=0">All Employees</a></li>
+
+
+
+                                        <?php 
+                                        	$role='employee';
+                                        $result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+											while($row = $result->fetch_assoc())
+                                            {
+
+                                                ?>
+                                                <li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php?id=<?php echo $row['id'] ?>"><?php echo $row['name']?></a></li>
+
+                                                <?php
+                                                // echo '<li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php?id="'.$row['id'].'>'.$row['name'].'</a></li>';
+                                                // ">Appointments</a></li>
+                                            }
+											
+											 ?>
                                         <!-- <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Appointments</a></li> -->
                                     </ul>
                                 </li>

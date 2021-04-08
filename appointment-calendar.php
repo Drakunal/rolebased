@@ -43,6 +43,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
         }
  
 </style>
+<?php
+$id=$_GET['id'];
+ ?>
   <script>
    
         $(document).ready(function() {
@@ -142,7 +145,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
         // });
 
-        $("#employee-id").on("change",function(){
+      
             // window.location.reload();
   		var employee = $("#employee-id").val();
 	console.log(employee);
@@ -175,7 +178,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
   		// }
          
   		
-  	})
+  	
      
         
     });
@@ -210,13 +213,15 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										$role2="employee";
 										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2';");
 									?>
-										<select class="form-control mb-3" id="employee-id">
+
+                                    <input type=number id="employee-id" hidden value="<?php echo $id ?>">
+										<!-- <select class="form-control mb-3" id="employee-id">
 											<option value="0"selected>All Employees</option>
 											<?php 
-											while($row2 = $result2->fetch_assoc())
-											echo "<option value='".$row2['id']."'>".$row2['name']."</option>"
+											// while($row2 = $result2->fetch_assoc())
+											// echo "<option value='".$row2['id']."'>".$row2['name']."</option>"
 											 ?>
-										</select>
+										</select> -->
 								</div>
                                 <div id="calendar"></div>
                             </div>
