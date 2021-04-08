@@ -13,8 +13,15 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 $employee_id=$_GET['ids'];
 // $employee_id="'".$employee_id."'";
 $data = array();
+if($employee_id!=0){
+  $query = "SELECT * FROM events where employee_id='$employee_id' ORDER BY id";
 
-$query = "SELECT * FROM events where employee_id='$employee_id' ORDER BY id";
+}
+else{
+  $query = "SELECT * FROM events ORDER BY id";
+}
+
+
 $result = mysqli_query($db,$query) or die("BAL");
 // echo "HI";
 // $statement = $db->prepare($query);
