@@ -78,13 +78,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                    
                                         <?php 
             $role="employee";
-            $sql = "SELECT user_id, name FROM users WHERE role=`employee`";
-            $result = mysqli_query($db,"SELECT user_id,name from `users` where role='$role';");
+            $sql = "SELECT id,user_id, name FROM users WHERE role=`employee`";
+            $result = mysqli_query($db,"SELECT id,user_id,name from `users` where role='$role';");
             if ($result->num_rows > 0) {?>
                                              <?php
                                                 // output data of each row
                                                 while($row = $result->fetch_assoc()) {
-                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'><a href='edit-employee.php?id=".$row['user_id']."'><i class='align-middle' data-feather='edit-2'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href='view-employee.php?id=".$row['user_id']."'><i class='align-middle' data-feather='eye'></i></a></td></tr>";
+                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'><a href='edit-employee.php?id=".$row['user_id']."'><i class='align-middle' data-feather='edit-2'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href='view-employee.php?id=".$row['user_id']."'><i class='align-middle' data-feather='eye'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href='delete-employee.php?id=".$row['id']."'><i class='align-middle' data-feather='trash-2'></i></a></td></tr>";
                                                 ?>
                                                 <!-- <tr>
                                                     <td>Vanessa Tucker</td>
