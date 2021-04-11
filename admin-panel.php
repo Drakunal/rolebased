@@ -63,13 +63,13 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 //for employee count
 $role_e = "employee";
 // $sql = "SELECT user_id, name FROM users WHERE role=`employee`";
-$employee = mysqli_query($db, "SELECT count(id) from `users` where role='$role_e';");
+$employee = mysqli_query($db, "SELECT count(id) from `users` where role='$role_e' AND deleted_at is NULL;");
 $employee_count = $employee->fetch_assoc();
 // echo $employee_count['count(id)'];
 
 //for customer count
 $role_c = "customer";
-$customer = mysqli_query($db, "SELECT count(id) from `users` where role='$role_c';");
+$customer = mysqli_query($db, "SELECT count(id) from `users` where role='$role_c' AND deleted_at is NULL;;");
 $customer_count = $customer->fetch_assoc();
 // echo $customer_count['count(id)'];
 
