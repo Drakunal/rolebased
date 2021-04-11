@@ -85,15 +85,46 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							// echo $date;
 							// echo $appointment_id;
 
-							// $sql1="SELECT date,customer_id,employee_id from `appointments` WHERE id=$appointment_id";
-							// $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
-							// $row = $query1->fetch_assoc();
+						
 
 
 							$sql="UPDATE users
 							SET deleted_at = '$date'
 							WHERE id =$employee_id";
-							$query = mysqli_query($db,$sql) or die("Query Unsuccessful2.");
+							$query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
+
+
+                            $sql1="UPDATE appointments
+                            SET deleted_at = '$date' WHERE employee_id=$employee_id AND date>=$date";
+
+							$query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
+
+                            
+                            $sql3="DELETE FROM events where employee_id=$employee_id and date>$date";
+                            $query_temp = mysqli_query($db,$sql3) or die("Query Unsuccessful3.");
+
+                            //cancelling all the appointments
+
+                            // while($row = $query1->fetch_assoc())
+                            // {
+                            //     $appointment_id=$row['id'];
+                            //     $sql2="UPDATE appointments
+                            //     SET deleted_at = '$date'
+                            //     WHERE id =$appointment_id";
+                            //     $query = mysqli_query($db,$sql) or die("Query Unsuccessful2.");
+
+                            //     //deleting the events
+
+                            //     // $customer_id=$row['customer_id'];
+                            //     // $employee_id=$row['employee_id'];
+                            //     // $appointment_date=$row['date']; //same variable used
+                            //     // $sql_temp="SELECT id from `events` WHERE employee_id=$employee_id AND date>'$date'";
+                            //     // $query_temp = mysqli_query($db,$sql_temp) or die("Query Unsuccessful3.");
+                            //     // $row=$query_temp->fetch_assoc();
+                            //     // $id=$row['id'];
+                              
+                                
+                            // }
 
 
 						

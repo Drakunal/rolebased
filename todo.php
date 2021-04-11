@@ -10,3 +10,4 @@
 //! puro calendar taii arekta ajax e dhokabo
 //! cancel all events
 //! EVENT UPDATE TITLE AND EVENT UPDATE not working
+//! delete is adding all the appointments and events date>$date is not working
