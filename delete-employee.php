@@ -80,45 +80,45 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 		</div>
 	</div>
 	<?php
-							$appointment_id = $_GET['id'];
+							$employee_id = $_GET['id'];
 							$date=date('Y-m-d');
 							// echo $date;
 							// echo $appointment_id;
 
-							$sql1="SELECT date,customer_id,employee_id from `appointments` WHERE id=$appointment_id";
-							$query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
-							$row = $query1->fetch_assoc();
+							// $sql1="SELECT date,customer_id,employee_id from `appointments` WHERE id=$appointment_id";
+							// $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
+							// $row = $query1->fetch_assoc();
 
 
-							$sql="UPDATE appointments
+							$sql="UPDATE users
 							SET deleted_at = '$date'
-							WHERE id =$appointment_id";
+							WHERE id =$employee_id";
 							$query = mysqli_query($db,$sql) or die("Query Unsuccessful2.");
 
 
 						
-							$customer_id=$row['customer_id'];
-							$employee_id=$row['employee_id'];
-							$date=$row['date'];
-							$sql_temp="SELECT id from `events` WHERE customer_id=$customer_id AND employee_id=$employee_id AND date='$date'";
-							$query_temp = mysqli_query($db,$sql_temp) or die("Query Unsuccessful3.");
-							$row=$query_temp->fetch_assoc();
-							$id=$row['id'];
-							$sql2="DELETE FROM events where id=$id";
+							// $customer_id=$row['customer_id'];
+							// $employee_id=$row['employee_id'];
+							// $date=$row['date'];
+							// $sql_temp="SELECT id from `events` WHERE customer_id=$customer_id AND employee_id=$employee_id AND date='$date'";
+							// $query_temp = mysqli_query($db,$sql_temp) or die("Query Unsuccessful3.");
+							// $row=$query_temp->fetch_assoc();
+							// $id=$row['id'];
+							// $sql2="DELETE FROM events where id=$id";
 							?>
 							<script>
 							console.log(<?php $id?>);
 							</script>
 							<?php
 							// echo $id;
-							$query2 = mysqli_query($db,$sql2);
+							// $query2 = mysqli_query($db,$sql2);
 
 							if(true){
 						?>
 									<script>
 								
 									
-										alert("Appointment Cancelled");
+										alert("Employee Removed");
 										window.location.href = "admin-panel.php";
 								
 									</script>
