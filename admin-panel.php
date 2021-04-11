@@ -183,7 +183,7 @@ $customer_count = $customer->fetch_assoc();
 									<div>
 									<?php 
 										$role2="employee";
-										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2';");
+										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2' AND deleted_at is NULL;");
 									?>
 										<select class="form-control mb-3" id="e-id2">
 											<option value="0"selected>All Employees</option>
@@ -620,7 +620,7 @@ $customer_count = $customer->fetch_assoc();
 									<div>
 									<?php 
 										$role="employee";
-										$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+										$result = mysqli_query($db,"SELECT id,name from `users` where role='$role' and deleted_at is NULL;");
 									?>
 										<select class="form-control mb-3" id="e-id">
 											<option value="0"selected>All Employees</option>

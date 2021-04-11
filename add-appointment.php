@@ -152,7 +152,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$date=$_POST['date'];
 						$appointment_duration=$_POST['appointment-duration'];
 
-						$employee_query= mysqli_query($db,"SELECT name,user_id from `users` where id='$employee_id';");
+						$employee_query= mysqli_query($db,"SELECT name,user_id from `users` where id='$employee_id' AND deleted_at is NULL;");
 						$employee_row= $employee_query->fetch_assoc();
 						$employee_name=$employee_row['name'];
 

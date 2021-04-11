@@ -146,7 +146,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="mb-3">
 
 								<?php 
-								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND deleted_at=NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month;");
+								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND deleted_at=NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL;");
 								$row3 = $result3->fetch_assoc();
 								if($row3){
 									?>

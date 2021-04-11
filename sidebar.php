@@ -44,7 +44,7 @@
 
                                         <?php 
                                         	$role='employee';
-                                        $result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+                                        $result = mysqli_query($db,"SELECT id,name from `users` where role='$role' AND deleted_at is NULL;");
 											while($row = $result->fetch_assoc())
                                             {
 

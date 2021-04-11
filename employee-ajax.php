@@ -4,7 +4,7 @@ include "connection.php";
 
 if($_POST['type'] == ""){
     $role='employee';
-    $query = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
+    $query = mysqli_query($db,"SELECT id,name from `users` where role='$role' AND deleted_at is NULL;");
 
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
 
