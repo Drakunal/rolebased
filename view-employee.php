@@ -149,7 +149,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												<p><strong>Details : </strong><?php echo $row1['details']; ?></p>
 
 												<?php // for appointment of the employee
-													  $sql2 =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = $e_id AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
+													  $sql2 =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = $e_id AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL";
 
 													  $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
 
