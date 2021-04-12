@@ -150,7 +150,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												<p><strong>Color : </strong></p>
 												<div class="col-md-2">
 												<?php $color=$row1['color']; ?>
-													<div style="background-color:<?php echo $color;?>;"><?php echo $row1['color']; ?></div>
+													<div style="background-color:<?php echo $color;?>;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
 												</div>
 
 												<?php // for appointment of the employee

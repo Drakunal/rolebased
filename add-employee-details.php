@@ -60,14 +60,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-											<div class="mb-3">
+											<div class="mb-3 col-md-2">
 												<label class="form-label">Color for the Employee</label>
-												<select class="form-control mb-3" id="color" name="color">
-													<option value="yellow"selected>Yellow</option>
-													<option value="green">Green</option>
-													<option value="#2EF8F2">Torquoise</option>
-													<option value="pink">Pink</option>
-												</select>
+												<input type="color"  name="color"class="form-control" id="color"  value="#ff0000">
+
 											</div>
 										
                                         
