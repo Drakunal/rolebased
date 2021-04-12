@@ -95,12 +95,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
                             $sql1="UPDATE appointments
-                            SET deleted_at = '$date' WHERE customer_id=$customer_id AND date>=$date";
+                            SET deleted_at = '$date' WHERE customer_id=$customer_id";
 
 							$query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
 
                             
-                            $sql3="DELETE FROM events where customer_id=$customer_id and date>$date";
+                            $sql3="DELETE FROM events where customer_id=$customer_id";
                             $query_temp = mysqli_query($db,$sql3) or die("Query Unsuccessful3.");
 
                             //cancelling all the appointments
