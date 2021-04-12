@@ -60,7 +60,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										
+											<div class="mb-3">
+												<label class="form-label">Color for the Employee</label>
+												<select class="form-control mb-3" id="color" name="color">
+													<option value="yellow"selected>Yellow</option>
+													<option value="green">Green</option>
+													<option value="#2EF8F2">Torquoise</option>
+													<option value="pink">Pink</option>
+												</select>
+											</div>
 										
                                         
 										<div class="mb-3">
@@ -88,13 +96,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                         $user_id = $_GET['id'];
                         
                         $details=$_POST['details'];
+						$color=$_POST['color'];
                        
                     
                             
                                 
                             
 
-                        mysqli_query($db,"INSERT INTO `employee_details` (user_id, details) VALUES('$user_id','$details');");
+                        mysqli_query($db,"INSERT INTO `employee_details` (user_id, details,color) VALUES('$user_id','$details','$color');");
 				
 			?>
                         <script>

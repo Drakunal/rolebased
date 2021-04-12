@@ -117,7 +117,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                 </tr>
                                                 <?php
 												$e_id=$row['id'];
-												$sql1 = "SELECT details FROM employee_details WHERE user_id=$e_id";
+												$sql1 = "SELECT details,color FROM employee_details WHERE user_id=$e_id";
 												$result1 = mysqli_query($db,$sql1);
 												$row1=$result1->fetch_assoc();
 
@@ -147,6 +147,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												 ?>
 												
 												<p><strong>Details : </strong><?php echo $row1['details']; ?></p>
+												<p><strong>Color : </strong></p>
+												<div class="col-md-2">
+												<?php $color=$row1['color']; ?>
+													<div style="background-color:<?php echo $color;?>;"><?php echo $row1['color']; ?></div>
+												</div>
 
 												<?php // for appointment of the employee
 													  $sql2 =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = $e_id AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL";
