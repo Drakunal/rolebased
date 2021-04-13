@@ -146,17 +146,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="mb-3">
 
 								<?php 
-								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND deleted_at=NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL;");
+								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND deleted_at is NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL;");
 								$row3 = $result3->fetch_assoc();
 								if($row3){
 									?>
-								
+								</br>
+								<?php 
+									$employee_id=$row3["employee_id"];
+									$employee_query=mysqli_query($db,"SELECT name from `users` where id='$employee_id' AND deleted_at is NULL");
+									$employee_row = $employee_query->fetch_assoc();
+								 ?>
 								<h4>Appointment Details</h4>
 								<p><strong>Time :</strong></p> <?php 
 								echo date('g:ia', strtotime($row3["time"]));
 								 ?></br></br>
 								<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-								<p><strong>Employee-id :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
+								<p><strong>Employee-id :</strong></p> <?php echo $employee_row['name']; ?></br></br>
 								<?php
 									if($row2["appointment_type"]=="bi-weekly"){
 										// $result4 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
