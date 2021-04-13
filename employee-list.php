@@ -52,7 +52,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 					<div class="row">
 						
+					<div class="col-md-12">
 
+						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></button>
+					</div>
 					
 
 					
@@ -60,6 +63,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					
 
 						<div class="col-md-12">
+						</br>
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Employee Table</h5> -->

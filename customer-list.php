@@ -50,20 +50,23 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					<h1 class="h3 mb-3">Customers List</h1>
 
 					<div class="row">
-						
+					<div class="col-md-12">
 
-					
-
-					
+						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></button>
+					</div>
+				
 
 					
 
 						<div class="col-md-12">
+					
+						</br>	
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Employee Table</h5> -->
 									<!-- <h6 class="card-subtitle text-muted">Add <code>.table-bordered</code> for borders on all sides of the table and cells.</h6> -->
 								</div>
+								
 								<table class="table table-bordered">
 									<thead>
 										<tr>
