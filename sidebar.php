@@ -69,6 +69,18 @@
                                         <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Add Holidays</a></li>
                                     </ul>
                                 </li>
+                                
+
+                                
+                                <li class="sidebar-item">
+                                    <a href="deleted-users-list.php"  class="sidebar-link collapsed">
+                                     <i class="align-middle" data-feather="user-x"></i> <span class="align-middle">Deleted Users</span>
+                                    </a>
+                                    <!-- <ul id="customer" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                                        <li class="sidebar-item"><a class="sidebar-link" href="customer-list.php">Customer List</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></li>
+                                    </ul> -->
+                                </li>
 
 
                                
