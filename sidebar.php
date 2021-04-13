@@ -13,23 +13,23 @@
                                 </li>
 
                                 <li class="sidebar-item">
-                                    <a data-target="#employee" data-toggle="collapse" class="sidebar-link collapsed">
-                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Employee Section</span>
-                        </a>
-                                    <ul id="employee" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                                    <a href="employee-list.php"   class="sidebar-link collapsed">
+                                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Employee Section</span>
+                                    </a>
+                                    <!-- <ul id="employee" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="employee-list.php">Employee List</a></li>
                                         <li class="sidebar-item"><a class="sidebar-link" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
 
                                 <li class="sidebar-item">
-                                    <a data-target="#customer" data-toggle="collapse" class="sidebar-link collapsed">
+                                    <a href="customer-list.php"  class="sidebar-link collapsed">
                                      <i class="align-middle" data-feather="target"></i> <span class="align-middle">Customer Section</span>
                                     </a>
-                                    <ul id="customer" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                                    <!-- <ul id="customer" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="customer-list.php">Customer List</a></li>
                                         <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
 
    
