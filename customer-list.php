@@ -81,7 +81,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         <?php 
             $role="customer";
             $sql = "SELECT id,user_id, name FROM users WHERE role=`customer`";
-            $result = mysqli_query($db,"SELECT id,user_id,name from `users` where role='$role';");
+            $result = mysqli_query($db,"SELECT id,user_id,name from `users` where role='$role' AND deleted_at is NULL;");
             if ($result->num_rows > 0) {?>
                                              <?php
                                                 // output data of each row
