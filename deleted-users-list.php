@@ -114,7 +114,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         $result = mysqli_query($db,"SELECT id,name from `users` where role='$role' and deleted_at is not NULL;");
                                     ?>
                                         <select class="form-control mb-3" id="e-id">
-                                            <option value="0"selected>All Deleted Employees</option>
+                                            <option value="-1"selected>Select Deleted User</option>
                                             <?php 
                                             while($row = $result->fetch_assoc())
                                             echo "<option value='".$row['id']."'>".$row['name']."</option>"
