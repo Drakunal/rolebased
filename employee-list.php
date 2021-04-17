@@ -20,7 +20,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<title>Monika</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -48,13 +48,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Employee List</h1>
+					<h1 class="h3 mb-3">Anställda</h1>
 
 					<div class="row">
 						
 					<div class="col-md-12">
 
-						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></button>
+						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i> Ny anställd</a></button>
 					</div>
 					
 
@@ -72,10 +72,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">E-post</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Actions</th>
+											<th>Inställningar</th>
 										</tr>
 									</thead>
 									<tbody>
