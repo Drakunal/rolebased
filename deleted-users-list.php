@@ -60,10 +60,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">ID</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Role</th>
+											<th>Roll</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -114,7 +114,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         $result = mysqli_query($db,"SELECT id,name from `users` where role='$role' and deleted_at is not NULL;");
                                     ?>
                                         <select class="form-control mb-3" id="e-id">
-                                            <option value="-1"selected>Select Deleted User</option>
+                                            <option value="-1"selected>Välj Borttagen användare</option>
                                             <?php 
                                             while($row = $result->fetch_assoc())
                                             echo "<option value='".$row['id']."'>".$row['name']."</option>"
