@@ -57,28 +57,28 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Customer form</h1>
+					<h1 class="h3 mb-3">Ny kund form</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Add your customers here.</h6>
+									<h6 class="card-subtitle text-muted">Lägg till dina kunder här.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Customer Id</label>
-											<input type="text" required name="email" class="form-control" placeholder="customer id">
+											<label class="form-label">Kundnummer</label>
+											<input type="text" required name="email" class="form-control" placeholder="Kundnummer">
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Password</label>
-											<input type="password" required  name="password"class="form-control" placeholder="Password">
+											<label class="form-label">Lösenord</label>
+											<input type="password" required  name="password"class="form-control" placeholder="Lösenord">
 										</div>
                                         <div class="mb-3">
-											<label class="form-label">Name</label>
-											<input type="text" required name="name" class="form-control" placeholder="Name">
+											<label class="form-label">Namn</label>
+											<input type="text" required name="name" class="form-control" placeholder="Namn">
 										</div>
                                         
 										<!-- <div class="mb-3">
@@ -96,7 +96,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             <span class="form-check-label">Check me out</span>
                                             </label>
 										</div> -->
-										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit"class="btn btn-primary">Spara</button>
 									</form>
 								</div>
 							</div>
