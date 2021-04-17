@@ -1235,7 +1235,7 @@ $customer_count = $customer->fetch_assoc();
 	<script>
 function myFunction(appointment_id) {
 
-  if (confirm("Do you want to cancel this appointment?")) {
+  if (confirm("Vill du avbryta det här mötet?")) {
     console.log(appointment_id);
 	return true;
  }
