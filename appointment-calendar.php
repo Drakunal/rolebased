@@ -125,23 +125,7 @@ $id=$_GET['id'];
         //     //  });
         //     // },
 
-        //     // eventClick:function(event)
-        //     // {
-        //     //  if(confirm("Are you sure you want to remove it?"))
-        //     //  {
-        //     //   var id = event.id;
-        //     //   $.ajax({
-        //     //    url:"show.php",
-        //     //    type:"POST",
-        //     //    data:{id:id},
-        //     //    success:function()
-        //     //    {
-        //     //     calendar.fullCalendar('refetchEvents');
-        //     //     alert("Event Removed");
-        //     //    }
-        //     //   })
-        //     //  }
-        //     // },
+          
 
         // });
 
@@ -167,12 +151,34 @@ $id=$_GET['id'];
                 selectHelper:false,
                 weekends: true,
                 editable:false,
+
+                eventClick:function(event)
+            {
+             if(confirm("View details?"))
+             {
+              var id = event.id;
+            //   $.ajax({
+               var url="show.php?id="+id;
+            //    type:"POST",
+            //    data:{id:id},
+            //    success:function()
+            //    {
+            //     calendar.fullCalendar('refetchEvents');
+            //     alert("Event Removed");
+            //    }
+            //   })
+
+              window.location.href = url;
+             }
+            },
                 
                
              });
              
 
   		}
+
+           
         //   else{
   		// 	// $("#calendar").html("");
   		// }
