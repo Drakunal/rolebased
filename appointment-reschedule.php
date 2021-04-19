@@ -176,6 +176,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$employee = mysqli_query($db,"SELECT id,name from `users` where id='$employee_id';");
 						$row99=$employee->fetch_assoc();
 						$employee_name=$row99['name'];
+
+
+						$employee_details_query= mysqli_query($db,"SELECT color from `employee_details` where user_id='$employee_id';") or die("Unsuccessful");
+						$employee_details_row= $employee_details_query->fetch_assoc();
+						$employee_color=$employee_details_row['color'];
+
+
 						$customer_details_row= $customer_details->fetch_assoc();
 						$time_alloted=$customer_details_row['time_alloted'];
 						$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
@@ -190,7 +197,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                         $event_id=$row_event['id'];
 
 						// echo $event_id;
-						mysqli_query($db,"UPDATE `events` SET title='$c_id',start_event='$date',employee_id='$employee_id', date='$date', time='$time' WHERE id=$event_id;") or die("bad");
+						mysqli_query($db,"UPDATE `events` SET title='$c_id',start_event='$date',employee_id='$employee_id', date='$date', time='$time', color='$employee_color' WHERE id=$event_id;") or die("bad");
 
 						// echo $appointment_duration;
                     
