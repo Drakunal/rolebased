@@ -64,29 +64,20 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" required name="title" class="form-control" placeholder="title">
 										</div>
                                         <div class="mb-3">
-											<label class="form-label">Employee Name</label>
-                                                <select class="form-control"id="employee-id" >
-                                                     <option value="0">All Employees</option>
-
-
-
-                                                        <?php 
-                                                            $role='employee';
-                                                        $result = mysqli_query($db,"SELECT id,name from `users` where role='$role' AND deleted_at is NULL;");
-                                                            while($row = $result->fetch_assoc())
-                                                            {
-
-                                                                ?>
-                                                                <option value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
-
-                                                                <?php
-                                                                
-                                                            }
-                                                            
-                                                            ?>
-                                        
-                                                </select>
-											<!-- <input type="text" required name="employee-id" class="form-control" placeholder="title"> -->
+                                        <label class="form-label">Employee Name</label>
+                                            <?php 
+									        	$role="employee";
+									        	$result = mysqli_query($db,"SELECT id,name from `users` where role='$role' and deleted_at is NULL;");
+								        	?>
+                                            <select class="form-control" name="e-id" id="e-id">
+                                            
+                                                <option value="0"selected>All Employees</option>
+                                                <?php 
+                                                while($row = $result->fetch_assoc())
+                                                echo "<option value='".$row['id']."'>".$row['name']."</option>"
+                                                ?>
+                                            </select>
+											
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Start Date</label>
@@ -131,10 +122,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// $every_year=$_POST['every_year']; //if 1 then yes
 					$start_date=$_POST['start-date'];
                     $end_date=$_POST['end-date'];
+                    $employee_id=$_POST['e-id'];
 					$color="#f21f38";
+                    
                
                     
-                        mysqli_query($db,"INSERT INTO `events` (title,start_event,end_event,color) VALUES('$title','$start_date', '$end_date', '$color');");
+                        mysqli_query($db,"INSERT INTO `events` (title,start_event,end_event,color,employee_id) VALUES('$title','$start_date', '$end_date', '$color','$employee_id');") or die("Query Unsuccessful");
 
                     
 					

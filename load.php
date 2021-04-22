@@ -33,17 +33,35 @@ $result = mysqli_query($db,$query) or die("BAL");
 while($row = $result->fetch_assoc())
 {
     // print_r($row);
- $data[] = array(
-  'id'   => $row["id"],
-  'title'   => $row["title"],
-  'start'   => $row["start_event"],
-  'customer_id'   => $row["customer_id"],
-  'color' => $row["color"],
-//   'refetch'=>true,
-//   'rerender'=>true,
-  
-  // 'end'   => $row["end_event"]
- );
+    if($row["end_event"]==NULL){
+      $data[] = array(
+        'id'   => $row["id"],
+        'title'   => $row["title"],
+        'start'   => $row["start_event"],
+        'customer_id'   => $row["customer_id"],
+        'color' => $row["color"],
+      //   'refetch'=>true,
+      //   'rerender'=>true,
+        
+        // 'end'   => $row["end_event"]
+       );
+
+    }
+    else{
+      $data[] = array(
+        'id'   => $row["id"],
+        'title'   => $row["title"],
+        'start'   => $row["start_event"],
+        'end'   => $row["end_event"],
+        'customer_id'   => $row["customer_id"],
+        'color' => $row["color"],
+      //   'refetch'=>true,
+      //   'rerender'=>true,
+        
+        // 'end'   => $row["end_event"]
+       );
+    }
+
 }
 echo json_encode($data);
 
