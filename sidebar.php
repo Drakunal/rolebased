@@ -67,6 +67,7 @@
                                     </a>
                                     <ul id="calendars" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Add Holidays</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="add-employee-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Add Employee Holidays</a></li>
                                     </ul>
                                 </li>
                                 
