@@ -124,16 +124,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																			<?php
 																			$event_id=$_GET['id'];
 																			?>
-													<div style='float:left'>
+													<!-- <div style='float:left'>
                                                         <button class='btn btn-primary'>
                                                         <i class='fa fa-question'></i>
                                                         <a style='color:white;text-decoration: none;' href='holiday-reschedule.php?id=<?php echo $event_id;?>'>Reschedule Holiday</a>
                                                         
                                                         </button>
-                                                        </div>
+                                                        </div> -->
                                                         
                                                     
-                                                        <div style='float:right' >
+                                                        <div style='float:center	' >
                                                         <button class='btn btn-danger' >
                                                         <i class='fas fa-times'></i> 
                                                         <a style='color:white;text-decoration: none;' href='holiday-delete.php?id=<?php echo $event_id;?>'>Cancel Holiday</a>
