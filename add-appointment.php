@@ -178,7 +178,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
 
-						$c_id=$time." ".$c_id." ".$employee_name." ".$time_alloted."hr";
+						$c_id=$c_id." ".$customer_row['name']." ".$time." ".$time_alloted."hr";
 						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
 						$date=date('Y-m-d', strtotime($date. ' + 14 days'));
 					}
@@ -195,7 +195,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
-						$c_id=$time." ".$c_id." ".$employee_name." ".$time_alloted."hr";
+						$c_id=$c_id." ".$customer_row['name']." ".$time." ".$time_alloted."hr";
 						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
 
 						
@@ -232,7 +232,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
-						$c_id=$time." ".$c_id." ".$employee_name." ".$time_alloted."hr";
+						$c_id=$c_id." ".$customer_row['name']." ".$time." ".$time_alloted."hr";
 						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
 
 					
