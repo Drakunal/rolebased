@@ -127,7 +127,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 													<!-- <div style='float:left'>
                                                         <button class='btn btn-primary'>
                                                         <i class='fa fa-question'></i>
-                                                        <a style='color:white;text-decoration: none;' href='holiday-reschedule.php?id=<?php echo $event_id;?>'>Reschedule Holiday</a>
+                                                        <a style='color:white;text-decoration: none;' href='holiday-reschedule.php?id=<?php 
+														// echo $event_id;
+														?>'>Reschedule Holiday</a>
                                                         
                                                         </button>
                                                         </div> -->

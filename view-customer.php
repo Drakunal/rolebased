@@ -82,8 +82,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										if ($result) {?>
                                              <?php
                                                 // output data of each row
-                                                
-                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'>".$row["role"]."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
+                                                $customer_id=$row["user_id"];
+                                                echo "<tr><td>".$customer_id."</td><td>".$row["name"]."</td><td class='table-action'>".$row["role"]."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
                                                 ?>
                                                 <!-- <tr>
                                                     <td>Vanessa Tucker</td>
@@ -142,8 +142,26 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								{
 									echo "Not-regular";
 								} ?>
+														
 								<div class='card'>
 								<div class="mb-3">
+								<div style='float:left'>
+                                                        <!-- <button class='btn btn-primary'>
+                                                        <i class='fa fa-question'></i>
+                                                        <a style='color:white;text-decoration: none;' href='holiday-reschedule.php?id=<?php 
+														// echo $event_id;
+														?>'>Edit Customer</a>
+                                                        
+                                                        </button>
+                                                        </div> -->
+                                                        
+                                                    
+                                                        <div style='float:center' >
+                                                        <button class='btn btn-primary' >
+                                                        <i class="align-middle" data-feather="edit-3"></i> 
+                                                        <a style='color:white;text-decoration: none;' href='edit-customer-details.php?id=<?php echo $idd;?>'>Edit Additional Details</a>
+                                                        </button></div>
+														</br>
 
 								<?php 
 								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND deleted_at is NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL;");
@@ -161,7 +179,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								echo date('g:ia', strtotime($row3["time"]));
 								 ?></br></br>
 								<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-								<p><strong>Employee-id :</strong></p> <?php echo $employee_row['name']; ?></br></br>
+								<p><strong>Employee-Name :</strong></p> <?php echo $employee_row['name']; ?></br></br>
 								<?php
 									if($row2["appointment_type"]=="bi-weekly"){
 										// $result4 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
@@ -174,7 +192,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										echo date('g:ia', strtotime($row3["time"]));
 										 ?></br></br>
 										<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-										<p><strong>Employee-id :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
+										<p><strong>Employee-Name :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
 										<?php
 
 										}
@@ -210,9 +228,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								
 							</div>
 							</div>
-							</div>
+							<!-- </div>
 					
-						</div>
+						</div> -->
 
 						
 
@@ -222,9 +240,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				</div>
 			</main>
 
-		</div>
+		<!-- </div>
 		
-	</div>
+	</div> -->
 	<?php include("footer.php"); ?>
 	<script src="js/app.js"></script>
 
