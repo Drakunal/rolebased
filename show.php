@@ -90,7 +90,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 													$row0 = $result0->fetch_assoc();
                                                     $employee_name = $row0['name'];
 													$start_date=$row['start_event'];
+													$start_date=date("Y-m-d", strtotime($start_date));
 													$end_date=$row['end_event'];
+													$end_date=date("Y-m-d", strtotime($end_date));
 													?>
 													<thead>
 													<tr>
