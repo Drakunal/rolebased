@@ -141,8 +141,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					?>
 					<script>
 				
-					alert("Holiday saved");
-					window.location.href = "admin-panel.php";
+				document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+                					var success_class = document.getElementById('success').className;
+									var delayInMilliseconds = 1000; //1.5 second
+
+									setTimeout(function() {
+										window.location.href = "admin-panel.php";
+									}, delayInMilliseconds);
+					
 			
 					</script>
 			<?php

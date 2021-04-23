@@ -149,8 +149,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<script>
 								
 									
-										alert("Employee Removed");
+								document.getElementById('danger').className = "offset-md-4 alert alert-danger alert-dismissible";
+                					var success_class = document.getElementById('danger').className;
+									var delayInMilliseconds = 1000; //1.5 second
+
+									setTimeout(function() {
 										window.location.href = "admin-panel.php";
+									}, delayInMilliseconds);
 								
 									</script>
 									<?php } ?>
