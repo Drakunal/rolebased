@@ -175,9 +175,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												
 											<?php } ?>
 
-											
+											</br>
 											<!-- <h1 class="mt-1 mb-3">3</h1> -->
 											<div class="mb-1">
+											<div style='float:center' >
+                                                        <button class='btn btn-primary' >
+                                                        <i class="align-middle" data-feather="edit-3"></i> 
+                                                        <a style='color:white;text-decoration: none;' href='edit-employee-details.php?id=<?php echo $e_id;?>'>Edit Additional Details</a>
+                                                        </button></div>
+														</br>
 												<!-- <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span> -->
 												<!-- <span class="text-muted">Since last week</span> -->
 											</div>
