@@ -45,9 +45,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<?php
 							$customer_id = $_GET['id'];
 							$role='employee';
-							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id,time_alloted from `customer_details` where user_id='$customer_id';");
-							$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
-							$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
+							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id,time_alloted from `customer_details` where user_id='$customer_id';")or die("Unsuccessful");
+							$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';")or die("Unsuccessful");
+							$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';")or die("Unsuccessful");
 							$customer_row= $customer_query->fetch_assoc();
 							$customer_name=$customer_row['name'];
 							$customer_details_row= $customer_details->fetch_assoc();
@@ -150,12 +150,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$customer_id=$customer_row['id'];
 						$employee_id=$_POST['employee-id'];
 						$time=$_POST['time'];
-						$time=date('g:ia', strtotime($time));
+						$times=date('g:ia', strtotime($time));
 						$date=$_POST['date'];
 						$appointment_duration=$_POST['appointment-duration'];
 
 
-						$employee_query= mysqli_query($db,"SELECT name,user_id from `users` where id='$employee_id' AND deleted_at is NULL;");
+						$employee_query= mysqli_query($db,"SELECT name,user_id from `users` where id='$employee_id' AND deleted_at is NULL;")or die("Unsuccessful")or die("Unsuccessful");
 						$employee_row= $employee_query->fetch_assoc();
 						$employee_name=$employee_row['name'];
 
@@ -174,14 +174,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				if($customer_details_row['appointment_type']=='bi-weekly')
 				{
 					for ($x = 1; $x <= 2*$appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');");	
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
 						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
 
-						$c_id=$c_id." ".$customer_name." ".$time." ".$time_alloted."hr";
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
+						$c_id=$c_id." ".$customer_name." ".$times." ".$time_alloted."hr";
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');")or die("Unsuccessful");
 						$date=date('Y-m-d', strtotime($date. ' + 14 days'));
 					}
 					
@@ -189,14 +189,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				elseif($customer_details_row['appointment_type']=='weekly')
 				{
 					for ($x = 1; $x <= 4*$appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');");	
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
 						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
 
-						$c_id=$c_id." ".$customer_name." ".$time." ".$time_alloted."hr";
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
+						$c_id=$c_id." ".$customer_name." ".$times." ".$time_alloted."hr";
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');")or die("Unsuccessful");
 						$date=date('Y-m-d', strtotime($date. ' + 7 days'));
 					}
 					
@@ -204,7 +204,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				elseif($customer_details_row['appointment_type']=='monthly')
 				{
 					for ($x = 1; $x <= $appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');");
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");
 						
 
 						//for events section
@@ -212,8 +212,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
-						$c_id=$c_id." ".$customer_name." ".$time." ".$time_alloted."hr";
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
+						$c_id=$c_id." ".$customer_name." ".$times." ".$time_alloted."hr";
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');")or die("Unsuccessful");
 
 						
 
@@ -244,13 +244,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				elseif($customer_details_row['appointment_type']=='not-regular')
 				{
 					
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');");	
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
 						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
 						$c_id=$customer_row["user_id"];
-						$c_id=$c_id." ".$customer_name." ".$time." ".$time_alloted."hr";
-						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
+						$c_id=$c_id." ".$customer_name." ".$times." ".$time_alloted."hr";
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');")or die("Unsuccessful");
 
 					
 					
