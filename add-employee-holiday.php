@@ -119,10 +119,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			if(isset($_POST['submit']))
 			{
 					$title=$_POST['title'];
+					$employee_id=$_POST['e-id'];
+					$role1="employee";
+					$result1 = mysqli_query($db,"SELECT id,name from `users` where role='$role1' and id='$employee_id' and deleted_at is NULL;");
+					$row1 = $result1->fetch_assoc();
+					$employee_name=$row1['name'];
+
+					$title=$employee_name."-".$title;
 					// $every_year=$_POST['every_year']; //if 1 then yes
 					$start_date=$_POST['start-date'];
                     $end_date=$_POST['end-date'];
-                    $employee_id=$_POST['e-id'];
+                    
 					$color="#f21f38";
                     
                
