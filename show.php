@@ -235,6 +235,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																							elseif($row3["appointment_type"]=="not-regular")
 																							{
 																								echo "Not-regular";
+																							}
+																							elseif($row3["appointment_type"]=="weekly")
+																							{
+																								echo "Weekly";
 																							} ?>
 																							</br>
 																						

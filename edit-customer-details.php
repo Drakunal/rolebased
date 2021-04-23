@@ -125,7 +125,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												</label>
 												<div  id="ifYes" style="display:none">
 												<label class="form-check">
-													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
+													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
+														<span class="form-check-label">
+															Weekly
+														</span>
+												</label>
+												<label class="form-check">
+													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type"s>
 														<span class="form-check-label">
 															Bi-weekly
 														</span>
@@ -310,9 +316,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div> -->
 							</div>
 						</div>
-					</div>
+					<!-- </div>
 
-				</div>
+				</div> -->
 			</main>
 
 

@@ -186,6 +186,21 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					}
 					
 				}
+				elseif($customer_details_row['appointment_type']=='weekly')
+				{
+					for ($x = 1; $x <= 4*$appointment_duration; $x++) {
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');");	
+						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
+						// echo $customer_user_id;
+						$customer_row = $customer_user_id->fetch_assoc();
+						$c_id=$customer_row["user_id"];
+
+						$c_id=$c_id." ".$customer_name." ".$time." ".$time_alloted."hr";
+						mysqli_query($db,"INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');");
+						$date=date('Y-m-d', strtotime($date. ' + 7 days'));
+					}
+					
+				}
 				elseif($customer_details_row['appointment_type']=='monthly')
 				{
 					for ($x = 1; $x <= $appointment_duration; $x++) {
