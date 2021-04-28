@@ -151,6 +151,7 @@ $id=$_GET['id'];
                 selectHelper:false,
                 weekends: true,
                 editable:false,
+                weekNumbers:true,
 
                 eventClick:function(event)
             {
