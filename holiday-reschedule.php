@@ -130,7 +130,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					$start_date=$_POST['start-date'];
                     $end_date=$_POST['end-date'];
                     
-					$color="#f21f38";
+					$color="#ff726f";
                     
                
                     

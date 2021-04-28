@@ -82,7 +82,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             
                                                 </script>
                                                 <?php } 
-												if($color=="#f21f38"){
+												if($color=="#ff726f"){
 
 													$employee_id=$row['employee_id'];
 													$sql0 = "SELECT name  FROM users WHERE id='$employee_id';";

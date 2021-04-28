@@ -18,7 +18,8 @@ if($employee_id!=0){
 
 }
 else{
-  $query = "SELECT * FROM events ORDER BY id";
+  $color="#ff726f";
+  $query = "SELECT * FROM events where color <>'$color' ORDER BY id ";
 }
 
 
