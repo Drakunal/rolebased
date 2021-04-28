@@ -9,7 +9,7 @@
 						<div class="col-6 text-right">
 							<ul class="list-inline">
 								<li class="list-inline-item">
-									<a class="text-muted" href="#">Support</a>
+									<a class="text-muted" href="https://github.com/Drakunal">Support</a>
 								</li>
 								<li class="list-inline-item">
 									<a class="text-muted" href="#">Help Center</a>
