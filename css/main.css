@@ -108,7 +108,7 @@ textarea:focus:-moz-placeholder { color:transparent; }
 textarea:focus::-moz-placeholder { color:transparent; }
 textarea:focus:-ms-input-placeholder { color:transparent; }
 
-input::-webkit-input-placeholder { color: #fff;}
+input::-webkit-input-placeholder { color: black}
 input:-moz-placeholder { color: #fff;}
 input::-moz-placeholder { color: #fff;}
 input:-ms-input-placeholder { color: #fff;}
@@ -190,17 +190,21 @@ iframe {
 }
 
 .wrap-login100 {
+
   width: 500px;
   border-radius: 10px;
   overflow: hidden;
   padding: 55px 55px 37px 55px;
 
-  background: #9152f8;
-  background: -webkit-linear-gradient(top, #7579ff, #b224ef);
-  background: -o-linear-gradient(top, #7579ff, #b224ef);
+  background:  #FFE4E1;
+  background: -webkit-linear-gradient(top, #FFE4B5, #D2B48C);
+background: -o-linear-gradient(top, #7579ff, #b224ef);
   background: -moz-linear-gradient(top, #7579ff, #b224ef);
   background: linear-gradient(top, #7579ff, #b224ef);
+
 }
+
+
 
 
 /*------------------------------------------------------------------
@@ -231,7 +235,6 @@ iframe {
 .login100-form-title {
   font-family: Poppins-Medium;
   font-size: 30px;
-  color: #fff;
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
@@ -288,13 +291,13 @@ iframe {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 
-  background: #fff;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
 }
 
 .focus-input100::after {
   font-family: Material-Design-Iconic-Font;
   font-size: 22px;
-  color: #fff;
+  
 
   content: attr(data-placeholder);
   display: block;
@@ -366,7 +369,7 @@ iframe {
   content: "\f26b";
   font-family: Material-Design-Iconic-Font;
   font-size: 13px;
-  color: transparent;
+ 
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -425,11 +428,12 @@ iframe {
   height: 50px;
   border-radius: 25px;
 
-  background: #9152f8;
-  background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
-  background: -o-linear-gradient(bottom, #7579ff, #b224ef);
-  background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
-  background: linear-gradient(bottom, #7579ff, #b224ef);
+   background:  #FFE4E1;
+  background: -webkit-linear-gradient(top, #8B4513, #D2B48C);
+background: -o-linear-gradient(top, #7579ff, #b224ef);
+  background: -moz-linear-gradient(top, #7579ff, #b224ef);
+  background: linear-gradient(top, #7579ff, #b224ef);
+
   position: relative;
   z-index: 1;
 
@@ -503,7 +507,7 @@ iframe {
   pointer-events: none;
 
   font-family: Poppins-Regular;
-  color: #c80000;
+ 
   font-size: 13px;
   line-height: 1.4;
   text-align: left;
