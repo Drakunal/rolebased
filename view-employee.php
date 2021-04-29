@@ -86,9 +86,21 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											// echo $result;
 											if ($result) {?>
                                              <?php
+											 
                                                 // output data of each row
                                                 while($row = $result->fetch_assoc()) {
-                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'>".$row["role"]."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
+													$e_id=$row['id'];
+												$sql1 = "SELECT details,color,officer FROM employee_details WHERE user_id=$e_id";
+												$result1 = mysqli_query($db,$sql1);
+												$row1=$result1->fetch_assoc();
+												$role_employee=$row1['officer'];
+												if($role_employee==0){
+												 $role_name="Employee";
+											 }else
+											 {
+												 $role_name="Officer";
+											 }
+                                                echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'>".$role_name."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
                                                 ?>
                                                 <!-- <tr>
                                                     <td>Vanessa Tucker</td>
@@ -116,10 +128,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                     </td> -->
                                                 </tr>
                                                 <?php
-												$e_id=$row['id'];
-												$sql1 = "SELECT details,color FROM employee_details WHERE user_id=$e_id";
-												$result1 = mysqli_query($db,$sql1);
-												$row1=$result1->fetch_assoc();
+												
 
                                                 }
                                                 
