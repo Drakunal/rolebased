@@ -1,8 +1,7 @@
 <?php
 session_start();
 include "connection.php";
-if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
-{
+if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
     header("location:index.php");
 }
 ?>
@@ -28,7 +27,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
         <div class="sidebar-content js-simplebar">
-        <?php include("sidebar.php"); ?>
+        <?php include "sidebar.php";?>
 </div>
 		</nav>
 
@@ -39,7 +38,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
         </a>
 
 
-        <?php include("navbar.php"); ?>
+        <?php include "navbar.php";?>
 			</nav>
 
 			<main class="content">
@@ -181,21 +180,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										<div class="card-body">
 											<h5 class="card-title">Password</h5>
 
-											<form>
+											<form method="POST">
 												<div class="mb-3">
 													<label class="form-label" for="inputPasswordCurrent">Current password</label>
-													<input type="password" class="form-control" id="inputPasswordCurrent">
-													<small><a href="#">Forgot your password?</a></small>
+													<input type="password" class="form-control" id="inputPasswordCurrent" name="inputPasswordCurrent">
+													<!-- <small><a href="#">Forgot your password?</a></small> -->
 												</div>
 												<div class="mb-3">
 													<label class="form-label" for="inputPasswordNew">New password</label>
-													<input type="password" class="form-control" id="inputPasswordNew">
+													<input type="password" class="form-control" id="inputPasswordNew" name="inputPasswordNew" onkeyup='check();'>
 												</div>
+												
 												<div class="mb-3">
-													<label class="form-label" for="inputPasswordNew2">Verify password</label>
-													<input type="password" class="form-control" id="inputPasswordNew2">
+													<label class="form-label" for="inputPasswordNew2">Verify password  <span id='message'></span></label>
+													<input type="password" class="form-control" id="inputPasswordNew2" name="inputPasswordNew2" onkeyup='check();'>
 												</div>
-												<button type="submit" class="btn btn-primary">Save changes</button>
+												<button type="submit" class="btn btn-primary" name="submit" id="submit">Save changes</button>
 											</form>
 
 										</div>
@@ -206,6 +206,58 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					</div>
 
 				</div>
+				<script>
+					var check = function() {
+  if (document.getElementById('inputPasswordNew').value ==
+    document.getElementById('inputPasswordNew2').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+				</script>
+				
+				<?php
+					if (isset($_POST['submit'])) {
+						$current_password = $_POST['inputPasswordCurrent'];
+						$new_password = $_POST['inputPasswordNew'];
+						$verify_password = $_POST['inputPasswordNew2'];
+						// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
+						// if(mysqli_num_rows($Existing_Username)!=0)
+						//     {
+						// if($new_password!=$verify_password){
+
+   							 ?>
+								<script>
+
+									alert("Passwords do not match!");
+
+									</script>
+									<?php
+
+    								// }
+
+    								// $p=mysqli_query($db,"UPDATE `users` SET user_id = '$emailo', password = '$password', role = '$role', name = '$name' WHERE user_id='$user_id' ;");
+
+   							 ?>
+								<script>
+
+									document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+                					var success_class = document.getElementById('success').className;
+									var delayInMilliseconds = 1000; //1.5 second
+
+									setTimeout(function() {
+										window.location.href = "employee-list.php";
+									}, delayInMilliseconds);
+
+									</script>
+									<?php
+
+}
+
+?>
 			</main>
 
 			<?php include "footer.php";?>
