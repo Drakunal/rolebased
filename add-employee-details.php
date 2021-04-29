@@ -65,7 +65,19 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												<input type="color"  name="color"class="form-control" id="color"  value="#ff0000">
 
 											</div>
-										
+											<div class="mb-3">
+												<label class="form-label">Is this User Officer?</label>
+												<label class="form-check"><input class="form-check-input" type="radio" value="0"  name="yesno" id="noCheck" checked>
+														<span class="form-check-label">
+															No
+														</span></label>
+												<label class="form-check">
+													<input class="form-check-input" type="radio"  name="yesno" id="yesCheck" value="1">
+														<span class="form-check-label">
+															Yes
+														</span>
+												</label>
+											</div>
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
@@ -93,13 +105,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                         
                         $details=$_POST['details'];
 						$color=$_POST['color'];
-                       
+						$officer=$_POST['yesno'];
                     
                             
                                 
                             
 
-                        mysqli_query($db,"INSERT INTO `employee_details` (user_id, details,color) VALUES('$user_id','$details','$color');");
+                        mysqli_query($db,"INSERT INTO `employee_details` (user_id, details,color,officer) VALUES('$user_id','$details','$color','$officer');");
 				
 			?>
                         <script>
