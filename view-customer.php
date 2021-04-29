@@ -196,7 +196,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										echo date('g:ia', strtotime($row3["time"]));
 										 ?></br></br>
 										<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-										<p><strong>Employee-Name :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
+										<p><strong>Employee-Name :</strong></p> <?php echo $employee_row['name']; ?></br></br>
 										<?php
 
 										}
