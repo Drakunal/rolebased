@@ -222,12 +222,18 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				<?php
 					if (isset($_POST['submit'])) {
 						$id=$_SESSION['id'];
+						$password_query=mysqli_query($db,"SELECT password from `users` where id='$id';");
+						$password_row=$password_query->fetch_assoc();
+						$password=$password_row['password'];
 						$current_password = $_POST['inputPasswordCurrent'];
 						$new_password = $_POST['inputPasswordNew'];
 						$verify_password = $_POST['inputPasswordNew2'];
 						// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 						// if(mysqli_num_rows($Existing_Username)!=0)
 						//     {
+					if($password==$current_password){
+
+							
 						if($new_password!=$verify_password){
 
    							 ?>
@@ -245,7 +251,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
     								mysqli_query($db,"UPDATE `users` SET password = '$new_password' WHERE id='$id' ;") or die("Unsuccessful");
 
-   							 ?>
+   									 ?>
 								<script>
 	
 									document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
@@ -259,6 +265,17 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									</script>
 									<?php
 									}
+								}
+								else{
+									?>
+								<script>
+
+									alert("Your password is incorrect!");
+
+									</script>
+									<?php
+
+								}
 
 							}
 
