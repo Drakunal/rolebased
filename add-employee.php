@@ -269,6 +269,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					$Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 					if(mysqli_num_rows($Existing_Username)!=0)
 						{
+							$deleted_row=$Existing_Username->fetch_assoc();
+							$deleted_at=$deleted_row['deleted_at'];
+							$id=$deleted_row['id'];
+							$email=$deleted_row['user_id'];
+							if($deleted_at==NULL){
 							?>
 								<script>
 									
@@ -276,6 +281,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								
 									</script>
 									<?php
+									}else{
+										?>
+										<script>
+											window.location.href = "restore-user.php?id=<?php echo $email ?>";
+										</script>
+										<?php
+									}
 						}
 						else{
 					// 		$target_dir = "uploads/";
