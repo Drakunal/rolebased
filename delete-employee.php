@@ -95,9 +95,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
                             $sql1="UPDATE appointments
-                            SET deleted_at = '$date' WHERE employee_id=$employee_id";
+                            SET deleted_at = '$date' WHERE employee_id=$employee_id AND date <= '$date'";
 
 							$query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
+
+							$sql11="DELETE FROM appointments
+                            WHERE employee_id=$employee_id AND date > '$date'";
+
+							$query11 = mysqli_query($db,$sql11) or die("Query Unsuccessful11.");
 
                             
                             $sql3="DELETE FROM events where employee_id=$employee_id";
