@@ -18,7 +18,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Settings | AdminKit Demo</title>
+	<title>Settings</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -208,26 +208,27 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				</div>
 				<script>
 					var check = function() {
-  if (document.getElementById('inputPasswordNew').value ==
-    document.getElementById('inputPasswordNew2').value) {
-    document.getElementById('message').style.color = 'green';
-    document.getElementById('message').innerHTML = 'matching';
-  } else {
-    document.getElementById('message').style.color = 'red';
-    document.getElementById('message').innerHTML = 'not matching';
-  }
-}
+						if (document.getElementById('inputPasswordNew').value ==
+							document.getElementById('inputPasswordNew2').value) {
+							document.getElementById('message').style.color = 'green';
+							document.getElementById('message').innerHTML = 'matching';
+						} else {
+							document.getElementById('message').style.color = 'red';
+							document.getElementById('message').innerHTML = 'not matching';
+						}
+						}
 				</script>
 				
 				<?php
 					if (isset($_POST['submit'])) {
+						$id=$_SESSION['id'];
 						$current_password = $_POST['inputPasswordCurrent'];
 						$new_password = $_POST['inputPasswordNew'];
 						$verify_password = $_POST['inputPasswordNew2'];
 						// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
 						// if(mysqli_num_rows($Existing_Username)!=0)
 						//     {
-						// if($new_password!=$verify_password){
+						if($new_password!=$verify_password){
 
    							 ?>
 								<script>
@@ -237,27 +238,31 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									</script>
 									<?php
 
-    								// }
+    								}
+									else{
 
-    								// $p=mysqli_query($db,"UPDATE `users` SET user_id = '$emailo', password = '$password', role = '$role', name = '$name' WHERE user_id='$user_id' ;");
+										
+
+    								mysqli_query($db,"UPDATE `users` SET password = '$new_password' WHERE id='$id' ;") or die("Unsuccessful");
 
    							 ?>
 								<script>
-
+	
 									document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
                 					var success_class = document.getElementById('success').className;
 									var delayInMilliseconds = 1000; //1.5 second
 
 									setTimeout(function() {
-										window.location.href = "employee-list.php";
+										window.location.href = "admin-panel.php";
 									}, delayInMilliseconds);
 
 									</script>
 									<?php
+									}
 
-}
+							}
 
-?>
+						?>
 			</main>
 
 			<?php include "footer.php";?>

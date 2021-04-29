@@ -148,6 +148,7 @@
 				$_SESSION['name']=$row['name'];
                 $_SESSION['login_user']=$row['user_id'];
 				$_SESSION['role']=$row['role'];
+				$_SESSION['id'] = $row['id'];
 				// print_r($row);
 				// echo $row['role'];
 
