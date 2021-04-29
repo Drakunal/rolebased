@@ -157,7 +157,21 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             if(isset($_POST['submit']))
                                             {
                                                 mysqli_query($db,"UPDATE `users` SET deleted_at =NULL WHERE user_id='$user_id' ;")or die("unsuccessful");
-                                            }
+                                            ?>
+											<script>
+								// console.log("add-customer-details.php?id=<?php echo $email ?>");
+									
+								document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+                					var success_class = document.getElementById('success').className;
+									var delayInMilliseconds = 1000; //1.5 second
+
+									setTimeout(function() {
+										window.location.href = "admin-panel.php";
+									}, delayInMilliseconds);
+                                    
+								
+									</script>
+											<?php }
                                     ?>
 									
 								<!-- </div> -->
