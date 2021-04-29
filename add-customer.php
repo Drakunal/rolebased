@@ -279,7 +279,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								?>
 									<script>
 										
-										alert("Email already exists!");
+										alert("Customer ID already exists!");
 									
 										</script>
 										<?php
@@ -291,11 +291,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<?php
 										}
 							?>
-								<script>
-									
-									alert("Customer ID already exists!");
 								
-									</script>
 									<?php
 						}
 						else{

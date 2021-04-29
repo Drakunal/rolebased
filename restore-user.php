@@ -88,6 +88,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											 
                                                 // output data of each row
                                                 while($row = $result->fetch_assoc()) {
+													$id=$row['id'];
+													$role=$row['role'];
 												
 												
                                                 echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td></tr>";
@@ -157,6 +159,17 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             if(isset($_POST['submit']))
                                             {
                                                 mysqli_query($db,"UPDATE `users` SET deleted_at =NULL WHERE user_id='$user_id' ;")or die("unsuccessful");
+												
+												if($role=="employee"){
+													mysqli_query($db,"UPDATE `appointments` SET deleted_at =NULL WHERE employee_id='$id' ;")or die("unsuccessful");
+
+												}
+												else{
+													mysqli_query($db,"UPDATE `appointments` SET deleted_at =NULL WHERE customer_id='$id' ;")or die("unsuccessful");
+
+												}
+
+												
                                             ?>
 											<script>
 								
