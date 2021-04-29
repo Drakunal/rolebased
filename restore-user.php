@@ -145,9 +145,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<div class="mb-1">
 											<div  class="text-center">
                                             <form method="POST">
-                                                        <button class='btn btn-primary' name="submit" id="submit" style='float:center' >
+                                                        <button class='btn btn-primary' type="submit"name="submit" id="submit" style='float:center' >
                                                         <i class="align-middle" data-feather="rotate-ccw"></i> 
-                                                        <a style='color:white;text-decoration: none;' href='edit-employee-details.php?id=<?php echo $e_id;?>'>Restore User</a>
+														Restore User
                                                         </button>
                                                         </form></div>
 											</div>
@@ -156,7 +156,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                     <?php 
                                             if(isset($_POST['submit']))
                                             {
-                                                mysqli_query($db,"UPDATE `users` SET deleted_at ='NULL' WHERE user_id='$user_id' ;")or die("unsuccessful");
+                                                mysqli_query($db,"UPDATE `users` SET deleted_at =NULL WHERE user_id='$user_id' ;")or die("unsuccessful");
                                             }
                                     ?>
 									
