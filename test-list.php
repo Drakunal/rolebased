@@ -54,7 +54,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<!-- <h6 class="card-subtitle text-muted">Add <code>.table-bordered</code> for borders on all sides of the table and cells.</h6> -->
 								<!-- </div> -->
 								
-                                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <table id="example" class="table table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -523,7 +523,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             <td>$112,000</td>
                                         </tr>
                                     </tbody>
-                                    <tfoot>
+                                    <!-- <tfoot>
                                         <tr>
                                             <th>Name</th>
                                             <th>Position</th>
@@ -532,7 +532,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             <th>Start date</th>
                                             <th>Salary</th>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> -->
                                 </table>
 							<!-- </div> -->
 						</div>
@@ -557,8 +557,8 @@ $(document).ready(function() {
         // buttons: [ 'copy', 'excel', 'pdf' ]
     } );
  
-    table.buttons().container()
-        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+    // table.buttons().container()
+    //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 } );
 </script>
 
