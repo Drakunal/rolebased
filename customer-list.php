@@ -54,7 +54,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<h6 class="card-subtitle text-muted">Add <code>.table-bordered</code> for borders on all sides of the table and cells.</h6>
 								</div> -->
 								
-								<table id="customer-list"class="table table-bordered">
+								<table id="customer-list"class="table table-striped">
 									<thead>
 										<tr>
 											<th style="width:40%;">Email ID</th>

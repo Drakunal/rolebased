@@ -10,20 +10,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
-	<title>Tables | AdminKit Demo</title>
-
-	<link href="css/app.css" rel="stylesheet">
-</head>
+<?php include("head.php"); ?>
 
 <body>
 	<div class="wrapper">
@@ -64,12 +51,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 						<div class="col-md-12">
 						</br>
-							<div class="card">
-								<div class="card-header">
+							<!-- <div class="card"> -->
+								<!-- <div class="card-header"> -->
 									<!-- <h5 class="card-title">Employee Table</h5> -->
 									<!-- <h6 class="card-subtitle text-muted">Add <code>.table-bordered</code> for borders on all sides of the table and cells.</h6> -->
-								</div>
-								<table class="table table-bordered">
+								<!-- </div> -->
+								<table id="employee-list"class="table table-striped">
 									<thead>
 										<tr>
 											<th style="width:40%;">Email ID</th>
@@ -81,10 +68,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									<tbody>
                                    
                                         <?php 
-            $role="employee";
-            $sql = "SELECT id,user_id, name FROM users WHERE role=`employee`";
-            $result = mysqli_query($db,"SELECT id,user_id,name from `users` where role='$role' AND deleted_at is NULL;");
-            if ($result->num_rows > 0) {?>
+											$role="employee";
+											$sql = "SELECT id,user_id, name FROM users WHERE role=`employee`";
+											$result = mysqli_query($db,"SELECT id,user_id,name from `users` where role='$role' AND deleted_at is NULL;");
+											if ($result->num_rows > 0) {?>
                                              <?php
                                                 // output data of each row
                                                 while($row = $result->fetch_assoc()) {
@@ -124,7 +111,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										
 									</tbody>
 								</table>
-							</div>
+							<!-- </div> -->
 						</div>
 
 						
@@ -139,7 +126,20 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 		</div>
 	</div>
 
-	<script src="js/app.js"></script>
+	<?php include("scripts.php"); ?>
+    <script>
+$(document).ready(function() {
+    var table = $('#employee-list').DataTable( {
+        lengthChange: false,
+        // buttons: [ 'copy', 'excel', 'pdf' ]
+    } );
+ 
+    // table.buttons().container()
+    //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+} );
+
+document.getElementById("employee-list").className = "table table-striped";
+</script>
 
 </body>
 
