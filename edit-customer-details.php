@@ -19,7 +19,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Form Layouts | AdminKit Demo</title>
+	<title>Redigera kund</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -69,14 +69,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Edit Customer Details form</h1>
+					<h1 class="h3 mb-3">Redigera formuläret Kundinformation</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Edit your customer details here.</h6>
+									<h6 class="card-subtitle text-muted">Redigera dina kunduppgifter här.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
@@ -85,8 +85,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Time alloted in hours</label>
-											<input type="number"  name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
+											<label class="form-label">Antal timmar per möte</label>
+											<input type="number" name="time"class="form-control" placeholder="Ange timmar" value="<?php echo $res['time_alloted']; ?>">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
@@ -94,14 +94,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
                                         
 										<div class="mb-3">
-											<label class="form-label">Details</label>
-											<textarea class="form-control"name="details" placeholder="Details" rows="1" ><?php echo $res['details']; ?></textarea>
+											<label class="form-label">Detaljer</label>
+											<textarea class="form-control"name="details" placeholder="Ange detaljer" rows="1" ><?php echo $res['details']; ?></textarea>
 										</div>
 
 
 										<div class="mb-3">
-											<label class="form-label">Base Price</label>
-											<input type="number"  name="base-price"class="form-control" placeholder="base price" value="<?php echo $res['base_price']; ?>">
+											<label class="form-label">Baspris (Pris per timme)</label>
+											<input type="number"  name="base-price"class="form-control" placeholder="Ange pris / timme" value="<?php echo $res['base_price']; ?>">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Base Price</label>
@@ -109,37 +109,37 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
 
 										<div class="mb-3">
-											<label class="form-label">Admin's Note</label>
-											<textarea class="form-control"name="admin_note" placeholder="only visible by admin" rows="1" ><?php echo $res['admin_note']; ?></textarea>
+											<label class="form-label">Admin detaljer</label>
+											<textarea class="form-control"name="admin_note" placeholder="Enbart synligt för admin" rows="1" ><?php echo $res['admin_note']; ?></textarea>
 										</div>
 										<div class="mb-3">
 											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
 														<span class="form-check-label">
-															Not Regular
+														Inte regelbunden
 														</span></label>
 											<label class="form-check">
 													<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
 														<span class="form-check-label">
-															Regular
+														Regelbundet
 														</span>
 												</label>
 												<div  id="ifYes" style="display:none">
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
 														<span class="form-check-label">
-															Weekly
+														Varje vecka
 														</span>
 												</label>
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type"s>
 														<span class="form-check-label">
-															Bi-weekly
+														Varannan vecka
 														</span>
 												</label>
 												<label class="form-check">
             										<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
            												 <span class="form-check-label">
-             												 Monthly
+															Månadsvis
            												 </span>
         										  </label>
 
@@ -157,7 +157,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             <span class="form-check-label">Check me out</span>
                                             </label>
 										</div> -->
-										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit"class="btn btn-primary">Spara</button>
 									</form>
 								</div>
 							</div>
