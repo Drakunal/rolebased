@@ -20,7 +20,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<title>Visa kund</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -47,7 +47,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Customer</h1>
+					<h1 class="h3 mb-3">Kund</h1>
 
 					<div class="row">
 						<div class="col-md-12">
@@ -59,11 +59,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th style="width:40%;">Customer ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">Kundnummer</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Role</th>
-                                            <th>Password</th>
+											<th>Roll</th>
+                                            <th>Lösenord</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -83,7 +83,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                              <?php
                                                 // output data of each row
                                                 $customer_id=$row["user_id"];
-                                                echo "<tr><td>".$customer_id."</td><td>".$row["name"]."</td><td class='table-action'>".$row["role"]."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
+                                                echo "<tr><td>".$customer_id."</td><td>".$row["name"]."</td><td class='table-action'>Kund</td></td><td class='table-action'>".$row["password"]."</td></tr>";
                                                 ?>
                                                 <!-- <tr>
                                                     <td>Vanessa Tucker</td>
@@ -124,27 +124,27 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									?>
 								<div>
 								<div class="card-body">
-								<h4>Additional Details</h4>
-								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
-								<p><strong>Base Price : </strong><?php echo $row2['base_price']; ?> Kr</p>
-								<p><strong>Time Alloted :</strong></p> <?php echo $row2["time_alloted"]; ?> hours</br></br>
-								<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row2['admin_note']; ?></p>
-								<p><strong>Appointment Type :</strong></p> <?php 
+								<h4>Ytterligare detaljer</h4>
+								<p><strong>Detaljer :</strong></p> <?php echo $row2["details"]; ?></br></br>
+								<p><strong>Baspris (Pris per timme) : </strong><?php echo $row2['base_price']; ?> Kr</p>
+								<p><strong>Antal timmar per möte :</strong></p> <?php echo $row2["time_alloted"]; ?> hours</br></br>
+								<p><strong>Admin detaljer(Enbart synligt för admin) : </strong><?php echo $row2['admin_note']; ?></p>
+								<p><strong>Utnämningstyp :</strong></p> <?php 
 								if($row2["appointment_type"]=="monthly")
 								{
-									echo "Monthly";
+									echo "Månadsvis";
 								}
 								elseif($row2["appointment_type"]=="bi-weekly")
 								{
-									echo "Bi-weekly";
+									echo "Varannan vecka";
 								} 
 								elseif($row2["appointment_type"]=="not-regular")
 								{
-									echo "Not-regular";
+									echo "Inte regelbunden";
 								}
 								elseif($row2["appointment_type"]=="weekly")
 								{
-									echo "Weekly";
+									echo "Varje vecka";
 								} ?>
 														
 								<div class='card'>
@@ -163,7 +163,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                         <div style='float:center' >
                                                         <button class='btn btn-primary' >
                                                         <i class="align-middle" data-feather="edit-3"></i> 
-                                                        <a style='color:white;text-decoration: none;' href='edit-customer-details.php?id=<?php echo $idd;?>'>Edit Additional Details</a>
+                                                        <a style='color:white;text-decoration: none;' href='edit-customer-details.php?id=<?php echo $idd;?>'>Redigera ytterligare information</a>
                                                         </button></div>
 														</br>
 
@@ -178,12 +178,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									$employee_query=mysqli_query($db,"SELECT name from `users` where id='$employee_id' AND deleted_at is NULL");
 									$employee_row = $employee_query->fetch_assoc();
 								 ?>
-								<h4>Appointment Details</h4>
-								<p><strong>Time :</strong></p> <?php 
+								<h4>Tidsinformation</h4>
+								<p><strong>Tid :</strong></p> <?php 
 								echo date('g:ia', strtotime($row3["time"]));
 								 ?></br></br>
-								<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-								<p><strong>Employee-Name :</strong></p> <?php echo $employee_row['name']; ?></br></br>
+								<p><strong>Datum :</strong></p> <?php echo $row3["date"]; ?></br></br>
+								<p><strong>Anställd Namn :</strong></p> <?php echo $employee_row['name']; ?></br></br>
 								<?php
 									if($row2["appointment_type"]=="bi-weekly"){
 										// $result4 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
@@ -191,18 +191,18 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										if($row3){
 											?>
 										
-										<h4>Second Appointment Details</h4>
-										<p><strong>Time :</strong></p> <?php 
+										<h4>Andra mötesinformation</h4>
+										<p><strong>Tid :</strong></p> <?php 
 										echo date('g:ia', strtotime($row3["time"]));
 										 ?></br></br>
-										<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-										<p><strong>Employee-Name :</strong></p> <?php echo $employee_row['name']; ?></br></br>
+										<p><strong>Datum :</strong></p> <?php echo $row3["date"]; ?></br></br>
+										<p><strong>Anställd Namn :</strong></p> <?php echo $employee_row['name']; ?></br></br>
 										<?php
 
 										}
 										else{
 											?>
-											<h4>No Second Appointment present</h4>
+											<h4>Ingen andra möte närvarande</h4>
 											
 										
 											<?php }
@@ -212,7 +212,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									 else{
 										 ?>
 										 <div class="mb-3">
-										<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>
+										<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Lägg till kundavtal</a></button>
 										</div>
 										<?php
 									 } 
@@ -223,10 +223,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<?php } 
 								else{
 									?>
-									<h4>No Additional Details present</h4>
+									<h4>Inga ytterligare detaljer närvarande</h4>
 									
 								<div class="mb-3">
-									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Add Customer details</a></button>
+									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Lägg till kundinformation</a></button>
 								</div>
 									<?php } ?>
 								
