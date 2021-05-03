@@ -20,7 +20,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<title>Möte / semesterinformation</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -48,7 +48,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Appointment/Holiday Details</h1>
+					<h1 class="h3 mb-3">Möte / semesterinformation</h1>
 
 					<div class="row">
 						<div class="col-md-12">
@@ -96,11 +96,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 													?>
 													<thead>
 													<tr>
-														<th style="width:40%;">Employee Name</th>
-														<th style="width:25%">Start Date</th>
+														<th style="width:40%;">Anställd Namn</th>
+														<th style="width:25%">Start Datum</th>
 														<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-														<th>End Date</th>
-														<th>Reason</th>
+														<th>Slutdatum</th>
+														<th>Anledning</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -149,11 +149,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																				?>
 																							<thead>
 																								<tr>
-																									<th style="width:40%;">Customer ID</th>
-																									<th style="width:25%">Employee ID</th>
+																									<th style="width:40%;">Kundnummer</th>
+																									<th style="width:25%">Anställd</th>
 																									<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-																									<th>Date</th>
-																									<th>Time</th>
+																									<th>Datum</th>
+																									<th>Tid</th>
 																								</tr>
 																							</thead>
 																							<tbody>
@@ -205,7 +205,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																			<div class="col-md-12">
 																				<div class="card">
 																					<div class="card-body">
-																						<h5 class="card-title mb-4">Customer Details</h5>
+																						<h5 class="card-title mb-4">Kunddetaljer</h5>
 																						<?php 
 																						$sql2="SELECT name  FROM users WHERE id='$customer_id';";
 																						$result2 = mysqli_query($db,$sql2) or die("Query unsuccessful1");
@@ -217,35 +217,35 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																						
 																							?>
 																							
-																							<p><strong>Customer Name : </strong><?php echo $row2['name']; ?></p>
+																							<p><strong>Köparens namn : </strong><?php echo $row2['name']; ?></p>
 
-																							<p><strong>Details :</strong></p> <?php echo $row3["details"]; ?></br></br>
-																							<p><strong>Base Price : </strong><?php echo $row3['base_price']; ?> Kr</p>
-																							<p><strong>Time Alloted :</strong></p> <?php echo $row3["time_alloted"]; ?> hours</br></br>
-																							<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row3['admin_note']; ?></p>
-																							<p><strong>Appointment Type :</strong></p> <?php 
+																							<p><strong>Detaljer :</strong></p> <?php echo $row3["details"]; ?></br></br>
+																							<p><strong>Baspris (Pris per timme) : </strong><?php echo $row3['base_price']; ?> Kr</p>
+																							<p><strong>Antal timmar per möte :</strong></p> <?php echo $row3["time_alloted"]; ?> hours</br></br>
+																							<p><strong>Admin detaljer(Enbart synligt för admin) : </strong><?php echo $row3['admin_note']; ?></p>
+																							<p><strong>Utnämningstyp :</strong></p> <?php 
 																							if($row3["appointment_type"]=="monthly")
 																							{
-																								echo "Monthly";
+																								echo "Månadsvis";
 																							}
 																							elseif($row3["appointment_type"]=="bi-weekly")
 																							{
-																								echo "Bi-weekly";
+																								echo "Varannan vecka";
 																							} 
 																							elseif($row3["appointment_type"]=="not-regular")
 																							{
-																								echo "Not-regular";
+																								echo "Inte regelbunden";
 																							}
 																							elseif($row3["appointment_type"]=="weekly")
 																							{
-																								echo "Weekly";
+																								echo "Varje vecka";
 																							} ?>
 																							</br>
 																						
 																							<div style='float:left'>
 																									<button class='btn btn-primary'>
 																									<i class='fa fa-question'></i>
-																									<a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=<?php echo $appointment_id;?>'>Reschedule</a>
+																									<a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=<?php echo $appointment_id;?>'>Boka om</a>
 																									
 																									</button>
 																									</div>
@@ -254,7 +254,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																									<div style='float:right' >
 																									<button class='btn btn-danger' >
 																									<i class='fas fa-times'></i> 
-																									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id;?>'>Cancel</a>
+																									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id;?>'>Avbryt</a>
 																									</button></div>
 																							
 																									</div>
