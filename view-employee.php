@@ -20,7 +20,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<title>Visa anställd</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -48,7 +48,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Employee</h1>
+					<h1 class="h3 mb-3">Anställd/Tjänsteman</h1>
 
 					<div class="row">
 						
@@ -68,11 +68,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">E-Post</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Role</th>
-                                            <th>Password</th>
+											<th>Roll</th>
+                                            <th>Lösenord</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -95,10 +95,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												$row1=$result1->fetch_assoc();
 												$role_employee=$row1['officer'];
 												if($role_employee==0){
-												 $role_name="Employee";
+												 $role_name="Anställd";
 											 }else
 											 {
-												 $role_name="Officer";
+												 $role_name="Tjänsteman";
 											 }
                                                 echo "<tr><td>".$row["user_id"]."</td><td>".$row["name"]."</td><td class='table-action'>".$role_name."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
                                                 ?>
@@ -150,13 +150,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="col-sm-6">
 									<div class="card">
 										<div class="card-body">
-											<h5 class="card-title mb-4">Employee Details</h5>
+											<h5 class="card-title mb-4">Detaljer</h5>
 											<?php 
 											if($row1){
 												 ?>
 												
-												<p><strong>Details : </strong><?php echo $row1['details']; ?></p>
-												<p><strong>Color : </strong></p>
+												<p><strong>Detaljer : </strong><?php echo $row1['details']; ?></p>
+												<p><strong>Färg : </strong></p>
 												<div class="col-md-2">
 												<?php $color=$row1['color']; ?>
 													<div style="background-color:<?php echo $color;?>;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
@@ -179,7 +179,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											}
 											else{ ?>
 												<div class="mb-3">
-													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-employee-details.php?id=<?php echo $e_id ?>">Add Employee Details</a></button>
+													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-employee-details.php?id=<?php echo $e_id ?>">Lägg till information om anställda</a></button>
 												</div>
 												
 											<?php } ?>
@@ -190,7 +190,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<div style='float:center' >
                                                         <button class='btn btn-primary' >
                                                         <i class="align-middle" data-feather="edit-3"></i> 
-                                                        <a style='color:white;text-decoration: none;' href='edit-employee-details.php?id=<?php echo $e_id;?>'>Edit Additional Details</a>
+                                                        <a style='color:white;text-decoration: none;' href='edit-employee-details.php?id=<?php echo $e_id;?>'>Redigera ytterligare information</a>
                                                         </button></div>
 														</br>
 												<!-- <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span> -->

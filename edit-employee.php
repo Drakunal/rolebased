@@ -19,7 +19,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Form Layouts | AdminKit Demo</title>
+	<title>Redigera anställd</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -65,28 +65,28 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Edit Employee form</h1>
+					<h1 class="h3 mb-3">Redigera anställd</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Edit Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Edit your employees here.</h6>
+									<h6 class="card-subtitle text-muted">Redigera dina anställda här.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Email address</label>
-											<input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $res['user_id'] ?>">
+											<label class="form-label">E-Post</label>
+											<input type="email" name="email" class="form-control" placeholder="E-Post" value="<?php echo $res['user_id'] ?>">
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Password</label>
-											<input type="password"  name="password"class="form-control" placeholder="Password" value="<?php echo $res['password'] ?>">
+											<label class="form-label">Lösenord</label>
+											<input type="password"  name="password"class="form-control" placeholder="Lösenord" value="<?php echo $res['password'] ?>">
 										</div>
                                         <div class="mb-3">
-											<label class="form-label">Name</label>
-											<input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo $res['name'] ?>">
+											<label class="form-label">Namn</label>
+											<input type="text" name="name" class="form-control" placeholder="Namn" value="<?php echo $res['name'] ?>">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Textarea</label>
@@ -103,7 +103,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             <span class="form-check-label">Check me out</span>
                                             </label>
 										</div> -->
-										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit"class="btn btn-primary">Spara</button>
 									</form>
 								</div>
 							</div>
