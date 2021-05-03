@@ -17,13 +17,13 @@ if($_POST['type'] == ""){
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+    </div> <p>Inga bokningar tillgängliga</p>";
     }else{
-    $str = "0 hours";
+    $str = "0 timmar";
     while($row = mysqli_fetch_assoc($query)){
         // $day=date("l", strtotime($row['date']));
         // $appointment_id=$row['id'];
-        $str = "{$row['SUM(time_alloted)']} hours";
+        $str = "{$row['SUM(time_alloted)']} timmar";
     }}
 }
 if($_POST['type'] == "stateData"){
@@ -54,10 +54,10 @@ if($_POST['type'] == "stateData"){
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+    </div> <p>Inga bokningar tillgängliga</p>";
     }
     else{
-        $str = "0 hours ";
+        $str = "0 timmar ";
     while($row = mysqli_fetch_assoc($query)){
         // echo $row['employee_id'];
         // $employee_id=$row['employee_id'];
@@ -79,11 +79,11 @@ if($_POST['type'] == "stateData"){
         // print_r($row) ;
         
         // $time=date('g:ia', strtotime($row['time']));
-      $str = "{$row['SUM(time_alloted)']} hours";
+      $str = "{$row['SUM(time_alloted)']} timmar";
     }
-    if($str==" hours")
+    if($str==" timmar")
     {
-        $str="0 hours";
+        $str="0 timmar";
     }
     $str .= "";
     }
@@ -120,10 +120,10 @@ if($_POST['type'] == "yearData"){
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+    </div> <p>Inga bokningar tillgängliga</p>";
     }
     else{
-        $str = " 0 hours";
+        $str = " 0 timmar";
     while($row = mysqli_fetch_assoc($query)){
 
         // echo $row['employee_id'];
@@ -143,11 +143,11 @@ if($_POST['type'] == "yearData"){
         // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         // $row2 = mysqli_fetch_assoc($query2);
         // $time=date('g:ia', strtotime($row['time']));
-      $str = "{$row['SUM(time_alloted)']} hours";
+      $str = "{$row['SUM(time_alloted)']} timmar";
     }
-    if($str==" hours")
+    if($str==" timmar")
     {
-        $str="0 hours";
+        $str="0 timmar";
     }
     $str .= " ";
     }
@@ -183,10 +183,10 @@ if($_POST['type'] == "employeeData"){
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+    </div> <p>Inga bokningar tillgängliga</p>";
     }
     else{
-        $str = "0 hours ";
+        $str = "0 timmar ";
     while($row = mysqli_fetch_assoc($query)){
         // $appointment_id=$row['id'];
 
@@ -207,11 +207,11 @@ if($_POST['type'] == "employeeData"){
         // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         // $row2 = mysqli_fetch_assoc($query2);
         // $time=date('g:ia', strtotime($row['time']));
-      $str = "{$row['SUM(time_alloted)']} hours";
+      $str = "{$row['SUM(time_alloted)']} timmar";
     }
-    if($str==" hours")
+    if($str==" timmar")
     {
-        $str="0 hours";
+        $str="0 timmar";
     }
     $str .= " ";
     }

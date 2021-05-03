@@ -11,11 +11,11 @@ if($_POST['type'] == ""){
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
+    </div> <p>Inga bokningar tillgängliga</p>";
     }else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Employee Name</th>
@@ -86,12 +86,12 @@ if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
+    </div> <p>Inga bokningar tillgängliga</p>";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Employee Name</th>
@@ -182,12 +182,12 @@ if($_POST['type'] == "yearData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
+    </div> <p>Inga bokningar tillgängliga</p>";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Employee Name</th>
@@ -274,12 +274,12 @@ if($_POST['type'] == "employeeData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
+    </div> <p>Inga bokningar tillgängliga</p>";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Bokningar denna månad</h4>
     </div><div class='table-responsive'><table  id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Employee Name</th>
