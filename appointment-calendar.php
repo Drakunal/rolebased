@@ -146,13 +146,14 @@ $id=$_GET['id'];
                 display:'none',
                 },
                 events: d,
-                selectable:false,
+                selectable:true,
                 displayEventTime: false,
-                selectHelper:false,
+               
                 weekends: true,
                 editable:false,
                 weekNumbers:true,
-
+                
+                 selectHelper:true,
                 eventClick:function(event)
             {
              if(confirm("View details?"))
@@ -172,6 +173,26 @@ $id=$_GET['id'];
               window.location.href = url;
              }
             },
+            select: function(start, end, allDay)
+                {
+                // var title = prompt("Add appointment in this day?");
+                if(confirm("Add appointment in this day?"))
+                {
+                var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+                // var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                // $.ajax({
+                 var url="add-extra-appointment.php?date="+start;
+                 window.location.href = url;
+                // type:"POST",
+                // data:{title:title, start:start, end:end},
+                // success:function()
+                // {
+                //     calendar.fullCalendar('refetchEvents');
+                //     alert("Added Successfully");
+                // }
+                // })
+                }
+                },
                 
                
              });
