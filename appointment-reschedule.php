@@ -164,6 +164,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// $customer_id=$customer_row['id'];
 						$employee_id=$_POST['employee-id'];
 						$time=$_POST['time'];
+						$times=date('G:i', strtotime($time));
 						$date=$_POST['date'];
                         $prev_date=$row['date'];
                         $prev_time=$row['time'];
@@ -188,9 +189,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
 
 
-
+						$customer_name=$row2['name'];
 						
-						$c_id=$time." ".$c_id." ".$employee_name." ".$time_alloted."hr";
+						// $c_id=$time." ".$c_id." ".$employee_name." ".$time_alloted."hr";
+
+						// $c_id=$customer_row["user_id"];
+						$c_id=$c_id." ".$customer_name." ".$times." ".$time_alloted."hr";
+
                         $p=mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id', date = '$date', time = '$time' WHERE id='$appointment_id' ;");
                         $event_id_query=mysqli_query($db,"SELECT id FROM `events` WHERE date = '$prev_date' AND time = '$prev_time' AND customer_id='$customer_id' ;");
                         $row_event=$event_id_query->fetch_assoc();

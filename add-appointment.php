@@ -150,7 +150,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$customer_id=$customer_row['id'];
 						$employee_id=$_POST['employee-id'];
 						$time=$_POST['time'];
-						$times=date('g:ia', strtotime($time));
+						$times=date('G:i', strtotime($time));
 						$date=$_POST['date'];
 						$appointment_duration=$_POST['appointment-duration'];
 
