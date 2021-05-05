@@ -98,7 +98,7 @@ if ($_POST['type'] == "stateData") {
             $deleted_at=$row['deleted_at'];
             $date=$row['date'];
             if($deleted_at>=$date){
-                $time = date('g:ia', strtotime($row['time']));
+                $time = date('G:i', strtotime($row['time']));
             $str .= "<tr>
             <td>{$row1['name']}</td>
             <td>{$row2['name']}</td>
@@ -170,7 +170,7 @@ if ($_POST['type'] == "yearData") {
                 $sql2 = "SELECT name from `users` where id=$customer_id";
                 $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
                 $row2 = mysqli_fetch_assoc($query2);
-                $time = date('g:ia', strtotime($row['time']));
+                $time = date('G:i', strtotime($row['time']));
                 $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
            
 
@@ -236,7 +236,7 @@ if ($_POST['type'] == "employeeData") {
             $sql2 = "SELECT name from `users` where id=$customer_id";
             $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
             $row2 = mysqli_fetch_assoc($query2);
-            $time = date('g:ia', strtotime($row['time']));
+            $time = date('G:i', strtotime($row['time']));
             $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
        
 

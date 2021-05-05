@@ -171,7 +171,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																								$employee_name = $row0['name'];
 
 																								$date=$row['date'];
-																								$time=date('g:ia', strtotime($row["time"]));
+																								$time=date('G:i', strtotime($row["time"]));
 																								$sql1 = "SELECT id  FROM appointments WHERE customer_id='$customer_id' AND employee_id='$employee_id' AND date='$date'";
 																								$result1 = mysqli_query($db,$sql1) or die("Query unsuccessful1");
 																								$row11=$result1->fetch_assoc();

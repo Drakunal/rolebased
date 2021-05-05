@@ -43,7 +43,7 @@ else if($_POST['type'] == "stateData"){
         $sql2="SELECT name from `users` where id=$customer_id";
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
-        $time=date('g:ia', strtotime($row['time']));
+        $time=date('G:i', strtotime($row['time']));
       $str .= "<tr><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$time}</td></tr>";
     }
     $str .= "</tbody>

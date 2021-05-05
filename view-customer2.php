@@ -150,7 +150,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												
 													<h4>Appointment Details</h4>
 													<p><strong>Time :</strong></p> <?php 
-													echo date('g:ia', strtotime($row3["time"]));
+													echo date('G:i', strtotime($row3["time"]));
 													?></br></br>
 													<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
 													<p><strong>Employee-id :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>
@@ -165,7 +165,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 															
 																<h4>Second Appointment Details</h4>
 																<p><strong>Time :</strong></p> <?php 
-																echo date('g:ia', strtotime($row3["time"]));
+																echo date('G:i', strtotime($row3["time"]));
 																?></br></br>
 																<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
 																<p><strong>Employee-id :</strong></p> <?php echo $row3["employee_id"]; ?></br></br>

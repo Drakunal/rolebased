@@ -122,7 +122,7 @@ if($_POST['type'] == "stateData"){
 
         
         
-        $time=date('g:ia', strtotime($row['time']));
+        $time=date('G:i', strtotime($row['time']));
       $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button  class='btn btn-danger btn-sm'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }
     $str .= "</tbody>
@@ -216,7 +216,7 @@ if($_POST['type'] == "yearData"){
         $sql2="SELECT name from `users` where id=$customer_id";
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
-        $time=date('g:ia', strtotime($row['time']));
+        $time=date('G:i', strtotime($row['time']));
       $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button  class='btn btn-danger btn-sm'><i class='fas fa-times'></i><a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }
     $str .= "</tbody>
@@ -309,7 +309,7 @@ if($_POST['type'] == "employeeData"){
         $sql2="SELECT name from `users` where id=$customer_id";
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
-        $time=date('g:ia', strtotime($row['time']));
+        $time=date('G:i', strtotime($row['time']));
       $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger btn-sm'><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }
     $str .= "</tbody>

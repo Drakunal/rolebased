@@ -78,7 +78,7 @@ if($_POST['type'] == "stateData"){
 
         // print_r($row) ;
         
-        // $time=date('g:ia', strtotime($row['time']));
+        // $time=date('G:i', strtotime($row['time']));
       $str = "{$row['SUM(time_alloted)']} hours";
     }
     if($str==" hours")
@@ -142,7 +142,7 @@ if($_POST['type'] == "yearData"){
         // $sql2="SELECT name from `users` where id=$customer_id";
         // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         // $row2 = mysqli_fetch_assoc($query2);
-        // $time=date('g:ia', strtotime($row['time']));
+        // $time=date('G:i', strtotime($row['time']));
       $str = "{$row['SUM(time_alloted)']} hours";
     }
     if($str==" hours")
@@ -206,7 +206,7 @@ if($_POST['type'] == "employeeData"){
         // $sql2="SELECT name from `users` where id=$customer_id";
         // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         // $row2 = mysqli_fetch_assoc($query2);
-        // $time=date('g:ia', strtotime($row['time']));
+        // $time=date('G:i', strtotime($row['time']));
       $str = "{$row['SUM(time_alloted)']} hours";
     }
     if($str==" hours")
