@@ -66,94 +66,26 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											$sql = "SELECT title,start_event,end_event,time,customer_id,employee_id,date,color  FROM events WHERE id='$event_id'";
 
 											$result = mysqli_query($db,$sql) or die("Query unsuccessful");
+
+
+                                            $role="employee";
+											$sql11 = "SELECT id,user_id, name FROM users WHERE role=`employee`";
+											$result11 = mysqli_query($db,"SELECT id,user_id,name from `users` where role='$role' AND deleted_at is NULL;");
 											
 											// echo $result;
 											if ($result) {?>
                                              <?php
                                              $row = $result->fetch_assoc();
                                              $color=$row['color'];
-                                             if($color=="red"){
-                                                ?>
-                                                <script>
-                                            
-                                                
-                                                    alert("Holiday");
-                                                    window.location.href = "appointment-calendar.php?id=0";
-                                            
-                                                </script>
-                                                <?php } 
-												if($color=="#ff726f"){
-
-													$employee_id=$row['employee_id'];
-													$sql0 = "SELECT name  FROM users WHERE id='$employee_id';";
-													$result0 = mysqli_query($db,$sql0) or die("Query unsuccessful1");
-													$row0 = $result0->fetch_assoc();
-                                                    $employee_name = $row0['name'];
-													$start_date=$row['start_event'];
-													$start_date=date("Y-m-d", strtotime($start_date));
-													$end_date=$row['end_event'];
-													$end_date=date("Y-m-d", strtotime($end_date));
-													?>
-													<thead>
-													<tr>
-														<th style="width:40%;">Employee Name</th>
-														<th style="width:25%">Start Date</th>
-														<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-														<th>End Date</th>
-														<th>Reason</th>
-													</tr>
-												</thead>
-												<tbody>
-													
-													<?php
-													echo "<tr><td>".$row0["name"]."</td><td>".$start_date."</td><td class='table-action'>".$end_date."</td></td><td class='table-action'>".$row['title']."</td></tr>";
-													?>
-													</tr>
-																							
-																					
-																							</tbody>
-																						</table>
-																					</div>
-																				</div>
-			
-																				
-			
-																				
-																			</div>
-																			</div>
-																			<?php
-																			$event_id=$_GET['id'];
-																			?>
-													<!-- <div style='float:left'>
-                                                        <button class='btn btn-primary'>
-                                                        <i class='fa fa-question'></i>
-                                                        <a style='color:white;text-decoration: none;' href='holiday-reschedule.php?id=<?php 
-														// echo $event_id;
-														?>'>Reschedule Holiday</a>
-                                                        
-                                                        </button>
-                                                        </div> -->
-                                                        
-                                                    
-                                                        <div style='float:center	' >
-                                                        <button class='btn btn-danger' >
-                                                        <i class='fas fa-times'></i> 
-                                                        <a style='color:white;text-decoration: none;' href='holiday-delete.php?id=<?php echo $event_id;?>'>Cancel Holiday</a>
-                                                        </button></div>
-
-														<?php
-
-
-												}
-												else{
-																				?>
+                                             
+												
+																				?>  <form method="POST">
 																							<thead>
 																								<tr>
 																									<th style="width:40%;">Customer ID</th>
 																									<th style="width:25%">Employee ID</th>
 																									<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-																									<th>Date</th>
-																									<th>Time</th>
+																									
 																								</tr>
 																							</thead>
 																							<tbody>
@@ -165,10 +97,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																								$customer_id=$row['customer_id'];
 																								$employee_id=$row['employee_id'];
 
-																								$sql22="SELECT user_id  FROM users WHERE id='$customer_id';";
+                                                                                                $sql22="SELECT user_id  FROM users WHERE id='$customer_id';";
                                                                                                 $result22 = mysqli_query($db,$sql22) or die("Query unsuccessful1");
                                                                                                 $row22 = $result22->fetch_assoc();
-
 
 																								$sql0 = "SELECT name  FROM users WHERE id='$employee_id';";
 																								$result0 = mysqli_query($db,$sql0) or die("Query unsuccessful1");
@@ -181,7 +112,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																								$result1 = mysqli_query($db,$sql1) or die("Query unsuccessful1");
 																								$row11=$result1->fetch_assoc();
 																								$appointment_id=$row11['id'];
-																								echo "<tr><td>".$row22["user_id"]."</td><td>".$row0["name"]."</td><td class='table-action'>".$row["date"]."</td></td><td class='table-action'>".$time."</td></tr>";
+																								// echo "<tr><td>".$row["customer_id"]."</td>
+                                                                                                // <td><select class='form-control mb-3' id='employee-id' name='employee-id'>
+                                                                                                
+                                                                                                // ".$row0["name"]."
+                                                                                                
+                                                                                                // </select></td>
+                                                                                                
+                                                                                                // </tr>";?>
+                                                              
+                                                                                                <?php
+                                                                                                $customer_ids=$row22["user_id"];
+                                                                                                echo "<tr><td>".$customer_ids."</td><td><select class='form-control mb-3' id='employee-id' name='employee-id'>";
+
+                                                                                                while($row = $result11->fetch_assoc())
+											                                                    echo "<option value='".$row['id']."'>".$row['name']."</option>";
+                                                                                                echo "</select></td>";
 																							?>
 																						
 																									<?php
@@ -247,7 +193,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																							} ?>
 																							</br>
 																						
-																							<div style='float:left'>
+																							<!-- <div style='float:left'>
 																									<button class='btn btn-primary'>
 																									<i class='fa fa-question'></i>
 																									<a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=<?php echo $appointment_id;?>'>Reschedule</a>
@@ -258,22 +204,56 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																									<a style='color:white;text-decoration: none;' href='employee-change.php?id=<?php echo $appointment_id;?>'>Change Employee for All</a>
 																									
 																									</button>
-																									</div>
+																									</div> -->
 
 																							
 																									
-																								
-																									<div style='float:right' >
-																									<button class='btn btn-danger' >
-																									<i class='fas fa-times'></i> 
-																									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id;?>'>Cancel</a>
+																								</br>
+                                                                                              
+																									<div style='float:left' >
+																									<button class='btn btn-success' type="submit" name="submit">
+																									<i class='fas fa-check'></i> 
+																									<a style='color:white;text-decoration: none;'>Save Changes</a>
 																									</button></div>
-																							
+                                                                                                    </form>
 																									</div>
 																									<!-- <div style='float:right' > -->
-																									
+															    
 																									<!-- </div> -->
-																									
+																								<?php 
+                                                                                                if(isset($_POST['submit'])){
+                                                                                                    ?><script>
+                                                                                                    console.log("<?php echo $customer_id;?>")</script>
+                                                                                                    <?php
+                                                                                                    $customer_id3=$customer_id;
+                                                                                                    $employee_id3=$_POST['employee-id'];
+
+
+                                                                                                    $sql12 = "SELECT color FROM employee_details WHERE user_id=$employee_id3";
+                                                                                                    $result12 = mysqli_query($db,$sql12);
+                                                                                                    $row12=$result12->fetch_assoc();
+                                                                                                    $color3=$row12['color'];
+                                                                                                    $date=date("Y-m-d");
+
+
+                                                                                                    mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id3' where customer_id='$customer_id3' AND employee_id='$employee_id' AND date >= '$date' AND deleted_at is NULL;")or die("Unsuccessful");
+                                                                                                    mysqli_query($db,"UPDATE `events` SET employee_id = '$employee_id3',color='$color3' where customer_id='$customer_id3' AND employee_id='$employee_id' AND date >= '$date' AND deleted_at is NULL;")or die("Unsuccessful");
+
+                                                                                                    ?>
+                                                                                                        <script>
+                                                                                                            
+                                                                                                            document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+                                                                                                            var success_class = document.getElementById('success').className;
+                                                                                                            var delayInMilliseconds = 1000; //1.5 second
+
+                                                                                                            setTimeout(function() {
+                                                                                                                window.location.href = "admin-panel.php";
+                                                                                                            }, delayInMilliseconds);
+                                                                                                            
+                                                                                                            </script>
+                                                                                                            <?php
+                                                                                                }
+                                                                                                ?>	
 																</div>
 
 																
@@ -284,7 +264,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 													</div>
 																							<?php 
 																							
-												} 
+												
 													?>
 											<?php
 											
