@@ -1,2 +1,3 @@
-<show class="php"></show>
-employe <change class="php"></change>
+delete <customer class="php"></customer>
+
+delete<employee class="php"></employee>

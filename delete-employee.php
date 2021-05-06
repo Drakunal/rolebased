@@ -94,10 +94,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							$query = mysqli_query($db,$sql) or die("Query Unsuccessful.");
 
 
-                            $sql1="UPDATE appointments
-                            SET deleted_at = '$date' WHERE employee_id=$employee_id AND date <= '$date'";
+                            // $sql1="UPDATE appointments
+                            // SET deleted_at = '$date' WHERE employee_id=$employee_id AND date <= '$date'";
 
-							$query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
+							// $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful1.");
 
 							$sql11="DELETE FROM appointments
                             WHERE employee_id=$employee_id AND date > '$date'";
@@ -105,7 +105,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 							$query11 = mysqli_query($db,$sql11) or die("Query Unsuccessful11.");
 
                             
-                            $sql3="DELETE FROM events where employee_id=$employee_id";
+                            $sql3="DELETE FROM events where employee_id=$employee_id AND date > '$date'";
                             $query_temp = mysqli_query($db,$sql3) or die("Query Unsuccessful3.");
 
                             //cancelling all the appointments
