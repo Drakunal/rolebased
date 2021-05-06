@@ -76,6 +76,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											if ($result) {?>
                                              <?php
                                              $row = $result->fetch_assoc();
+											 $date_of_event=$row['date'];
                                              $color=$row['color'];
                                              
 												
@@ -236,8 +237,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                                                                     $date=date("Y-m-d");
 
 
-                                                                                                    mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id3' where customer_id='$customer_id3' AND employee_id='$employee_id' AND date >= '$date' AND deleted_at is NULL;")or die("Unsuccessful");
-                                                                                                    mysqli_query($db,"UPDATE `events` SET employee_id = '$employee_id3',color='$color3' where customer_id='$customer_id3' AND employee_id='$employee_id' AND date >= '$date' AND deleted_at is NULL;")or die("Unsuccessful");
+                                                                                                    mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id3' where customer_id='$customer_id3' AND employee_id='$employee_id' AND date >= '$date_of_event' AND deleted_at is NULL;")or die("Unsuccessful");
+                                                                                                    mysqli_query($db,"UPDATE `events` SET employee_id = '$employee_id3',color='$color3' where customer_id='$customer_id3' AND employee_id='$employee_id' AND date >= '$date_of_event' AND deleted_at is NULL;")or die("Unsuccessful");
 
                                                                                                     ?>
                                                                                                         <script>
