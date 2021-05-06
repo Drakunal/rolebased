@@ -160,14 +160,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             {
                                                 mysqli_query($db,"UPDATE `users` SET deleted_at =NULL WHERE user_id='$user_id' ;")or die("unsuccessful");
 												
-												if($role=="employee"){
-													mysqli_query($db,"UPDATE `appointments` SET deleted_at =NULL WHERE employee_id='$id' ;")or die("unsuccessful");
+												// if($role=="employee"){
+												// 	mysqli_query($db,"UPDATE `appointments` SET deleted_at =NULL WHERE employee_id='$id' ;")or die("unsuccessful");
 
-												}
-												else{
-													mysqli_query($db,"UPDATE `appointments` SET deleted_at =NULL WHERE customer_id='$id' ;")or die("unsuccessful");
+												// }
+												// else{
+												// 	mysqli_query($db,"UPDATE `appointments` SET deleted_at =NULL WHERE customer_id='$id' ;")or die("unsuccessful");
 
-												}
+												// }
 
 												
                                             ?>
