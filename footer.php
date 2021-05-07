@@ -9,16 +9,16 @@
 						<div class="col-6 text-right">
 							<ul class="list-inline">
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://github.com/Drakunal">Support</a>
+									<a class="text-muted" href="https://github.com/Drakunal">Stöd</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="#">Help Center</a>
+									<a class="text-muted" href="#">Hjälpcenter</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="#">Privacy</a>
+									<a class="text-muted" href="#">Integritet</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="#">Terms</a>
+									<a class="text-muted" href="#">Villkor</a>
 								</li>
 							</ul>
 						</div>
