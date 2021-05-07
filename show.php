@@ -219,14 +219,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 																						$result3 = mysqli_query($db,"SELECT base_price,appointment_type,details,time_alloted,admin_note from `customer_details` where user_id='$customer_id';");
 																						$row3 = $result3->fetch_assoc();
-																						
+																						$time_alloted=$row3["time_alloted"];
+
+																						$pos = strpos($time_alloted, '.');
+																							if($pos === false) { // it is integer number
+																								$time_alloted=$time_alloted;
+																							}else{ // it is decimal number
+																								$time_alloted=rtrim(rtrim($time_alloted, '0'), '.');
+																							}
+																																			
 																							?>
 																							
 																							<p><strong>Customer Name : </strong><?php echo $row2['name']; ?></p>
 
 																							<p><strong>Details :</strong></p> <?php echo $row3["details"]; ?></br></br>
 																							<p><strong>Base Price : </strong><?php echo $row3['base_price']; ?> Kr</p>
-																							<p><strong>Time Alloted :</strong></p> <?php echo $row3["time_alloted"]; ?> hours</br></br>
+																							<p><strong>Time Alloted :</strong></p> <?php echo $time_alloted; ?> hours</br></br>
 																							<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row3['admin_note']; ?></p>
 																							<p><strong>Appointment Type :</strong></p> <?php 
 																							if($row3["appointment_type"]=="monthly")

@@ -186,6 +186,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 						$customer_details_row= $customer_details->fetch_assoc();
 						$time_alloted=$customer_details_row['time_alloted'];
+						$pos = strpos($time_alloted, '.');
+										if($pos === false) { // it is integer number
+											$time_alloted=$time_alloted;
+										}else{ // it is decimal number
+											$time_alloted=rtrim(rtrim($time_alloted, '0'), '.');
+										}
+
 						$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';");
 
 

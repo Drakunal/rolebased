@@ -121,13 +121,23 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</table>
 								</br></br></br>
 								<?php if($row2){
+
+									$time_alloted=$row2["time_alloted"];
+									
+										$pos = strpos($time_alloted, '.');
+										if($pos === false) { // it is integer number
+											$time_alloted=$time_alloted;
+										}else{ // it is decimal number
+											$time_alloted=rtrim(rtrim($time_alloted, '0'), '.');
+										}
+									
 									?>
 								<div>
 								<div class="card-body">
 								<h4>Additional Details</h4>
 								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
 								<p><strong>Base Price : </strong><?php echo $row2['base_price']; ?> Kr</p>
-								<p><strong>Time Alloted :</strong></p> <?php echo $row2["time_alloted"]; ?> hours</br></br>
+								<p><strong>Time Alloted :</strong></p> <?php echo $time_alloted; ?> hours</br></br>
 								<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row2['admin_note']; ?></p>
 								<p><strong>Appointment Type :</strong></p> <?php 
 								if($row2["appointment_type"]=="monthly")

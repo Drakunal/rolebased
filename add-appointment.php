@@ -54,6 +54,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
 							$time_alloted=$customer_details_row['time_alloted'];
+
+							// $time_alloted=$row2["time_alloted"];
+									
+							$pos = strpos($time_alloted, '.');
+							if($pos === false) { // it is integer number
+								$time_alloted=$time_alloted;
+							}else{ // it is decimal number
+								$time_alloted=rtrim(rtrim($time_alloted, '0'), '.');
+							}
 						
 							// echo $customer_details_row['appointment_type'];
 							// echo $customer_id;
