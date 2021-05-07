@@ -18,7 +18,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Settings</title>
+	<title>Inställningar</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -44,14 +44,14 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Settings</h1>
+					<h1 class="h3 mb-3">Inställningar</h1>
 
 					<div class="row">
 						<div class="col-md-3 col-xl-2">
 
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Profile Settings</h5>
+									<h5 class="card-title mb-0">Profil inställningar</h5>
 								</div>
 
 								<div class="list-group list-group-flush" role="tablist">
@@ -59,7 +59,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                                          Account
                                     </a> -->
 									<a class="list-group-item list-group-item-action active" data-toggle="list" href="#password" role="tab">
-                                        Password
+									Lösenord
                                     </a>
 									<!-- <a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
                                         Privacy and safety
@@ -178,24 +178,24 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 								<div class="tab-pane fade show active" id="password" role="tabpanel">
 									<div class="card">
 										<div class="card-body">
-											<h5 class="card-title">Password</h5>
+											<h5 class="card-title">Lösenord</h5>
 
 											<form method="POST">
 												<div class="mb-3">
-													<label class="form-label" for="inputPasswordCurrent">Current password</label>
+													<label class="form-label" for="inputPasswordCurrent">Nuvarande lösenord</label>
 													<input type="password" class="form-control" id="inputPasswordCurrent" name="inputPasswordCurrent">
 													<!-- <small><a href="#">Forgot your password?</a></small> -->
 												</div>
 												<div class="mb-3">
-													<label class="form-label" for="inputPasswordNew">New password</label>
+													<label class="form-label" for="inputPasswordNew">Nytt lösenord</label>
 													<input type="password" class="form-control" id="inputPasswordNew" name="inputPasswordNew" onkeyup='check();'>
 												</div>
 												
 												<div class="mb-3">
-													<label class="form-label" for="inputPasswordNew2">Verify password  <span id='message'></span></label>
+													<label class="form-label" for="inputPasswordNew2">Verifiera lösenord  <span id='message'></span></label>
 													<input type="password" class="form-control" id="inputPasswordNew2" name="inputPasswordNew2" onkeyup='check();'>
 												</div>
-												<button type="submit" class="btn btn-primary" name="submit" id="submit">Save changes</button>
+												<button type="submit" class="btn btn-primary" name="submit" id="submit">Spara ändringar</button>
 											</form>
 
 										</div>
