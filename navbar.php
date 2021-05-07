@@ -6,7 +6,7 @@
 												<span aria-hidden="true">&times;</span>
 											</button> -->
 											<div class="alert-message">
-												<strong>SUCCESS!</strong>
+												<strong>Framgång!</strong>
 											</div>
 										</div>
 										
@@ -16,7 +16,7 @@
 												<span aria-hidden="true">&times;</span>
 											</button> -->
 											<div class="alert-message">
-												<strong>DELETED!</strong>
+												<strong>Raderade!</strong>
 											</div>
 										</div>
 
