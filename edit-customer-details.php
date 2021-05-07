@@ -86,7 +86,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Time alloted in hours</label>
-											<input type="number"  name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
+											<input type="number"  step="0.1" name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
 										</div>
                                         <!-- <div class="mb-3">
 											<label class="form-label">Name</label>
