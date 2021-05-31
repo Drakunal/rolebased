@@ -43,6 +43,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
         }
  
 </style>
+
 <?php
 $id=$_GET['id'];
  ?>
@@ -155,6 +156,13 @@ $id=$_GET['id'];
                 firstDay:1,
                 
                  selectHelper:true,
+
+
+                 
+                
+
+                
+
                 eventClick:function(event)
             {
              if(confirm("View details?"))
@@ -195,8 +203,13 @@ $id=$_GET['id'];
                 }
                 },
                 
-               
+                eventRender: function eventRender( event, element, view ) {
+                        return ['all', event.customer_id].indexOf($('#customer-id').val()) >= 0
+                    }
+                    
              });
+
+             
              
 
   		}
@@ -207,11 +220,17 @@ $id=$_GET['id'];
   		// }
          
   		
-  	
+          $('#customer-id').on('change',function(){
+                    $('#calendar').fullCalendar('rerenderEvents');
+                });
+                // $('#search').on('change',function(){
+                //     $('#calendar').fullCalendar('rerenderEvents');
+                // });
+   
      
         
     });
-   
+    
   </script>
  </head>
  <body>
@@ -238,6 +257,34 @@ $id=$_GET['id'];
                         <div class="card-body">
                             <div class="container">
                                 <div>
+                                <?php 
+                                $role1='customer';
+                                $customer_list_query = mysqli_query($db,"SELECT user_id,id,name from `users` where role='$role1' AND deleted_at is NULL;")or die("Unsuccessful");
+                            ?>
+                            <div class="col-sm-4">
+                                        <label class="form-label">Customer</label>
+										<select class="form-control"id="customer-id" name="customer-id">
+											<option value="all"selected>Select a Customer</option>
+                                            <!-- <option value="41" >Bal</option> -->
+											<?php 
+											while($customer_list_row = $customer_list_query->fetch_assoc())
+											echo "<option value='".$customer_list_row['id']."'>".$customer_list_row['user_id']." ".$customer_list_row['name']."</option>"
+											 ?>
+										</select>
+
+                                        
+                                 </div>
+                                 <!-- <div class="input-group rounded">
+                                 <div class="col-sm-4">
+                                 <input id="search" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                    aria-describedby="search-addon" />
+                                <span class="input-group-text border-0" id="search-addon">
+                                </div>
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div> -->
+                                        </br>
 									<?php 
 										$role2="employee";
 										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2';");
