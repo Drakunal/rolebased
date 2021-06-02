@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "connection.php";
-if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
+if (!isset($_SESSION['login_user'])||$_SESSION['role']=="admin" ) {
     header("location:index.php");
 }
 ?>
@@ -151,7 +151,18 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 									var delayInMilliseconds = 1000; //1.5 second
 
 									setTimeout(function() {
+										<?php if($_SESSION['role']=="customer"){
+											?>
+
+										
 										window.location.href = "customer-panel.php";
+										<?php
+										}
+										else{ ?>
+										window.location.href = "employee-panel.php";
+										<?php
+										}
+										?>
 									}, delayInMilliseconds);
 
 									</script>
