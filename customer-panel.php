@@ -51,12 +51,6 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="customer")
 
 						<div class="col-auto ml-auto text-right mt-n1">
 							<nav aria-label="breadcrumb">
-								<!-- breadcrumb -->
-								<!-- <ol class="breadcrumb bg-transparent p-0 mt-1 mb-0">
-									<li class="breadcrumb-item"><a href="#">AdminKit</a></li>
-									<li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Analytics</li>
-								</ol> -->
 							</nav>
 						</div>
 					</div>
@@ -78,11 +72,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="customer")
 						
 						
 					</div>
-					<div class="col-xl-6 col-xxl-7">
+					<div class="col-12 col-md-12 col-xxl-3 d-flex order-1 order-xxl-1">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Assumed Hours Worked for this month</h5>
+									<h5 class="card-title mb-0">Appointments</h5>
 								</div>
 								<div class="card-body py-3">
 								<div class="card flex-fill">
@@ -90,16 +84,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="customer")
 									<div class="flatpickr-months">
 									<div>
 									<?php 
-										$role2="employee";
-										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2' AND deleted_at is NULL;");
+										// $role2="employee";
+										// $result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2' AND deleted_at is NULL;");
 									?>
-										<select class="form-control mb-3" id="e-id2">
+										<!-- <select class="form-control mb-3" id="e-id2">
 											<option value="0"selected>All Employees</option>
 											<?php 
-											while($row2 = $result2->fetch_assoc())
-											echo "<option value='".$row2['id']."'>".$row2['name']."</option>"
+											// while($row2 = $result2->fetch_assoc())
+											// echo "<option value='".$row2['id']."'>".$row2['name']."</option>"
 											 ?>
-										</select>
+										</select> -->
 									</div>
 									
 										<!-- <span class="flatpickr-prev-month">
@@ -268,13 +262,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="customer")
 														?>
 														
 													</select>
-													
-											
-										
-							
-													
-													
-													
+									
 											</div>
 										</div>
 										<div class="numInputWrapper">
@@ -476,6 +464,71 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="customer")
 
 	<script type="text/javascript" src="jquery/jquery.js"></script>
 
+	<script type="text/javascript">
+  $(document).ready(function(){
+  	function loadData(type, category_id, year_id){
+  		$.ajax({
+  			url : "customer-ajax.php",
+  			type : "POST",
+  			data: {type : type, id : category_id, year : year_id},
+  			success : function(data){
+  				if(type == "stateData"||type == "yearData"||type == "employeeData"){
+  					$("#hours-worked").html(data);
+  				}else{
+  					$("#employee_id2").append(data);
+  				}
+  				
+  			}
+  		});
+  	}
+	  var country = $("#employee_id2").val();
+	  var year = $("#year2").val();
+	 
+  	  loadData("stateData", country,year);
+
+  	$("#employee_id2").on("change",function(){
+  		var country = $("#employee_id2").val();
+		var year = $("#year2").val();
+		
+	console.log(country);
+  		if(country != ""){
+  			loadData("stateData", country,year);
+  		}else{
+  			$("#hours-worked").html("");
+  		}
+
+  		
+  	})
+
+	  $("#year2").on("change",function(){
+		var country = $("#employee_id2").val();
+  		var year = $("#year2").val();
+		
+	console.log(year);
+  		if(year != ""){
+  			loadData("yearData",country, year);
+  		}else{
+  			$("#hours-worked").html("");
+  		}
+
+  		
+  	})
+
+	//   $("#e-id2").on("change",function(){
+	// 	var country = $("#employee_id2").val();
+  	// 	var year = $("#year2").val();
+	// 	var e_id = $("#e-id2").val();
+	// console.log(e_id);
+  	// 	if(e_id != ""){
+  	// 		loadData("employeeData",country, year, e_id);
+  	// 	}else{
+  	// 		$("#hours-worked").html("");
+  	// 	}
+
+  		
+  	// })
+  });
+</script>
 
 
 

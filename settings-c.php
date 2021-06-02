@@ -27,7 +27,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
         <div class="sidebar-content js-simplebar">
-        <?php include "sidebar.php";?>
+        <?php include "sidebar-c.php";?>
 </div>
 		</nav>
 
@@ -38,7 +38,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
         </a>
 
 
-        <?php include "navbar.php";?>
+        <?php include "navbar-c.php";?>
 			</nav>
 
 			<main class="content">
