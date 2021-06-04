@@ -112,7 +112,7 @@
            
 
            
-                $res=mysqli_query($db,"SELECT * from `users` where user_id='$username' && password='$password';");
+                $res=mysqli_query($db,"SELECT * from `users` where user_id='$username' && password='$password' and deleted_at is NULL;");
             
 
            
