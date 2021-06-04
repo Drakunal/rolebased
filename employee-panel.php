@@ -112,6 +112,57 @@ $id = $_SESSION['id'];
 								<div class="card-body">
 									<div class="container">
 										<div>
+											<div class="col-md-12">
+												<?php
+												$query = mysqli_query($db,"SELECT * from `appointments` where date=CURDATE() AND deleted_at is NULL order by time;")or die("Query Unsuccessful.");
+												?>
+												<h3>Today's Appointments</h3>
+												<table id="appointment-list" class="table-bordered">
+													<thead>
+													<?php
+														if ($query->num_rows > 0) { ?>
+														<tr>
+															<th>Customer ID</th>
+															<th>Date</th>
+															<th>Time</th>
+														</tr>
+													</thead>
+													<tbody>
+
+														
+															<?php
+															// output data of each row
+															while ($row = $query->fetch_assoc()) {
+																$time=date('G:i', strtotime($row["time"]));
+																echo "<tr><td>" . $row["customer_id"] . "</td><td>" . $row["date"] . "</td><td>" .$time. "</td></tr>";
+															?>
+																</tr>
+														<?php
+
+															}
+														}
+														else{ ?>
+															<p>No Appointments today</p>
+														<?php }
+														?>
+
+													</tbody>
+
+												</table>
+											</div>
+											</br>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="card">
+								<div class="card-body">
+									<div class="container">
+										<div>
 											<div class="col-sm-4">
 											</div>
 											</br>
