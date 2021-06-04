@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "connection.php";
-if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
+if (!isset($_SESSION['login_user'])) {
     header("location:index.php");
 }
 ?>
