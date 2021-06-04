@@ -1,15 +1,40 @@
-        <a class="sidebar-brand" href="customer-panel.php">
-          <span class="align-middle"><img width="200em" src="img/logo.png"></span>
-        </a>
-        <ul class="sidebar-nav">
-                <li class="sidebar-header">
-                        Pages
-                    </li>
+        <?php
+        if ($_SESSION['role'] == "employee") {
 
-                    <li class="sidebar-item active">
-                        <a class="sidebar-link" href="admin-panel.php">
-            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+
+        ?>
+          <a class="sidebar-brand" href="employee-panel.php">
+          <?php } else {
+          ?>
+            <a class="sidebar-brand" href="customer-panel.php">
+            <?php
+          }
+            ?>
+
+
+
+
+            <span class="align-middle"><img width="200em" src="img/logo.png"></span>
             </a>
+            <ul class="sidebar-nav">
+              <li class="sidebar-header">
+                Pages
+              </li>
 
-        </ul>
-                          
+              <li class="sidebar-item active">
+                <?php
+                if ($_SESSION['role'] == "employee") {
+
+
+                ?>
+                  <a class="sidebar-link" href="employee-panel.php">
+                  <?php } else {
+                  ?>
+                    <a class="sidebar-link" href="customer-panel.php">
+                    <?php
+                  }
+                    ?>
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    </a>
+
+            </ul>
