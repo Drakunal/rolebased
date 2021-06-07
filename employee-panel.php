@@ -102,7 +102,8 @@ $id = $_SESSION['id'];
 							<div class="card">
 								<div class="card-body">
 									<?php
-									$query = mysqli_query($db, "SELECT * from `appointments` where date=CURDATE() AND deleted_at is NULL order by time;") or die("Query Unsuccessful.");
+									$temp=$_SESSION['id'];
+									$query = mysqli_query($db, "SELECT * from `appointments` where date=CURDATE() AND employee_id=$temp AND deleted_at is NULL order by time;") or die("Query Unsuccessful.");
 									?>
 									<h3>Today's Appointments</h3>
 									<table id="appointment-list" class="table table-striped">
