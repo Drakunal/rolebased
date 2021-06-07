@@ -10,6 +10,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 
 <head>
 	<title>Calendar</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 	<link href="css/app.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> -->
@@ -92,88 +95,66 @@ $id = $_SESSION['id'];
 						<div class="col-auto d-none d-sm-block">
 							<h3><strong>Analytics</strong> Dashboard</h3>
 						</div>
-
-						<div class="col-auto ml-auto text-right mt-n1">
-							<nav aria-label="breadcrumb">
-							</nav>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<?php
+								$query = mysqli_query($db, "SELECT * from `appointments` where date=CURDATE() AND deleted_at is NULL order by time;") or die("Query Unsuccessful.");
+								?>
+								<h3>Today's Appointments</h3>
+								<table id="appointment-list" class="table table-striped">
+									<thead>
+										<?php
+										if ($query->num_rows > 0) { ?>
+											<tr>
+												<th>Customer ID</th>
+												<th>Customer Name</th>
+												<th>Time</th>
+												<th>View</th>
+											</tr>
+									</thead>
+									<tbody>
+										<?php
+										
+											// output data of each row
+											while ($row = $query->fetch_assoc()) {
+												$customer_id=$row["customer_id"];
+												$sql22 = "SELECT user_id,name  FROM users WHERE id='$customer_id';";
+                                         	  	 $result22 = mysqli_query($db, $sql22) or die("Query unsuccessful1");
+                                           		 $row22 = $result22->fetch_assoc();
+												$time = date('G:i', strtotime($row["time"]));
+												echo "<tr><td>" . $row22["user_id"] . "</td><td>" . $row22["name"] . "</td><td>" . $time . "</td><td><a href='view-appointment.php?id=".$row['id']."'> View More </a></td></tr>";
+										?>
+											</tr>
+										<?php
+											}
+										} else { ?>
+										<p>No Appointments today</p>
+									<?php }
+									?>
+									</tbody>
+								</table>
+								</br>
+							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xl-6 col-xxl-5 d-flex">
-							<div class="w-100">
-								<div class="row">
+						<div class="card">
+							<div class="card-body">
+								<div class="container">
+									<div>
+										<div class="col-sm-4">
+										</div>
+										</br>
+										<input type=number id="employee-id" hidden value="<?php echo $id ?>">
+									</div>
+									<div id="calendar"></div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="container-fluid p-0">
-						<div class="row">
-							<div class="card">
-								<div class="card-body">
-									<div class="container">
-										<div>
-											<div class="col-md-12">
-												<?php
-												$query = mysqli_query($db,"SELECT * from `appointments` where date=CURDATE() AND deleted_at is NULL order by time;")or die("Query Unsuccessful.");
-												?>
-												<h3>Today's Appointments</h3>
-												<table id="appointment-list" class="table-bordered">
-													<thead>
-													<?php
-														if ($query->num_rows > 0) { ?>
-														<tr>
-															<th>Customer ID</th>
-															<th>Date</th>
-															<th>Time</th>
-														</tr>
-													</thead>
-													<tbody>
-
-														
-															<?php
-															// output data of each row
-															while ($row = $query->fetch_assoc()) {
-																$time=date('G:i', strtotime($row["time"]));
-																echo "<tr><td>" . $row["customer_id"] . "</td><td>" . $row["date"] . "</td><td>" .$time. "</td></tr>";
-															?>
-																</tr>
-														<?php
-
-															}
-														}
-														else{ ?>
-															<p>No Appointments today</p>
-														<?php }
-														?>
-
-													</tbody>
-
-												</table>
-											</div>
-											</br>
-
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="card">
-								<div class="card-body">
-									<div class="container">
-										<div>
-											<div class="col-sm-4">
-											</div>
-											</br>
-											<input type=number id="employee-id" hidden value="<?php echo $id ?>">
-										</div>
-										<div id="calendar"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				</div>
 			</main>
 			<?php include "footer.php"; ?>
 		</div>
