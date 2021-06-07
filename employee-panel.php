@@ -31,6 +31,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 		color: black;
 		font-size: 10px;
 	}
+
 </style>
 
 <?php
@@ -99,43 +100,45 @@ $id = $_SESSION['id'];
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								<?php
-								$query = mysqli_query($db, "SELECT * from `appointments` where date=CURDATE() AND deleted_at is NULL order by time;") or die("Query Unsuccessful.");
-								?>
-								<h3>Today's Appointments</h3>
-								<table id="appointment-list" class="table table-striped">
-									<thead>
-										<?php
-										if ($query->num_rows > 0) { ?>
-											<tr>
-												<th>Customer ID</th>
-												<th>Customer Name</th>
-												<th>Time</th>
-												<th>View</th>
-											</tr>
-									</thead>
-									<tbody>
-										<?php
-										
-											// output data of each row
-											while ($row = $query->fetch_assoc()) {
-												$customer_id=$row["customer_id"];
-												$sql22 = "SELECT user_id,name  FROM users WHERE id='$customer_id';";
-                                         	  	 $result22 = mysqli_query($db, $sql22) or die("Query unsuccessful1");
-                                           		 $row22 = $result22->fetch_assoc();
-												$time = date('G:i', strtotime($row["time"]));
-												echo "<tr><td>" . $row22["user_id"] . "</td><td>" . $row22["name"] . "</td><td>" . $time . "</td><td><a href='view-appointment.php?id=".$row['id']."'> View More </a></td></tr>";
-										?>
-											</tr>
-										<?php
-											}
-										} else { ?>
-										<p>No Appointments today</p>
-									<?php }
+								<div class="card-body">
+									<?php
+									$query = mysqli_query($db, "SELECT * from `appointments` where date=CURDATE() AND deleted_at is NULL order by time;") or die("Query Unsuccessful.");
 									?>
-									</tbody>
-								</table>
-								</br>
+									<h3>Today's Appointments</h3>
+									<table id="appointment-list" class="table table-striped">
+										<thead>
+											<?php
+											if ($query->num_rows > 0) { ?>
+												<tr>
+													<th>Customer ID</th>
+													<th>Customer Name</th>
+													<th>Time</th>
+													<th>View</th>
+												</tr>
+										</thead>
+										<tbody>
+											<?php
+
+												// output data of each row
+												while ($row = $query->fetch_assoc()) {
+													$customer_id = $row["customer_id"];
+													$sql22 = "SELECT user_id,name  FROM users WHERE id='$customer_id';";
+													$result22 = mysqli_query($db, $sql22) or die("Query unsuccessful1");
+													$row22 = $result22->fetch_assoc();
+													$time = date('G:i', strtotime($row["time"]));
+													echo "<tr><td>" . $row22["user_id"] . "</td><td>" . $row22["name"] . "</td><td>" . $time . "</td><td><a href='view-appointment.php?id=" . $row['id'] . "'> View More </a></td></tr>";
+											?>
+												</tr>
+											<?php
+												}
+											} else { ?>
+											<p>No Appointments today</p>
+										<?php }
+										?>
+										</tbody>
+									</table>
+									</br>
+								</div>
 							</div>
 						</div>
 					</div>
