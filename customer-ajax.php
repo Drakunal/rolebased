@@ -12,15 +12,16 @@ if($_POST['type'] == ""){
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
+        <p>No appointments available</p>
+    </div> ";
     }else{
         $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Employee Name</th>
-        <th>Customer Name</th>
+        
         <th>Date</th>
         <th>Day</th>
         <th>Time</th>
@@ -30,7 +31,7 @@ if($_POST['type'] == ""){
     while($row = mysqli_fetch_assoc($query)){
         $day=date("l", strtotime($row['date']));
         $appointment_id=$row['id'];
-        $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['customer_id']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger '><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
+        $str .= "<tr><td>{$row['employee_id']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td><td><button class='btn btn-primary btn-sm'><i class='fa fa-question'></i><a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=$appointment_id' onclick='return myFunction1($appointment_id)'>Reschedule</a></button>&nbsp<button class='btn btn-danger '><i class='fas fa-times'></i> <a style='color:white;text-decoration: none;' href='appointment-delete.php?id=$appointment_id' onclick='return myFunction($appointment_id)'>Cancel</a></button></td></tr>";
     }
 
     $str .= "</tbody>
@@ -84,8 +85,9 @@ if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
+        <p>No appointments available</p>
+    </div> ";
     }
     else{
         $str = "<div class='card-header'>
@@ -93,7 +95,7 @@ if($_POST['type'] == "stateData"){
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Employee Name</th>
-        <th>Customer Name</th>
+      
         <th>Date</th>
         <th>Day</th>
         <th>Time</th>
@@ -121,7 +123,7 @@ if($_POST['type'] == "stateData"){
         
         
         $time=date('G:i', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
     }
     $str .= "</tbody>
     </table><script src='https://code.jquery.com/jquery-3.5.1.js'></script>
@@ -177,8 +179,9 @@ if($_POST['type'] == "yearData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
+        <p>No appointments available</p>
+    </div> ";
     }
     else{
         $str = "<div class='card-header'>
@@ -186,7 +189,7 @@ if($_POST['type'] == "yearData"){
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Employee Name</th>
-        <th>Customer Name</th>
+       
         <th>Date</th>
         <th>Day</th>
         <th>Time</th>
@@ -212,7 +215,7 @@ if($_POST['type'] == "yearData"){
         $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $time=date('G:i', strtotime($row['time']));
-      $str .= "<tr><td>{$row1['name']}</td><td>{$row2['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
+      $str .= "<tr><td>{$row1['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
     }
     $str .= "</tbody>
     </table><script src='https://code.jquery.com/jquery-3.5.1.js'></script>
