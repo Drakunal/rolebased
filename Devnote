@@ -4,6 +4,6 @@
 --07/06/2021 Employee-panel.php bug fix and table modified, view-appointment.php created for employees
 --4/06/2021 Calendar added for employees, employee-panel.php,load.php changed and show-c.php created
 --2/06/2021 employee-panel.php updated and settings-c.php updated for employee too
---2/06/2021 customer-ajax.php created, settings-c.php andd customer panel updated
+--2/06/2021 customer-ajax.php created, settings-c.php and customer panel updated
 --2/06/2021 Customer section created with, navbar-c, settings-c,sidebar-c and update in customer-panel.php
 -- 31/05/2021 Devnote created and appointment-calendar.php updated with select code

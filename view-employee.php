@@ -19,6 +19,13 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 	<title>Tables | AdminKit Demo</title>
 	<link href="css/app.css" rel="stylesheet">
+	<style>
+	.bal {
+  max-width: 250px;
+  /* min-width: 50px; */
+  /* background-color: powderblue; */
+}
+	</style>
 </head>
 
 <body>
@@ -97,7 +104,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										<?php
 										if ($row1) {
 										?>
-											<p><strong>Details : </strong><?php echo $row1['details']; ?></p>
+											<p><strong>Details : </strong></p>
+											<div class="bal">
+												<?php echo $row1['details']; ?>
+											</div>
+										</br>
 											<p><strong>Color : </strong></p>
 											<div class="col-md-5">
 												<?php $color = $row1['color']; ?>
@@ -118,49 +129,49 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										?>
 										</br>
 										<div style='float:center'>
-										<?php
-										$sql_img =   "SELECT * from `employee_images` where employee_id = $e_id AND deleted_at is NULL";
-										$query_img = mysqli_query($db, $sql_img) or die("Query Unsuccessfuls.");
-										$row_img = $query_img->fetch_assoc();
+											<?php
+											$sql_img =   "SELECT * from `employee_images` where employee_id = $e_id AND deleted_at is NULL";
+											$query_img = mysqli_query($db, $sql_img) or die("Query Unsuccessfuls.");
+											$row_img = $query_img->fetch_assoc();
 
-										?>
+											?>
 											<button class='btn btn-primary'>
 												<i class="align-middle" data-feather="edit-3"></i>
 												<a style='color:white;text-decoration: none;' href='edit-employee-details.php?id=<?php echo $e_id; ?>'>Edit Additional Details</a>
 											</button>
-											<?php if(!$row_img) {
-										?>
-											</br></br>
-											
-											<div class="mb-3">
-												<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="employee-image.php?id=<?php echo $e_id ?>">Add Employee Image</a></button>
-											</div>
-										<?php
+											<?php if (!$row_img) {
+											?>
+												</br></br>
 
-										}else {
-										?>
-											</br></br>
-											
-											<div class="mb-3">
-												<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="edit-employee-image.php?id=<?php echo $e_id ?>">Change Employee Image</a></button>
-											</div>
-										<?php
+												<div class="mb-3">
+													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="employee-image.php?id=<?php echo $e_id ?>">Add Employee Image</a></button>
+												</div>
+											<?php
 
-										} ?>
+											} else {
+											?>
+												</br></br>
+
+												<div class="mb-3">
+													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="edit-employee-image.php?id=<?php echo $e_id ?>">Change Employee Image</a></button>
+												</div>
+											<?php
+
+											} ?>
 										</div>
 										</br>
 									</div>
 
 									<div class="float-right">
 										<?php
-										
+
 										if ($row_img) {
 											$path = $row_img["file_path"];
 
 										?>
-											<img float="right" height="200px" src="<?php echo ($path); ?>">
+											<img height="200em" src="<?php echo ($path); ?>">
 										<?php
-										} 
+										}
 										?>
 
 										</br>
