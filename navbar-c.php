@@ -26,13 +26,13 @@
 			if($row_img)
 			{ ?>
 				<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-				<img src="<?php echo $row_img['file_path']?>" class="avatar img-fluid rounded mr-1" alt="Charles Hall" /> <span class="text-dark"><?= $_SESSION['name'] ?></span>
+				<img src="<?php echo $row_img['file_path']?>" class="avatar img-fluid rounded mr-1" alt="image" /> <span class="text-dark"><?= $_SESSION['name'] ?></span>
 			</a>
 			<?php }
 			else{
 				?>
 			<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-							<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" /> <span class="text-dark"><?= $_SESSION['name'] ?></span>
+							<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="image" /> <span class="text-dark"><?= $_SESSION['name'] ?></span>
 						</a>
 				<?php
 

@@ -126,7 +126,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
                     $target = "img/avatars/" . $date . "kd" . basename($_FILES["image"]["name"]);
                     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target)) {
-                        mysqli_query($db, "INSERT INTO `employee_images` (employee_id, file_path) VALUES('$user_id', '$target');");
+                        mysqli_query($db, "UPDATE `employee_images` SET  file_path='$target' WHERE employee_id='$user_id';");
                         $response = array(
                             "type" => "success",
                             "message" => "Image uploaded successfully."
