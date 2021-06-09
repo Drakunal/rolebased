@@ -20,6 +20,15 @@
 											</div>
 										</div>
 
+										<div id="error" class="offset-md-4 alert alert-danger alert-dismissible d-none" role="alert">
+											<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button> -->
+											<div class="alert-message">
+												<strong>ERROR! Try again.</strong>
+											</div>
+										</div>
+
 
 	
 										
