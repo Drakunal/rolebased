@@ -62,15 +62,15 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 
                                         <div class="mb-3">
-                                            <label class="form-label">Image</label>
-                                            <input type="file" class="form-control" rows="1" name="image" id="image" value="" />
+                                            <label class="form-label">Image (Please select a square image for better result)<span style="color:red">*</span></label>
+                                            <input type="file" required class="form-control" rows="1" name="image" id="image" value="" />
 
                                         </div>
 
 
                                         <button type="submit" name="upload" class="btn btn-primary">Submit</button>
                                     </form>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                         "type" => "error",
                         "message" => "Choose image file to upload."
                     );
-                } 
+                }
                 // Validate file input to check if is with valid extension
                 else if (!in_array($file_extension, $allowed_image_extension)) {
                     $response = array(
@@ -112,37 +112,35 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                         "message" => "Upload valid images. Only PNG and JPEG are allowed."
                     );
                     // echo $result;
-                } 
-                    // Validate image file size
-                    else if (($_FILES["image"]["size"] > 4000000)) {
-                        $response = array(
-                            "type" => "error",
-                            "message" => "Image size exceeds 4MB"
-                        );
-                    }
-                      // Validate image file dimension
-                 else {
-                    $target = "img/avatars/" . basename($_FILES["image"]["name"]);
+                }
+                // Validate image file size
+                else if (($_FILES["image"]["size"] > 4000000)) {
+                    $response = array(
+                        "type" => "error",
+                        "message" => "Image size exceeds 4MB"
+                    );
+                }
+                // Validate image file dimension
+                else {
+                    $date = date("Y_m_d_h_i_sa");
+
+                    $target = "img/avatars/" . $date . "kd" . basename($_FILES["image"]["name"]);
                     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target)) {
-                        mysqli_query($db,"INSERT INTO `employee_images` (employee_id, file_path) VALUES('$user_id', '$target');");
+                        mysqli_query($db, "INSERT INTO `employee_images` (employee_id, file_path) VALUES('$user_id', '$target');");
                         $response = array(
                             "type" => "success",
                             "message" => "Image uploaded successfully."
                         );
-                        ?>
+            ?>
                         <script>
-									// document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
-                					// var success_class = document.getElementById('success').className;
-									// var delayInMilliseconds = 1000; //1.5 second
+                            // document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+                            // var success_class = document.getElementById('success').className;
+                            // var delayInMilliseconds = 1000; //1.5 second
 
-									
-										window.location.href = "employee-list.php";
-									
-									
-                                    
-								
-									</script>
-                                    <?php
+
+                            window.location.href = "employee-list.php";
+                        </script>
+            <?php
                     } else {
                         $response = array(
                             "type" => "error",
@@ -152,16 +150,16 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                 }
             }
             ?>
-<?php if(!empty($response)) { ?>
-                                <div class="response <?php echo $response["type"]; ?>">
-                                    <?php echo $response["message"]; ?>
-                                </div>
-                                <?php }?>
-                                
+            <?php if (!empty($response)) { ?>
+                <div class="response <?php echo $response["type"]; ?>">
+                    <?php echo $response["message"]; ?>
+                </div>
+            <?php } ?>
 
 
 
-            
+
+
 
             <?php include("footer.php"); ?>
         </div>
