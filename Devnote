@@ -1,3 +1,4 @@
+--09/06/2021 add-employee.php,add-employee-details.php and employee-image.php modified, so that they all will be called one after another after adding
 --09/06/2021 edit-employee-image.php created and navbar-c.php nd employee-image.php modified
 --09/06/2021 employee-image.php created, navbar.php and view-employee.php updated for showing employee image and error
 --08/06/2021 customer-ajax.php and customer-panel.php updated, customer part complete

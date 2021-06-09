@@ -83,7 +83,15 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
             <?php
             if (isset($_POST["upload"])) {
-                $user_id = $_GET['id'];
+
+                $email = $_GET['id'];
+                $res = mysqli_query($db, "SELECT id from `users` WHERE user_id='$email';");
+                $row = $res->fetch_assoc();
+
+
+
+                $user_id = $row['id'];
+                // $user_id = $_GET['id'];
                 // Get Image Dimension
                 $fileinfo = @getimagesize($_FILES["image"]["tmp_name"]);
                 $width = $fileinfo[0];

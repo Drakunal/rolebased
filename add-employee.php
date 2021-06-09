@@ -347,7 +347,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									var delayInMilliseconds = 1000; //1.5 second
 
 									setTimeout(function() {
-										window.location.href = "employee-list.php";
+										window.location.href = "add-employee-details.php?id=<?php echo $email ?>";
 									}, delayInMilliseconds);
                						
 									

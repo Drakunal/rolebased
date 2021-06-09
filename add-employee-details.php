@@ -101,7 +101,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<?php
                     if(isset($_POST['submit']))
                     {
-                        $user_id = $_GET['id'];
+						$email=$_GET['id'];
+                       $res= mysqli_query($db,"SELECT id from `users` WHERE user_id='$email';");
+						$row=$res->fetch_assoc();
+
+
+
+                        $user_id = $row['id'];
                         
                         $details=$_POST['details'];
 						$color=$_POST['color'];
@@ -121,7 +127,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									var delayInMilliseconds = 1000; //1.5 second
 
 									setTimeout(function() {
-										window.location.href = "employee-list.php";
+										window.location.href = "employee-image.php?id=<?php echo $email ?>";
 									}, delayInMilliseconds);
                             
                         
