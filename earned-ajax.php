@@ -4,220 +4,218 @@
 session_start();
 include "connection.php";
 
-if($_POST['type'] == ""){
-    $month= date("F");
-    $year=date("Y");
-    $null=null;
-    $query = mysqli_query($db,"SELECT SUM(time_alloted)
+if ($_POST['type'] == "") {
+    $month = date("F");
+    $year = date("Y");
+    $null = null;
+    $query = mysqli_query($db, "SELECT SUM(time_alloted)
     FROM `appointments`
     WHERE Month(date)=$month AND
      Year(date)=$year  AND
-       deleted_at is NULL; ")or die("Query Unsuccessfuls.");
+       deleted_at is NULL; ") or die("Query Unsuccessfuls.");
     // echo $month;
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
-    if(mysqli_num_rows ( $query )==0){
-        $str="<div class='card-header'>
+    if (mysqli_num_rows($query) == 0) {
+        $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
-    }else{
-    $str = "0 hours";
-    while($row = mysqli_fetch_assoc($query)){
-        // $day=date("l", strtotime($row['date']));
-        // $appointment_id=$row['id'];
-        $str = "{$row['SUM(time_alloted)']} hours";
-    }}
+    } else {
+        $str = "0 hours";
+        while ($row = mysqli_fetch_assoc($query)) {
+            // $day=date("l", strtotime($row['date']));
+            // $appointment_id=$row['id'];
+            $str = "{$row['SUM(time_alloted)']} hours";
+        }
+    }
 }
-if($_POST['type'] == "stateData"){
+if ($_POST['type'] == "stateData") {
 
-    $null=null;
+    $null = null;
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
-    $employee_id1=$_POST['e_id'];
-    if($employee_id1!=0){
-        $sql="SELECT SUM(time_alloted)
+    $employee_id1 = $_POST['e_id'];
+    if ($employee_id1 != 0) {
+        $sql = "SELECT *
         FROM `appointments`
         WHERE Month(date)={$_POST['id']} AND
          Year(date)={$_POST['year']} AND
           employee_id=$employee_id1 AND
            deleted_at is NULL; ";
-
-
-    }
-    else{
-        $sql="SELECT SUM(time_alloted)
+    } else {
+        $sql = "SELECT *
         FROM `appointments`
         WHERE Month(date)={$_POST['id']} AND
          Year(date)={$_POST['year']} AND
           deleted_at is NULL;";
-
     }
-    $query = mysqli_query($db,$sql) or die("Query Unsuccessful1.");
- 
-    if(mysqli_num_rows ( $query )==0){
-        $str="<div class='card-header'>
+    $query = mysqli_query($db, $sql) or die("Query Unsuccessful1.");
+    $rut = 0;
+    $non_rut = 0;
+
+    if (mysqli_num_rows($query) == 0) {
+        $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
-    }
-    else{
-        $str = "0 hours ";
-    while($row = mysqli_fetch_assoc($query)){
-        // echo $row['employee_id'];
-        // $employee_id=$row['employee_id'];
-        // echo $employee_id;
-        // $role="employee";
-        // $sql1="SELECT name from `users` where id=$employee_id";
-        // $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
-        // $row1 = mysqli_fetch_assoc($query1);
-        // $day=date("l", strtotime($row['date']));
-        
-        // $customer_id=$row['customer_id'];
-        // echo $employee_id;
-        // $role="employee";
-        // $sql2="SELECT name from `users` where id=$customer_id";
-        // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
-        // $row2 = mysqli_fetch_assoc($query2);
-        // $appointment_id=$row['id'];
+    } else {
+        $str = " ";
 
-        // print_r($row) ;
-        
-        // $time=date('G:i', strtotime($row['time']));
-      $str = "{$row['SUM(time_alloted)']} hours";
-    }
-    if($str==" hours")
-    {
-        $str="0 hours";
-    }
-    $str .= "";
-    }
+        while ($row = mysqli_fetch_assoc($query)) {
 
-    
+            $customer_id = $row['customer_id'];
+            $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$customer_id";
+            $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
+            $row2 = mysqli_fetch_assoc($query2);
+            $base_price = $row2['base_price'];
+            $time_alloted = $row2['time_alloted'];
+
+            if ($row2['is_personal'] == 1) //if it is personal use
+            {
+                $rut = $rut + ($base_price * $time_alloted);
+            } else if ($row2['is_personal'] == 0) //if it is company use
+            {
+                $non_rut = $non_rut + ($base_price * $time_alloted);
+            }
+        }
+    }
+    $str = "<table class='table'>
+        <th>RUT</th>
+        <th>Non - RUT</th>
+        <th>Total</th>
+        <tr>
+        <td>" . $rut . " Kr
+        </td>
+        <td>" . $non_rut . " Kr
+        </td>
+        <td>" . ($non_rut+$rut) . " Kr
+        </td>
+        </tr>
+    </table>";
 }
 
 
-if($_POST['type'] == "yearData"){
-    $null=null;
+if ($_POST['type'] == "yearData") {
+    $null = null;
 
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
-    $employee_id1=$_POST['e_id'];
-    if($employee_id1!=0){
-        $sql="SELECT SUM(time_alloted)
+    $employee_id1 = $_POST['e_id'];
+    if ($employee_id1 != 0) {
+        $sql = "SELECT *
         FROM `appointments`
         WHERE Month(date)={$_POST['id']} AND
          Year(date)={$_POST['year']} AND
           employee_id=$employee_id1 AND
            deleted_at is NULL; ";
-
-
-    }
-    else{
-        $sql="SELECT SUM(time_alloted)
+    } else {
+        $sql = "SELECT *
         FROM `appointments`
         WHERE Month(date)={$_POST['id']} AND
          Year(date)={$_POST['year']} AND
           deleted_at is NULL;";
-
     }
-    $query = mysqli_query($db,$sql) or die("Query Unsuccessfult.");
- 
-    if(mysqli_num_rows ( $query )==0){
-        $str="<div class='card-header'>
+    $query = mysqli_query($db, $sql) or die("Query Unsuccessfult.");
+    $rut = 0;
+    $non_rut = 0;
+
+    if (mysqli_num_rows($query) == 0) {
+        $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
-    }
-    else{
-        $str = " 0 hours";
-    while($row = mysqli_fetch_assoc($query)){
+    } else {
+        $str = " ";
 
-        // echo $row['employee_id'];
-        // $employee_id=$row['employee_id'];
-        // echo $employee_id;
-        // $role="employee";
-        // $sql1="SELECT name from `users` where id=$employee_id";
-        // $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
-        // $row1 = mysqli_fetch_assoc($query1);
-        // $appointment_id=$row['id'];
+        while ($row = mysqli_fetch_assoc($query)) {
 
-        // $day=date("l", strtotime($row['date']));
-        // $customer_id=$row['customer_id'];
-        // echo $employee_id;
-        // $role="employee";
-        // $sql2="SELECT name from `users` where id=$customer_id";
-        // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
-        // $row2 = mysqli_fetch_assoc($query2);
-        // $time=date('G:i', strtotime($row['time']));
-      $str = "{$row['SUM(time_alloted)']} hours";
-    }
-    if($str==" hours")
-    {
-        $str="0 hours";
-    }
-    $str .= " ";
-    }
+            $customer_id = $row['customer_id'];
+            $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$customer_id";
+            $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
+            $row2 = mysqli_fetch_assoc($query2);
+            $base_price = $row2['base_price'];
+            $time_alloted = $row2['time_alloted'];
 
-    
+            if ($row2['is_personal'] == 1) //if it is personal use
+            {
+                $rut = $rut + ($base_price * $time_alloted);
+            } else if ($row2['is_personal'] == 0) //if it is company use
+            {
+                $non_rut = $non_rut + ($base_price * $time_alloted);
+            }
+        }
+    }
+    $str = "<table class='table'>
+        <th>RUT</th>
+        <th>Non - RUT</th>
+        <th>Total</th>
+        <tr>
+        <td>" . $rut . " Kr
+        </td>
+        <td>" . $non_rut . " Kr
+        </td>
+        <td>" . ($non_rut+$rut) . " Kr
+        </td>
+        </tr>
+    </table>";
 }
 
-if($_POST['type'] == "employeeData"){
+if ($_POST['type'] == "employeeData") {
 
-    $null=null;
+    $null = null;
     // $sql =   "SELECT date,time,employee_id,customer_id from `appointments` where employee_id = {$_POST['id']} AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month";
-    $employee_id1=$_POST['e_id'];
-    if($employee_id1!=0){
-        $sql="SELECT SUM(time_alloted)
+    $employee_id1 = $_POST['e_id'];
+    if ($employee_id1 != 0) {
+        $sql = "SELECT *
         FROM `appointments`
         WHERE Month(date)={$_POST['id']} AND
          Year(date)={$_POST['year']} AND
           employee_id=$employee_id1 AND
            deleted_at is NULL; ";
-
-
-    }
-    else{
-        $sql="SELECT SUM(time_alloted)
+    } else {
+        $sql = "SELECT *
         FROM `appointments`
         WHERE Month(date)={$_POST['id']} AND
          Year(date)={$_POST['year']} AND
            deleted_at is NULL; ";
+    }
+    $query = mysqli_query($db, $sql) or die("Query Unsuccessfula.");
+    $rut = 0;
+    $non_rut = 0;
 
-    } 
-       $query = mysqli_query($db,$sql) or die("Query Unsuccessfula.");
- 
-    if(mysqli_num_rows ( $query )==0){
-        $str="<div class='card-header'>
+    if (mysqli_num_rows($query) == 0) {
+        $str = "<div class='card-header'>
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
-    }
-    else{
-        $str = "0 hours ";
-    while($row = mysqli_fetch_assoc($query)){
-        // $appointment_id=$row['id'];
+    } else {
+        $str = " ";
 
-        // echo $row['employee_id'];
-        // $employee_id=$row['employee_id'];
-        // echo $employee_id;
-        // $role="employee";
-        // $sql1="SELECT name from `users` where id=$employee_id";
-        // $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
-        // $row1 = mysqli_fetch_assoc($query1);
+        while ($row = mysqli_fetch_assoc($query)) {
 
+            $customer_id = $row['customer_id'];
+            $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$customer_id";
+            $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
+            $row2 = mysqli_fetch_assoc($query2);
+            $base_price = $row2['base_price'];
+            $time_alloted = $row2['time_alloted'];
 
-        // $day=date("l", strtotime($row['date']));
-        // $customer_id=$row['customer_id'];
-        // echo $employee_id;
-        // $role="employee";
-        // $sql2="SELECT name from `users` where id=$customer_id";
-        // $query2 = mysqli_query($db,$sql2) or die("Query Unsuccessful.");
-        // $row2 = mysqli_fetch_assoc($query2);
-        // $time=date('G:i', strtotime($row['time']));
-      $str = "{$row['SUM(time_alloted)']} hours";
+            if ($row2['is_personal'] == 1) //if it is personal use
+            {
+                $rut = $rut + ($base_price * $time_alloted);
+            } else if ($row2['is_personal'] == 0) //if it is company use
+            {
+                $non_rut = $non_rut + ($base_price * $time_alloted);
+            }
+        }
     }
-    if($str==" hours")
-    {
-        $str="0 hours";
-    }
-    $str .= " ";
-    }
-
-    
+    $str = "<table class='table'>
+        <th>RUT</th>
+        <th>Non - RUT</th>
+        <th>Total</th>
+        <tr>
+        <td>" . $rut . " Kr
+        </td>
+        <td>" . $non_rut . " Kr
+        </td>
+        <td>" . ($non_rut+$rut) . " Kr
+        </td>
+        </tr>
+    </table>";
 }
 
 echo $str;
