@@ -56,8 +56,26 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 				//for customer count
 				$role_c = "customer";
-				$customer = mysqli_query($db, "SELECT count(id) from `users` where role='$role_c' AND deleted_at is NULL;;");
+				$customer = mysqli_query($db, "SELECT count(id) from `users` where role='$role_c' AND deleted_at is NULL;");
 				$customer_count = $customer->fetch_assoc();
+				$month= date("m");
+				$year=date("Y");
+			
+				$appointment_query = mysqli_query($db,"SELECT count(id)
+				FROM `appointments`
+				WHERE Month(date)=$month AND
+				 Year(date)=$year  AND
+				   deleted_at is NULL; ")or die("Query Unsuccessfuls.");
+				$appointment_count = $appointment_query->fetch_assoc();
+
+
+				$appointment_query2 = mysqli_query($db,"SELECT count(id)
+				FROM `appointments`
+				WHERE date=CURDATE()  AND
+				   deleted_at is NULL; ")or die("Query Unsuccessfuls.");
+				$appointment_count2 = $appointment_query2->fetch_assoc();
+
+
 				// echo $customer_count['count(id)'];
 
 				?>
@@ -127,6 +145,91 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											</div>
 										</div> -->
 									</div>
+									
+									
+									<!-- <div class="">
+										<div class="card">
+											<div class="card-body">
+											
+												
+											</div>
+										</div>
+									</div> -->
+
+
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="col-xl-6 col-xxl-7">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Recent Movement</h5>
+								</div>
+								<div class="card-body py-3">
+									<div class="chart chart-sm">
+										<canvas id="chartjs-dashboard-line"></canvas>
+									</div>
+								</div>
+							</div>
+						</div> -->
+
+
+
+
+					<!-- </div>
+
+					<div class="row"> -->
+						<div class="col-xl-6 col-xxl-5 d-flex">
+							<div class="w-100">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<h5 class="card-title mb-4">Appointments this month</h5>
+												<h1 class="mt-1 mb-3"><?php echo $appointment_count['count(id)']; ?></h1>
+												<div class="mb-1">
+													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+													<!-- <span class="text-muted">Since last week</span> -->
+												</div>
+											</div>
+										</div>
+										<!-- <div class="card">
+											<div class="card-body">
+												<h5 class="card-title mb-4">Visitors</h5>
+												<h1 class="mt-1 mb-3">14.212</h1>
+												<div class="mb-1">
+													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 5.25% </span>
+													<span class="text-muted">Since last week</span>
+												</div>
+											</div>
+										</div> -->
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<h5 class="card-title mb-4">Today's Appointments</h5>
+												<h1 class="mt-1 mb-3"><?php echo $appointment_count2['count(id)']; ?></h1>
+												<div class="mb-1">
+													<!-- <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span> -->
+													<!-- <span class="text-muted">Since last week</span> -->
+												</div>
+											</div>
+										</div>
+										<!-- <div class="card">
+											<div class="card-body">
+												<h5 class="card-title mb-4">Orders</h5>
+												<h1 class="mt-1 mb-3">64</h1>
+												<div class="mb-1">
+													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
+													<span class="text-muted">Since last week</span>
+												</div>
+											</div>
+										</div> -->
+									</div>
+									
+									
 									<!-- <div class="">
 										<div class="card">
 											<div class="card-body">
@@ -159,6 +262,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 
 					</div>
+
+
 					<div class="row">
 						<div class="col-xl-6 col-xxl-7">
 							<div class="card flex-fill w-100">
