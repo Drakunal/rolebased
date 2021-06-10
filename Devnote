@@ -1,3 +1,4 @@
+--10/06/2021 dashboard-hours-worked.php modified to have rut non rut and total hours
 --10/06/2021 earned-ajax.php updated, now shows rut , non-rut and total
 --10/06/2021 earned-ajax.php and gitignore created and admin-panel.php is modified
 --10/06/2021 view-customer.php and add-customer-details.php, new field added and ui modified
