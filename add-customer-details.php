@@ -73,6 +73,19 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
+												<label class="form-label">Is this for Private company use?</label>
+												<label class="form-check"><input class="form-check-input" type="radio" value="1"  name="yesno1" id="noCheck1" checked>
+														<span class="form-check-label">
+															No
+														</span></label>
+												<label class="form-check">
+													<input class="form-check-input" type="radio"  name="yesno1" id="yesCheck1" value="0">
+														<span class="form-check-label">
+															Yes
+														</span>
+												</label>
+											</div>
+										<div class="mb-3">
 											<label class="form-label">Time alloted in hours</label>
 											<input type="number" required step="0.1" name="time"class="form-control" placeholder="number of hours">
 										</div>
@@ -88,12 +101,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                         
 										<div class="mb-3">
 											<label class="form-label">Details</label>
-											<textarea required class="form-control"name="details" placeholder="Details" rows="1"></textarea>
+											<textarea  class="form-control"name="details" placeholder="Details" rows="1"></textarea>
 										</div>
 
 										<div class="mb-3">
 											<label class="form-label">Admins Note</label>
-											<textarea required class="form-control"name="admin-note" placeholder="Will be seen by admin only" rows="1"></textarea>
+											<textarea  class="form-control"name="admin-note" placeholder="Will be seen by admin only" rows="1"></textarea>
 										</div>
 										<div class="mb-3">
 											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
@@ -299,9 +312,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div> -->
 							</div>
 						</div>
-					</div>
+					<!-- </div>
 
-				</div>
+				</div> -->
 			</main>
 
 
@@ -315,6 +328,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					$admin_note=$_POST['admin-note'];
 					$appointment_type=$_POST['appointment-type'];
 					$regularity=$_POST['yesno'];
+					$personal=$_POST['yesno1'];
 					if($regularity=="not-regular"){
 						$appointment_type=$regularity;
 					}
@@ -383,7 +397,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					// }
 					// }
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type,base_price,admin_note) VALUES('$user_id', '$details','$time','$appointment_type','$base_price','$admin_note');");
+					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type,base_price,admin_note,is_personal) VALUES('$user_id', '$details','$time','$appointment_type','$base_price','$admin_note','$personal');");
 				
 					?>
 								<script>

@@ -1,3 +1,4 @@
+--10/06/2021 view-customer.php and add-customer-details.php, new field added and ui modified
 --10/06/2021 New database structure added with is_personal field and some changes
 --09/06/2021 add-employee.php,add-employee-details.php and employee-image.php modified, so that they all will be called one after another after adding
 --09/06/2021 edit-employee-image.php created and navbar-c.php nd employee-image.php modified

@@ -1,9 +1,8 @@
 <?php
 session_start();
 include "connection.php";
-if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
-{
-    header("location:index.php");
+if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
+	header("location:index.php");
 }
 ?>
 
@@ -29,18 +28,18 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				
-        <?php include("sidebar.php"); ?>
+
+				<?php include("sidebar.php"); ?>
 			</div>
 		</nav>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
-          			<i class="hamburger align-self-center"></i>
-        		</a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
-				
+
 				<?php include("navbar.php"); ?>
 			</nav>
 
@@ -52,213 +51,179 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								<div class="card-header">
-									<!-- <h5 class="card-title">Employee Table</h5> -->
-									<!-- <h6 class="card-subtitle text-muted">Add <code>.table-bordered</code> for borders on all sides of the table and cells.</h6> -->
-								</div>
-								<table class="table table-bordered">
-									<thead>
-										<tr>
-											<th style="width:40%;">Customer ID</th>
-											<th style="width:25%">Name</th>
-											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Role</th>
-                                            <th>Password</th>
-										</tr>
-									</thead>
-									<tbody>
-                                   
-                                        <?php 
-                                        $user_id = $_GET['id'];
-										$role="customer";
-										$sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
-										$result = mysqli_query($db,"SELECT id,user_id,name,role,password from `users` where user_id='$user_id';");
-										$row = $result->fetch_assoc();
-										$idd=$row["id"];
-										// echo $idd;
-										$result2 = mysqli_query($db,"SELECT base_price,appointment_type,details,time_alloted,admin_note from `customer_details` where user_id='$idd';");
-										$row2 = $result2->fetch_assoc();
-										// echo $result;
-										if ($result) {?>
-                                             <?php
-                                                // output data of each row
-                                                $customer_id=$row["user_id"];
-                                                echo "<tr><td>".$customer_id."</td><td>".$row["name"]."</td><td class='table-action'>".$row["role"]."</td></td><td class='table-action'>".$row["password"]."</td></tr>";
-                                                ?>
-                                                <!-- <tr>
-                                                    <td>Vanessa Tucker</td>
-                                                    <td>864-348-0485</td>
-                                                    
-                                                    <td class="table-action">
-                                                        <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                                                        <a href="#"><i class="align-middle" data-feather="trash"></i></a>
-                                                    </td>
-										        </tr> -->
-                                                <!-- <tr>
-                                                    <td> -->
-                                                        <?php
-                                                         //$row["user_id"];
-                                                          ?> 
-                                                <!-- </td>
-                                                    <td> -->
-                                                       <?php
-                                                       //  $row["name"];
-                                                         // ?>
-                                                     <!-- </td> -->
-                                                    <!-- <td class="table-action">
-                                                        <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                                                        <a href="#"><i class="align-middle" data-feather="trash"></i></a>
-                                                    </td> -->
-                                                </tr>
-                                                <?php
-
-                                                
-                                                
-                                            }
-                                            ?>
-										
-									</tbody>
-								</table>
-								</br></br></br>
-								<?php if($row2){
-
-									$time_alloted=$row2["time_alloted"];
-									
-										$pos = strpos($time_alloted, '.');
-										if($pos === false) { // it is integer number
-											$time_alloted=$time_alloted;
-										}else{ // it is decimal number
-											$time_alloted=rtrim(rtrim($time_alloted, '0'), '.');
-										}
-									
-									?>
-								<div>
 								<div class="card-body">
-								<h4>Additional Details</h4>
-								<p><strong>Details :</strong></p> <?php echo $row2["details"]; ?></br></br>
-								<p><strong>Base Price : </strong><?php echo $row2['base_price']; ?> Kr</p>
-								<p><strong>Time Alloted :</strong></p> <?php echo $time_alloted; ?> hours</br></br>
-								<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row2['admin_note']; ?></p>
-								<p><strong>Appointment Type :</strong></p> <?php 
-								if($row2["appointment_type"]=="monthly")
-								{
-									echo "Monthly";
-								}
-								elseif($row2["appointment_type"]=="bi-weekly")
-								{
-									echo "Bi-weekly";
-								} 
-								elseif($row2["appointment_type"]=="not-regular")
-								{
-									echo "Not-regular";
-								}
-								elseif($row2["appointment_type"]=="weekly")
-								{
-									echo "Weekly";
-								} ?>
-														
-								<div class='card'>
-								<div class="mb-3">
-								<div style='float:left'>
-                                                        <!-- <button class='btn btn-primary'>
-                                                        <i class='fa fa-question'></i>
-                                                        <a style='color:white;text-decoration: none;' href='holiday-reschedule.php?id=<?php 
-														// echo $event_id;
-														?>'>Edit Customer</a>
-                                                        
-                                                        </button>
-                                                        </div> -->
-                                                        
-                                                    
-                                                        <div style='float:center' >
-                                                        <button class='btn btn-primary' >
-                                                        <i class="align-middle" data-feather="edit-3"></i> 
-                                                        <a style='color:white;text-decoration: none;' href='edit-customer-details.php?id=<?php echo $idd;?>'>Edit Additional Details</a>
-                                                        </button></div>
-														</br>
 
-								<?php 
-								$result3 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND deleted_at is NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL;");
-								$row3 = $result3->fetch_assoc();
-								if($row3){
-									?>
-								</br>
-								<?php 
-									$employee_id=$row3["employee_id"];
-									$employee_query=mysqli_query($db,"SELECT name from `users` where id='$employee_id' AND deleted_at is NULL");
-									$employee_row = $employee_query->fetch_assoc();
-								 ?>
-								<h4>Appointment Details</h4>
-								<p><strong>Time :</strong></p> <?php 
-								echo date('G:i', strtotime($row3["time"]));
-								 ?></br></br>
-								<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-								<p><strong>Employee-Name :</strong></p> <?php echo $employee_row['name']; ?></br></br>
-								<?php
-									if($row2["appointment_type"]=="bi-weekly"){
-										// $result4 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
-										$row3 = $result3->fetch_assoc();
-										if($row3){
+
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th style="width:40%;">Customer ID</th>
+												<th style="width:25%">Name</th>
+
+												<th>Role</th>
+												<th>Password</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<?php
+											$user_id = $_GET['id'];
+											$role = "customer";
+											$sql = "SELECT user_id, name FROM users WHERE user_id=`$user_id`";
+											$result = mysqli_query($db, "SELECT id,user_id,name,role,password from `users` where user_id='$user_id';");
+											$row = $result->fetch_assoc();
+											$idd = $row["id"];
+											// echo $idd;
+											$result2 = mysqli_query($db, "SELECT base_price,appointment_type,details,time_alloted,admin_note,is_personal from `customer_details` where user_id='$idd';");
+											$row2 = $result2->fetch_assoc();
+											// echo $result;
+											if ($result) { ?>
+												<?php
+												// output data of each row
+												$customer_id = $row["user_id"];
+												echo "<tr><td>" . $customer_id . "</td><td>" . $row["name"] . "</td><td class='table-action'>" . $row["role"] . "</td></td><td class='table-action'>" . $row["password"] . "</td></tr>";
+												?>
+
+												</tr>
+											<?php
+
+											}
 											?>
-										
-										<h4>Second Appointment Details</h4>
-										<p><strong>Time :</strong></p> <?php 
-										echo date('G:i', strtotime($row3["time"]));
-										 ?></br></br>
-										<p><strong>Date :</strong></p> <?php echo $row3["date"]; ?></br></br>
-										<p><strong>Employee-Name :</strong></p> <?php echo $employee_row['name']; ?></br></br>
-										<?php
 
+										</tbody>
+									</table>
+									</br></br></br>
+									<?php if ($row2) {
+
+										$time_alloted = $row2["time_alloted"];
+
+										$pos = strpos($time_alloted, '.');
+										if ($pos === false) { // it is integer number
+											$time_alloted = $time_alloted;
+										} else { // it is decimal number
+											$time_alloted = rtrim(rtrim($time_alloted, '0'), '.');
 										}
-										else{
-											?>
-											<h4>No Second Appointment present</h4>
-											
-										
-											<?php }
-										
-									}
-									 }
-									 else{
-										 ?>
-										 <div class="mb-3">
-										<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>
-										</div>
-										<?php
-									 } 
-								 ?>
-									
-								</div>
-							</div>
-								<?php } 
-								else{
+
 									?>
-									<h4>No Additional Details present</h4>
-									
-								<div class="mb-3">
-									<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Add Customer details</a></button>
-								</div>
+
+
+										<h4>Additional Details</h4>
+										<?php if ($row2["details"] != NULL) {
+										?>
+											<p><strong>Details :</strong> <?php echo $row2["details"]; ?></p>
+										<?php } ?>
+										<p><strong>Customer Type :</strong>
+											<?php if ($row2["is_personal"] == 0) {
+												echo "Private Company";
+											} elseif ($row2["is_personal"] == 1) {
+												echo "Personal Use";
+											} ?></p>
+
+										<p><strong>Base Price : </strong><?php echo $row2['base_price']; ?> Kr</p>
+										<p><strong>Time Alloted : </strong><?php echo $time_alloted; ?> hours</p>
+										<?php if ($row2["admin_note"] != NULL) {
+										?>
+											<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row2['admin_note']; ?></p>
+										<?php } ?>
+
+										<p><strong>Appointment Type : </strong> <?php
+																				if ($row2["appointment_type"] == "monthly") {
+																					echo "Monthly";
+																				} elseif ($row2["appointment_type"] == "bi-weekly") {
+																					echo "Bi-weekly";
+																				} elseif ($row2["appointment_type"] == "not-regular") {
+																					echo "Not-regular";
+																				} elseif ($row2["appointment_type"] == "weekly") {
+																					echo "Weekly";
+																				} ?></p>
+
+
+
+										<!-- <div style='float:left'> -->
+
+
+
+										<div style='float:center'>
+											<button class='btn btn-primary'>
+												<i class="align-middle" data-feather="edit-3"></i>
+												<a style='color:white;text-decoration: none;' href='edit-customer-details.php?id=<?php echo $idd; ?>'>Edit Additional Details</a>
+											</button>
+										</div>
+
+										</br>
+
+										<?php
+										$result3 = mysqli_query($db, "SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd' AND deleted_at is NULL AND date >= CURRENT_DATE AND date<= CURRENT_DATE+ interval 1 month AND deleted_at is NULL;");
+										$row3 = $result3->fetch_assoc();
+										if ($row3) {
+										?>
+											</br>
+											<?php
+											$employee_id = $row3["employee_id"];
+											$employee_query = mysqli_query($db, "SELECT name from `users` where id='$employee_id' AND deleted_at is NULL");
+											$employee_row = $employee_query->fetch_assoc();
+											?>
+											<hr>
+											<h4>Appointment Details</h4>
+											<p><strong>Time : </strong><?php echo date('G:i', strtotime($row3["time"])); ?></p>
+											<p><strong>Date : </strong><?php echo $row3["date"]; ?></p> 
+											<p><strong>Employee-Name : </strong><?php echo $employee_row['name']; ?></p> 
+											<?php
+											if ($row2["appointment_type"] == "bi-weekly") {
+												// $result4 = mysqli_query($db,"SELECT date,time,employee_id,customer_id from `appointments` where customer_id='$idd';");
+												$row3 = $result3->fetch_assoc();
+												if ($row3) {
+											?>
+
+													<h4><u>Second Appointment Details</u></h4>
+													<p><strong>Time : </strong> <?php
+																					echo date('G:i', strtotime($row3["time"]));
+																					?></p>
+													<p><strong>Date : </strong> <?php echo $row3["date"]; ?></p>
+													<p><strong>Employee-Name : </strong><?php echo $employee_row['name']; ?></p> 
+												<?php
+
+												} else {
+												?>
+													<h4>No Second Appointment present</h4>
+
+
+											<?php }
+											}
+										} else {
+											?>
+											<div class="mb-3">
+												<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-appointment.php?id=<?php echo $idd ?>">Add Customer Appointment</a></button>
+											</div>
+										<?php
+										}
+										?>
+
+										<!-- </div> -->
+
+									<?php } else {
+									?>
+										<h4>No Additional Details present</h4>
+
+										<div class="mb-3">
+											<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-customer-details.php?id=<?php echo $row['user_id'] ?>">Add Customer details</a></button>
+										</div>
 									<?php } ?>
-								
+
+
+
+
+
+
+
+								</div>
+
 							</div>
-							</div>
-							<!-- </div>
-					
-						</div> -->
-
-						
-
-						
-					</div>
-
-				</div>
 			</main>
 
-		<!-- </div>
-		
-	</div> -->
-	<?php include("footer.php"); ?>
-	<script src="js/app.js"></script>
+
+			<?php include("footer.php"); ?>
+			<script src="js/app.js"></script>
 
 </body>
 
