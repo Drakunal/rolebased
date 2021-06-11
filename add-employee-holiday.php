@@ -128,7 +128,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					$title=$employee_name."-".$title;
 					// $every_year=$_POST['every_year']; //if 1 then yes
 					$start_date=$_POST['start-date'];
-                    $end_date=$_POST['end-date'];
+                    
+					$your_date = strtotime("1 day", strtotime($_POST['end-date']));
+					$end_date = date("Y-m-d", $your_date);
                     
 					$color="#ff726f";
                     

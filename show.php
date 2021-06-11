@@ -91,8 +91,14 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                                     $employee_name = $row0['name'];
 													$start_date=$row['start_event'];
 													$start_date=date("Y-m-d", strtotime($start_date));
-													$end_date=$row['end_event'];
-													$end_date=date("Y-m-d", strtotime($end_date));
+													$date=$row['end_event'];
+													$date=date("Y-m-d", strtotime($date));
+													$date = date_create_from_format('Y-m-d', $date);
+													$date->getTimestamp();
+													date_sub($date,date_interval_create_from_date_string("1 days"));
+													$end_date= date_format($date,"Y-m-d");
+													
+													
 													?>
 													<thead>
 													<tr>
