@@ -264,6 +264,10 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												$time_alloted = rtrim(rtrim($time_alloted, '0'), '.');
 											}
 
+											$sql77 = "SELECT additional_charge,invoice_charge,comment  FROM appointments WHERE id='$appointment_id'";
+											$result77 = mysqli_query($db, $sql77) or die("Query unsuccessful1");
+											$row77 = $result77->fetch_assoc();
+
 							?>
 
 							<p><strong>Customer Name : </strong><?php echo $row2['name']; ?></p>
@@ -285,7 +289,18 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 																	} elseif ($row3["appointment_type"] == "weekly") {
 																		echo "Weekly";
 																	} ?></p>
+							<?php if ($row77['additional_charge'] != 0.00) { ?>
+								<p><strong>Additional Charge : </strong><?php echo $row77['additional_charge']; ?> Kr</p>
+							<?php } ?>
+							<?php if ($row77['invoice_charge'] != 0.00) { ?>
+								<p><strong>Invoice Charge : </strong><?php echo $row77['invoice_charge']; ?> Kr</p>
+							<?php } ?>
+							<?php if ($row77['comment'] != Null) { ?>
+								<p><strong>Comment : </strong><?php echo $row77['comment']; ?></p>
+							<?php } ?>
+
 							</br>
+
 
 							<!-- <div style='float:left'>
 								<button class='btn btn-primary'>
@@ -310,6 +325,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 								</button>
 							</div> -->
 							<hr>
+
+
 							<div class="btn-group" style="width:100%">
 								<button class='btn btn-primary'>
 									<i class='fa fa-edit'></i>
@@ -321,10 +338,17 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									<a style='color:white;text-decoration: none;' href='employee-change.php?id=<?php echo $appointment_id; ?>'>Change Employee for All</a>
 
 								</button>
-								<button class='btn btn-primary'>
-									<i class='fas fa-plus'></i>
-									<a style='color:white;text-decoration: none;' href='add-appointment-extras.php?id=<?php echo $appointment_id; ?>'>Add Extras</a>
-								</button>
+								<?php if ($row77['comment'] != Null || $row77['invoice_charge'] != 0.00 || $row77['additional_charge'] != 0.00) { ?>
+									<button class='btn btn-primary'>
+										<i class='fas fa-plus'></i>
+										<a style='color:white;text-decoration: none;' href='edit-appointment-extras.php?id=<?php echo $appointment_id; ?>'>Edit Extras</a>
+									</button>
+								<?php } else { ?>
+									<button class='btn btn-primary'>
+										<i class='fas fa-plus'></i>
+										<a style='color:white;text-decoration: none;' href='add-appointment-extras.php?id=<?php echo $appointment_id; ?>'>Add Extras</a>
+									</button>
+								<?php } ?>
 								<button class='btn btn-danger'>
 									<i class='fas fa-times'></i>
 									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id; ?>'>Cancel</a>
