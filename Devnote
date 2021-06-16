@@ -1,3 +1,4 @@
+--16/06/2021 dashboard-hours-worked-ajax.php and earned-ajax.php modified with rut non rut to personal govt and company
 --11/06/2021 add-employee-holiday.php, show-c.php and show.php modified with end date bug fix
 --10/06/2021 dashboard-hours-worked.php modified to have rut non rut and total hours
 --10/06/2021 earned-ajax.php updated, now shows rut , non-rut and total

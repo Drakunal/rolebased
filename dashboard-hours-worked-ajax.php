@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include "connection.php";
@@ -81,8 +80,8 @@ if($_POST['type'] == "stateData"){
             }
         }
         $str = "<table class='table'>
-            <th>RUT</th>
-            <th>Non - RUT</th>
+            <th>Personal</th>
+            <th>Company</th>
             <th>Total</th>
             <tr>
             <td>" . $rut . " hours
@@ -153,8 +152,8 @@ if($_POST['type'] == "yearData"){
             }
         }
         $str = "<table class='table'>
-            <th>RUT</th>
-            <th>Non - RUT</th>
+            <th>Personal</th>
+            <th>Company</th>
             <th>Total</th>
             <tr>
             <td>" . $rut . " hours
@@ -223,8 +222,8 @@ if($_POST['type'] == "employeeData"){
             }
         }
         $str = "<table class='table'>
-            <th>RUT</th>
-            <th>Non - RUT</th>
+            <th>Personal</th>
+            <th>Company</th>
             <th>Total</th>
             <tr>
             <td>" . $rut . " hours

@@ -77,15 +77,18 @@ if ($_POST['type'] == "stateData") {
         }
     }
     $str = "<table class='table'>
-        <th>RUT</th>
-        <th>Non - RUT</th>
+        <th>Personal</th>
+        <th>Government</th>
+        <th>Company</th>
         <th>Total</th>
         <tr>
         <td>" . $rut . " Kr
         </td>
+        <td>" . $rut . " Kr
+        </td>
         <td>" . $non_rut . " Kr
         </td>
-        <td>" . ($non_rut+$rut) . " Kr
+        <td>" . ($non_rut+$rut+$rut) . " Kr
         </td>
         </tr>
     </table>";
@@ -141,15 +144,18 @@ if ($_POST['type'] == "yearData") {
         }
     }
     $str = "<table class='table'>
-        <th>RUT</th>
-        <th>Non - RUT</th>
+        <th>Personal</th>
+        <th>Government</th>
+        <th>Company</th>
         <th>Total</th>
         <tr>
         <td>" . $rut . " Kr
         </td>
+        <td>" . $rut . " Kr
+        </td>
         <td>" . $non_rut . " Kr
         </td>
-        <td>" . ($non_rut+$rut) . " Kr
+        <td>" . ($non_rut+$rut+$rut) . " Kr
         </td>
         </tr>
     </table>";
@@ -204,15 +210,18 @@ if ($_POST['type'] == "employeeData") {
         }
     }
     $str = "<table class='table'>
-        <th>RUT</th>
-        <th>Non - RUT</th>
+        <th>Personal</th>
+        <th>Government</th>
+        <th>Company</th>
         <th>Total</th>
         <tr>
         <td>" . $rut . " Kr
         </td>
+        <td>" . $rut . " Kr
+        </td>
         <td>" . $non_rut . " Kr
         </td>
-        <td>" . ($non_rut+$rut) . " Kr
+        <td>" . ($non_rut+$rut+$rut) . " Kr
         </td>
         </tr>
     </table>";
