@@ -1,3 +1,4 @@
+--16/06/2021 spinner copy admin panel created and earned-ajax.php has extras and dashboard-hours-worked-ajax.php has ui changes
 --16/06/2021 add-appointment-extras.php and edit-appointment-extras.php created and show.php modified
 --16/06/2021 show.php modified details and admin details not shown if not present and button group added
 --16/06/2021 dashboard-hours-worked-ajax.php and earned-ajax.php modified with rut non rut to personal govt and company

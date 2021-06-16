@@ -50,6 +50,7 @@ if ($_POST['type'] == "stateData") {
     $query = mysqli_query($db, $sql) or die("Query Unsuccessful1.");
     $rut = 0;
     $non_rut = 0;
+    $extra=0;
 
     if (mysqli_num_rows($query) == 0) {
         $str = "<div class='card-header'>
@@ -59,6 +60,11 @@ if ($_POST['type'] == "stateData") {
         $str = " ";
 
         while ($row = mysqli_fetch_assoc($query)) {
+            //extra charge calculation
+            $additional_charge=$row['additional_charge'];
+            $invoice_charge=$row['invoice_charge'];
+            $temp_extra=($additional_charge+$invoice_charge);
+            $extra=$extra+$temp_extra;
 
             $customer_id = $row['customer_id'];
             $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$customer_id";
@@ -76,10 +82,11 @@ if ($_POST['type'] == "stateData") {
             }
         }
     }
-    $str = "<table class='table'>
+    $str = "<table class='table table-sm'>
         <th>Personal</th>
         <th>Government</th>
         <th>Company</th>
+        <th>Extras</th>
         <th>Total</th>
         <tr>
         <td>" . $rut . " Kr
@@ -88,7 +95,9 @@ if ($_POST['type'] == "stateData") {
         </td>
         <td>" . $non_rut . " Kr
         </td>
-        <td>" . ($non_rut+$rut+$rut) . " Kr
+        <td>" . $extra . " Kr
+        </td>
+        <td>" . ($non_rut+$rut+$rut+$extra) . " Kr
         </td>
         </tr>
     </table>";
@@ -117,6 +126,7 @@ if ($_POST['type'] == "yearData") {
     $query = mysqli_query($db, $sql) or die("Query Unsuccessfult.");
     $rut = 0;
     $non_rut = 0;
+    $extra=0;
 
     if (mysqli_num_rows($query) == 0) {
         $str = "<div class='card-header'>
@@ -126,6 +136,11 @@ if ($_POST['type'] == "yearData") {
         $str = " ";
 
         while ($row = mysqli_fetch_assoc($query)) {
+            //extra charge calculation
+            $additional_charge=$row['additional_charge'];
+            $invoice_charge=$row['invoice_charge'];
+            $temp_extra=($additional_charge+$invoice_charge);
+            $extra=$extra+$temp_extra;
 
             $customer_id = $row['customer_id'];
             $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$customer_id";
@@ -143,10 +158,11 @@ if ($_POST['type'] == "yearData") {
             }
         }
     }
-    $str = "<table class='table'>
+    $str = "<table class='table table-sm'>
         <th>Personal</th>
         <th>Government</th>
         <th>Company</th>
+        <th>Extras</th>
         <th>Total</th>
         <tr>
         <td>" . $rut . " Kr
@@ -155,7 +171,9 @@ if ($_POST['type'] == "yearData") {
         </td>
         <td>" . $non_rut . " Kr
         </td>
-        <td>" . ($non_rut+$rut+$rut) . " Kr
+        <td>" . $extra . " Kr
+        </td>
+        <td>" . ($non_rut+$rut+$rut+$extra) . " Kr
         </td>
         </tr>
     </table>";
@@ -183,6 +201,7 @@ if ($_POST['type'] == "employeeData") {
     $query = mysqli_query($db, $sql) or die("Query Unsuccessfula.");
     $rut = 0;
     $non_rut = 0;
+    $extra=0;
 
     if (mysqli_num_rows($query) == 0) {
         $str = "<div class='card-header'>
@@ -192,6 +211,11 @@ if ($_POST['type'] == "employeeData") {
         $str = " ";
 
         while ($row = mysqli_fetch_assoc($query)) {
+            //extra charge calculation
+            $additional_charge=$row['additional_charge'];
+            $invoice_charge=$row['invoice_charge'];
+            $temp_extra=($additional_charge+$invoice_charge);
+            $extra=$extra+$temp_extra;
 
             $customer_id = $row['customer_id'];
             $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$customer_id";
@@ -209,10 +233,11 @@ if ($_POST['type'] == "employeeData") {
             }
         }
     }
-    $str = "<table class='table'>
+    $str = "<table class='table table-sm'>
         <th>Personal</th>
         <th>Government</th>
         <th>Company</th>
+        <th>Extras</th>
         <th>Total</th>
         <tr>
         <td>" . $rut . " Kr
@@ -221,7 +246,9 @@ if ($_POST['type'] == "employeeData") {
         </td>
         <td>" . $non_rut . " Kr
         </td>
-        <td>" . ($non_rut+$rut+$rut) . " Kr
+        <td>" . $extra . " Kr
+        </td>
+        <td>" . ($non_rut+$rut+$rut+$extra) . " Kr
         </td>
         </tr>
     </table>";

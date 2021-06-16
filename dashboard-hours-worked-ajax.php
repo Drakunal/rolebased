@@ -79,7 +79,7 @@ if($_POST['type'] == "stateData"){
                 }
             }
         }
-        $str = "<table class='table'>
+        $str = "<table class='table table-sm'>
             <th>Personal</th>
             <th>Company</th>
             <th>Total</th>
@@ -151,7 +151,7 @@ if($_POST['type'] == "yearData"){
                 }
             }
         }
-        $str = "<table class='table'>
+        $str = "<table class='table table-sm'>
             <th>Personal</th>
             <th>Company</th>
             <th>Total</th>
@@ -221,7 +221,7 @@ if($_POST['type'] == "employeeData"){
                 }
             }
         }
-        $str = "<table class='table'>
+        $str = "<table class='table table-sm'>
             <th>Personal</th>
             <th>Company</th>
             <th>Total</th>
