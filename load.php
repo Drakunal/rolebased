@@ -14,7 +14,7 @@ $employee_id=$_GET['ids'];
 // $employee_id="'".$employee_id."'";
 $data = array();
 if($employee_id!=0){
-  $query = "SELECT * FROM events where employee_id='$employee_id' or employee_id is NULL ORDER BY id";
+  $query = "SELECT * FROM events where employee_id='$employee_id' or customer_id='$employee_id' or employee_id is NULL ORDER BY id";
 
 }
 else{
