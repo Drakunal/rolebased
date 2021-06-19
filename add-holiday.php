@@ -60,15 +60,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Holiday Name</label>
+											<label class="form-label">Holiday Name<span style="color:red">*</span></label>
 											<input type="text" required name="title" class="form-control" placeholder="title">
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Date</label>
+											<label class="form-label">Date<span style="color:red">*</span></label>
 											<input type="date" required  name="date"class="form-control" placeholder="date">
 										</div>
                                         <div class="mb-3">
-											<label class="form-label">Is this every year on the same date?</label>
+											<label class="form-label">Is this every year on the same date?<span style="color:red">*</span></label>
 										
                                                 <label class="form-check">
                                                     <input name="every_year" type="radio" class="form-check-input" value="1" checked>

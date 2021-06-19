@@ -48,7 +48,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Appointment/Holiday Details</h1>
+					<h1 class="h3 mb-3">Change employee permanently</h1>
 
 					<div class="row">
 						<div class="col-md-12">
@@ -84,7 +84,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																							<thead>
 																								<tr>
 																									<th style="width:40%;">Customer ID</th>
-																									<th style="width:25%">Employee ID</th>
+																									<th style="width:25%">Employee Name<span style="color:red">*</span></th>
 																									<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
 																									
 																								</tr>
@@ -171,11 +171,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																							
 																							<p><strong>Customer Name : </strong><?php echo $row2['name']; ?></p>
 
-																							<p><strong>Details :</strong></p> <?php echo $row3["details"]; ?></br></br>
+																							<p><strong>Details :</strong> <?php echo $row3["details"]; ?></p>
 																							<p><strong>Base Price : </strong><?php echo $row3['base_price']; ?> Kr</p>
-																							<p><strong>Time Alloted :</strong></p> <?php echo $row3["time_alloted"]; ?> hours</br></br>
+																							<p><strong>Time Alloted :</strong> <?php echo $row3["time_alloted"]; ?> hours</p>
 																							<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row3['admin_note']; ?></p>
-																							<p><strong>Appointment Type :</strong></p> <?php 
+																							<p><strong>Appointment Type :</strong> <?php 
 																							if($row3["appointment_type"]=="monthly")
 																							{
 																								echo "Monthly";
@@ -192,6 +192,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 																							{
 																								echo "Weekly";
 																							} ?>
+																							</p>
 																							</br>
 																						
 																							<!-- <div style='float:left'>

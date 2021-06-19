@@ -60,11 +60,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Holiday Name</label>
+											<label class="form-label">Holiday Name<span style="color:red">*</span></label>
 											<input type="text" required name="title" class="form-control" placeholder="title">
 										</div>
                                         <div class="mb-3">
-                                        <label class="form-label">Employee Name</label>
+                                        <label class="form-label">Employee Name<span style="color:red">*</span></label>
                                             <?php 
 									        	$role="employee";
 									        	$result = mysqli_query($db,"SELECT id,name from `users` where role='$role' and deleted_at is NULL;");
@@ -80,11 +80,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Start Date</label>
+											<label class="form-label">Start Date<span style="color:red">*</span></label>
 											<input type="date" required  name="start-date"class="form-control" placeholder="date">
 										</div>
                                         <div class="mb-3">
-											<label class="form-label">End Date</label>
+											<label class="form-label">End Date<span style="color:red">*</span></label>
 											<input type="date" required  name="end-date"class="form-control" placeholder="date">
 										</div>
                                         <!-- <div class="mb-3">

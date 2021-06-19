@@ -87,7 +87,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										<label class="form-label">Employee</label>
+										<label class="form-label">Employee<span style="color:red">*</span></label>
 										<select class="form-control mb-3" id="employee_id" name="employee-id">
 											<option value="0"selected>Select an Employee</option>
 											<?php 
@@ -97,22 +97,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</select>
 										
 											<div class="mb-3">
-												<label class="form-label">Customer Name</label>
+												<label class="form-label">Customer Name<span style="color:red">*</span></label>
 												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $customer_row['name'];?>">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Date</label>
+												<label class="form-label">Date<span style="color:red">*</span></label>
 												<input type="date" name="date" class="form-control" placeholder="appointment-date">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Time</label>
+												<label class="form-label">Time<span style="color:red">*</span></label>
 												<input type="time" name="time" class="form-control" placeholder="appointment-time">
 											</div>
 											<?php 
 											if($customer_details_row['appointment_type']!='not-regular'){
 												?>
 											<div class="mb-3">
-												<label class="form-label">Fix the Duration of the appointment</label>
+												<label class="form-label">Fix the Duration of the appointment<span style="color:red">*</span></label>
 												<select class="form-control mb-3" id="appointment-duration" name="appointment-duration">
 													<option value="3"selected>3 Months</option>
 													<option value="6">6 Months</option>

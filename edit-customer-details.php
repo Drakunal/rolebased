@@ -85,7 +85,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Time alloted in hours</label>
+											<label class="form-label">Time alloted in hours<span style="color:red">*</span></label>
 											<input type="number"  step="0.1" name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
 										</div>
                                         <!-- <div class="mb-3">
@@ -100,7 +100,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
 										<div class="mb-3">
-											<label class="form-label">Base Price</label>
+											<label class="form-label">Base Price<span style="color:red">*</span></label>
 											<input type="number"  name="base-price"class="form-control" placeholder="base price" value="<?php echo $res['base_price']; ?>">
 										</div>
 										<!-- <div class="mb-3">

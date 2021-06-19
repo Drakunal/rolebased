@@ -78,16 +78,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Customer ID</label>
-											<input type="text" name="email" class="form-control" placeholder="customer id" value="<?php echo $res['user_id'] ?>">
+											<label class="form-label">Customer ID<span style="color:red">*</span></label>
+											<input type="text" required name="email" class="form-control" placeholder="customer id" value="<?php echo $res['user_id'] ?>">
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Password</label>
-											<input type="password"  name="password"class="form-control" placeholder="Password" value="<?php echo $res['password'] ?>">
+											<label class="form-label">Password<span style="color:red">*</span></label>
+											<input type="password" required name="password"class="form-control" placeholder="Password" value="<?php echo $res['password'] ?>">
 										</div>
                                         <div class="mb-3">
-											<label class="form-label">Name</label>
-											<input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo $res['name'] ?>">
+											<label class="form-label">Name<span style="color:red">*</span></label>
+											<input type="text" required name="name" class="form-control" placeholder="Name" value="<?php echo $res['name'] ?>">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Textarea</label>

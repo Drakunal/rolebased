@@ -81,7 +81,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										<label class="form-label">Employee</label>
+										<label class="form-label">Employee<span style="color:red">*</span></label>
 										<select class="form-control mb-3" id="employee_id" name="employee-id">
 											<option value="0"selected>Select an Employee</option>
 											<?php 
@@ -90,7 +90,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											 ?>
 										</select>
 										
-                                        <label class="form-label">Customer</label>
+                                        <label class="form-label">Customer<span style="color:red">*</span></label>
 										<select class="form-control mb-3" id="customer-id" name="customer-id">
 											<option value="0"selected>Select a Customer</option>
 											<?php 
@@ -99,11 +99,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											 ?>
 										</select>
 											<div class="mb-3">
-												<label class="form-label">Date</label>
+												<label class="form-label">Date<span style="color:red">*</span></label>
 												<input type="date" name="date" class="form-control" placeholder="appointment-date" readonly value="<?php echo $date;?>">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Time</label>
+												<label class="form-label">Time<span style="color:red">*</span></label>
 												<input type="time" name="time" class="form-control" placeholder="appointment-time">
 											</div>
 											<?php 

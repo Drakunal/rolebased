@@ -71,12 +71,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 											<div class="mb-3 col-md-2">
-												<label class="form-label">Color for the Employee</label>
+												<label class="form-label">Color for the Employee<span style="color:red">*</span></label>
 												<input type="color"  name="color"class="form-control" id="color"  value='<?php echo $color;?>'>
 
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Is this User Officer?</label>
+												<label class="form-label">Is this User Officer?<span style="color:red">*</span></label>
 												<label class="form-check"><input class="form-check-input" type="radio" value="0"  name="yesno" id="noCheck" checked>
 														<span class="form-check-label">
 															No
@@ -89,7 +89,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												</label>
 											</div>
 										<div class="mb-3">
-											<label class="form-label">Details</label>
+											<label class="form-label">Details<span style="color:red">*</span></label>
 											<textarea required class="form-control"name="details" placeholder="Details" rows="1"><?php echo $details; ?></textarea>
 										</div>
 								

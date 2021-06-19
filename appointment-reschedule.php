@@ -89,9 +89,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										<h3><label class="form-label">Select Employee</label></h3>
+										<h3><label class="form-label" placeholder="HI">Select Employee<span style="color:red">*</span></label></h3>
 										<select class="form-control mb-3" id="employee_id" name="employee-id">
-											<option value="0"selected>Select an Employee</option>
+											<!-- <option value="0"selected>Select an Employee</option> -->
 											<?php 
 											// while($row = $result->fetch_assoc())
 											// echo "<option value='".$row['id']."'>".$row['name']."</option>"
@@ -99,15 +99,15 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</select>
 										
 											<div class="mb-3">
-												<label class="form-label">Customer Name</label>
+												<label class="form-label">Customer Name<span style="color:red">*</span></label>
 												<input type="text"  name="customer_name"class="form-control" placeholder="name" readonly value="<?php echo $row2['name'];?>">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Date</label>
+												<label class="form-label">Date<span style="color:red">*</span></label>
 												<input type="date" name="date" class="form-control" placeholder="appointment-date" value="<?php echo $row['date'];?>"">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Time</label>
+												<label class="form-label">Time<span style="color:red">*</span></label>
 												<input type="time" name="time" class="form-control" placeholder="appointment-time"value="<?php  echo date('H:i', strtotime($row["time"]));?>">
 											</div>
 

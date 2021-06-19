@@ -73,7 +73,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-												<label class="form-label">Is this for Private company use?</label>
+												<label class="form-label">Is this for Private company use?<span style="color:red">*</span></label>
 												<label class="form-check"><input class="form-check-input" type="radio" value="1"  name="yesno1" id="noCheck1" checked>
 														<span class="form-check-label">
 															No
@@ -86,7 +86,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												</label>
 											</div>
 										<div class="mb-3">
-											<label class="form-label">Time alloted in hours</label>
+											<label class="form-label">Time alloted in hours<span style="color:red">*</span></label>
 											<input type="number" required step="0.1" name="time"class="form-control" placeholder="number of hours">
 										</div>
                                         <!-- <div class="mb-3">
@@ -94,7 +94,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="name" class="form-control" placeholder="Name">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Base Price (Price per hour)</label>
+											<label class="form-label">Base Price (Price per hour)<span style="color:red">*</span></label>
 											<input type="number" required name="price"class="form-control" placeholder="Price per hour">
 										</div>
                                         
