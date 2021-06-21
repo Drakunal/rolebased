@@ -18,11 +18,11 @@ if($_POST['type'] == ""){
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
     }else{
-    $str = "0 hours";
+    $str = "0 timmar";
     while($row = mysqli_fetch_assoc($query)){
         // $day=date("l", strtotime($row['date']));
         // $appointment_id=$row['id'];
-        $str = "{$row['time_alloted']} hours";
+        $str = "{$row['time_alloted']} timmar";
     }}
 }
 if($_POST['type'] == "stateData"){
@@ -80,15 +80,15 @@ if($_POST['type'] == "stateData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personal</th>
-            <th>Company</th>
+            <th>Personlig</th>
+            <th>Företag</th>
             <th>Total</th>
             <tr>
-            <td>" . $rut . " hours
+            <td>" . $rut . " timmar
             </td>
-            <td>" . $non_rut . " hours
+            <td>" . $non_rut . " timmar
             </td>
-            <td>" . ($non_rut+$rut) . " hours
+            <td>" . ($non_rut+$rut) . " timmar
             </td>
             </tr>
         </table>";
@@ -152,15 +152,15 @@ if($_POST['type'] == "yearData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personal</th>
-            <th>Company</th>
+            <th>Personlig</th>
+            <th>Företag</th>
             <th>Total</th>
             <tr>
-            <td>" . $rut . " hours
+            <td>" . $rut . " timmar
             </td>
-            <td>" . $non_rut . " hours
+            <td>" . $non_rut . " timmar
             </td>
-            <td>" . ($non_rut+$rut) . " hours
+            <td>" . ($non_rut+$rut) . " timmar
             </td>
             </tr>
         </table>";
@@ -222,15 +222,15 @@ if($_POST['type'] == "employeeData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personal</th>
-            <th>Company</th>
+            <th>Personlig</th>
+            <th>Företag</th>
             <th>Total</th>
             <tr>
-            <td>" . $rut . " hours
+            <td>" . $rut . " timmar
             </td>
-            <td>" . $non_rut . " hours
+            <td>" . $non_rut . " timmar
             </td>
-            <td>" . ($non_rut+$rut) . " hours
+            <td>" . ($non_rut+$rut) . " timmar
             </td>
             </tr>
         </table>";

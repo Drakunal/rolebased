@@ -18,7 +18,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <title>Extra charges for the appointment</title>
+    <title>Extra avgifter för mötet</title>
 
     <link href="css/app.css" rel="stylesheet">
 </head>
@@ -54,52 +54,52 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                 ?>
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Extras</h1>
+                    <h1 class="h3 mb-3">Extra</h1>
 
                     <div class="row">
                         <div class="">
                             <div class="card">
                                 <div class="card-header">
                                     <!-- <h5 class="card-title">Add Employee form</h5> -->
-                                    <h6 class="card-subtitle text-muted">Add all the extra charges here.</h6>
+                                    <h6 class="card-subtitle text-muted">Lägg till alla extra avgifter här.</h6>
                                 </div>
                                 <div class="card-body">
                                     <form enctype="multipart/form-data" method="post" action="">
                                         <div class="mb-3 col-md-2">
-                                            <label class="form-label">Additional Charges</label>
+                                            <label class="form-label">Extra avgifter</label>
                                             <?php if ($row77['additional_charge'] != 0.00) {
                                                 $additional_charge = $row77['additional_charge']; ?>
 
                                                 <input type="number" step="0.01" name="additional_charge" class="form-control" value="<?php echo $additional_charge; ?>">
                                             <?php } else { ?>
-                                                <input type="number" step="0.01" name="additional_charge" class="form-control" placeholder="Extra Charges">
+                                                <input type="number" step="0.01" name="additional_charge" class="form-control" placeholder="Extra avgifter">
                                             <?php } ?>
                                         </div>
                                         <div class="mb-3 col-md-2">
-                                            <label class="form-label">Invoice Charges</label>
+                                            <label class="form-label">Fakturakostnader</label>
                                             <?php if ($row77['invoice_charge'] != 0.00) {
                                                 $invoice_charge = $row77['invoice_charge']; ?>
 
                                                 <input type="number" step="0.01" name="invoice_charge" class="form-control"  value="<?php echo $invoice_charge; ?>">
                                             <?php } else { ?>
-                                                <input type="number" step="0.01" name="invoice_charge" class="form-control" placeholder="Invoice Charges">
+                                                <input type="number" step="0.01" name="invoice_charge" class="form-control" placeholder="Fakturakostnader">
                                             <?php } ?>
 
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Comments</label>
+                                            <label class="form-label">Kommentarer</label>
                                             <?php if ($row77['comment'] != Null) { 
                                                 $comment=$row77['comment']; ?>
-                                            <textarea class="form-control" name="comments" placeholder="Comments" rows="1"><?php echo$comment; ?></textarea>
+                                            <textarea class="form-control" name="comments" placeholder="Kommentarer" rows="1"><?php echo$comment; ?></textarea>
                                             <?php }else{ ?>
-                                                <textarea class="form-control" name="comments" placeholder="Comments" rows="1"></textarea>
+                                                <textarea class="form-control" name="comments" placeholder="Kommentarer" rows="1"></textarea>
                                                 <?php } ?>
 
                                         </div>
 
 
-                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Spara</button>
                                     </form>
                                 </div>
                             </div>

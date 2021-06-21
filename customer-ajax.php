@@ -12,19 +12,19 @@ if($_POST['type'] == ""){
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
-        <p>No appointments available</p>
+        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4></br>
+        <p>Inga möten tillgängliga</p>
     </div> ";
     }else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
-        <th>Employee Name</th>
+        <th>Anställd</th>
         
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
+        <th>Datum</th>
+        <th>Dag</th>
+        <th>Tid</th>
         
     </tr>
     </thead><tbody>";
@@ -85,20 +85,20 @@ if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
-        <p>No appointments available</p>
+        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4></br>
+        <p>Inga möten tillgängliga</p>
     </div> ";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
-        <th>Employee Name</th>
+        <th>Anställd</th>
       
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
+        <th>Datum</th>
+        <th>Dag</th>
+        <th>Tid</th>
         
     </tr>
     </thead><tbody>";
@@ -179,20 +179,20 @@ if($_POST['type'] == "yearData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
-        <p>No appointments available</p>
+        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4></br>
+        <p>Inga möten tillgängliga</p>
     </div> ";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
-        <th>Employee Name</th>
+        <th>Anställd</th>
        
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
+        <th>Datum</th>
+        <th>Dag</th>
+        <th>Tid</th>
         
     </tr>
     </thead><tbody>";

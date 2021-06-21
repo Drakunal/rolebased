@@ -18,7 +18,7 @@
             </a>
             <ul class="sidebar-nav">
               <li class="sidebar-header">
-                Pages
+              Sidor
               </li>
 
               <li class="sidebar-item active">
@@ -34,7 +34,7 @@
                     <?php
                   }
                     ?>
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Överblick</span>
                     </a>
 
             </ul>

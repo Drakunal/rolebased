@@ -18,7 +18,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <title>Employee Details Form</title>
+    <title>Anställds bild</title>
 
     <link href="css/app.css" rel="stylesheet">
 </head>
@@ -48,27 +48,27 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Employee Image</h1>
+                    <h1 class="h3 mb-3">Anställds bild</h1>
 
                     <div class="row">
                         <div class="">
                             <div class="card">
                                 <div class="card-header">
                                     <!-- <h5 class="card-title">Add Employee form</h5> -->
-                                    <h6 class="card-subtitle text-muted">Upload Employee Image</h6>
+                                    <h6 class="card-subtitle text-muted">Ladda upp anställdsbild</h6>
                                 </div>
                                 <div class="card-body">
                                     <form enctype="multipart/form-data" method="post" action="">
 
 
                                         <div class="mb-3">
-                                            <label class="form-label">Image (Please select a square image for better result with less than 4mb size)<span style="color:red">*</span></label>
+                                            <label class="form-label">Bild (Välj en kvadratisk bild för bättre resultat med mindre än 4 MB storlek)<span style="color:red">*</span></label>
                                             <input type="file" required class="form-control" rows="1" name="image" id="image" value="" />
 
                                         </div>
 
 
-                                        <button type="submit" name="upload" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="upload" class="btn btn-primary">Spara</button>
                                     </form>
 
                                 </div>

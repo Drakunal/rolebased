@@ -20,7 +20,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<!-- <title>Tables | AdminKit Demo</title> -->
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -48,7 +48,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Deleted User List</h1>
+					<h1 class="h3 mb-3">Borttagen användarlista</h1>
 
 					<div class="row">
 						<div class="col-md-12">
@@ -60,10 +60,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">ID</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Role</th>
+											<th>Roll</th>
 										</tr>
 									</thead>
 									<tbody>

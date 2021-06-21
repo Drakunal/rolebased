@@ -19,7 +19,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<!-- <title>Tables | AdminKit Demo</title> -->
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Appointment/Holiday Details</h1>
+					<h1 class="h3 mb-3">Utnämning / semesterinformation</h1>
 
 					<div class="row">
 						<div class="col-md-12">
@@ -91,11 +91,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 											?>
 												<thead>
 													<tr>
-														<th>Employee Name</th>
-														<th>Start Date</th>
+														<th>Anställd</th>
+														<th>Start datum</th>
 														<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-														<th>End Date</th>
-														<th>Reason</th>
+														<th>Slutdatum</th>
+														<th>Anledning</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -121,11 +121,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 			?>
 				<thead>
 					<tr>
-						<th>Customer ID</th>
-						<th>Customer Name</th>
+						<th>Kundnummer</th>
+						<th>Namn</th>
 
-						<th>Date</th>
-						<th>Time</th>
+						<th>Datum</th>
+						<th>Tid</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -166,7 +166,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 				<div class="col-md-12">
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title mb-4">Customer #<?php echo $row22["user_id"]; ?> Details</h5>
+							<h5 class="card-title mb-4">Kundnummer #<?php echo $row22["user_id"]; ?> Detaljer</h5>
 							<?php
 												
 												$result3 = mysqli_query($db, "SELECT base_price,appointment_type,details,time_alloted,admin_note from `customer_details` where user_id='$customer_id';");
@@ -179,9 +179,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 													$time_alloted = rtrim(rtrim($time_alloted, '0'), '.');
 												}
 							?>
-							<p><strong>Customer Name : </strong><?php echo $row2['name']; ?></p>
-							<p><strong>Customer Details : </strong><?php echo $row3['details']; ?></p>
-							<p><strong>Time Alloted : </strong><?php echo $time_alloted; ?> hours</p></br></br>
+							<p><strong>Kundnamn : </strong><?php echo $row2['name']; ?></p>
+							<p><strong>Kunddetaljer : </strong><?php echo $row3['details']; ?></p>
+							<p><strong>Tilldelad tid : </strong><?php echo $time_alloted; ?> timmar</p></br></br>
 							</br>
 						</div>
 					</div>

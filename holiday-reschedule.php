@@ -19,7 +19,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Form Layouts | AdminKit Demo</title>
+	<!-- <title>Form Layouts | AdminKit Demo</title> -->
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -49,19 +49,19 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Employee Holiday form</h1>
+					<h1 class="h3 mb-3">Boka om semester</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
-									<h6 class="card-subtitle text-muted">Add your holidays here.</h6>
+									<h6 class="card-subtitle text-muted">Semester.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Holiday Name<span style="color:red">*</span></label>
-											<input type="text" required name="title" class="form-control" placeholder="title">
+											<label class="form-label">Semesternamn<span style="color:red">*</span></label>
+											<input type="text" required name="title" class="form-control" placeholder="Semesternamn">
 										</div>
                                         <div class="mb-3">
                                         <label class="form-label">Employee Name<span style="color:red">*</span></label>

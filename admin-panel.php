@@ -83,7 +83,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 					<div class="row mb-2 mb-xl-3">
 						<div class="col-auto d-none d-sm-block">
-							<h3><strong>Analytics</strong> Dashboard</h3>
+							<h3><strong>Översikt</strong></h3>
 						</div>
 
 						<div class="col-auto ml-auto text-right mt-n1">
@@ -104,7 +104,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									<div class="col-sm-6">
 										<div class="card">
 											<div class="card-body">
-												<h5 class="card-title mb-4">Number of Employees</h5>
+												<h5 class="card-title mb-4">Antal anställda</h5>
 												<h1 class="mt-1 mb-3"><?php echo $employee_count['count(id)']; ?></h1>
 												<div class="mb-1">
 													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
@@ -126,7 +126,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									<div class="col-sm-6">
 										<div class="card">
 											<div class="card-body">
-												<h5 class="card-title mb-4">Number of customers</h5>
+												<h5 class="card-title mb-4">Antal kunder</h5>
 												<h1 class="mt-1 mb-3"><?php echo $customer_count['count(id)']; ?></h1>
 												<div class="mb-1">
 													<!-- <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span> -->
@@ -187,7 +187,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									<div class="col-sm-6">
 										<div class="card">
 											<div class="card-body">
-												<h5 class="card-title mb-4">Appointments this month</h5>
+												<h5 class="card-title mb-4">Möten denna månad</h5>
 												<h1 class="mt-1 mb-3"><?php echo $appointment_count['count(id)']; ?></h1>
 												<div class="mb-1">
 													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
@@ -209,7 +209,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									<div class="col-sm-6">
 										<div class="card">
 											<div class="card-body">
-												<h5 class="card-title mb-4">Today's Appointments</h5>
+												<h5 class="card-title mb-4">Dagens möten</h5>
 												<h1 class="mt-1 mb-3"><?php echo $appointment_count2['count(id)']; ?></h1>
 												<div class="mb-1">
 													<!-- <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span> -->
@@ -269,7 +269,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Assumed Hours Worked for this month</h5>
+									<h5 class="card-title mb-0">Beräknade timmar arbetade denna månad</h5>
 								</div>
 								<div class="card-body py-3">
 									<div class="card flex-fill">
@@ -281,7 +281,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 													$result2 = mysqli_query($db, "SELECT id,name from `users` where role='$role2' AND deleted_at is NULL;");
 													?>
 													<select class="form-control mb-3" id="e-id2">
-														<option value="0" selected>All Employees</option>
+														<option value="0" selected>Alla anställda</option>
 														<?php
 														while ($row2 = $result2->fetch_assoc())
 															echo "<option value='" . $row2['id'] . "'>" . $row2['name'] . "</option>"
@@ -626,7 +626,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Assumed Earnings for this month</h5>
+									<h5 class="card-title mb-0">Förväntat resultat för denna månad</h5>
 								</div>
 								<div class="card-body py-3">
 									<div class="card flex-fill">
@@ -638,7 +638,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 													$result2 = mysqli_query($db, "SELECT id,name from `users` where role='$role2' AND deleted_at is NULL;");
 													?>
 													<select class="form-control mb-3" id="e-id3">
-														<option value="0" selected>All Employees</option>
+														<option value="0" selected>Alla anställda</option>
 														<?php
 														while ($row2 = $result2->fetch_assoc())
 															echo "<option value='" . $row2['id'] . "'>" . $row2['name'] . "</option>"
@@ -1054,7 +1054,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											$result = mysqli_query($db, "SELECT id,name from `users` where role='$role' and deleted_at is NULL;");
 											?>
 											<select class="form-control mb-3" id="e-id">
-												<option value="0" selected>All Employees</option>
+												<option value="0" selected>Alla anställda</option>
 												<?php
 												while ($row = $result->fetch_assoc())
 													echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>"

@@ -9,7 +9,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 <!DOCTYPE html>
 <html>
  <head>
-  <title>Calendar</title>
+  <title>Kalender</title>
   <link href="css/app.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> -->
@@ -211,7 +211,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										$result2 = mysqli_query($db,"SELECT id,name from `users` where role='$role2';");
 									?>
 										<select class="form-control mb-3" id="employee-id">
-											<option value="0"selected>All Employees</option>
+											<option value="0"selected>Alla anställda</option>
 											<?php 
 											while($row2 = $result2->fetch_assoc())
 											echo "<option value='".$row2['id']."'>".$row2['name']."</option>"

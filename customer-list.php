@@ -34,12 +34,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Customers List</h1>
+					<h1 class="h3 mb-3">Kundsektion</h1>
 
 					<div class="row">
 					<div class="col-md-12">
 
-						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></button>
+						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i> Ny kund</a></button>
 					</div>
 				
 
@@ -57,10 +57,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table id="customer-list"class="table table-striped">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">Kundnummer</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Actions</th>
+											<th>Inställningar</th>
 										</tr>
 									</thead>
 									<tbody>

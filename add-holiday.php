@@ -19,7 +19,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Form Layouts | AdminKit Demo</title>
+	<title>Lägg till semesterformulär</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -49,40 +49,40 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Add Holiday form</h1>
+					<h1 class="h3 mb-3">Lägg till semesterformulär</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
-									<h6 class="card-subtitle text-muted">Add your holidays here.</h6>
+									<h6 class="card-subtitle text-muted">Lägg till din semester här.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<div class="mb-3">
-											<label class="form-label">Holiday Name<span style="color:red">*</span></label>
-											<input type="text" required name="title" class="form-control" placeholder="title">
+											<label class="form-label">Semesternamn<span style="color:red">*</span></label>
+											<input type="text" required name="title" class="form-control" placeholder="Semesternamn">
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Date<span style="color:red">*</span></label>
-											<input type="date" required  name="date"class="form-control" placeholder="date">
+											<label class="form-label">Datum<span style="color:red">*</span></label>
+											<input type="date" required  name="date"class="form-control" placeholder="datum">
 										</div>
                                         <div class="mb-3">
-											<label class="form-label">Is this every year on the same date?<span style="color:red">*</span></label>
+											<label class="form-label">Är detta varje år på samma datum?<span style="color:red">*</span></label>
 										
                                                 <label class="form-check">
                                                     <input name="every_year" type="radio" class="form-check-input" value="1" checked>
-                                                    <span class="form-check-label">Yes</span>
+                                                    <span class="form-check-label">Ja</span>
                                                 </label>
                                                 <label class="form-check">
                                                     <input name="every_year" type="radio" value="0"class="form-check-input">
-                                                    <span class="form-check-label">No</span>
+                                                    <span class="form-check-label">Nej</span>
                                                 </label>
                                          
 										</div>
                                         
 									
-										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit"class="btn btn-primary">Spara</button>
 									</form>
 								</div>
 							</div>

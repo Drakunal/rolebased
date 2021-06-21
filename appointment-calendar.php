@@ -11,7 +11,7 @@ error_reporting(0);
 <html>
 
 <head>
-    <title>Calendar</title>
+    <title>Kalender</title>
     <link href="css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> -->
@@ -260,14 +260,14 @@ error_reporting(0);
                                         ?>
                                         <div class="col-sm-4">
                                             <form method="POST">
-                                                <label class="form-label">Customer</label>
+                                                <label class="form-label">Kund</label>
                                                 <!-- <select class="form-control"id="customer-id" name="customer-id"> -->
                                                 <!-- <input class="form-control" type=number name="user_id">
                                                 <button class="form" type="submit" name="submit">search</button> -->
 
                                                 <div class="input-group">
                                                     <div class="form-outline">
-                                                        <input type="search" required id="form1"name="user_id" placeholder="Search customer id" class="form-control" />
+                                                        <input type="search" required id="form1"name="user_id" placeholder="Sök kund-id" class="form-control" />
                                                         
                                                        
                                                     

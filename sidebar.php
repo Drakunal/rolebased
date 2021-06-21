@@ -3,18 +3,18 @@
         </a>
 <ul class="sidebar-nav">
 					        <li class="sidebar-header">
-                                    Pages
+                                    Sidor
                                 </li>
 
                                 <li class="sidebar-item active">
                                     <a class="sidebar-link" href="admin-panel.php">
-                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Överblick</span>
                         </a>
                                 </li>
 
                                 <li class="sidebar-item">
                                     <a href="employee-list.php"   class="sidebar-link collapsed">
-                                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Employee Section</span>
+                                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Anställda</span>
                                     </a>
                                     <!-- <ul id="employee" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="employee-list.php">Employee List</a></li>
@@ -24,7 +24,7 @@
 
                                 <li class="sidebar-item">
                                     <a href="customer-list.php"  class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="target"></i> <span class="align-middle">Customer Section</span>
+                                     <i class="align-middle" data-feather="target"></i> <span class="align-middle">Kundavdelning</span>
                                     </a>
                                     <!-- <ul id="customer" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="customer-list.php">Customer List</a></li>
@@ -35,10 +35,10 @@
    
                                 <li class="sidebar-item">
                                     <a data-target="#appointment" data-toggle="collapse" class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Appointment Section</span>
+                                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Kalender</span>
                                     </a>
                                     <ul id="appointment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php?id=0">All Employees</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="appointment-calendar.php?id=0">Alla anställda</a></li>
 
 
 
@@ -63,11 +63,11 @@
 
                                 <li class="sidebar-item">
                                     <a data-target="#calendars" data-toggle="collapse" class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Holidays</span>
+                                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Röda dagar</span>
                                     </a>
                                     <ul id="calendars" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="plus"></i>Add Holidays</a></li>
-                                        <li class="sidebar-item"><a class="sidebar-link" href="add-employee-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Add Employee Holidays</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="plus"></i>Lägg till helgdagar</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="add-employee-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Lägg till medarbetarsemester</a></li>
                                     </ul>
                                 </li>
                                 
@@ -75,7 +75,7 @@
                                 
                                 <li class="sidebar-item">
                                     <a href="deleted-users-list.php"  class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="user-x"></i> <span class="align-middle">Deleted Users</span>
+                                     <i class="align-middle" data-feather="user-x"></i> <span class="align-middle">Borttagna användare</span>
                                     </a>
                                     <!-- <ul id="customer" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                                         <li class="sidebar-item"><a class="sidebar-link" href="customer-list.php">Customer List</a></li>

@@ -36,7 +36,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 				<div class="container-fluid p-0">
 					<div class="row mb-2 mb-xl-3">
 						<div class="col-auto d-none d-sm-block">
-							<h3><strong>Analytics</strong> Dashboard</h3>
+							<h3><strong>Översikt</strong></h3>
 						</div>
 					</div>
 					<?php
@@ -51,14 +51,14 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 								<div class="card">
 									<div class="card-body">
 
-										<h3>Today's Appointments</h3>
+										<h3>Dagens möten</h3>
 										<table id="appointment-lists" class="table table-striped">
 											<thead>
 
 												<tr>
-													<th>Employee Name</th>
-													<th>Date</th>
-													<th>Time</th>
+													<th>Anställd</th>
+													<th>Datum</th>
+													<th>Tid</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 					<div class="col-12 col-md-12 col-xxl-3 d-flex order-1 order-xxl-1">
 						<div class="card flex-fill w-100">
 							<div class="card-header">
-								Your Appointments
+							Dina möten
 							</div>
 							<div class="card-body py-3">
 								<div class="card flex-fill">

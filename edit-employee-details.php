@@ -19,7 +19,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Employee Details Form</title>
+	<title>Formulär för anställdsinformation</title>
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -59,42 +59,42 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Edit Employee Details form</h1>
+					<h1 class="h3 mb-3">Lägg till formulär för anställdsinformation</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
 								<div class="card-header">
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Edit your Employee details here.</h6>
+									<h6 class="card-subtitle text-muted">Lägg till dina anställningsuppgifter här.</h6>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 											<div class="mb-3 col-md-2">
-												<label class="form-label">Color for the Employee<span style="color:red">*</span></label>
+												<label class="form-label">Färg för medarbetaren<span style="color:red">*</span></label>
 												<input type="color"  name="color"class="form-control" id="color"  value='<?php echo $color;?>'>
 
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Is this User Officer?<span style="color:red">*</span></label>
+												<label class="form-label">Är detta användarofficer?<span style="color:red">*</span></label>
 												<label class="form-check"><input class="form-check-input" type="radio" value="0"  name="yesno" id="noCheck" checked>
 														<span class="form-check-label">
-															No
+															Nej
 														</span></label>
 												<label class="form-check">
 													<input class="form-check-input" type="radio"  name="yesno" id="yesCheck" value="1">
 														<span class="form-check-label">
-															Yes
+															Ja
 														</span>
 												</label>
 											</div>
 										<div class="mb-3">
-											<label class="form-label">Details<span style="color:red">*</span></label>
-											<textarea required class="form-control"name="details" placeholder="Details" rows="1"><?php echo $details; ?></textarea>
+											<label class="form-label">Detaljer<span style="color:red">*</span></label>
+											<textarea required class="form-control"name="details" placeholder="Detaljer" rows="1"><?php echo $details; ?></textarea>
 										</div>
 								
 										
-										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit"class="btn btn-primary">Spara</button>
 									</form>
 								</div>
 							</div>
