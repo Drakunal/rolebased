@@ -80,7 +80,7 @@ if($_POST['type'] == "stateData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personlig</th>
+            <th>Kund</th>
             <th>Företag</th>
             <th>Total</th>
             <tr>
@@ -152,7 +152,7 @@ if($_POST['type'] == "yearData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personlig</th>
+            <th>Kund</th>
             <th>Företag</th>
             <th>Total</th>
             <tr>
@@ -222,7 +222,7 @@ if($_POST['type'] == "employeeData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personlig</th>
+            <th>Kund</th>
             <th>Företag</th>
             <th>Total</th>
             <tr>

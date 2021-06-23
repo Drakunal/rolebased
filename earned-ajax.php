@@ -83,8 +83,8 @@ if ($_POST['type'] == "stateData") {
         }
     }
     $str = "<table class='table table-sm'>
-        <th>Personlig</th>
-        <th>Regering</th>
+        <th>Kund</th>
+        <th>Skatteverket</th>
         <th>Företag</th>
         <th>Extra</th>
         <th>Total</th>
@@ -159,8 +159,8 @@ if ($_POST['type'] == "yearData") {
         }
     }
     $str = "<table class='table table-sm'>
-        <th>Personlig</th>
-        <th>Regering</th>
+        <th>Kund</th>
+        <th>Skatteverket</th>
         <th>Företag</th>
         <th>Extra</th>
         <th>Total</th>
@@ -234,8 +234,8 @@ if ($_POST['type'] == "employeeData") {
         }
     }
     $str = "<table class='table table-sm'>
-        <th>Personlig</th>
-        <th>Regering</th>
+        <th>Kund</th>
+        <th>Skatteverket</th>
         <th>Företag</th>
         <th>Extra</th>
         <th>Total</th>

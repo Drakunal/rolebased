@@ -6,7 +6,7 @@
 												<span aria-hidden="true">&times;</span>
 											</button> -->
 											<div class="alert-message">
-												<strong>FRAMGÅNG!</strong>
+												<strong>Klart!</strong>
 											</div>
 										</div>
 										

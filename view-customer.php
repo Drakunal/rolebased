@@ -81,7 +81,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												<?php
 												// output data of each row
 												$customer_id = $row["user_id"];
-												echo "<tr><td>" . $customer_id . "</td><td>" . $row["name"] . "</td><td class='table-action'>" . $row["role"] . "</td></td><td class='table-action'>" . $row["password"] . "</td></tr>";
+												echo "<tr><td>" . $customer_id . "</td><td>" . $row["name"] . "</td><td class='table-action'> Kund </td></td><td class='table-action'>" . $row["password"] . "</td></tr>";
 												?>
 
 												</tr>
@@ -114,9 +114,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										<?php } ?>
 										<p><strong>Kundtyp :</strong>
 											<?php if ($row2["is_personal"] == 0) {
-												echo "Privat företag";
+												echo "Företag";
 											} elseif ($row2["is_personal"] == 1) {
-												echo "Personlig användning";
+												echo "Privatkund";
 											} ?></p>
 
 										<p><strong>Baspris : </strong><?php echo $row2['base_price']; ?> Kr</p>

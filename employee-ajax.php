@@ -22,12 +22,12 @@ else if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten för vald medarbetare</h4>
+        <h4 class='card-subtitle text-muted'>Bokning för vald medarbetare</h4>
     </div> <p>Inga möten tillgängliga</p>";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten för vald medarbetare</h4>
+        <h4 class='card-subtitle text-muted'>Bokning för vald medarbetare</h4>
     </div><table class='table table-bordered' ><thead>
     <tr>
         <th>Kund</th>

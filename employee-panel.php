@@ -31,7 +31,6 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 		color: black;
 		font-size: 10px;
 	}
-
 </style>
 
 <?php
@@ -46,6 +45,15 @@ $id = $_SESSION['id'];
 			console.log(d);
 
 			$('#calendar').fullCalendar({
+				monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+				monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+				dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
+				dayNamesShort: ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör'],
+				buttonText: {
+					today: 'I dag',
+					week: 'Vecka',
+				},
+				weekNumberTitle: 'V',
 				editable: false,
 				header: {
 					left: 'prev,next today',
@@ -102,7 +110,7 @@ $id = $_SESSION['id'];
 							<div class="card">
 								<div class="card-body">
 									<?php
-									$temp=$_SESSION['id'];
+									$temp = $_SESSION['id'];
 									$query = mysqli_query($db, "SELECT * from `appointments` where date=CURDATE() AND employee_id=$temp AND deleted_at is NULL order by time;") or die("Query Unsuccessful.");
 									?>
 									<h3>Dagens möten</h3>

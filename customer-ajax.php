@@ -12,12 +12,12 @@ if($_POST['type'] == ""){
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4></br>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4></br>
         <p>Inga möten tillgängliga</p>
     </div> ";
     }else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Anställd</th>
@@ -85,13 +85,13 @@ if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4></br>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4></br>
         <p>Inga möten tillgängliga</p>
     </div> ";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Anställd</th>
@@ -179,13 +179,13 @@ if($_POST['type'] == "yearData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4></br>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4></br>
         <p>Inga möten tillgängliga</p>
     </div> ";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Möten i denna månad</h4>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
         <th>Anställd</th>

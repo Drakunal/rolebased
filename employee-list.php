@@ -131,6 +131,20 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 $(document).ready(function() {
     var table = $('#employee-list').DataTable( {
         lengthChange: false,
+		language: {
+					"search": "Sök",
+					"lengthMenu": "Display _MENU_ records per page",
+					"zeroRecords": "Inga uppgifter funna",
+					"info": "Visar sida _PAGE_ av _PAGES_",
+					"infoEmpty": "Inga poster tillgängliga",
+					"infoFiltered": "(filtreras från totalt _MAX_ poster)",
+					"paginate": {
+						"first": "Först",
+						"last": "Sista",
+						"next": "Nästa",
+						"previous": "Tidigare"
+					},
+				}
         // buttons: [ 'copy', 'excel', 'pdf' ]
     } );
  

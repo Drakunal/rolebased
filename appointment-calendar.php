@@ -2,7 +2,7 @@
 session_start();
 include "connection.php";
 if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
-    header("location:index.php");   
+    header("location:index.php");
 }
 error_reporting(0);
 ?>
@@ -19,6 +19,7 @@ error_reporting(0);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <!-- <script src=" js/lang-all.js"></script> -->
 
     <!-- <script src="https://www.officeholidays.com/ics-local-name/sweden"></script> -->
     <style>
@@ -51,6 +52,7 @@ error_reporting(0);
     ?>
     <script>
         $(document).ready(function() {
+
             //  var d='load.php';
             // var calendar = $('#calendar').fullCalendar({
             //     editable:false,
@@ -140,6 +142,16 @@ error_reporting(0);
                 console.log(d);
                 // loadData("employeeData", employee);
                 $('#calendar').fullCalendar({
+                    monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+                    monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+                    dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
+                    dayNamesShort: ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör'],
+                    buttonText: {
+                        today: 'I dag',
+                        week: 'Vecka',
+                    },
+                    weekNumberTitle: 'V',
+                    // locale: 'es',
                     editable: false,
                     header: {
                         left: 'prev,next today',
@@ -267,14 +279,14 @@ error_reporting(0);
 
                                                 <div class="input-group">
                                                     <div class="form-outline">
-                                                        <input type="search" required id="form1"name="user_id" placeholder="Sök kund-id" class="form-control" />
-                                                        
-                                                       
-                                                    
+                                                        <input type="search" required id="form1" name="user_id" placeholder="Sök kund-id" class="form-control" />
+
+
+
                                                     </div>
-                                                    <button type="submit" name="submit"class="btn btn-primary">
+                                                    <button type="submit" name="submit" class="btn btn-primary">
                                                         <i class="fas fa-search"></i></button>
-                                                    
+
                                                 </div>
                                             </form>
                                             <!-- <option value="all"selected>Select a Customer</option> -->

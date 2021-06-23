@@ -1,9 +1,8 @@
 <?php
 session_start();
 include "connection.php";
-if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
-{
-    header("location:index.php");
+if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
+	header("location:index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -28,9 +27,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				
 
-		<?php include("sidebar.php"); ?>
+
+				<?php include("sidebar.php"); ?>
 
 				<!-- <div class="sidebar-cta">
 					<div class="sidebar-cta-content">
@@ -47,11 +46,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
-          <i class="hamburger align-self-center"></i>
-        </a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
-								<?php include("navbar.php"); ?>
-				
+				<?php include("navbar.php"); ?>
+
 			</nav>
 
 			<main class="content">
@@ -73,79 +72,79 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-												<label class="form-label">Är detta för privat företags användning?<span style="color:red">*</span></label>
-												<label class="form-check"><input class="form-check-input" type="radio" value="1"  name="yesno1" id="noCheck1" checked>
-														<span class="form-check-label">
-														Nej
-														</span></label>
-												<label class="form-check">
-													<input class="form-check-input" type="radio"  name="yesno1" id="yesCheck1" value="0">
-														<span class="form-check-label">
-															Ja
-														</span>
-												</label>
-											</div>
+											<label class="form-label">Privatkund eller företag?<span style="color:red">*</span></label>
+											<label class="form-check"><input class="form-check-input" type="radio" value="1" name="yesno1" id="noCheck1" checked>
+												<span class="form-check-label">
+													Privatkund
+												</span></label>
+											<label class="form-check">
+												<input class="form-check-input" type="radio" name="yesno1" id="yesCheck1" value="0">
+												<span class="form-check-label">
+													Företag
+												</span>
+											</label>
+										</div>
 										<div class="mb-3">
 											<label class="form-label">Antal timmar per möte<span style="color:red">*</span></label>
-											<input type="number" required step="0.1" name="time"class="form-control" placeholder="Ange timmar">
+											<input type="number" required step="0.1" name="time" class="form-control" placeholder="Ange timmar">
 										</div>
-                                        <!-- <div class="mb-3">
+										<!-- <div class="mb-3">
 											<label class="form-label">Name</label>
 											<input type="text" name="name" class="form-control" placeholder="Name">
 										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Baspris (Pris per timme)<span style="color:red">*</span></label>
-											<input type="number" required name="price"class="form-control" placeholder="Ange pris / timme">
+											<input type="number" required name="price" class="form-control" placeholder="Ange pris / timme">
 										</div>
-                                        
-                                        
+
+
 										<div class="mb-3">
 											<label class="form-label">Detaljer</label>
-											<textarea  class="form-control"name="details" placeholder="Detaljer" rows="1"></textarea>
+											<textarea class="form-control" name="details" placeholder="Detaljer" rows="1"></textarea>
 										</div>
 
 										<div class="mb-3">
 											<label class="form-label">Admin detaljer</label>
-											<textarea  class="form-control"name="admin-note" placeholder="Enbart synligt för admin" rows="1"></textarea>
+											<textarea class="form-control" name="admin-note" placeholder="Enbart synligt för admin" rows="1"></textarea>
 										</div>
 										<div class="mb-3">
 											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
-														<span class="form-check-label">
-														Inte vanligt
-														</span></label>
+												<span class="form-check-label">
+													Inte vanligt
+												</span></label>
 											<label class="form-check">
-													<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
-														<span class="form-check-label">
-															Regelbunden
-														</span>
-												</label>
-												<div  id="ifYes" style="display:none">
+												<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
+												<span class="form-check-label">
+													Regelbunden
+												</span>
+											</label>
+											<div id="ifYes" style="display:none">
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
-														<span class="form-check-label">
+													<span class="form-check-label">
 														Varje vecka
-														</span>
+													</span>
 												</label>
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type">
-														<span class="form-check-label">
+													<span class="form-check-label">
 														Varannan vecka
-														</span>
+													</span>
 												</label>
 												<label class="form-check">
-            										<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
-           												 <span class="form-check-label">
-															Månadsvis
-           												 </span>
-        										  </label>
+													<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
+													<span class="form-check-label">
+														Månadsvis
+													</span>
+												</label>
 
-												</div>
-												
+											</div>
+
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
 											<input type="file" name="image"> -->
-											<!-- <small class="form-text text-muted">Example block-level help text here.</small> -->
+										<!-- <small class="form-text text-muted">Example block-level help text here.</small> -->
 										<!-- </div> -->
 										<!-- <div class="mb-3">
 											<label class="form-check m-0">
@@ -153,7 +152,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             <span class="form-check-label">Check me out</span>
                                             </label>
 										</div> -->
-										<button type="submit" name="submit"class="btn btn-primary">Spara</button>
+										<hr>
+										<label>Lägg till bokning nu?</label>
+										</br></br>
+										<button type="submit" name="submit2" class="btn btn-primary">Ja</button>
+										&nbsp
+										<button type="submit" name="submit" class="btn btn-primary">Nej</button>
+										
 									</form>
 								</div>
 							</div>
@@ -310,9 +315,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div>
 									</form>
 								</div> -->
-							</div>
-						</div>
-					<!-- </div>
+					</div>
+				</div>
+				<!-- </div>
 
 				</div> -->
 			</main>
@@ -320,121 +325,204 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
 			<?php
-			if(isset($_POST['submit']))
-			{
-                    $user_email_id = $_GET['id'];
-					$base_price=$_POST['price'];
-					$time=$_POST['time'];
-					$admin_note=$_POST['admin-note'];
-					$appointment_type=$_POST['appointment-type'];
-					$regularity=$_POST['yesno'];
-					$personal=$_POST['yesno1'];
-					if($regularity=="not-regular"){
-						$appointment_type=$regularity;
-					}
-					$details=$_POST['details'];
-                    $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
-                    $row = $result->fetch_assoc();
-                    $user_id=$row['id'];
-					
-					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
-					// if(mysqli_num_rows($Existing_Username)!=0)
-						// {
-							?>
-								<!-- <script>
+			if (isset($_POST['submit'])) {
+				$user_email_id = $_GET['id'];
+				$base_price = $_POST['price'];
+				$time = $_POST['time'];
+				$admin_note = $_POST['admin-note'];
+				$appointment_type = $_POST['appointment-type'];
+				$regularity = $_POST['yesno'];
+				$personal = $_POST['yesno1'];
+				if ($regularity == "not-regular") {
+					$appointment_type = $regularity;
+				}
+				$details = $_POST['details'];
+				$result = mysqli_query($db, "SELECT id from `users` where user_id='$user_email_id';");
+				$row = $result->fetch_assoc();
+				$user_id = $row['id'];
+
+				// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
+				// if(mysqli_num_rows($Existing_Username)!=0)
+				// {
+			?>
+				<!-- <script>
 									
 									alert("Customer ID already exists!");
 								
 									</script> -->
-									<?php
-						// }
-						// else{
-					// 		$target_dir = "uploads/";
-					// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-					// $uploadOk = 1;
-					// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+				<?php
+				// }
+				// else{
+				// 		$target_dir = "uploads/";
+				// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				// $uploadOk = 1;
+				// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-					// // Check if image file is a actual image or fake image
-					// if(isset($_POST["submit"])) {
-					// $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-					// if($check !== false) {
-					// 	echo "File is an image - " . $check["mime"] . ".";
-					// 	$uploadOk = 1;
-					// } else {
-					// 	echo "File is not an image.";
-					// 	$uploadOk = 0;
-					// }
-					// }
+				// // Check if image file is a actual image or fake image
+				// if(isset($_POST["submit"])) {
+				// $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+				// if($check !== false) {
+				// 	echo "File is an image - " . $check["mime"] . ".";
+				// 	$uploadOk = 1;
+				// } else {
+				// 	echo "File is not an image.";
+				// 	$uploadOk = 0;
+				// }
+				// }
 
-					// // Check if file already exists
-					// if (file_exists($target_file)) {
-					// echo "Sorry, file already exists.";
-					// $uploadOk = 0;
-					// }
+				// // Check if file already exists
+				// if (file_exists($target_file)) {
+				// echo "Sorry, file already exists.";
+				// $uploadOk = 0;
+				// }
 
-					// // Check file size
-					// if ($_FILES["fileToUpload"]["size"] > 500000) {
-					// echo "Sorry, your file is too large.";
-					// $uploadOk = 0;
-					// }
+				// // Check file size
+				// if ($_FILES["fileToUpload"]["size"] > 500000) {
+				// echo "Sorry, your file is too large.";
+				// $uploadOk = 0;
+				// }
 
-					// // Allow certain file formats
-					// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-					// && $imageFileType != "gif" ) {
-					// echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-					// $uploadOk = 0;
-					// }
+				// // Allow certain file formats
+				// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+				// && $imageFileType != "gif" ) {
+				// echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+				// $uploadOk = 0;
+				// }
 
-					// // Check if $uploadOk is set to 0 by an error
-					// if ($uploadOk == 0) {
-					// echo "Sorry, your file was not uploaded.";
-					// // if everything is ok, try to upload file
-					// } else {
-					// if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-					// 	echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-					// } else {
-					// 	echo "Sorry, there was an error uploading your file.";
-					// }
-					// }
+				// // Check if $uploadOk is set to 0 by an error
+				// if ($uploadOk == 0) {
+				// echo "Sorry, your file was not uploaded.";
+				// // if everything is ok, try to upload file
+				// } else {
+				// if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+				// 	echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+				// } else {
+				// 	echo "Sorry, there was an error uploading your file.";
+				// }
+				// }
 
-					mysqli_query($db,"INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type,base_price,admin_note,is_personal) VALUES('$user_id', '$details','$time','$appointment_type','$base_price','$admin_note','$personal');");
-				
-					?>
-								<script>
-									document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
-                					var success_class = document.getElementById('success').className;
-									var delayInMilliseconds = 1000; //1.5 second
+				mysqli_query($db, "INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type,base_price,admin_note,is_personal) VALUES('$user_id', '$details','$time','$appointment_type','$base_price','$admin_note','$personal');");
 
-									setTimeout(function() {
-										window.location.href = "customer-list.php";
-									}, delayInMilliseconds);
-									
-                                    
-								
-									</script>
-									<?php
-
-						}
-		
-					
-				
 				?>
+				<script>
+					document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+					var success_class = document.getElementById('success').className;
+					var delayInMilliseconds = 1000; //1.5 second
 
-<?php include("footer.php"); ?>
+					setTimeout(function() {
+						window.location.href = "customer-list.php";
+					}, delayInMilliseconds);
+				</script>
+			<?php
+
+			} else if (isset($_POST['submit2'])) {
+				$user_email_id = $_GET['id'];
+				$base_price = $_POST['price'];
+				$time = $_POST['time'];
+				$admin_note = $_POST['admin-note'];
+				$appointment_type = $_POST['appointment-type'];
+				$regularity = $_POST['yesno'];
+				$personal = $_POST['yesno1'];
+				if ($regularity == "not-regular") {
+					$appointment_type = $regularity;
+				}
+				$details = $_POST['details'];
+				$result = mysqli_query($db, "SELECT id from `users` where user_id='$user_email_id';");
+				$row = $result->fetch_assoc();
+				$user_id = $row['id'];
+
+				// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
+				// if(mysqli_num_rows($Existing_Username)!=0)
+				// {
+			?>
+				<!-- <script>
+									
+									alert("Customer ID already exists!");
+								
+									</script> -->
+				<?php
+				// }
+				// else{
+				// 		$target_dir = "uploads/";
+				// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				// $uploadOk = 1;
+				// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+				// // Check if image file is a actual image or fake image
+				// if(isset($_POST["submit"])) {
+				// $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+				// if($check !== false) {
+				// 	echo "File is an image - " . $check["mime"] . ".";
+				// 	$uploadOk = 1;
+				// } else {
+				// 	echo "File is not an image.";
+				// 	$uploadOk = 0;
+				// }
+				// }
+
+				// // Check if file already exists
+				// if (file_exists($target_file)) {
+				// echo "Sorry, file already exists.";
+				// $uploadOk = 0;
+				// }
+
+				// // Check file size
+				// if ($_FILES["fileToUpload"]["size"] > 500000) {
+				// echo "Sorry, your file is too large.";
+				// $uploadOk = 0;
+				// }
+
+				// // Allow certain file formats
+				// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+				// && $imageFileType != "gif" ) {
+				// echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+				// $uploadOk = 0;
+				// }
+
+				// // Check if $uploadOk is set to 0 by an error
+				// if ($uploadOk == 0) {
+				// echo "Sorry, your file was not uploaded.";
+				// // if everything is ok, try to upload file
+				// } else {
+				// if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+				// 	echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+				// } else {
+				// 	echo "Sorry, there was an error uploading your file.";
+				// }
+				// }
+
+				mysqli_query($db, "INSERT INTO `customer_details` (user_id, details, time_alloted,appointment_type,base_price,admin_note,is_personal) VALUES('$user_id', '$details','$time','$appointment_type','$base_price','$admin_note','$personal');");
+
+				?>
+				<script>
+					document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+					var success_class = document.getElementById('success').className;
+					var delayInMilliseconds = 1000; //1.5 second
+
+					setTimeout(function() {
+						window.location.href="add-appointment.php?id=<?php echo $user_id ?>";
+					}, delayInMilliseconds);
+				</script>
+			<?php
+
+			}
+
+
+
+			?>
+
+			<?php include("footer.php"); ?>
 		</div>
 	</div>
 
 	<script src="js/app.js"></script>
 	<script type="text/javascript">
-
 		function yesnoCheck() {
 			if (document.getElementById('yesCheck').checked) {
 				document.getElementById('ifYes').style.display = 'block';
-			}
-			else document.getElementById('ifYes').style.display = 'none';
+			} else document.getElementById('ifYes').style.display = 'none';
 
 		}
-
 	</script>
 
 </body>

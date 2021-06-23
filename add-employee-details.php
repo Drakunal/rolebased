@@ -66,17 +66,18 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Är detta användarofficer?<span style="color:red">*</span></label>
-												<label class="form-check"><input class="form-check-input" type="radio" value="0"  name="yesno" id="noCheck" checked>
-														<span class="form-check-label">
-															Nej
-														</span></label>
+												<label class="form-label">Användarofficer?<span style="color:red">*</span></label>
+												
 												<label class="form-check">
 													<input class="form-check-input" type="radio"  name="yesno" id="yesCheck" value="1">
 														<span class="form-check-label">
 															Ja
 														</span>
 												</label>
+												<label class="form-check"><input class="form-check-input" type="radio" value="0"  name="yesno" id="noCheck" checked>
+														<span class="form-check-label">
+															Nej
+														</span></label>
 											</div>
                                         
 										<div class="mb-3">

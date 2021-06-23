@@ -56,6 +56,20 @@ if($_POST['type'] == ""){
     $(document).ready(function() {
         var table = $('#appointment-list').DataTable( {
             lengthChange: false,
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
             // buttons: [ 'copy', 'excel', 'pdf' ]
         } );
      
@@ -149,6 +163,20 @@ if($_POST['type'] == "stateData"){
     $(document).ready(function() {
         var table = $('#appointment-list').DataTable( {
             lengthChange: false,
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
             // buttons: [ 'copy', 'excel', 'pdf' ]
         } );
      
@@ -243,6 +271,20 @@ if($_POST['type'] == "yearData"){
     $(document).ready(function() {
         var table = $('#appointment-list').DataTable( {
             lengthChange: false,
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
             // buttons: [ 'copy', 'excel', 'pdf' ]
         } );
      
@@ -336,6 +378,20 @@ if($_POST['type'] == "employeeData"){
     $(document).ready(function() {
         var table = $('#appointment-list').DataTable( {
             lengthChange: false,
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
             // buttons: [ 'copy', 'excel', 'pdf' ]
         } );
      
