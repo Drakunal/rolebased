@@ -279,7 +279,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 							<?php if ($row3['admin_note'] != NULL) { ?>
 								<p><strong>Admin detaljer : </strong><?php echo $row3['admin_note']; ?></p>
 							<?php } ?>
-							<p><strong>Utnämningstyp : </strong><?php
+							<p><strong>Bokningstyp : </strong><?php
 																	if ($row3["appointment_type"] == "monthly") {
 																		echo "Månadsvis";
 																	} elseif ($row3["appointment_type"] == "bi-weekly") {
@@ -287,7 +287,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 																	} elseif ($row3["appointment_type"] == "not-regular") {
 																		echo "Not-regular";
 																	} elseif ($row3["appointment_type"] == "weekly") {
-																		echo "Inte vanligt";
+																		echo "Engångsbokning";
 																	} ?></p>
 							<?php if ($row77['additional_charge'] != 0.00) { ?>
 								<p><strong>Extra kostnad : </strong><?php echo $row77['additional_charge']; ?> Kr</p>
@@ -351,7 +351,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 								<?php } ?>
 								<button class='btn btn-danger'>
 									<i class='fas fa-times'></i>
-									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id; ?>'>Avbryt</a>
+									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id; ?>'>Avboka</a>
 								</button>
 							</div>
 						</div>

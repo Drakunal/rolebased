@@ -127,7 +127,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
 														<span class="form-check-label">
-														Varje vecka
+														Veckovis
 														</span>
 												</label>
 												<label class="form-check">

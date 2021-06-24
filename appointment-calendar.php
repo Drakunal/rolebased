@@ -177,7 +177,7 @@ error_reporting(0);
 
 
                     eventClick: function(event) {
-                        if (confirm("View details?")) {
+                        // if (confirm("View details?")) {
                             var id = event.id;
                             //   $.ajax({
                             var url = "show.php?id=" + id;
@@ -191,11 +191,11 @@ error_reporting(0);
                             //   })
 
                             window.location.href = url;
-                        }
+                        // }
                     },
                     select: function(start, end, allDay) {
                         // var title = prompt("Add appointment in this day?");
-                        if (confirm("Add appointment in this day?")) {
+                        if (confirm("Lägg till bokning den här dagen?")) {
                             var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
                             // var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                             // $.ajax({

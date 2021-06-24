@@ -126,15 +126,15 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											<p><strong>Admin detaljer : </strong><?php echo $row2['admin_note']; ?></p>
 										<?php } ?>
 
-										<p><strong>Utnämningstyp : </strong> <?php
+										<p><strong>Bokningstyp : </strong> <?php
 																				if ($row2["appointment_type"] == "monthly") {
 																					echo "Månadsvis";
 																				} elseif ($row2["appointment_type"] == "bi-weekly") {
 																					echo "Varannan vecka";
 																				} elseif ($row2["appointment_type"] == "not-regular") {
-																					echo "Inte vanligt";
+																					echo "Engångsbokning";
 																				} elseif ($row2["appointment_type"] == "weekly") {
-																					echo "Varje vecka";
+																					echo "Veckovis";
 																				} ?></p>
 
 

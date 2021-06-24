@@ -184,7 +184,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 																					} elseif ($row3["appointment_type"] == "not-regular") {
 																						echo "Inte regelbunden";
 																					} elseif ($row3["appointment_type"] == "weekly") {
-																						echo "Varje vecka";
+																						echo "Veckovis";
 																					} ?>
 											</p>
 											</br>

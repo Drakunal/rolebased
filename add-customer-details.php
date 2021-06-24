@@ -107,22 +107,24 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											<label class="form-label">Admin detaljer</label>
 											<textarea class="form-control" name="admin-note" placeholder="Enbart synligt för admin" rows="1"></textarea>
 										</div>
+										
 										<div class="mb-3">
+										<label class="form-label">Bokningstyp<span style="color:red">*</span></label>
 											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
 												<span class="form-check-label">
-													Inte vanligt
+													Engångsbokning
 												</span></label>
 											<label class="form-check">
 												<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
 												<span class="form-check-label">
-													Regelbunden
+													Återkommande
 												</span>
 											</label>
 											<div id="ifYes" style="display:none">
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
 													<span class="form-check-label">
-														Varje vecka
+														Veckovis
 													</span>
 												</label>
 												<label class="form-check">
