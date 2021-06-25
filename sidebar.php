@@ -31,6 +31,11 @@
                                         <li class="sidebar-item"><a class="sidebar-link" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></li>
                                     </ul> -->
                                 </li>
+                                <li class="sidebar-item">
+                                    <a href="customer-price.php"  class="sidebar-link collapsed">
+                                     <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">Customer Price</span>
+                                    </a>
+                                </li>
 
    
                                 <li class="sidebar-item">
