@@ -1,63 +1,80 @@
 <div class="navbar-collapse collapse">
-	
 
-										<div id="success" class="offset-md-4 alert alert-success alert-dismissible d-none" role="alert">
-											<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+	<div id="success" class="offset-md-4 alert alert-success alert-dismissible d-none" role="alert">
+		<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button> -->
-											<div class="alert-message">
-												<strong>SUCCESS!</strong>
-											</div>
-										</div>
-										
+		<div class="alert-message">
+			<strong>SUCCESS!</strong>
+		</div>
+	</div>
 
-										<div id="danger" class="offset-md-4 alert alert-danger alert-dismissible d-none" role="alert">
-											<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+	<div id="danger" class="offset-md-4 alert alert-danger alert-dismissible d-none" role="alert">
+		<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button> -->
-											<div class="alert-message">
-												<strong>DELETED!</strong>
-											</div>
-										</div>
+		<div class="alert-message">
+			<strong>DELETED!</strong>
+		</div>
+	</div>
 
-										<div id="error" class="offset-md-4 alert alert-danger alert-dismissible d-none" role="alert">
-											<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<div id="error" class="offset-md-4 alert alert-danger alert-dismissible d-none" role="alert">
+		<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button> -->
-											<div class="alert-message">
-												<strong>ERROR! Try again.</strong>
-											</div>
-										</div>
+		<div class="alert-message">
+			<strong>ERROR! Try again.</strong>
+		</div>
+	</div>
 
 
-	
-										
-					<ul class="navbar-nav navbar-align">
-						<!-- <li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
+
+	<?php
+	$query = mysqli_query($db, 'SELECT count(id),id,customer_id,seen_at,created_at from `notification` where seen_at is NULL') or die("Notification error");
+	$row = $query->fetch_assoc();
+	$notification_count = $row['count(id)'];
+	?>
+	<ul class="navbar-nav navbar-align">
+		<li class="nav-item dropdown">
+			<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
+				<div class="position-relative">
+					<i class="align-middle" data-feather="bell"></i>
+					<span class="indicator"><?php echo $notification_count; ?></span>
+				</div>
+			</a>
+			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
+				<div class="dropdown-menu-header">
+					<?php echo $notification_count; ?> New Notifications
+				</div>
+				<?php if ($notification_count > 0) { ?>
+					<div class="list-group">
+						<?php do { 
+							$created_at=$row['created_at'];
+							$customer_id=$row['customer_id'];
+							$notification_id=$row['id'];
+							?>
+							<a href="add-appointments.php?id=<?php echo $customer_id; ?>" class="list-group-item">
+								<div class="row g-0 align-items-center">
+									<div class="col-2">
+										<i class="text-danger" data-feather="alert-circle"></i>
+									</div>
+									<div class="col-10">
+										<div class="text-dark">Booking Alert</div>
+										<div class="text-muted small mt-1"><?php echo $customer_id ?>has only one appointment left.</div>
+										<div class="text-muted small mt-1"><?php echo $created_at ?></div>
+
+										<!-- <div class="text-muted small mt-1">30m ago</div> -->
+									</div>
+
 								</div>
 							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 New Notifications
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-danger" data-feather="alert-circle"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-												<div class="text-muted small mt-1">30m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
+
+						<?php } while ($row = $query->fetch_assoc()); ?>
+
+
+						<!-- <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<i class="text-warning" data-feather="bell"></i>
@@ -68,8 +85,8 @@
 												<div class="text-muted small mt-1">2h ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> -->
+						<!-- <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<i class="text-primary" data-feather="home"></i>
@@ -79,8 +96,8 @@
 												<div class="text-muted small mt-1">5h ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> -->
+						<!-- <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<i class="text-success" data-feather="user-plus"></i>
@@ -91,14 +108,21 @@
 												<div class="text-muted small mt-1">14h ago</div>
 											</div>
 										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all notifications</a>
-								</div>
-							</div>
-						</li> -->
-						<!-- <li class="nav-item dropdown">
+									</a> -->
+					</div>
+
+					<div class="dropdown-menu-footer">
+						<a href="#" class="text-muted">Show all notifications</a>
+					</div>
+				<?php } else { ?>
+					<div class="dropdown-menu-footer">
+						<a href="#" class="text-muted">No new notifications</a>
+					</div>
+
+				<?php	} ?>
+			</div>
+		</li>
+		<!-- <li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="message-square"></i>
@@ -165,23 +189,23 @@
 								</div>
 							</div>
 						</li> -->
-									<li class="nav-item dropdown">
-										<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
-							<i class="align-middle" data-feather="settings"></i>
-						</a>
+		<li class="nav-item dropdown">
+			<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+				<i class="align-middle" data-feather="settings"></i>
+			</a>
 
-											<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-								<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" /> <span class="text-dark"><?= $_SESSION['name'] ?></span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right">
-								<!-- <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a> -->
-								<!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a> -->
-								<!-- <div class="dropdown-divider"></div> -->
-								<a class="dropdown-item" href="settings.php"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
-								<!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i> Help Center</a> -->
-								<!-- <div class="dropdown-divider"></div> -->
-								<a class="dropdown-item" href="logout.php"><i class="align-middle mr-1" data-feather="log-out"></i>Log out</a>
-							</div>
-						</li>
-					</ul>
-				</div>
+			<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+				<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" /> <span class="text-dark"><?= $_SESSION['name'] ?></span>
+			</a>
+			<div class="dropdown-menu dropdown-menu-right">
+				<!-- <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a> -->
+				<!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a> -->
+				<!-- <div class="dropdown-divider"></div> -->
+				<a class="dropdown-item" href="settings.php"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
+				<!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i> Help Center</a> -->
+				<!-- <div class="dropdown-divider"></div> -->
+				<a class="dropdown-item" href="logout.php"><i class="align-middle mr-1" data-feather="log-out"></i>Log out</a>
+			</div>
+		</li>
+	</ul>
+</div>
