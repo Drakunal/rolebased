@@ -1,9 +1,8 @@
 <?php
 session_start();
 include "connection.php";
-if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
-{
-    header("location:index.php");
+if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
+	header("location:index.php");
 }
 ?>
 
@@ -21,32 +20,30 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
 	<title>Monikas</title>
-	
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
-	<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css" rel="stylesheet">
-	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-	<!-- <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet"> -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
  
     <link href="css/app.css" rel="stylesheet">
-	
 </head>
 
 <body>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				
-        <?php include("sidebar.php"); ?>
+
+				<?php include("sidebar.php"); ?>
 			</div>
 		</nav>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
-          <i class="hamburger align-self-center"></i>
-        </a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
-				
+
 				<?php include("navbar.php"); ?>
 			</nav>
 
@@ -56,16 +53,16 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 					<h1 class="h3 mb-3">Customer Price</h1>
 
 					<div class="row">
-					<div class="col-md-12">
+						<div class="col-md-12">
 
-						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></button>
-					</div>
-				
+							<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-customer.php"><i class="align-middle" data-feather="user-plus"></i>Add Customers</a></button>
+						</div>
 
-					
+
+
 
 						<div class="col-md-12">
-                        <!-- <div class="col-xl-6 col-xxl-7"> -->
+							<!-- <div class="col-xl-6 col-xxl-7"> -->
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
@@ -411,6 +408,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<div class="ajax3">
 
 												<div id="earned">
+													
+													
+														
+													
 													<!-- <p>hi</p> -->
 
 												</div>
@@ -419,13 +420,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 									</div>
 								</div>
 							</div>
-						<!-- </div> -->
-							
+							<!-- </div> -->
+
 						</div>
 
-						
 
-						
+
+
 					</div>
 
 				</div>
@@ -434,25 +435,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<?php include("footer.php"); ?>
 		</div>
 	</div>
-
-	<?php include("scripts.php"); ?>
-    <script>
-$(document).ready(function() {
-    var table = $('#customer-list').DataTable( {
-        lengthChange: false,
-        // buttons: [ 'copy', 'excel', 'pdf' ]
-    } );
- 
-    // table.buttons().container()
-    //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-} );
-
-document.getElementById("customer-list").className = "table table-striped";
-</script>
-<script type="text/javascript">
+	<script src="js/app.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
 		$(document).ready(function() {
 			function loadData(type, category_id, year_id, e_id) {
 				$.ajax({
+					async:true,
 					url: "customer-price-ajax.php",
 					type: "POST",
 					data: {
@@ -519,22 +508,11 @@ document.getElementById("customer-list").className = "table table-striped";
 			})
 		});
 	</script>
-	   <!-- <script>
-    $(document).ready(function() {
-        $('#price').DataTable( {
-            'language': {
-                'lengthMenu': 'Display _MENU_ records per page',
-                'zeroRecords': 'Nothing found - sorry',
-                'info': 'Showing page _PAGE_ of _PAGES_',
-                'infoEmpty': 'No records available',
-                'infoFiltered': '(filtered from _MAX_ total records)'
-            }
-        } );
-    } );
-    </script>
+
    
-    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
-    <script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js'></script> -->
+
+    
+
 
 </body>
 

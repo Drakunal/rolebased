@@ -29,14 +29,17 @@ if ($_POST['type'] == "") {
     }
 }
 if ($_POST['type'] == "stateData") {
-    $str = "<table id='price' class='table table-striped'  style='width:100%'>
+    $str = "<table id='b' class='table table-striped' style='width:100%'>
+    <thead>
         <th>Customer id</th>
         <th>Customer name</th>
         <th>Personal</th>
         <th>Gov</th>
         <th>Company</th>
         <th>Extra</th>
-        <th>Total</th>";
+        <th>Total</th>
+        </thead>
+        <tbody  id='price'>";
     $c_role = "customer";
     $customer_list_query = mysqli_query($db, "SELECT id,user_id,name from `users` where role='$c_role' AND  deleted_at is NULL") or die("Unsuccessful list");
 
@@ -133,39 +136,9 @@ if ($_POST['type'] == "stateData") {
         }
     }
     $employee_id1 = $_POST['e_id'];
-    $str = $str . "</table>
-    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+    $str = $str . "</tbody>
 
-    <script src='https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.bootstrap4.min.js'></script>
-    
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'></script> -->
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'></script> -->
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js'></script>
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <script>
-    $(document).ready(function() {
-        var table = $('#price').DataTable( {
-            lengthChange: false,
-            // buttons: [ 'copy', 'excel', 'pdf' ]
-        } );
-     
-        // table.buttons().container()
-        //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-    } );
-    
-    document.getElementById('appointment-list').className = 'table table-striped';
-    </script>
+    </table>
  
     
     ";
@@ -173,14 +146,17 @@ if ($_POST['type'] == "stateData") {
 
 
 if ($_POST['type'] == "yearData") {
-    $str = "<table id='price' class='table table-striped'  style='width:100%'>
+    $str = "<table id='b' class='table table-striped' style='width:100%'>
+    <thead>
         <th>Customer id</th>
         <th>Customer name</th>
         <th>Personal</th>
         <th>Gov</th>
         <th>Company</th>
         <th>Extra</th>
-        <th>Total</th>";
+        <th>Total</th>
+        </thead>
+        <tbody  id='price'>";
     $c_role = "customer";
     $customer_list_query = mysqli_query($db, "SELECT id,user_id,name from `users` where role='$c_role' AND  deleted_at is NULL") or die("Unsuccessful list");
 
@@ -277,53 +253,26 @@ if ($_POST['type'] == "yearData") {
         }
     }
     $employee_id1 = $_POST['e_id'];
-    $str = $str . "</table>
-    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+    $str = $str . "</tbody>
 
-    <script src='https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.bootstrap4.min.js'></script>
-    
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'></script> -->
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'></script> -->
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js'></script>
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <script>
-    $(document).ready(function() {
-        var table = $('#price').DataTable( {
-            lengthChange: false,
-            // buttons: [ 'copy', 'excel', 'pdf' ]
-        } );
-     
-        // table.buttons().container()
-        //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-    } );
-    
-    document.getElementById('appointment-list').className = 'table table-striped';
-    </script>
+    </table>
  
     
     ";
 }
 
 if ($_POST['type'] == "employeeData") {
-    $str = "<table id='price' class='table table-striped'  style='width:100%'>
+    $str = "<table id='b' class='table table-striped' style='width:100%'>
+    <thead>
         <th>Customer id</th>
         <th>Customer name</th>
         <th>Personal</th>
         <th>Gov</th>
         <th>Company</th>
         <th>Extra</th>
-        <th>Total</th>";
+        <th>Total</th>
+        </thead>
+        <tbody  id='price'>";
     $c_role = "customer";
     $customer_list_query = mysqli_query($db, "SELECT id,user_id,name from `users` where role='$c_role' AND  deleted_at is NULL") or die("Unsuccessful list");
 
@@ -420,45 +369,25 @@ if ($_POST['type'] == "employeeData") {
         }
     }
     $employee_id1 = $_POST['e_id'];
-    $str = $str . "</table>
-    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+    $str = $str . "</tbody>
 
-    <script src='https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
+    </table>
     
-    <script src='https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.bootstrap4.min.js'></script>
-    
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'></script> -->
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'></script> -->
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js'></script>
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <script>
-    $(document).ready(function() {
-        var table = $('#price').DataTable( {
-            lengthChange: false,
-            // buttons: [ 'copy', 'excel', 'pdf' ]
-        } );
-     
-        // table.buttons().container()
-        //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-    } );
-    
-    document.getElementById('appointment-list').className = 'table table-striped';
-    </script>
  
     
     ";
 }
 
+$str=$str."<script src='js/jquery.js' defer></script>
 
+<script src='https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js'></script>
+<script>
+    $(document).ready(function() {
+        var table = $('#b').DataTable({
+            lengthChange: false, 
+        });
+    });   
+</script>";
 echo $str;
 ?>
 
