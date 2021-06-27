@@ -1,3 +1,4 @@
+--27/06/2021 js/jquery.js and js/dataTables.bootstrap4.js created and customer-price.php and customer-price.ajax modified, it is showing the perfect thing
 --25/06/2021 customer-price.php and customer-price-ajax.php created and sidebar modified, calculation for each customer shown
 --18/06/2021 search option added in the calendar, searches by customer, load.php,appointment-calendar.php,earned.php modified
 --16/06/2021 spinner copy admin panel created and earned-ajax.php has extras and dashboard-hours-worked-ajax.php has ui changes

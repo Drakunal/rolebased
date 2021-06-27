@@ -29,15 +29,18 @@ if ($_POST['type'] == "") {
     }
 }
 if ($_POST['type'] == "stateData") {
-    $str = "<table id='b' class='table table-striped' style='width:100%'>
+    $str = "<script src='js/jquery.js'></script>
+
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-striped' style='width:100%'>
     <thead>
         <th>Customer id</th>
         <th>Customer name</th>
-        <th>Personal</th>
+        <th>Cost for Customer</th>
         <th>Gov</th>
         <th>Company</th>
         <th>Extra</th>
         <th>Total</th>
+        <th>Total for Customer</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -96,6 +99,8 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . ($non_rut + $rut + $rut + $extra) . " Kr
             </td>
+            <td>" . ($non_rut + $rut + $extra) . " Kr
+            </td>
             </tr>";
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
@@ -114,6 +119,8 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . ($non_rut + $rut + $rut + $extra) . " Kr
             </td>
+            <td>" . ($non_rut + $rut + $extra) . " Kr
+            </td>
             </tr>";
         } else if ($rut == 0 && $non_rut == 0){
             $str = $str . "
@@ -127,6 +134,8 @@ if ($_POST['type'] == "stateData") {
             <td> -
             </td>
             <td> -
+            </td>
+            <td> - 
             </td>
             <td> - 
             </td>
@@ -146,15 +155,18 @@ if ($_POST['type'] == "stateData") {
 
 
 if ($_POST['type'] == "yearData") {
-    $str = "<table id='b' class='table table-striped' style='width:100%'>
+    $str = "<script src='js/jquery.js'></script>
+
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-striped' style='width:100%'>
     <thead>
         <th>Customer id</th>
         <th>Customer name</th>
-        <th>Personal</th>
+        <th>Cost for Customer</th>
         <th>Gov</th>
         <th>Company</th>
         <th>Extra</th>
         <th>Total</th>
+        <th>Total for Customer</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -213,6 +225,8 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . ($non_rut + $rut + $rut + $extra) . " Kr
             </td>
+            <td>" . ($non_rut + $rut + $extra) . " Kr
+            </td>
             </tr>";
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
@@ -231,6 +245,8 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . ($non_rut + $rut + $rut + $extra) . " Kr
             </td>
+            <td>" . ($non_rut + $rut + $extra) . " Kr
+            </td>
             </tr>";
         } else if ($rut == 0 && $non_rut == 0){
             $str = $str . "
@@ -244,6 +260,8 @@ if ($_POST['type'] == "yearData") {
             <td> -
             </td>
             <td> -
+            </td>
+            <td> - 
             </td>
             <td> - 
             </td>
@@ -262,15 +280,18 @@ if ($_POST['type'] == "yearData") {
 }
 
 if ($_POST['type'] == "employeeData") {
-    $str = "<table id='b' class='table table-striped' style='width:100%'>
+    $str = "<script src='js/jquery.js'></script>
+
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-striped' style='width:100%'>
     <thead>
         <th>Customer id</th>
         <th>Customer name</th>
-        <th>Personal</th>
+        <th>Cost for Customer</th>
         <th>Gov</th>
         <th>Company</th>
         <th>Extra</th>
         <th>Total</th>
+        <th>Total for Customer</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -329,6 +350,8 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td>" . ($non_rut + $rut + $rut + $extra) . " Kr
             </td>
+            <td>" . ($non_rut + $rut + $extra) . " Kr
+            </td>
             </tr>";
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
@@ -346,6 +369,8 @@ if ($_POST['type'] == "employeeData") {
             <td>" . $extra . " Kr
             </td>
             <td>" . ($non_rut + $rut + $rut + $extra) . " Kr
+            </td>
+            <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
             </tr>";
         } else if ($rut == 0 && $non_rut == 0){
@@ -365,6 +390,8 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td> - 
             </td>
+            <td> - 
+            </td>
             </tr>";
         }
     }
@@ -378,15 +405,14 @@ if ($_POST['type'] == "employeeData") {
     ";
 }
 
-$str=$str."<script src='js/jquery.js' defer></script>
-
-<script src='https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js'></script>
+$str=$str."
 <script>
     $(document).ready(function() {
         var table = $('#b').DataTable({
             lengthChange: false, 
         });
-    });   
+    }); 
+
 </script>";
 echo $str;
 ?>
