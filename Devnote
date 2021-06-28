@@ -1,3 +1,4 @@
+--28/06/2021 show.php updated and appointment-delete-reason.php created, delete appointment showing 0 hours and not included in any calculation now
 --27/06/2021 customer-price-ajax.php and customer-price.php modified, all data is now shown in datatable
 --27/06/2021 js/jquery.js and js/dataTables.bootstrap4.js created and customer-price.php and customer-price.ajax modified, it is showing the perfect thing
 --25/06/2021 customer-price.php and customer-price-ajax.php created and sidebar modified, calculation for each customer shown
