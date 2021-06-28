@@ -143,9 +143,9 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . $c_name . "
             </td>
-            <td>" . $appointment_count . "
+            <td> -
             </td>
-            <td>" . $hours . " hours
+            <td> -
             </td>
             <td> -
             </td>
@@ -286,9 +286,9 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . $c_name . "
             </td>
-            <td>" . $appointment_count . "
+            <td> -
             </td>
-            <td>" . $hours . " hours
+            <td> -
             </td>
             <td> -
             </td>
@@ -428,9 +428,9 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td>" . $c_name . "
             </td>
-            <td>" . $appointment_count . "
+            <td> -
             </td>
-            <td>" . $hours . " hours
+            <td> -
             </td>
             <td> -
             </td>
