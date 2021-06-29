@@ -47,8 +47,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			<?php
 			$user_id = $_GET['id'];
 
-			$result = mysqli_query($db, "SELECT details,time_alloted,base_price,admin_note from `customer_details` where user_id='$user_id';");
+			$result = mysqli_query($db, "SELECT details,time_alloted,base_price,admin_note,appointment_type from `customer_details` where user_id='$user_id';");
 			$res = $result->fetch_assoc();
+			$a_type=$res['appointment_type'];
 
 			$result22 = mysqli_query($db, "SELECT name from `users` where id='$user_id';");
 			$res22 = $result22->fetch_assoc();
@@ -116,37 +117,86 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											<textarea class="form-control" name="admin_note" placeholder="only visible by admin" rows="1"><?php echo $res['admin_note']; ?></textarea>
 										</div>
 										<div class="mb-3">
-											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
+										<?php 
+										 if($a_type=="not-regular"){
+
+										 ?>
+											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" name="appointment-type" id="noCheck" checked>
 												<span class="form-check-label">
 													Not Regular
 												</span></label>
-											<label class="form-check">
+												<?php }else{ ?>
+
+												<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" name="appointment-type" id="noCheck">
+												<span class="form-check-label">
+													Not Regular
+												</span></label>
+												<?php } ?>
+											<!-- <label class="form-check">
 												<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
 												<span class="form-check-label">
 													Regular
 												</span>
-											</label>
-											<div id="ifYes" style="display:none">
+											</label> -->
+											<!-- <div id="ifYes" style="display:none"> -->
+											<?php 
+										 if($a_type=="weekly"){
+
+										 ?>
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
 													<span class="form-check-label">
 														Weekly
 													</span>
 												</label>
+												<?php }else{ ?>
+													<label class="form-check">
+													<input class="form-check-input" type="radio" value="weekly" name="appointment-type">
+													<span class="form-check-label">
+														Weekly
+													</span>
+												</label>
+												<?php } ?>
+
+
+												<?php 
+										 if($a_type=="bi-weekly"){
+
+										 ?>
 												<label class="form-check">
-													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" s>
+													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
 													<span class="form-check-label">
 														Bi-weekly
 													</span>
 												</label>
+												<?php }else{ ?>
+													<label class="form-check">
+													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type">
+													<span class="form-check-label">
+														Bi-weekly
+													</span>
+												</label>
+												<?php } ?>
+
+												<?php 
+										 if($a_type=="monthly"){
+
+										 ?>
 												<label class="form-check">
+													<input class="form-check-input" type="radio" value="monthly" name="appointment-type" checked>
+													<span class="form-check-label">
+														Monthly
+													</span>
+												</label>
+												<?php }else{ ?>
+													<label class="form-check">
 													<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
 													<span class="form-check-label">
 														Monthly
 													</span>
 												</label>
-
-											</div>
+												<?php } ?>
+											<!-- </div> -->
 
 										</div>
 										<!-- <div class="mb-3">
@@ -339,7 +389,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				$base_price = $_POST['base-price'];
 				$admin_note = $_POST['admin_note'];
 				$appointment_type = $_POST['appointment-type'];
-				$regularity = $_POST['yesno'];
+				$regularity = $_POST['appointment-type'];
 				if ($regularity == "not-regular") {
 					$appointment_type = $regularity;
 				}
@@ -448,14 +498,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 	</div>
 
 	<script src="js/app.js"></script>
-	<script type="text/javascript">
-		function yesnoCheck() {
-			if (document.getElementById('yesCheck').checked) {
-				document.getElementById('ifYes').style.display = 'block';
-			} else document.getElementById('ifYes').style.display = 'none';
-
-		}
-	</script>
+	
 
 </body>
 
