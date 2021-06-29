@@ -256,7 +256,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											$result3 = mysqli_query($db, "SELECT base_price,appointment_type,details,time_alloted,admin_note from `customer_details` where user_id='$customer_id';");
 											$row3 = $result3->fetch_assoc();
 
-											$sql77 = "SELECT additional_charge,invoice_charge,comment,time_alloted  FROM appointments WHERE id='$appointment_id'";
+											$sql77 = "SELECT base_price,additional_charge,invoice_charge,comment,time_alloted  FROM appointments WHERE id='$appointment_id'";
 											$result77 = mysqli_query($db, $sql77) or die("Query unsuccessful1");
 											$row77 = $result77->fetch_assoc();
 											$time_alloted = $row77["time_alloted"];
@@ -283,7 +283,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 							<?php if ($row3['details'] != NULL) { ?>
 								<p><strong>Details : </strong> <?php echo $row3["details"]; ?></p>
 							<?php } ?>
-							<p><strong>Base Price : </strong><?php echo $row3['base_price']; ?> Kr</p>
+							<p><strong>Base Price : </strong><?php echo $row77['base_price']; ?> Kr</p>
 							<p><strong>Time Alloted : </strong> <?php echo $time_alloted; ?> hours</p>
 							<?php if ($row3['admin_note'] != NULL) { ?>
 								<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row3['admin_note']; ?></p>

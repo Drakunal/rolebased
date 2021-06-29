@@ -1,9 +1,8 @@
 <?php
 session_start();
 include "connection.php";
-if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
-{
-    header("location:index.php");
+if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
+	header("location:index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -28,9 +27,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				
 
-		<?php include("sidebar.php"); ?>
+
+				<?php include("sidebar.php"); ?>
 
 				<!-- <div class="sidebar-cta">
 					<div class="sidebar-cta-content">
@@ -45,25 +44,29 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 		</nav>
 
 		<div class="main">
-        <?php
-                $user_id = $_GET['id'];
-                
-                $result = mysqli_query($db,"SELECT details,time_alloted,base_price,admin_note from `customer_details` where user_id='$user_id';");
-                $res = $result->fetch_assoc();
-				// print_r($res);
-// echo $res['details'];
+			<?php
+			$user_id = $_GET['id'];
+
+			$result = mysqli_query($db, "SELECT details,time_alloted,base_price,admin_note from `customer_details` where user_id='$user_id';");
+			$res = $result->fetch_assoc();
+
+			$result22 = mysqli_query($db, "SELECT name from `users` where id='$user_id';");
+			$res22 = $result22->fetch_assoc();
+			$customer_name = $res22['name'];
+			// print_r($res);
+			// echo $res['details'];
 			// 	$result2 = mysqli_query($db,"SELECT details,time_alloted from `customer_details` where user_id='$idd';");
 			// $row2 = $result2->fetch_assoc();
-            // print_r($res);
-                
-            ?>
+			// print_r($res);
+
+			?>
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
-          <i class="hamburger align-self-center"></i>
-        </a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
-								<?php include("navbar.php"); ?>
-				
+				<?php include("navbar.php"); ?>
+
 			</nav>
 
 			<main class="content">
@@ -86,22 +89,22 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Time alloted in hours<span style="color:red">*</span></label>
-											<input type="number"  step="0.1" name="time"class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
+											<input type="number" step="0.1" name="time" class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
 										</div>
-                                        <!-- <div class="mb-3">
+										<!-- <div class="mb-3">
 											<label class="form-label">Name</label>
 											<input type="text" name="name" class="form-control" placeholder="Name">
 										</div> -->
-                                        
+
 										<div class="mb-3">
 											<label class="form-label">Details</label>
-											<textarea class="form-control"name="details" placeholder="Details" rows="1" ><?php echo $res['details']; ?></textarea>
+											<textarea class="form-control" name="details" placeholder="Details" rows="1"><?php echo $res['details']; ?></textarea>
 										</div>
 
 
 										<div class="mb-3">
 											<label class="form-label">Base Price<span style="color:red">*</span></label>
-											<input type="number"  name="base-price"class="form-control" placeholder="base price" value="<?php echo $res['base_price']; ?>">
+											<input type="number" name="base-price" class="form-control" placeholder="base price" value="<?php echo $res['base_price']; ?>">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Base Price</label>
@@ -110,46 +113,46 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 										<div class="mb-3">
 											<label class="form-label">Admin's Note</label>
-											<textarea class="form-control"name="admin_note" placeholder="only visible by admin" rows="1" ><?php echo $res['admin_note']; ?></textarea>
+											<textarea class="form-control" name="admin_note" placeholder="only visible by admin" rows="1"><?php echo $res['admin_note']; ?></textarea>
 										</div>
 										<div class="mb-3">
 											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
-														<span class="form-check-label">
-															Not Regular
-														</span></label>
+												<span class="form-check-label">
+													Not Regular
+												</span></label>
 											<label class="form-check">
-													<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
-														<span class="form-check-label">
-															Regular
-														</span>
-												</label>
-												<div  id="ifYes" style="display:none">
+												<input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck" value="regular">
+												<span class="form-check-label">
+													Regular
+												</span>
+											</label>
+											<div id="ifYes" style="display:none">
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
-														<span class="form-check-label">
-															Weekly
-														</span>
+													<span class="form-check-label">
+														Weekly
+													</span>
 												</label>
 												<label class="form-check">
-													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type"s>
-														<span class="form-check-label">
-															Bi-weekly
-														</span>
+													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" s>
+													<span class="form-check-label">
+														Bi-weekly
+													</span>
 												</label>
 												<label class="form-check">
-            										<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
-           												 <span class="form-check-label">
-             												 Monthly
-           												 </span>
-        										  </label>
+													<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
+													<span class="form-check-label">
+														Monthly
+													</span>
+												</label>
 
-												</div>
-												
+											</div>
+
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label w-100">Upload Image</label>
 											<input type="file" name="image"> -->
-											<!-- <small class="form-text text-muted">Example block-level help text here.</small> -->
+										<!-- <small class="form-text text-muted">Example block-level help text here.</small> -->
 										<!-- </div> -->
 										<!-- <div class="mb-3">
 											<label class="form-check m-0">
@@ -157,7 +160,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                                             <span class="form-check-label">Check me out</span>
                                             </label>
 										</div> -->
-										<button type="submit" name="submit"class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 									</form>
 								</div>
 							</div>
@@ -314,9 +317,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 										</div>
 									</form>
 								</div> -->
-							</div>
-						</div>
-					<!-- </div>
+					</div>
+				</div>
+				<!-- </div>
 
 				</div> -->
 			</main>
@@ -324,124 +327,134 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
 			<?php
-			if(isset($_POST['submit']))
-			{
-                    // $user_email_id = $_GET['id'];
-					// $time=$_POST['time'];
-					// $details=$_POST['details'];
-                    // $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
-                    // $row = $result->fetch_assoc();
-                    // $user_id=$row['id'];
-                    $details=$_POST['details'];
-					$time_alloted=$_POST['time'];
-					$base_price=$_POST['base-price'];
-					$admin_note=$_POST['admin_note'];
-					$appointment_type=$_POST['appointment-type'];
-					$regularity=$_POST['yesno'];
-					if($regularity=="not-regular"){
-						$appointment_type=$regularity;
-					}
-					
-					// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
-					// if(mysqli_num_rows($Existing_Username)!=0)
-						// {
-							?>
-							
-								<!-- <script>
+			if (isset($_POST['submit'])) {
+				// $user_email_id = $_GET['id'];
+				// $time=$_POST['time'];
+				// $details=$_POST['details'];
+				// $result = mysqli_query($db,"SELECT id from `users` where user_id='$user_email_id';");
+				// $row = $result->fetch_assoc();
+				// $user_id=$row['id'];
+				$details = $_POST['details'];
+				$time_alloted = $_POST['time'];
+				$base_price = $_POST['base-price'];
+				$admin_note = $_POST['admin_note'];
+				$appointment_type = $_POST['appointment-type'];
+				$regularity = $_POST['yesno'];
+				if ($regularity == "not-regular") {
+					$appointment_type = $regularity;
+				}
+				$prev_time_alloted = $res['time_alloted'];
+				$prev_base_price = $res['base_price'];
+
+				// $Existing_Username = mysqli_query($db,"SELECT * from `users` where user_id='$email';");
+				// if(mysqli_num_rows($Existing_Username)!=0)
+				// {
+			?>
+
+				<!-- <script>
 									
 									alert("Customer ID already exists!");
 								
 									</script> -->
-									<?php
-						// }
-						// else{
-					// 		$target_dir = "uploads/";
-					// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-					// $uploadOk = 1;
-					// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+				<?php
+				// }
+				// else{
+				// 		$target_dir = "uploads/";
+				// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				// $uploadOk = 1;
+				// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-					// // Check if image file is a actual image or fake image
-					// if(isset($_POST["submit"])) {
-					// $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-					// if($check !== false) {
-					// 	echo "File is an image - " . $check["mime"] . ".";
-					// 	$uploadOk = 1;
-					// } else {
-					// 	echo "File is not an image.";
-					// 	$uploadOk = 0;
-					// }
-					// }
+				// // Check if image file is a actual image or fake image
+				// if(isset($_POST["submit"])) {
+				// $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+				// if($check !== false) {
+				// 	echo "File is an image - " . $check["mime"] . ".";
+				// 	$uploadOk = 1;
+				// } else {
+				// 	echo "File is not an image.";
+				// 	$uploadOk = 0;
+				// }
+				// }
 
-					// // Check if file already exists
-					// if (file_exists($target_file)) {
-					// echo "Sorry, file already exists.";
-					// $uploadOk = 0;
-					// }
+				// // Check if file already exists
+				// if (file_exists($target_file)) {
+				// echo "Sorry, file already exists.";
+				// $uploadOk = 0;
+				// }
 
-					// // Check file size
-					// if ($_FILES["fileToUpload"]["size"] > 500000) {
-					// echo "Sorry, your file is too large.";
-					// $uploadOk = 0;
-					// }
+				// // Check file size
+				// if ($_FILES["fileToUpload"]["size"] > 500000) {
+				// echo "Sorry, your file is too large.";
+				// $uploadOk = 0;
+				// }
 
-					// // Allow certain file formats
-					// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-					// && $imageFileType != "gif" ) {
-					// echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-					// $uploadOk = 0;
-					// }
+				// // Allow certain file formats
+				// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+				// && $imageFileType != "gif" ) {
+				// echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+				// $uploadOk = 0;
+				// }
 
-					// // Check if $uploadOk is set to 0 by an error
-					// if ($uploadOk == 0) {
-					// echo "Sorry, your file was not uploaded.";
-					// // if everything is ok, try to upload file
-					// } else {
-					// if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-					// 	echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-					// } else {
-					// 	echo "Sorry, there was an error uploading your file.";
-					// }
-					// }
+				// // Check if $uploadOk is set to 0 by an error
+				// if ($uploadOk == 0) {
+				// echo "Sorry, your file was not uploaded.";
+				// // if everything is ok, try to upload file
+				// } else {
+				// if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+				// 	echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+				// } else {
+				// 	echo "Sorry, there was an error uploading your file.";
+				// }
+				// }
 
-					// $p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
-					$p=mysqli_query($db,"UPDATE `customer_details` SET appointment_type = '$appointment_type', details = '$details', time_alloted = '$time_alloted', base_price='$base_price', admin_note='$admin_note' WHERE user_id='$user_id' ;");
+				// $p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
+				$p = mysqli_query($db, "UPDATE `customer_details` SET appointment_type = '$appointment_type', details = '$details', time_alloted = '$time_alloted', base_price='$base_price', admin_note='$admin_note' WHERE user_id='$user_id' ;");
+				if ($base_price != $prev_base_price || $time_alloted != $prev_time_alloted) {
+					$sql33 = "SELECT time FROM `appointments` WHERE where customer_id='$user_id' AND date >= CURDATE() AND deleted_at is NULL;";
+					$query33 = mysqli_query($db, $sql33);
+					if ($row33 = $query33->fetch_assoc()) {
+						$time = $row33['time'];
+						$times = date('G:i', strtotime($time));
 
-					?>
-								<script>
-									
-									document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
-                					var success_class = document.getElementById('success').className;
-									var delayInMilliseconds = 1000; //1.5 second
 
-									setTimeout(function() {
-										window.location.href = "customer-list.php";
-									}, delayInMilliseconds);
-                                    
-								
-									</script>
-									<?php
 
-						}
-		
-					
-				
+						mysqli_query($db, "UPDATE `appointments` SET base_price = '$base_price',time_alloted='$time_alloted' where customer_id='$user_id' AND date >= CURDATE() AND deleted_at is NULL;") or die("Unsuccessful");
+						$c_id = $user_id;
+						$c_id = $c_id . " " . $customer_name . " " . $times . " " . $time_alloted . "hr";
+						mysqli_query($db, "UPDATE `events` SET title = '$c_id' where customer_id='$user_id' AND date >= CURDATE() AND deleted_at is NULL;") or die("Unsuccessful");
+					}
+				}
+
 				?>
+				<script>
+					document.getElementById('success').className = "offset-md-4 alert alert-success alert-dismissible";
+					var success_class = document.getElementById('success').className;
+					var delayInMilliseconds = 1000; //1.5 second
 
-<?php include("footer.php"); ?>
+					setTimeout(function() {
+						window.location.href = "customer-list.php";
+					}, delayInMilliseconds);
+				</script>
+			<?php
+
+			}
+
+
+
+			?>
+
+			<?php include("footer.php"); ?>
 		</div>
 	</div>
 
 	<script src="js/app.js"></script>
 	<script type="text/javascript">
-
 		function yesnoCheck() {
 			if (document.getElementById('yesCheck').checked) {
 				document.getElementById('ifYes').style.display = 'block';
-			}
-			else document.getElementById('ifYes').style.display = 'none';
+			} else document.getElementById('ifYes').style.display = 'none';
 
 		}
-
 	</script>
 
 </body>

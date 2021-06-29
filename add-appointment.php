@@ -45,7 +45,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						<?php
 							$customer_id = $_GET['id'];
 							$role='employee';
-							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id,time_alloted from `customer_details` where user_id='$customer_id';")or die("Unsuccessful");
+							$customer_details=mysqli_query($db,"SELECT appointment_type,user_id,time_alloted,base_price from `customer_details` where user_id='$customer_id';")or die("Unsuccessful");
 							$result = mysqli_query($db,"SELECT id,name from `users` where role='$role';")or die("Unsuccessful");
 							$customer_query = mysqli_query($db,"SELECT name,id from `users` where id='$customer_id';")or die("Unsuccessful");
 							$customer_row= $customer_query->fetch_assoc();
@@ -54,6 +54,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
 							$time_alloted=$customer_details_row['time_alloted'];
+							$base_price=$customer_details_row['base_price'];
 
 							// $time_alloted=$row2["time_alloted"];
 									
@@ -183,7 +184,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				if($customer_details_row['appointment_type']=='bi-weekly')
 				{
 					for ($x = 1; $x <= 2*$appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");	
 						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
@@ -198,7 +199,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				elseif($customer_details_row['appointment_type']=='weekly')
 				{
 					for ($x = 1; $x <= 4*$appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");	
 						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
@@ -213,7 +214,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				elseif($customer_details_row['appointment_type']=='monthly')
 				{
 					for ($x = 1; $x <= $appointment_duration; $x++) {
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");
 						
 
 						//for events section
@@ -253,7 +254,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				elseif($customer_details_row['appointment_type']=='not-regular')
 				{
 					
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");	
 						$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();

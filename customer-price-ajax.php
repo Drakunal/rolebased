@@ -36,6 +36,7 @@ if ($_POST['type'] == "stateData") {
         <th>Customer id</th>
         <th>Customer name</th>
         <th>Number of Appointments</th>
+        <th>Base Price</th>
         <th>Amount of hours</th>
         <th>Cost for Customer</th>
         <th>Gov</th>
@@ -50,8 +51,9 @@ if ($_POST['type'] == "stateData") {
 
     while ($customer_list_row = $customer_list_query->fetch_assoc()) {
 
-        $appointment_count=0;
-        $hours=0;
+        $appointment_count = 0;
+        $hours = 0;
+        
         $rut = 0;
         $non_rut = 0;
         $extra = 0;
@@ -65,16 +67,18 @@ if ($_POST['type'] == "stateData") {
         $query1 = mysqli_query($db, $sql1);
 
 
-        $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$c_id";
+        $sql2 = "SELECT base_price,is_personal from `customer_details` where user_id=$c_id";
         $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $base_price = $row2['base_price'];
-        $time_alloted = $row2['time_alloted'];
+
 
 
         while ($row1 = mysqli_fetch_assoc($query1)) {
+            $base_price = $row1['base_price'];
+            $time_alloted = $row1['time_alloted'];
             $appointment_count++;
-            $hours=$hours+$time_alloted;
+            $hours = $hours + $time_alloted;
             //extra charge calculation
             $additional_charge = $row1['additional_charge'];
             $invoice_charge = $row1['invoice_charge'];
@@ -96,6 +100,8 @@ if ($_POST['type'] == "stateData") {
             <td>" . $c_name . "
             </td>
             <td>" . $appointment_count . "
+            </td>
+            <td>" . $base_price . " Kr
             </td>
             <td>" . $hours . " hours
             </td>
@@ -121,6 +127,8 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . $appointment_count . "
             </td>
+            <td>" . $base_price . " Kr
+            </td>
             <td>" . $hours . " hours
             </td>
             <td>" . $rut . " Kr
@@ -136,7 +144,7 @@ if ($_POST['type'] == "stateData") {
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
             </tr>";
-        } else if ($rut == 0 && $non_rut == 0){
+        } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
             <td>" . $c_id . "
@@ -144,6 +152,8 @@ if ($_POST['type'] == "stateData") {
             <td>" . $c_name . "
             </td>
             <td> -
+            </td>
+            <td>" . $base_price . " Kr
             </td>
             <td> -
             </td>
@@ -180,6 +190,7 @@ if ($_POST['type'] == "yearData") {
         <th>Customer id</th>
         <th>Customer name</th>
         <th>Number of Appointments</th>
+        <th>Base Price</th>
         <th>Amount of hours</th>
         <th>Cost for Customer</th>
         <th>Gov</th>
@@ -193,8 +204,9 @@ if ($_POST['type'] == "yearData") {
     $customer_list_query = mysqli_query($db, "SELECT id,user_id,name from `users` where role='$c_role' AND  deleted_at is NULL") or die("Unsuccessful list");
 
     while ($customer_list_row = $customer_list_query->fetch_assoc()) {
-        $appointment_count=0;
-        $hours=0;
+        $appointment_count = 0;
+        $hours = 0;
+        
         $rut = 0;
         $non_rut = 0;
         $extra = 0;
@@ -208,16 +220,17 @@ if ($_POST['type'] == "yearData") {
         $query1 = mysqli_query($db, $sql1);
 
 
-        $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$c_id";
+        $sql2 = "SELECT base_price,is_personal from `customer_details` where user_id=$c_id";
         $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $base_price = $row2['base_price'];
-        $time_alloted = $row2['time_alloted'];
 
 
         while ($row1 = mysqli_fetch_assoc($query1)) {
             //extra charge calculation
-            $hours=$hours+$time_alloted;
+            $base_price = $row1['base_price'];
+            $time_alloted = $row1['time_alloted'];
+            $hours = $hours + $time_alloted;
             $appointment_count++;
             $additional_charge = $row1['additional_charge'];
             $invoice_charge = $row1['invoice_charge'];
@@ -239,6 +252,8 @@ if ($_POST['type'] == "yearData") {
             <td>" . $c_name . "
             </td>
             <td>" . $appointment_count . "
+            </td>
+            <td>" . $base_price . " Kr
             </td>
             <td>" . $hours . " hours
             </td>
@@ -264,6 +279,8 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . $appointment_count . "
             </td>
+            <td>" . $base_price . " Kr
+            </td>
             <td>" . $hours . " hours
             </td>
             <td>" . $rut . " Kr
@@ -279,7 +296,7 @@ if ($_POST['type'] == "yearData") {
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
             </tr>";
-        } else if ($rut == 0 && $non_rut == 0){
+        } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
             <td>" . $c_id . "
@@ -287,6 +304,8 @@ if ($_POST['type'] == "yearData") {
             <td>" . $c_name . "
             </td>
             <td> -
+            </td>
+            <td>" . $base_price . " Kr
             </td>
             <td> -
             </td>
@@ -322,6 +341,7 @@ if ($_POST['type'] == "employeeData") {
         <th>Customer id</th>
         <th>Customer name</th>
         <th>Number of Appointments</th>
+        <th>Base Price</th>
         <th>Amount of hours</th>
         <th>Cost for Customer</th>
         <th>Gov</th>
@@ -335,8 +355,9 @@ if ($_POST['type'] == "employeeData") {
     $customer_list_query = mysqli_query($db, "SELECT id,user_id,name from `users` where role='$c_role' AND  deleted_at is NULL") or die("Unsuccessful list");
 
     while ($customer_list_row = $customer_list_query->fetch_assoc()) {
-        $appointment_count=0;
-        $hours=0;
+        $appointment_count = 0;
+        $hours = 0;
+       
         $rut = 0;
         $non_rut = 0;
         $extra = 0;
@@ -350,16 +371,17 @@ if ($_POST['type'] == "employeeData") {
         $query1 = mysqli_query($db, $sql1);
 
 
-        $sql2 = "SELECT time_alloted,base_price,is_personal from `customer_details` where user_id=$c_id";
+        $sql2 = "SELECT base_price,is_personal from `customer_details` where user_id=$c_id";
         $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $base_price = $row2['base_price'];
-        $time_alloted = $row2['time_alloted'];
 
 
         while ($row1 = mysqli_fetch_assoc($query1)) {
+            $base_price = $row1['base_price'];
+            $time_alloted = $row1['time_alloted'];
             $appointment_count++;
-            $hours=$hours+$time_alloted;
+            $hours = $hours + $time_alloted;
             //extra charge calculation
             $additional_charge = $row1['additional_charge'];
             $invoice_charge = $row1['invoice_charge'];
@@ -381,6 +403,8 @@ if ($_POST['type'] == "employeeData") {
             <td>" . $c_name . "
             </td>
             <td>" . $appointment_count . "
+            </td>
+            <td>" . $base_price . " Kr
             </td>
             <td>" . $hours . " hours
             </td>
@@ -406,6 +430,8 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td>" . $appointment_count . "
             </td>
+            <td>" . $base_price . " Kr
+            </td>
             <td>" . $hours . " hours
             </td>
             <td>" . $rut . " Kr
@@ -421,7 +447,7 @@ if ($_POST['type'] == "employeeData") {
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
             </tr>";
-        } else if ($rut == 0 && $non_rut == 0){
+        } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
             <td>" . $c_id . "
@@ -429,6 +455,8 @@ if ($_POST['type'] == "employeeData") {
             <td>" . $c_name . "
             </td>
             <td> -
+            </td>
+            <td>" . $base_price . " Kr
             </td>
             <td> -
             </td>
@@ -457,7 +485,7 @@ if ($_POST['type'] == "employeeData") {
     ";
 }
 
-$str=$str."
+$str = $str . "
 <script>
     $(document).ready(function() {
         var table = $('#b').DataTable({

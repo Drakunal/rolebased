@@ -68,7 +68,7 @@ if($_POST['type'] == "stateData"){
                 $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
                 $row2 = mysqli_fetch_assoc($query2);
                 $base_price = $row2['base_price'];
-                $time_alloted = $row2['time_alloted'];
+                $time_alloted = $row['time_alloted'];
     
                 if ($row2['is_personal'] == 1) //if it is personal use
                 {
@@ -140,7 +140,7 @@ if($_POST['type'] == "yearData"){
                 $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
                 $row2 = mysqli_fetch_assoc($query2);
                 $base_price = $row2['base_price'];
-                $time_alloted = $row2['time_alloted'];
+                $time_alloted = $row['time_alloted'];
     
                 if ($row2['is_personal'] == 1) //if it is personal use
                 {
@@ -210,7 +210,7 @@ if($_POST['type'] == "employeeData"){
                 $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
                 $row2 = mysqli_fetch_assoc($query2);
                 $base_price = $row2['base_price'];
-                $time_alloted = $row2['time_alloted'];
+                $time_alloted = $row['time_alloted'];
     
                 if ($row2['is_personal'] == 1) //if it is personal use
                 {

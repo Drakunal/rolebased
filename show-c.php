@@ -148,10 +148,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 
 												$date = $row['date'];
 												$time = date('G:i', strtotime($row["time"]));
-												$sql1 = "SELECT id  FROM appointments WHERE customer_id='$customer_id' AND employee_id='$employee_id' AND date='$date'";
+												$sql1 = "SELECT id,time_alloted  FROM appointments WHERE customer_id='$customer_id' AND employee_id='$employee_id' AND date='$date'";
 												$result1 = mysqli_query($db, $sql1) or die("Query unsuccessful1");
 												$row11 = $result1->fetch_assoc();
 												$appointment_id = $row11['id'];
+												$time_alloted = $row11["time_alloted"];
 												echo "<tr><td>" . $row22["user_id"] . "</td><td>" . $row2['name'] . "</td><td class='table-action'>" . $row["date"] . "</td></td><td class='table-action'>" . $time . "</td></tr>";
 					?>
 					</tr>
@@ -168,10 +169,18 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 						<div class="card-body">
 							<h5 class="card-title mb-4">Customer #<?php echo $row22["user_id"]; ?> Details</h5>
 							<?php
+											if ($time_alloted == 0) {
+							?>
+								<h3 style="color:red">This appointment is Cancelled</h3>
+								<hr>
+							<?php
+											}
+							?>
+							<?php
 												
 												$result3 = mysqli_query($db, "SELECT base_price,appointment_type,details,time_alloted,admin_note from `customer_details` where user_id='$customer_id';");
 												$row3 = $result3->fetch_assoc();
-												$time_alloted = $row3["time_alloted"];
+												
 												$pos = strpos($time_alloted, '.');
 												if ($pos === false) { // it is integer number
 													$time_alloted = $time_alloted;

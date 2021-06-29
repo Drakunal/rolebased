@@ -174,11 +174,12 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 
 
-                        $customer_details=mysqli_query($db,"SELECT appointment_type,user_id,time_alloted from `customer_details` where user_id='$customer_id';")or die("Unsuccessful");
+                        $customer_details=mysqli_query($db,"SELECT appointment_type,user_id,time_alloted,base_price from `customer_details` where user_id='$customer_id';")or die("Unsuccessful");
 						$customer_details_row= $customer_details->fetch_assoc();
 
 
 						$time_alloted=$customer_details_row['time_alloted'];
+						$base_price=$customer_details_row['base_price'];
 						$pos = strpos($time_alloted, '.');
 										if($pos === false) { // it is integer number
 											$time_alloted=$time_alloted;
@@ -196,7 +197,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				// if($customer_details_row['appointment_type']=='bi-weekly')
 				// {
 				// 	// for ($x = 1; $x <= 2*$appointment_duration; $x++) {
-				// 	// 	mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
+				// 	// 	mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");	
 				// 	// 	$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 				// 	// 	// echo $customer_user_id;
 				// 	// 	$customer_row = $customer_user_id->fetch_assoc();
@@ -211,7 +212,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				// elseif($customer_details_row['appointment_type']=='weekly')
 				// {
 				// 	// for ($x = 1; $x <= 4*$appointment_duration; $x++) {
-				// 	// 	mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
+				// 	// 	mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");	
 				// 	// 	$customer_user_id=mysqli_query($db,"SELECT user_id from `users` where id=$customer_id;");?><?php
 				// 	// 	// echo $customer_user_id;
 				// 	// 	$customer_row = $customer_user_id->fetch_assoc();
@@ -226,7 +227,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				// elseif($customer_details_row['appointment_type']=='monthly')
 				// {
 				// 	// for ($x = 1; $x <= $appointment_duration; $x++) {
-				// 	// 	mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");
+				// 	// 	mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");
 						
 
 				// 	// 	//for events section
@@ -266,7 +267,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 				// elseif($customer_details_row['appointment_type']=='not-regular')
 				// {
 					
-						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted');")or die("Unsuccessful");	
+						mysqli_query($db,"INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');")or die("Unsuccessful");	
 						$customer_user_id=mysqli_query($db,"SELECT name,user_id from `users` where id=$customer_id;");?><?php
 						// echo $customer_user_id;
 						$customer_row = $customer_user_id->fetch_assoc();
