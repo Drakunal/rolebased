@@ -462,7 +462,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				if ($base_price != $prev_base_price || $time_alloted != $prev_time_alloted) {
 					$sql33 = "SELECT time FROM `appointments` WHERE where customer_id='$user_id' AND date >= CURDATE() AND deleted_at is NULL;";
 					$query33 = mysqli_query($db, $sql33);
-					if ($row33 = $query33->fetch_assoc()) {
+					if ($query33) {
+						$row33 = $query33->fetch_assoc();
 						$time = $row33['time'];
 						$times = date('G:i', strtotime($time));
 
