@@ -274,7 +274,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 							<?php
 											if ($time_alloted == 0) {
 							?>
-								<h3 style="color:red">This appointment is Cancelled</h3>
+								<h3 style="color:red">Denna bokning annulleras</h3>
 								<hr>
 							<?php
 											}

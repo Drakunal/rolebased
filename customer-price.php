@@ -52,7 +52,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Customer Price</h1>
+					<h1 class="h3 mb-3">Kundpris</h1>
 
 					<div class="row">
 						
@@ -65,7 +65,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Assumed Earnings for this month</h5>
+									<h5 class="card-title mb-0">Förtjänst</h5>
 								</div>
 								<div class="card-body py-3">
 									<div class="card flex-fill">
@@ -77,7 +77,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 													$result2 = mysqli_query($db, "SELECT id,name from `users` where role='$role2' AND deleted_at is NULL;");
 													?>
 													<select class="form-control mb-3" id="e-id3" hidden>
-														<option value="0" selected>All Employees</option>
+														<option value="0" selected>kd</option>
 														<?php
 														while ($row2 = $result2->fetch_assoc())
 															echo "<option value='" . $row2['id'] . "'>" . $row2['name'] . "</option>"
@@ -97,11 +97,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "January") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1" selected>January</option>
+																<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1" selected>Januari</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">January</option>
+																<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">Januari</option>
 															<?php
 															}
 															?>
@@ -109,11 +109,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "February") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1" selected>February</option>
+																<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1" selected>Februari</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">February</option>
+																<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">Februari</option>
 															<?php
 															}
 															?>
@@ -121,11 +121,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "March") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1" selected>March</option>
+																<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1" selected>Mars</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">March</option>
+																<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">Mars</option>
 															<?php
 															}
 															?>
@@ -145,11 +145,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "May") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1" selected>May</option>
+																<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1" selected>Maj</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">May</option>
+																<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">Maj</option>
 															<?php
 															}
 															?>
@@ -157,11 +157,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "June") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1" selected>June</option>
+																<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1" selected>Juni</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">June</option>
+																<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">Juni</option>
 															<?php
 															}
 															?>
@@ -169,11 +169,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "July") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1" selected>July</option>
+																<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1" selected>Juli</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">July</option>
+																<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">Juli</option>
 															<?php
 															}
 															?>
@@ -181,11 +181,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "August") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1" selected>August</option>
+																<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1" selected>Augusti</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">August</option>
+																<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">Augusti</option>
 															<?php
 															}
 															?>
@@ -205,11 +205,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 															<?php
 															if ($month == "October") {
 															?>
-																<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1" selected>October</option>
+																<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1" selected>Oktober</option>
 															<?php } else {
 															?>
 
-																<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">October</option>
+																<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">Oktober</option>
 															<?php
 															}
 															?>

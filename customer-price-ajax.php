@@ -33,17 +33,17 @@ if ($_POST['type'] == "stateData") {
 
     <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-sm' style='width:100%'>
     <thead>
-        <th>Customer id</th>
-        <th>Customer name</th>
-        <th>Number of Appointments</th>
-        <th>Base Price</th>
-        <th>Amount of hours</th>
-        <th>Cost for Customer</th>
-        <th>Gov</th>
-        <th>Company</th>
+        <th>Kundnummer</th>
+        <th>Kund</th>
+        <th>Antal bokningar</th>
+        <th> Timpris</th>
+        <th>Antal timmar</th>
+        <th>Kostnad för kunden</th>
+        <th>Skatteverket</th>
+        <th>Företag</th>
         <th>Extra</th>
         <th>Total</th>
-        <th>Total for Customer</th>
+        <th>Totalt för kunden</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -103,7 +103,7 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td> - 
             </td>
@@ -129,7 +129,7 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $rut . " Kr
             </td>
@@ -187,17 +187,17 @@ if ($_POST['type'] == "yearData") {
 
     <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-sm' style='width:100%'>
     <thead>
-        <th>Customer id</th>
-        <th>Customer name</th>
-        <th>Number of Appointments</th>
-        <th>Base Price</th>
-        <th>Amount of hours</th>
-        <th>Cost for Customer</th>
-        <th>Gov</th>
-        <th>Company</th>
+        <th>Kundnummer</th>
+        <th>Kund</th>
+        <th>Antal bokningar</th>
+        <th> Timpris</th>
+        <th>Antal timmar</th>
+        <th>Kostnad för kunden</th>
+        <th>Skatteverket</th>
+        <th>Företag</th>
         <th>Extra</th>
         <th>Total</th>
-        <th>Total for Customer</th>
+        <th>Totalt för kunden</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -255,7 +255,7 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td> - 
             </td>
@@ -281,7 +281,7 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $rut . " Kr
             </td>
@@ -338,17 +338,17 @@ if ($_POST['type'] == "employeeData") {
 
     <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-sm' style='width:100%'>
     <thead>
-        <th>Customer id</th>
-        <th>Customer name</th>
-        <th>Number of Appointments</th>
-        <th>Base Price</th>
-        <th>Amount of hours</th>
-        <th>Cost for Customer</th>
-        <th>Gov</th>
-        <th>Company</th>
+        <th>Kundnummer</th>
+        <th>Kund</th>
+        <th>Antal bokningar</th>
+        <th>Timpris</th>
+        <th>Antal timmar</th>
+        <th>Kostnad för kunden</th>
+        <th>Skatteverket</th>
+        <th>Företag</th>
         <th>Extra</th>
         <th>Total</th>
-        <th>Total for Customer</th>
+        <th>Totalt för kunden</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -406,7 +406,7 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td> - 
             </td>
@@ -432,7 +432,7 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $rut . " Kr
             </td>
@@ -490,6 +490,20 @@ $str = $str . "
     $(document).ready(function() {
         var table = $('#b').DataTable({
             lengthChange: false, 
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
         });
     }); 
 

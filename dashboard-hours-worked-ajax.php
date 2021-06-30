@@ -80,15 +80,15 @@ if($_POST['type'] == "stateData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personal</th>
-            <th>Company</th>
+            <th>Kund</th>
+            <th>Företag</th>
             <th>Total</th>
             <tr>
-            <td>" . $rut . " hours
+            <td>" . $rut . " timmar
             </td>
-            <td>" . $non_rut . " hours
+            <td>" . $non_rut . " timmar
             </td>
-            <td>" . ($non_rut+$rut) . " hours
+            <td>" . ($non_rut+$rut) . " timmar
             </td>
             </tr>
         </table>";
@@ -152,15 +152,15 @@ if($_POST['type'] == "yearData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personal</th>
-            <th>Company</th>
+            <th>Kund</th>
+            <th>Företag</th>
             <th>Total</th>
             <tr>
-            <td>" . $rut . " hours
+            <td>" . $rut . " timmar
             </td>
-            <td>" . $non_rut . " hours
+            <td>" . $non_rut . " timmar
             </td>
-            <td>" . ($non_rut+$rut) . " hours
+            <td>" . ($non_rut+$rut) . " timmar
             </td>
             </tr>
         </table>";
@@ -222,15 +222,15 @@ if($_POST['type'] == "employeeData"){
             }
         }
         $str = "<table class='table table-sm'>
-            <th>Personal</th>
-            <th>Company</th>
+            <th>Kund</th>
+            <th>Företag</th>
             <th>Total</th>
             <tr>
-            <td>" . $rut . " hours
+            <td>" . $rut . " timmar
             </td>
-            <td>" . $non_rut . " hours
+            <td>" . $non_rut . " timmar
             </td>
-            <td>" . ($non_rut+$rut) . " hours
+            <td>" . ($non_rut+$rut) . " timmar
             </td>
             </tr>
         </table>";

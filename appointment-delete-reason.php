@@ -48,7 +48,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             </nav>
             <main class="content">
                 <div class="container-fluid p-0">
-                    <h1 class="h3 mb-3">Add Customer Appointment</h1>
+                    <h1 class="h3 mb-3">Radera bokning</h1>
                     <?php
                     $appointment_id = $_GET['id'];
                     $sql = "SELECT * FROM `appointments` WHERE id=$appointment_id";
@@ -80,25 +80,25 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-subtitle text-muted">Reschedule Appointment for this customer.</h4>
+                                    <h4 class="card-subtitle text-muted">Radera bokning.</h4>
                                 </div>
                                 <div class="card-body">
                                     <form enctype="multipart/form-data" method="post" action="">
                                         <div class="mb-3">
-                                            <label class="form-label">Customer Name</label>
+                                            <label class="form-label">Kundnamn</label>
                                             <input type="text" name="customer_name" class="form-control" placeholder="name" readonly value="<?php echo $row2['name']; ?>">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Date</label>
+                                            <label class="form-label">Datum</label>
                                             <input type="date" name="date" class="form-control" readonly placeholder="appointment-date" value="<?php echo $row['date']; ?>"">
 											</div>
 											<div class=" mb-3">
-                                            <label class="form-label">Time</label>
+                                            <label class="form-label">Tid</label>
                                             <input type="time" name="time" class="form-control" readonly placeholder="appointment-time" value="<?php echo date('H:i', strtotime($row["time"])); ?>">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Reason for cancellation<span style="color:red">*</span></label>
-                                            <input required type="text" name="reason" class="form-control" placeholder="cancellation-reason">
+                                            <label class="form-label">Anledning till avbokning<span style="color:red">*</span></label>
+                                            <input required type="text" name="reason" class="form-control" placeholder="anledning">
                                         </div>
 
 
@@ -113,7 +113,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
                                         // }
                                         ?>
-                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Spara</button>
                                     </form>
 
                                 </div>
