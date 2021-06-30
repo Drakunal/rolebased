@@ -460,8 +460,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				// $p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
 				$p = mysqli_query($db, "UPDATE `customer_details` SET appointment_type = '$appointment_type', details = '$details', time_alloted = '$time_alloted', base_price='$base_price', admin_note='$admin_note' WHERE user_id='$user_id' ;");
 				if ($base_price != $prev_base_price || $time_alloted != $prev_time_alloted) {
-					$sql33 = "SELECT time FROM `appointments` WHERE where customer_id='$user_id' AND date >= CURDATE() AND deleted_at is NULL;";
-					$query33 = mysqli_query($db, $sql33);
+					$date=date("Y-m-d");
+					$sql33 = "SELECT time FROM `appointments` WHERE customer_id='$user_id' AND date >= CURDATE() AND deleted_at is NULL;";
+					$query33 = mysqli_query($db, $sql33) or die ("bAL");
 					if ($query33) {
 						$row33 = $query33->fetch_assoc();
 						$time = $row33['time'];
