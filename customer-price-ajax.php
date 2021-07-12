@@ -58,6 +58,7 @@ if ($_POST['type'] == "stateData") {
         $non_rut = 0;
         $extra = 0;
         $c_id = $customer_list_row['id'];
+        $cc_id = $customer_list_row['user_id'];
         $c_name = $customer_list_row['name'];
         $sql1 = "SELECT *
           FROM `appointments`
@@ -95,7 +96,7 @@ if ($_POST['type'] == "stateData") {
         if ($rut == 0 && $non_rut != 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -121,7 +122,7 @@ if ($_POST['type'] == "stateData") {
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -147,7 +148,7 @@ if ($_POST['type'] == "stateData") {
         } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -211,6 +212,7 @@ if ($_POST['type'] == "yearData") {
         $non_rut = 0;
         $extra = 0;
         $c_id = $customer_list_row['id'];
+        $cc_id = $customer_list_row['user_id'];
         $c_name = $customer_list_row['name'];
         $sql1 = "SELECT *
           FROM `appointments`
@@ -247,7 +249,7 @@ if ($_POST['type'] == "yearData") {
         if ($rut == 0 && $non_rut != 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -273,7 +275,7 @@ if ($_POST['type'] == "yearData") {
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -299,7 +301,7 @@ if ($_POST['type'] == "yearData") {
         } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -362,6 +364,7 @@ if ($_POST['type'] == "employeeData") {
         $non_rut = 0;
         $extra = 0;
         $c_id = $customer_list_row['id'];
+        $cc_id = $customer_list_row['user_id'];
         $c_name = $customer_list_row['name'];
         $sql1 = "SELECT *
           FROM `appointments`
@@ -398,7 +401,7 @@ if ($_POST['type'] == "employeeData") {
         if ($rut == 0 && $non_rut != 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -424,7 +427,7 @@ if ($_POST['type'] == "employeeData") {
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
@@ -450,7 +453,7 @@ if ($_POST['type'] == "employeeData") {
         } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
             <tr>
-            <td>" . $c_id . "
+            <td>" . $cc_id . "
             </td>
             <td>" . $c_name . "
             </td>
