@@ -31,7 +31,7 @@ if ($_POST['type'] == "") {
 if ($_POST['type'] == "stateData") {
     $str = "<script src='js/jquery.js'></script>
 
-    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-sm' style='width:100%'>
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-striped'>
     <thead>
         <th>Customer id</th>
         <th>Customer name</th>
@@ -200,7 +200,7 @@ if ($_POST['type'] == "stateData") {
 if ($_POST['type'] == "yearData") {
     $str = "<script src='js/jquery.js'></script>
 
-    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-sm' style='width:100%'>
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-striped' style='width:100%'>
     <thead>
         <th>Customer id</th>
         <th>Customer name</th>
@@ -365,7 +365,7 @@ if ($_POST['type'] == "yearData") {
 if ($_POST['type'] == "employeeData") {
     $str = "<script src='js/jquery.js'></script>
 
-    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-sm' style='width:100%'>
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-responsive table-striped' style='width:100%'>
     <thead>
         <th>Customer id</th>
         <th>Customer name</th>
