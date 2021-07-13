@@ -89,7 +89,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 					<?php
 					}
 					?>
-					<div class="col-12 col-md-12 col-xxl-3 d-flex order-1 order-xxl-1">
+					<!-- <div class="col-12 col-md-12 col-xxl-3 d-flex order-1 order-xxl-1"> -->
 						<div class="card flex-fill w-100">
 							<div class="card-header">
 								Your Appointments
@@ -419,7 +419,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 								</div>
 							</div>
 						</div>
-					</div>
+					<!-- </div> -->
 
 
 
