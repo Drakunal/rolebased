@@ -44,6 +44,7 @@ if ($_POST['type'] == "stateData") {
         <th>Extra</th>
         <th>Total</th>
         <th>Total for Customer</th>
+        <th>Date</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -64,7 +65,7 @@ if ($_POST['type'] == "stateData") {
           FROM `appointments`
           WHERE Month(date)={$_POST['id']} AND
           Year(date)={$_POST['year']} AND customer_id='$c_id' AND
-          deleted_at is NULL;";
+          deleted_at is NULL ORDER BY date;";
         $query1 = mysqli_query($db, $sql1);
 
 
@@ -72,10 +73,20 @@ if ($_POST['type'] == "stateData") {
         $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $base_price = $row2['base_price'];
-
+        $d="";
 
 
         while ($row1 = mysqli_fetch_assoc($query1)) {
+            $date= $row1['date'];
+            $date=date('d',strtotime($date));
+            if ($d==""){
+                $d=$d."".$date;
+
+            }
+            else{
+                $d=$d.",".$date;
+            }
+            
             $base_price = $row1['base_price'];
             $time_alloted = $row1['time_alloted'];
             $appointment_count++;
@@ -118,6 +129,7 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
+            <td>$d</td>
             </tr>";
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
@@ -144,6 +156,7 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
+            <td>$d</td>
             </tr>";
         } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
@@ -170,6 +183,7 @@ if ($_POST['type'] == "stateData") {
             </td>
             <td> - 
             </td>
+            <td>$d</td>
             </tr>";
         }
     }
@@ -199,6 +213,7 @@ if ($_POST['type'] == "yearData") {
         <th>Extra</th>
         <th>Total</th>
         <th>Total for Customer</th>
+        <th>Date</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -218,7 +233,7 @@ if ($_POST['type'] == "yearData") {
           FROM `appointments`
           WHERE Month(date)={$_POST['id']} AND
           Year(date)={$_POST['year']} AND customer_id='$c_id' AND
-          deleted_at is NULL;";
+          deleted_at is NULL ORDER BY date;";
         $query1 = mysqli_query($db, $sql1);
 
 
@@ -226,10 +241,19 @@ if ($_POST['type'] == "yearData") {
         $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $base_price = $row2['base_price'];
-
+        $d="";
 
         while ($row1 = mysqli_fetch_assoc($query1)) {
             //extra charge calculation
+            $date= $row1['date'];
+            $date=date('d',strtotime($date));
+            if ($d==""){
+                $d=$d."".$date;
+
+            }
+            else{
+                $d=$d.",".$date;
+            }
             $base_price = $row1['base_price'];
             $time_alloted = $row1['time_alloted'];
             $hours = $hours + $time_alloted;
@@ -271,6 +295,7 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
+            <td>$d</td>
             </tr>";
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
@@ -297,6 +322,7 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
+            <td>$d</td>
             </tr>";
         } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
@@ -323,6 +349,7 @@ if ($_POST['type'] == "yearData") {
             </td>
             <td> - 
             </td>
+            <td>$d</td>
             </tr>";
         }
     }
@@ -351,6 +378,7 @@ if ($_POST['type'] == "employeeData") {
         <th>Extra</th>
         <th>Total</th>
         <th>Total for Customer</th>
+        <th>Date</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -370,7 +398,7 @@ if ($_POST['type'] == "employeeData") {
           FROM `appointments`
           WHERE Month(date)={$_POST['id']} AND
           Year(date)={$_POST['year']} AND customer_id='$c_id' AND
-          deleted_at is NULL;";
+          deleted_at is NULL ORDER BY date;";
         $query1 = mysqli_query($db, $sql1);
 
 
@@ -378,9 +406,18 @@ if ($_POST['type'] == "employeeData") {
         $query2 = mysqli_query($db, $sql2) or die("Query Unsuccessful.");
         $row2 = mysqli_fetch_assoc($query2);
         $base_price = $row2['base_price'];
-
+        $d="";
 
         while ($row1 = mysqli_fetch_assoc($query1)) {
+            $date= $row1['date'];
+            $date=date('d',strtotime($date));
+            if ($d==""){
+                $d=$d."".$date;
+
+            }
+            else{
+                $d=$d.",".$date;
+            }
             $base_price = $row1['base_price'];
             $time_alloted = $row1['time_alloted'];
             $appointment_count++;
@@ -423,6 +460,7 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
+            <td>$d</td>
             </tr>";
         } else if ($rut != 0 && $non_rut == 0) {
             $str = $str . "
@@ -449,6 +487,7 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td>" . ($non_rut + $rut + $extra) . " Kr
             </td>
+            <td>$d</td>
             </tr>";
         } else if ($rut == 0 && $non_rut == 0) {
             $str = $str . "
@@ -475,6 +514,7 @@ if ($_POST['type'] == "employeeData") {
             </td>
             <td> - 
             </td>
+            <td>$d</td>
             </tr>";
         }
     }
