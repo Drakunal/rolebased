@@ -20,11 +20,11 @@ if ($_POST['type'] == "") {
         <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
     </div> <p>No appointments available</p>";
     } else {
-        $str = "0 hours";
+        $str = "0 timmar";
         while ($row = mysqli_fetch_assoc($query)) {
             // $day=date("l", strtotime($row['date']));
             // $appointment_id=$row['id'];
-            $str = "{$row['SUM(time_alloted)']} hours";
+            $str = "{$row['SUM(time_alloted)']} timmar";
         }
     }
 }
@@ -47,18 +47,18 @@ tr:nth-child(even){background-color: #f2f2f2}
 
     <script src='js/dataTables.bootstrap4.min.js'></script><div style='overflow-x:auto;'><table id='b' class='table table-striped'>
     <thead>
-        <th>Customer id</th>
-        <th>Name</th>
-        <th>No. of Appointments</th>
-        <th>Base Price</th>
-        <th>Amount of hours</th>
-        <th>Extra</th>
-        <th>Cost for Customer</th>
-        <th>Gov</th>
+        <th>Kundnummer</th>
+        <th>Kund</th>
+        <th>Antal bokningar</th>
+        <th>Timpris</th>
+        <th>Antal timmar</th>
+        <th>Övriga kostnader</th>
+        <th>Kostnad för kunden</th>
+        <th>Skatteverket</th>
         
         <th>Total</th>
        
-        <th>Date</th>
+        <th>Datum</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -129,7 +129,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $extra . " Kr
             </td>
@@ -155,7 +155,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $extra . " Kr
             </td>
@@ -226,18 +226,18 @@ tr:nth-child(even){background-color: #f2f2f2}
 
     <script src='js/dataTables.bootstrap4.min.js'></script><div style='overflow-x:auto;'><table id='b' class='table table-striped' style='width:100%'>
     <thead>
-        <th>Customer id</th>
-        <th>Name</th>
-        <th>No. of Appointments</th>
-        <th>Base Price</th>
-        <th>Amount of hours</th>
-        <th>Extra</th>
-        <th>Cost for Customer</th>
-        <th>Gov</th>
+        <th>Kundnummer</th>
+        <th>Kund</th>
+        <th>Antal bokningar</th>
+        <th>Timpris</th>
+        <th>Antal timmar</th>
+        <th>Övriga kostnader</th>
+        <th>Kostnad för kunden</th>
+        <th>Skatteverket</th>
         
         <th>Total</th>
        
-        <th>Date</th>
+        <th>Datum</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -305,7 +305,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $extra . " Kr
             </td>
@@ -331,7 +331,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $extra . " Kr
             </td>
@@ -401,18 +401,18 @@ tr:nth-child(even){background-color: #f2f2f2}
 
     <script src='js/dataTables.bootstrap4.min.js'></script><div style='overflow-x:auto;'><table id='b' class='table table-striped' style='width:100%'>
     <thead>
-        <th>Customer id</th>
-        <th>Name</th>
-        <th>No. of Appointments</th>
-        <th>Base Price</th>
-        <th>Amount of hours</th>
-        <th>Extra</th>
-        <th>Cost for Customer</th>
-        <th>Gov</th>
+        <th>Kundnummer</th>
+        <th>Kund</th>
+        <th>Antal bokningar</th>
+        <th>Timpris</th>
+        <th>Antal timmar</th>
+        <th>Övriga kostnader</th>
+        <th>Kostnad för kunden</th>
+        <th>Skatteverket</th>
         
         <th>Total</th>
        
-        <th>Date</th>
+        <th>Datum</th>
         </thead>
         <tbody  id='price'>";
     $c_role = "customer";
@@ -480,7 +480,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $extra . " Kr
             </td>
@@ -506,7 +506,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             </td>
             <td>" . $base_price . " Kr
             </td>
-            <td>" . $hours . " hours
+            <td>" . $hours . " timmar
             </td>
             <td>" . $extra . " Kr
             </td>
@@ -563,6 +563,20 @@ $str = $str . "
     $(document).ready(function() {
         var table = $('#b').DataTable({
             lengthChange: false, 
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
         });
     }); 
 

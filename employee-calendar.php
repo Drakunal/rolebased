@@ -2,7 +2,7 @@
 session_start();
 include "connection.php";
 if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
-    header("location:index.php");   
+    header("location:index.php");
 }
 error_reporting(0);
 ?>
@@ -11,7 +11,7 @@ error_reporting(0);
 <html>
 
 <head>
-    <title>Calendar</title>
+    <title>Kalender</title>
     <link href="css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> -->
@@ -19,6 +19,7 @@ error_reporting(0);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <!-- <script src=" js/lang-all.js"></script> -->
 
     <!-- <script src="https://www.officeholidays.com/ics-local-name/sweden"></script> -->
     <style>
@@ -51,6 +52,7 @@ error_reporting(0);
     ?>
     <script>
         $(document).ready(function() {
+
             //  var d='load.php';
             // var calendar = $('#calendar').fullCalendar({
             //     editable:false,
@@ -140,6 +142,16 @@ error_reporting(0);
                 console.log(d);
                 // loadData("employeeData", employee);
                 $('#calendar').fullCalendar({
+                    monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+                    monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+                    dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
+                    dayNamesShort: ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör'],
+                    buttonText: {
+                        today: 'I dag',
+                        week: 'Vecka',
+                    },
+                    weekNumberTitle: 'V',
+                    // locale: 'es',
                     editable: false,
                     header: {
                         left: 'prev,next today',
@@ -165,7 +177,7 @@ error_reporting(0);
 
 
                     eventClick: function(event) {
-                        if (confirm("View details?")) {
+                        // if (confirm("View details?")) {
                             var id = event.id;
                             //   $.ajax({
                             var url = "show-c.php?id=" + id;
@@ -179,11 +191,11 @@ error_reporting(0);
                             //   })
 
                             window.location.href = url;
-                        }
+                        // }
                     },
                     // select: function(start, end, allDay) {
                     //     // var title = prompt("Add appointment in this day?");
-                    //     if (confirm("Add appointment in this day?")) {
+                    //     if (confirm("Lägg till bokning den här dagen?")) {
                     //         var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
                     //         // var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                     //         // $.ajax({
@@ -260,21 +272,21 @@ error_reporting(0);
                                         ?>
                                         <div class="col-sm-4">
                                             <form method="POST">
-                                                <label class="form-label">Customer</label>
+                                                <label class="form-label">Kund</label>
                                                 <!-- <select class="form-control"id="customer-id" name="customer-id"> -->
                                                 <!-- <input class="form-control" type=number name="user_id">
                                                 <button class="form" type="submit" name="submit">search</button> -->
 
                                                 <div class="input-group">
                                                     <div class="form-outline">
-                                                        <input type="search" required id="form1"name="user_id" placeholder="Search customer id" class="form-control" />
-                                                        
-                                                       
-                                                    
+                                                        <input type="search" required id="form1" name="user_id" placeholder="Sök kund-id" class="form-control" />
+
+
+
                                                     </div>
-                                                    <button type="submit" name="submit"class="btn btn-primary">
+                                                    <button type="submit" name="submit" class="btn btn-primary">
                                                         <i class="fas fa-search"></i></button>
-                                                    
+
                                                 </div>
                                             </form>
                                             <!-- <option value="all"selected>Select a Customer</option> -->

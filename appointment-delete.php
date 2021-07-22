@@ -20,7 +20,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<!-- <title>Tables | AdminKit Demo</title> -->
 
 	<link href="css/app.css" rel="stylesheet">
 </head>

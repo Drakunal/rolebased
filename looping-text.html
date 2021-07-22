@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Looping Text</title>
+    <meta name="Looping text" content="text loops for infinite time">
+    <meta name="author" content="by Kunal Dey">
+    
+</head>
+
+<body>
+    <link href="http://fonts.cdnfonts.com/css/england-signature" rel="stylesheet">
+    <style>
+        @import url('http://fonts.cdnfonts.com/css/england-signature');
+        </style>
+    <div id="sequence" style="font-family: 'England Signature', sans-serif; font-size: 1000%; text-align: center; color:rgb(232, 152, 248);"></div>
+    <script>
+        var example = ['peace', 'home', 'help', 'thought', 'strong', 'power', 'independent'];
+    
+        textSequence(0);
+        function textSequence(i) {
+    
+            if (example.length > i) {
+                setTimeout(function() {
+                    document.getElementById("sequence").innerHTML = example[i];
+                    textSequence(++i);
+                }, 500); // 0.5 second (in milliseconds)
+    
+            } else if (example.length == i) { // Loop
+                textSequence(0);
+            }
+    
+        }
+    </script>
+</body>
+
+</html>

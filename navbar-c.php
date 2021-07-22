@@ -1,7 +1,7 @@
 <div class="navbar-collapse collapse">
 	<div id="success" class="offset-md-4 alert alert-success alert-dismissible d-none" role="alert">
 		<div class="alert-message">
-			<strong>SUCCESS!</strong>
+			<strong>FRAMGÅNG!</strong>
 		</div>
 	</div>
 	<div id="danger" class="offset-md-4 alert alert-danger alert-dismissible d-none" role="alert">
@@ -9,7 +9,7 @@
 												<span aria-hidden="true">&times;</span>
 											</button> -->
 		<div class="alert-message">
-			<strong>DELETED!</strong>
+			<strong>RADERADE!</strong>
 		</div>
 	</div>
 	<ul class="navbar-nav navbar-align">
@@ -40,8 +40,8 @@
 			?>
 			
 			<div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="settings-c.php"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
-				<a class="dropdown-item" href="logout.php"><i class="align-middle mr-1" data-feather="log-out"></i>Log out</a>
+				<a class="dropdown-item" href="settings-c.php"><i class="align-middle mr-1" data-feather="settings"></i>Inställningar</a>
+				<a class="dropdown-item" href="logout.php"><i class="align-middle mr-1" data-feather="log-out"></i>Logga ut</a>
 			</div>
 		</li>
 	</ul>

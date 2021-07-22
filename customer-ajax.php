@@ -12,19 +12,19 @@ if($_POST['type'] == ""){
     // $query = mysqli_query($conn,$sql) or die("Query Unsuccessful.");
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
-        <p>No appointments available</p>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4></br>
+        <p>Inga möten tillgängliga</p>
     </div> ";
     }else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4>
     </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
     <tr>
-        <th>Employee Name</th>
+        <th>Anställd</th>
         
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
+        <th>Datum</th>
+        <th>Dag</th>
+        <th>Tid</th>
         
     </tr>
     </thead><tbody>";
@@ -85,20 +85,22 @@ if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
-        <p>No appointments available</p>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4></br>
+        <p>Inga möten tillgängliga</p>
     </div> ";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4>
+    </div><div class='table-responsive'><script src='js/jquery.js'></script>
+
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-striped' style='width:100%'><thead>
     <tr>
-        <th>Employee Name</th>
+        <th>Anställd</th>
       
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
+        <th>Datum</th>
+        <th>Dag</th>
+        <th>Tid</th>
         
     </tr>
     </thead><tbody>";
@@ -111,6 +113,10 @@ if($_POST['type'] == "stateData"){
         $query1 = mysqli_query($db,$sql1) or die("Query Unsuccessful.");
         $row1 = mysqli_fetch_assoc($query1);
         $day=date("l", strtotime($row['date']));
+        $dayNames= array("Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag");
+        $daa=array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+        $x=array_search($day,$daa);
+        $day=$dayNames[$x];
         
         $customer_id=$row['customer_id'];
         // echo $employee_id;
@@ -126,38 +132,29 @@ if($_POST['type'] == "stateData"){
       $str .= "<tr><td>{$row1['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
     }
     $str .= "</tbody>
-    </table><script src='https://code.jquery.com/jquery-3.5.1.js'></script>
-
-    <script src='https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.bootstrap4.min.js'></script>
-    
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'></script> -->
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'></script> -->
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js'></script>
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
+    </table>
     <script>
     $(document).ready(function() {
-        var table = $('#appointment-list').DataTable( {
-            lengthChange: false,
-            // buttons: [ 'copy', 'excel', 'pdf' ]
-        } );
-     
-        // table.buttons().container()
-        //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-    } );
-    
-    document.getElementById('appointment-list').className = 'table table-striped';
-    </script></div>";
+        var table = $('#b').DataTable({
+            lengthChange: false, 
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
+        });
+    }); 
+
+</script></div>";
     }
 
     
@@ -179,20 +176,22 @@ if($_POST['type'] == "yearData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4></br>
-        <p>No appointments available</p>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4></br>
+        <p>Inga möten tillgängliga</p>
     </div> ";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments in this Month</h4>
-    </div><div class='table-responsive'><table id='appointment-list' class='table table-striped' ><thead>
+        <h4 class='card-subtitle text-muted'>Bokning i denna månad</h4>
+    </div><div class='table-responsive'><script src='js/jquery.js'></script>
+
+    <script src='js/dataTables.bootstrap4.min.js'></script><table id='b' class='table table-striped' style='width:100%'><thead>
     <tr>
-        <th>Employee Name</th>
+        <th>Anställd</th>
        
-        <th>Date</th>
-        <th>Day</th>
-        <th>Time</th>
+        <th>Datum</th>
+        <th>Dag</th>
+        <th>Tid</th>
         
     </tr>
     </thead><tbody>";
@@ -208,6 +207,10 @@ if($_POST['type'] == "yearData"){
         $appointment_id=$row['id'];
 
         $day=date("l", strtotime($row['date']));
+        $dayNames= array("Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag");
+        $daa=array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+        $x=array_search($day,$daa);
+        $day=$dayNames[$x];
         $customer_id=$row['customer_id'];
         // echo $employee_id;
         // $role="employee";
@@ -218,38 +221,29 @@ if($_POST['type'] == "yearData"){
       $str .= "<tr><td>{$row1['name']}</td><td>{$row['date']}</td><td>{$day}</td><td>{$time}</td></tr>";
     }
     $str .= "</tbody>
-    </table><script src='https://code.jquery.com/jquery-3.5.1.js'></script>
-
-    <script src='https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js'></script>
-    
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.bootstrap4.min.js'></script>
-    
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'></script> -->
-    
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'></script> -->
-    <script src='https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js'></script>
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js'></script> -->
-    <!-- <script scr='https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js'></script> -->
+    </table>
     <script>
     $(document).ready(function() {
-        var table = $('#appointment-list').DataTable( {
-            lengthChange: false,
-            // buttons: [ 'copy', 'excel', 'pdf' ]
-        } );
-     
-        // table.buttons().container()
-        //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-    } );
-    
-    document.getElementById('appointment-list').className = 'table table-striped';
-    </script></div>";
+        var table = $('#b').DataTable({
+            lengthChange: false, 
+            language: {
+                'search': 'Sök',
+                'lengthMenu': 'Display _MENU_ records per page',
+                'zeroRecords': 'Inga uppgifter funna',
+                'info': 'Visar sida _PAGE_ av _PAGES_',
+                'infoEmpty': 'Inga poster tillgängliga',
+                'infoFiltered': '(filtreras från totalt _MAX_ poster)',
+                'paginate': {
+                    'first': 'Först',
+                    'last': 'Sista',
+                    'next': 'Nästa',
+                    'previous': 'Tidigare'
+                },
+            }
+        });
+    }); 
+
+</script></div>";
     }
 
     

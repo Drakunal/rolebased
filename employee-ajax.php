@@ -22,17 +22,17 @@ else if($_POST['type'] == "stateData"){
  
     if(mysqli_num_rows ( $query )==0){
         $str="<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments for the selected employee</h4>
-    </div> <p>No appointments available</p>";
+        <h4 class='card-subtitle text-muted'>Bokning för vald medarbetare</h4>
+    </div> <p>Inga möten tillgängliga</p>";
     }
     else{
         $str = "<div class='card-header'>
-        <h4 class='card-subtitle text-muted'>Appointments for the selected employee</h4>
+        <h4 class='card-subtitle text-muted'>Bokning för vald medarbetare</h4>
     </div><table class='table table-bordered' ><thead>
     <tr>
-        <th>Customer Name</th>
-        <th>Date</th>
-        <th>Time</th>
+        <th>Kund</th>
+        <th>Datum</th>
+        <th>Tid</th>
     </tr>
     </thead><tbody>";
     while($row = mysqli_fetch_assoc($query)){

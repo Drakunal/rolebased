@@ -9,7 +9,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 <html lang="en">
 
 <head>
-	<title>Calendar</title>
+	<title>Kalendar</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -31,7 +31,6 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 		color: black;
 		font-size: 10px;
 	}
-
 </style>
 
 <?php
@@ -46,6 +45,15 @@ $id = $_SESSION['id'];
 			console.log(d);
 
 			$('#calendar').fullCalendar({
+				monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+				monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+				dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
+				dayNamesShort: ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör'],
+				buttonText: {
+					today: 'I dag',
+					week: 'Vecka',
+				},
+				weekNumberTitle: 'V',
 				editable: false,
 				header: {
 					left: 'prev,next today',
@@ -62,11 +70,11 @@ $id = $_SESSION['id'];
 				firstDay: 1,
 				selectHelper: true,
 				eventClick: function(event) {
-					if (confirm("View details?")) {
+				// 	if (confirm("View details?")) {
 						var id = event.id;
 						var url = "show-c.php?id=" + id;
 						window.location.href = url;
-					}
+				//	}
 				},
 			});
 
@@ -94,7 +102,7 @@ $id = $_SESSION['id'];
 				<div class="container-fluid p-0">
 					<div class="row mb-2 mb-xl-3">
 						<div class="col-auto d-none d-sm-block">
-							<h3><strong>Analytics</strong> Dashboard</h3>
+							<h3><strong>Översikt</strong></h3>
 						</div>
 					</div>
 					<div class="row">
@@ -102,19 +110,19 @@ $id = $_SESSION['id'];
 							<div class="card">
 								<div class="card-body">
 									<?php
-									$temp=$_SESSION['id'];
+									$temp = $_SESSION['id'];
 									$query = mysqli_query($db, "SELECT * from `appointments` where date=CURDATE() AND employee_id=$temp AND deleted_at is NULL order by time;") or die("Query Unsuccessful.");
 									?>
-									<h3>Today's Appointments</h3>
+									<h3>Dagens möten</h3>
 									<table id="appointment-list" class="table table-striped">
 										<thead>
 											<?php
 											if ($query->num_rows > 0) { ?>
 												<tr>
-													<th>Customer ID</th>
-													<th>Customer Name</th>
-													<th>Time</th>
-													<th>View</th>
+													<th>Kundnummer</th>
+													<th>Namn</th>
+													<th>Tid</th>
+													<th>Se</th>
 												</tr>
 										</thead>
 										<tbody>
@@ -127,13 +135,13 @@ $id = $_SESSION['id'];
 													$result22 = mysqli_query($db, $sql22) or die("Query unsuccessful1");
 													$row22 = $result22->fetch_assoc();
 													$time = date('G:i', strtotime($row["time"]));
-													echo "<tr><td>" . $row22["user_id"] . "</td><td>" . $row22["name"] . "</td><td>" . $time . "</td><td><a href='view-appointment.php?id=" . $row['id'] . "'> View More </a></td></tr>";
+													echo "<tr><td>" . $row22["user_id"] . "</td><td>" . $row22["name"] . "</td><td>" . $time . "</td><td><a href='view-appointment.php?id=" . $row['id'] . "'> Visa mer </a></td></tr>";
 											?>
 												</tr>
 											<?php
 												}
 											} else { ?>
-											<p>No Appointments today</p>
+											<p>Inga möten idag</p>
 										<?php }
 										?>
 										</tbody>

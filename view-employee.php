@@ -17,7 +17,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-	<title>Tables | AdminKit Demo</title>
+	<title>Anställd</title>
 	<link href="css/app.css" rel="stylesheet">
 	<style>
 	.bal {
@@ -44,7 +44,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			</nav>
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3">Employee</h1>
+					<h1 class="h3 mb-3">Anställd/Tjänsteman</h1>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -55,11 +55,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">E-post</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Role</th>
-											<th>Password</th>
+											<th>Roll</th>
+											<th>Lösenord</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -79,9 +79,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												$row1 = $result1->fetch_assoc();
 												$role_employee = $row1['officer'];
 												if ($role_employee == 0) {
-													$role_name = "Employee";
+													$role_name = "Anställd";
 												} else {
-													$role_name = "Officer";
+													$role_name = "Tjänsteman";
 												}
 												echo "<tr><td>" . $row["user_id"] . "</td><td>" . $row["name"] . "</td><td class='table-action'>" . $role_name . "</td></td><td class='table-action'>" . $row["password"] . "</td></tr>";
 											?>
@@ -100,16 +100,16 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 							<div class="card">
 								<div class="card-body">
 									<div class="float-left">
-										<h5 class="card-title mb-4">Employee Details</h5>
+										<h5 class="card-title mb-4">Ytterligare Detaljer</h5>
 										<?php
 										if ($row1) {
 										?>
-											<p><strong>Details : </strong></p>
+											<p><strong>Detaljer : </strong></p>
 											<div class="bal">
 												<?php echo $row1['details']; ?>
 											</div>
 										</br>
-											<p><strong>Color : </strong></p>
+											<p><strong>Färg : </strong></p>
 											<div class="col-md-5">
 												<?php $color = $row1['color']; ?>
 												<div style="background-color:<?php echo $color; ?>;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
@@ -123,7 +123,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										<?php
 										} else { ?>
 											<div class="mb-3">
-												<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-employee-details.php?id=<?php echo $e_id ?>">Add Employee Details</a></button>
+												<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="add-employee-details.php?id=<?php echo $e_id ?>">Lägg till information</a></button>
 											</div>
 										<?php }
 										?>
@@ -137,14 +137,14 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											?>
 											<button class='btn btn-primary'>
 												<i class="align-middle" data-feather="edit-3"></i>
-												<a style='color:white;text-decoration: none;' href='edit-employee-details.php?id=<?php echo $e_id; ?>'>Edit Additional Details</a>
+												<a style='color:white;text-decoration: none;' href='edit-employee-details.php?id=<?php echo $e_id; ?>'>Redigera detaljer</a>
 											</button>
 											<?php if (!$row_img) {
 											?>
 												</br></br>
 
 												<div class="mb-3">
-													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="employee-image.php?id=<?php echo $e_id ?>">Add Employee Image</a></button>
+													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="employee-image.php?id=<?php echo $e_id ?>">Lägg till anställdsbild</a></button>
 												</div>
 											<?php
 
@@ -153,7 +153,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												</br></br>
 
 												<div class="mb-3">
-													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="edit-employee-image.php?id=<?php echo $e_id ?>">Change Employee Image</a></button>
+													<button class="btn btn-primary"><a style="text-decoration:none; color:white;" href="edit-employee-image.php?id=<?php echo $e_id ?>">Ändra anställdsbild</a></button>
 												</div>
 											<?php
 

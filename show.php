@@ -19,7 +19,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Tables | AdminKit Demo</title>
+	<!-- <title>Tables | AdminKit Demo</title> -->
 
 	<link href="css/app.css" rel="stylesheet">
 	<style>
@@ -80,7 +80,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Appointment/Holiday Details</h1>
+					<h1 class="h3 mb-3">Utnämning / semesterinformation</h1>
 
 					<div class="row">
 						<div class="col-md-12">
@@ -131,11 +131,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										?>
 											<thead>
 												<tr>
-													<th style="width:40%;">Employee Name</th>
-													<th style="width:25%">Start Date</th>
+													<th style="width:40%;">Anställd Namn</th>
+													<th style="width:25%">Start Datum</th>
 													<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-													<th>End Date</th>
-													<th>Reason</th>
+													<th>Slutdatum</th>
+													<th>Anledning</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -184,11 +184,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			?>
 				<thead>
 					<tr>
-						<th style="width:40%;">Customer ID</th>
-						<th style="width:25%">Employee ID</th>
+						<th style="width:40%;">Kundnummer</th>
+						<th style="width:25%">Anställd</th>
 						<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-						<th>Date</th>
-						<th>Time</th>
+						<th>Datum</th>
+						<th>Tid</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -246,7 +246,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				<div class="col-md-12">
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title mb-4">Customer Details</h5>
+							<h5 class="card-title mb-4">Kunddetaljer</h5>
 							<?php
 											$sql2 = "SELECT name  FROM users WHERE id='$customer_id';";
 											$result2 = mysqli_query($db, $sql2) or die("Query unsuccessful1");
@@ -255,11 +255,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 											$result3 = mysqli_query($db, "SELECT base_price,appointment_type,details,time_alloted,admin_note from `customer_details` where user_id='$customer_id';");
 											$row3 = $result3->fetch_assoc();
-
-											$sql77 = "SELECT base_price,additional_charge,invoice_charge,comment,time_alloted  FROM appointments WHERE id='$appointment_id'";
-											$result77 = mysqli_query($db, $sql77) or die("Query unsuccessful1");
-											$row77 = $result77->fetch_assoc();
-											$time_alloted = $row77["time_alloted"];
+											$time_alloted = $row3["time_alloted"];
 
 											$pos = strpos($time_alloted, '.');
 											if ($pos === false) { // it is integer number
@@ -268,44 +264,54 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												$time_alloted = rtrim(rtrim($time_alloted, '0'), '.');
 											}
 
-
+											$sql77 = "SELECT base_price,time_alloted,additional_charge,invoice_charge,comment  FROM appointments WHERE id='$appointment_id'";
+											$result77 = mysqli_query($db, $sql77) or die("Query unsuccessful1");
+											$row77 = $result77->fetch_assoc();
+											$time_alloted = $row77["time_alloted"];
+											$pos = strpos($time_alloted, '.');
+											if ($pos === false) { // it is integer number
+												$time_alloted = $time_alloted;
+											} else { // it is decimal number
+												$time_alloted = rtrim(rtrim($time_alloted, '0'), '.');
+											}
 
 							?>
 							<?php
 											if ($time_alloted == 0) {
 							?>
-								<h3 style="color:red">This appointment is Cancelled</h3>
+								<h3 style="color:red">Denna bokning annulleras</h3>
 								<hr>
 							<?php
 											}
 							?>
-							<p><strong>Customer Name : </strong><?php echo $row2['name']; ?></p>
+
+							<p><strong>Kundnamn : </strong><?php echo $row2['name']; ?></p>
 							<?php if ($row3['details'] != NULL) { ?>
-								<p><strong>Details : </strong> <?php echo $row3["details"]; ?></p>
+								<p><strong>Detaljer : </strong> <?php echo $row3["details"]; ?></p>
 							<?php } ?>
-							<p><strong>Base Price : </strong><?php echo $row77['base_price']; ?> Kr</p>
-							<p><strong>Time Alloted : </strong> <?php echo $time_alloted; ?> hours</p>
+							<p><strong>Baspris : </strong><?php echo $row77['base_price']; ?> Kr</p>
+							<p><strong>Antal timmar per möte : </strong> <?php echo $time_alloted; ?> timmar</p>
 							<?php if ($row3['admin_note'] != NULL) { ?>
-								<p><strong>Admin Note(can be viewed by Admin only) : </strong><?php echo $row3['admin_note']; ?></p>
+								<p><strong>Admin detaljer : </strong><?php echo $row3['admin_note']; ?></p>
 							<?php } ?>
-							<p><strong>Appointment Type : </strong><?php
+							<p><strong>Bokningstyp : </strong><?php
 																	if ($row3["appointment_type"] == "monthly") {
-																		echo "Monthly";
+																		echo "Månadsvis";
 																	} elseif ($row3["appointment_type"] == "bi-weekly") {
-																		echo "Bi-weekly";
+																		echo "Varannan vecka";
 																	} elseif ($row3["appointment_type"] == "not-regular") {
 																		echo "Not-regular";
 																	} elseif ($row3["appointment_type"] == "weekly") {
-																		echo "Weekly";
+																		echo "Engångsbokning";
 																	} ?></p>
 							<?php if ($row77['additional_charge'] != 0.00) { ?>
-								<p><strong>Additional Charge : </strong><?php echo $row77['additional_charge']; ?> Kr</p>
+								<p><strong>Extra kostnad : </strong><?php echo $row77['additional_charge']; ?> Kr</p>
 							<?php } ?>
 							<?php if ($row77['invoice_charge'] != 0.00) { ?>
-								<p><strong>Invoice Charge : </strong><?php echo $row77['invoice_charge']; ?> Kr</p>
+								<p><strong>Fakturakostnad : </strong><?php echo $row77['invoice_charge']; ?> Kr</p>
 							<?php } ?>
 							<?php if ($row77['comment'] != Null) { ?>
-								<p><strong>Comment : </strong><?php echo $row77['comment']; ?></p>
+								<p><strong>Kommentar : </strong><?php echo $row77['comment']; ?></p>
 							<?php } ?>
 
 							</br>
@@ -333,40 +339,39 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id; ?>'>Cancel</a>
 								</button>
 							</div> -->
-
-
 							<?php
 											if ($time_alloted != 0) {
 							?>
 								<hr>
 
-								<div class="btn-group" style="width:100%">
-									<button class='btn btn-primary'>
-										<i class='fa fa-edit'></i>
-										<a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=<?php echo $appointment_id; ?>'>Reschedule</a>
 
-									</button>
-									<button class='btn btn-primary'>
-										<i class='fa fa-edit'></i>
-										<a style='color:white;text-decoration: none;' href='employee-change.php?id=<?php echo $appointment_id; ?>'>Change Employee for All</a>
+							<div class="btn-group" style="width:100%">
+								<button class='btn btn-primary'>
+									<i class='fa fa-edit'></i>
+									<a style='color:white;text-decoration: none;' href='appointment-reschedule.php?id=<?php echo $appointment_id; ?>'>Boka om</a>
 
+								</button>
+								<button class='btn btn-primary'>
+									<i class='fa fa-edit'></i>
+									<a style='color:white;text-decoration: none;' href='employee-change.php?id=<?php echo $appointment_id; ?>'>Byt anställd för alla möten</a>
+
+								</button>
+								<?php if ($row77['comment'] != Null || $row77['invoice_charge'] != 0.00 || $row77['additional_charge'] != 0.00) { ?>
+									<button class='btn btn-primary'>
+										<i class='fas fa-plus'></i>
+										<a style='color:white;text-decoration: none;' href='edit-appointment-extras.php?id=<?php echo $appointment_id; ?>'>Redigera extra</a>
 									</button>
-									<?php if ($row77['comment'] != Null || $row77['invoice_charge'] != 0.00 || $row77['additional_charge'] != 0.00) { ?>
-										<button class='btn btn-primary'>
-											<i class='fas fa-plus'></i>
-											<a style='color:white;text-decoration: none;' href='edit-appointment-extras.php?id=<?php echo $appointment_id; ?>'>Edit Extras</a>
-										</button>
-									<?php } else { ?>
-										<button class='btn btn-primary'>
-											<i class='fas fa-plus'></i>
-											<a style='color:white;text-decoration: none;' href='add-appointment-extras.php?id=<?php echo $appointment_id; ?>'>Add Extras</a>
-										</button>
-									<?php } ?>
-									<button class='btn btn-danger'>
-										<i class='fas fa-times'></i>
-										<a style='color:white;text-decoration: none;' href='appointment-delete-reason.php?id=<?php echo $appointment_id; ?>'>Cancel</a>
+								<?php } else { ?>
+									<button class='btn btn-primary'>
+										<i class='fas fa-plus'></i>
+										<a style='color:white;text-decoration: none;' href='add-appointment-extras.php?id=<?php echo $appointment_id; ?>'>Lägg till extra</a>
 									</button>
-								</div>
+								<?php } ?>
+								<button class='btn btn-danger'>
+									<i class='fas fa-times'></i>
+									<a style='color:white;text-decoration: none;' href='appointment-delete.php?id=<?php echo $appointment_id; ?>'>Avboka</a>
+								</button>
+							</div>
 							<?php
 											}
 							?>

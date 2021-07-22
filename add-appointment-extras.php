@@ -18,7 +18,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <title>Extra charges for the appointment</title>
+    <!-- <title>Extra charges for the appointment</title> -->
 
     <link href="css/app.css" rel="stylesheet">
 </head>
@@ -48,35 +48,35 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Extras</h1>
+                    <h1 class="h3 mb-3">Extra</h1>
 
                     <div class="row">
                         <div class="">
                             <div class="card">
                                 <div class="card-header">
                                     <!-- <h5 class="card-title">Add Employee form</h5> -->
-                                    <h6 class="card-subtitle text-muted">Add all the extra charges here.</h6>
+                                    <h6 class="card-subtitle text-muted">Lägg till alla extra avgifter här.</h6>
                                 </div>
                                 <div class="card-body">
                                     <form enctype="multipart/form-data" method="post" action="">
                                         <div class="mb-3 col-md-2">
-                                            <label class="form-label">Additional Charges</label>
-                                            <input type="number" step="0.01" name="additional_charge" class="form-control" placeholder="Extra Charges">
+                                            <label class="form-label">Extra avgifter</label>
+                                            <input type="number" step="0.01" name="additional_charge" value=0.00 class="form-control" placeholder="Extra avgifter">
 
                                         </div>
                                         <div class="mb-3 col-md-2">
-                                            <label class="form-label">Invoice Charges</label>
-                                            <input type="number" step="0.01" name="invoice_charge" class="form-control" placeholder="Invoice Charges">
+                                            <label class="form-label">Fakturakostnader</label>
+                                            <input type="number" step="0.01" name="invoice_charge" value=0.00 class="form-control" placeholder="Fakturakostnader">
 
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Comments</label>
-                                            <textarea class="form-control" name="comments" placeholder="Comments" rows="1"></textarea>
+                                            <label class="form-label">Kommentarer</label>
+                                            <textarea class="form-control" name="comments" placeholder="Kommentarer" rows="1"></textarea>
                                         </div>
 
 
-                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Spara</button>
                                     </form>
                                 </div>
                             </div>

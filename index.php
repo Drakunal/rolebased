@@ -1,4 +1,3 @@
-
 <?php
 	session_start();
     include "connection.php";
@@ -44,16 +43,16 @@
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Logga in
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Användarnamn">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="pass" placeholder="Lösenord">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -66,7 +65,7 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" value="login" name="login">
-							Login
+							Logga in
 						</button>
 
 						
@@ -112,7 +111,7 @@
            
 
            
-                $res=mysqli_query($db,"SELECT * from `users` where user_id='$username' && password='$password' and deleted_at is NULL;");
+                $res=mysqli_query($db,"SELECT * from `users` where user_id='$username' && password='$password';");
             
 
            

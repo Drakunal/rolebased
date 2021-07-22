@@ -1,4 +1,4 @@
-        <?php
+<?php
         if ($_SESSION['role'] == "employee") {
 
 
@@ -18,7 +18,7 @@
             </a>
             <ul class="sidebar-nav">
               <li class="sidebar-header">
-                Pages
+              Sidor
               </li>
 
               <li class="sidebar-item active">
@@ -34,7 +34,7 @@
                     <?php
                   }
                     ?>
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Överblick</span>
                     </a>
                     </li>
                     <?php 
@@ -44,10 +44,10 @@
                       ?>
                     <li class="sidebar-item">
                                     <a data-target="#appointment" data-toggle="collapse" class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Appointment Section</span>
+                                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Schema</span>
                                     </a>
                                     <ul id="appointment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="employee-calendar.php?id=0">All Employees</a></li>
+                                        <li class="sidebar-item"><a class="sidebar-link" href="employee-calendar.php?id=0">Alla anställda</a></li>
 
 
 

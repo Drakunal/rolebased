@@ -117,19 +117,20 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											<textarea class="form-control" name="admin_note" placeholder="only visible by admin" rows="1"><?php echo $res['admin_note']; ?></textarea>
 										</div>
 										<div class="mb-3">
+										    <label class="form-label">Bokningstyp<span style="color:red">*</span></label>
 										<?php 
 										 if($a_type=="not-regular"){
 
 										 ?>
 											<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" name="appointment-type" id="noCheck" checked>
 												<span class="form-check-label">
-													Not Regular
+                                                Engångsbokning
 												</span></label>
 												<?php }else{ ?>
 
 												<label class="form-check"><input class="form-check-input" type="radio" value="not-regular" name="appointment-type" id="noCheck">
 												<span class="form-check-label">
-													Not Regular
+                                                Engångsbokning
 												</span></label>
 												<?php } ?>
 											<!-- <label class="form-check">
@@ -146,14 +147,14 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type" checked>
 													<span class="form-check-label">
-														Weekly
+                                                    Veckovis
 													</span>
 												</label>
 												<?php }else{ ?>
 													<label class="form-check">
 													<input class="form-check-input" type="radio" value="weekly" name="appointment-type">
 													<span class="form-check-label">
-														Weekly
+                                                    Veckovis
 													</span>
 												</label>
 												<?php } ?>
@@ -166,14 +167,14 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type" checked>
 													<span class="form-check-label">
-														Bi-weekly
+                                                    Varannan vecka
 													</span>
 												</label>
 												<?php }else{ ?>
 													<label class="form-check">
 													<input class="form-check-input" type="radio" value="bi-weekly" name="appointment-type">
 													<span class="form-check-label">
-														Bi-weekly
+                                                    Varannan vecka
 													</span>
 												</label>
 												<?php } ?>
@@ -185,14 +186,14 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 												<label class="form-check">
 													<input class="form-check-input" type="radio" value="monthly" name="appointment-type" checked>
 													<span class="form-check-label">
-														Monthly
+                                                    Månadsvis
 													</span>
 												</label>
 												<?php }else{ ?>
 													<label class="form-check">
 													<input class="form-check-input" type="radio" value="monthly" name="appointment-type">
 													<span class="form-check-label">
-														Monthly
+                                                    Månadsvis
 													</span>
 												</label>
 												<?php } ?>
@@ -460,11 +461,10 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				// $p=mysqli_query($db,"UPDATE `customer_details` SET user_id = '$user_id', details = '$details', time_alloted = '$time_alloted' WHERE user_id='$user_id' ;");
 				$p = mysqli_query($db, "UPDATE `customer_details` SET appointment_type = '$appointment_type', details = '$details', time_alloted = '$time_alloted', base_price='$base_price', admin_note='$admin_note' WHERE user_id='$user_id' ;");
 				if ($base_price != $prev_base_price || $time_alloted != $prev_time_alloted) {
-					$date=date("Y-m-d");
 					$sql33 = "SELECT time FROM `appointments` WHERE customer_id='$user_id' AND date >= CURDATE() AND deleted_at is NULL;";
-					$query33 = mysqli_query($db, $sql33) or die ("bAL");
+					$query33 = mysqli_query($db, $sql33) or die("BA");
 					if ($query33) {
-						$row33 = $query33->fetch_assoc();
+					    $row33 = $query33->fetch_assoc();
 						$time = $row33['time'];
 						$times = date('G:i', strtotime($time));
 

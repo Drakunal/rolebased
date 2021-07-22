@@ -6,20 +6,15 @@
 								<!-- <a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy; -->
 							</p>
 						</div>
+						<!--https://github.com/Drakunal-->
 						<div class="col-6 text-right">
 							<ul class="list-inline">
+								
+							
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://github.com/Drakunal">Support</a>
+									<a class="text-muted" href="http://www.monikasstadtjanst.se/datapolicy.php">Integritet</a>
 								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Terms</a>
-								</li>
+								
 							</ul>
 						</div>
 					</div>

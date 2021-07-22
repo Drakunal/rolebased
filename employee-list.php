@@ -35,13 +35,13 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Employee List</h1>
+					<h1 class="h3 mb-3">Lista över anställda</h1>
 
 					<div class="row">
 						
 					<div class="col-md-12">
 
-						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i>Add Employees</a></button>
+						<button class="btn btn-primary" style="float:right;"><a style="color:white;text-decoration: none;" href="add-employee.php"><i class="align-middle" data-feather="user-plus"></i> Ny anställd</a></button>
 					</div>
 					
 
@@ -59,10 +59,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 								<table id="employee-list"class="table table-striped">
 									<thead>
 										<tr>
-											<th style="width:40%;">Email ID</th>
-											<th style="width:25%">Name</th>
+											<th style="width:40%;">E-post</th>
+											<th style="width:25%">Namn</th>
 											<!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-											<th>Actions</th>
+											<th>Inställningar</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -131,6 +131,20 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 $(document).ready(function() {
     var table = $('#employee-list').DataTable( {
         lengthChange: false,
+		language: {
+					"search": "Sök",
+					"lengthMenu": "Display _MENU_ records per page",
+					"zeroRecords": "Inga uppgifter funna",
+					"info": "Visar sida _PAGE_ av _PAGES_",
+					"infoEmpty": "Inga poster tillgängliga",
+					"infoFiltered": "(filtreras från totalt _MAX_ poster)",
+					"paginate": {
+						"first": "Först",
+						"last": "Sista",
+						"next": "Nästa",
+						"previous": "Tidigare"
+					},
+				}
         // buttons: [ 'copy', 'excel', 'pdf' ]
     } );
  

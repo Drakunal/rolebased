@@ -6,7 +6,7 @@
 												<span aria-hidden="true">&times;</span>
 											</button> -->
 											<div class="alert-message">
-												<strong>SUCCESS!</strong>
+												<strong>Klart!</strong>
 											</div>
 										</div>
 										
@@ -16,7 +16,7 @@
 												<span aria-hidden="true">&times;</span>
 											</button> -->
 											<div class="alert-message">
-												<strong>DELETED!</strong>
+												<strong>RADERADE!</strong>
 											</div>
 										</div>
 
@@ -25,7 +25,7 @@
 												<span aria-hidden="true">&times;</span>
 											</button> -->
 											<div class="alert-message">
-												<strong>ERROR! Try again.</strong>
+												<strong>FEL! Försök igen.</strong>
 											</div>
 										</div>
 
@@ -177,10 +177,10 @@
 								<!-- <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a> -->
 								<!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a> -->
 								<!-- <div class="dropdown-divider"></div> -->
-								<a class="dropdown-item" href="settings.php"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="settings.php"><i class="align-middle mr-1" data-feather="settings"></i>Inställningar</a>
 								<!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i> Help Center</a> -->
 								<!-- <div class="dropdown-divider"></div> -->
-								<a class="dropdown-item" href="logout.php"><i class="align-middle mr-1" data-feather="log-out"></i>Log out</a>
+								<a class="dropdown-item" href="logout.php"><i class="align-middle mr-1" data-feather="log-out"></i>Logga ut</a>
 							</div>
 						</li>
 					</ul>

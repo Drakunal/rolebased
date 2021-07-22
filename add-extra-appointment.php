@@ -18,7 +18,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Form Layouts | AdminKit Demo</title>
+	<!-- <title>Form Layouts | AdminKit Demo</title> -->
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -40,7 +40,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			</nav>
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3">Add Customer Appointment</h1>
+					<h1 class="h3 mb-3">Lägg till extra möte</h1>
 					<?php
 					$date = $_GET['date'];
 					$role = 'employee';
@@ -76,44 +76,44 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 						<div class="col-md-6">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-subtitle text-muted">Add Appointment for this customer.</h4>
+									<h4 class="card-subtitle text-muted">Lägg till möte.</h4>
 								</div>
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
-										<label class="form-label">Employee<span style="color:red">*</span></label>
+										<label class="form-label">Anställd<span style="color:red">*</span></label>
 										<select class="form-control mb-3" id="employee_id" name="employee-id">
-											<option value="0" selected>Select an Employee</option>
+											<option value="0" selected>Välj en anställd</option>
 											<?php
 											// while($row = $result->fetch_assoc())
 											// echo "<option value='".$row['id']."'>".$row['name']."</option>"
 											?>
 										</select>
 
-										<label class="form-label">Customer<span style="color:red">*</span></label>
+										<label class="form-label">Kund<span style="color:red">*</span></label>
 										<select class="form-control mb-3" id="customer-id" name="customer-id">
-											<option value="0" selected>Select a Customer</option>
+											<option value="0" selected>Välj en kund</option>
 											<?php
 											while ($customer_list_row = $customer_list_query->fetch_assoc())
 												echo "<option value='" . $customer_list_row['id'] . "'>" . $customer_list_row['name'] . "</option>"
 											?>
 										</select>
 										<div class="mb-3">
-											<label class="form-label">Date<span style="color:red">*</span></label>
+											<label class="form-label">Datum<span style="color:red">*</span></label>
 											<input type="date" name="date" class="form-control" placeholder="appointment-date" readonly value="<?php echo $date; ?>">
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Time<span style="color:red">*</span></label>
+											<label class="form-label">Tid<span style="color:red">*</span></label>
 											<input type="time" name="time" class="form-control" placeholder="appointment-time">
 										</div>
 
 										<div class="mb-3">
-											<label class="form-label">Fix the Duration of the appointment<span style="color:red">*</span></label>
+											<label class="form-label">Varaktighet<span style="color:red">*</span></label>
 											<select class="form-control mb-3" id="appointment-duration" name="appointment-duration">
-												<option value="1" selected>One time</option>
-												<option value="3">3 Months</option>
-												<option value="6">6 Months</option>
-												<option value="9">9 Months</option>
-												<option value="12">12 Months</option>
+												<option value="1" selected>En gång</option>
+												<option value="3">3 Månader</option>
+												<option value="6">6 Månader</option>
+												<option value="9">9 Månader</option>
+												<option value="12">12 Månader</option>
 											</select>
 										</div>
 
@@ -140,7 +140,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 										// }
 										?>
-										<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit" class="btn btn-primary">Spara</button>
 									</form>
 
 								</div>

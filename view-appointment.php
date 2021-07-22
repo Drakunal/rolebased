@@ -19,7 +19,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <title>Tables | AdminKit Demo</title>
+    <!-- <title>Tables | AdminKit Demo</title> -->
 
     <link href="css/app.css" rel="stylesheet">
 </head>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Appointment Details</h1>
+                    <h1 class="h3 mb-3">Tidsinformation</h1>
 
                     <div class="row">
                         <div class="col-md-12">
@@ -73,11 +73,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
                                             ?>
                                             <thead>
                                                 <tr>
-                                                    <th>Customer ID</th>
-                                                    <th >Customer Name</th>
-                                                    <!-- <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th> -->
-                                                    <th>Date</th>
-                                                    <th>Time</th>
+                                                    <th>Kundnummer</th>
+                                                    <th >Kundnamn</th>
+                                                    <!-- <th class="d-none d-md-table-cell" style="width:25%">Datum of Birth</th> -->
+                                                    <th>Datum</th>
+                                                    <th>Tid</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -136,7 +136,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title mb-4">Customer #<?php echo $row22["user_id"]; ?> Details</h5>
+                                            <h5 class="card-title mb-4">Kundnummer #<?php echo $row22["user_id"]; ?> Detaljer</h5>
                                             <?php
                                             $sql2 = "SELECT name  FROM users WHERE id='$customer_id';";
                                             $result2 = mysqli_query($db, $sql2) or die("Query unsuccessful1");
@@ -156,9 +156,9 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 
                                             ?>
 
-                                            <p><strong>Customer Name : </strong><?php echo $row2['name']; ?></p>
-                                            <p><strong>Customer Details : </strong><?php echo $row3['details']; ?></p>
-                                            <p><strong>Time Alloted : </strong><?php echo $time_alloted; ?> hours</p></br></br>
+                                            <p><strong>Kundnamn : </strong><?php echo $row2['name']; ?></p>
+                                            <p><strong>Kund Detaljer : </strong><?php echo $row3['details']; ?></p>
+                                            <p><strong>Antal timmar per möte : </strong><?php echo $time_alloted; ?> timmar</p></br></br>
 
                                             </br>
 
