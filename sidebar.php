@@ -6,7 +6,7 @@
                                     Sidor
                                 </li>
 
-                                <li class="sidebar-item active">
+                                <li class="sidebar-item">
                                     <a class="sidebar-link" href="admin-panel.php">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Överblick</span>
                         </a>
@@ -67,13 +67,13 @@
                                 </li>
 
                                 <li class="sidebar-item">
-                                    <a data-target="#calendars" data-toggle="collapse" class="sidebar-link collapsed">
-                                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Röda dagar</span>
+                                    <a  href="add-employee-holiday.php" class="sidebar-link collapsed">
+                                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Semester</span>
                                     </a>
-                                    <ul id="calendars" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                                        <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="plus"></i>Lägg till helgdagar</a></li>
-                                        <li class="sidebar-item"><a class="sidebar-link" href="add-employee-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Lägg till medarbetarsemester</a></li>
-                                    </ul>
+                                    <!-- <ul id="calendars" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar"> -->
+                                        <!-- <li class="sidebar-item"><a class="sidebar-link" href="add-holiday.php"><i class="align-middle" data-feather="plus"></i>Lägg till helgdagar</a></li> -->
+                                        <!-- <li class="sidebar-item"><a class="sidebar-link" href="add-employee-holiday.php"><i class="align-middle" data-feather="user-plus"></i>Lägg till medarbetarsemester</a></li>
+                                    </ul> -->
                                 </li>
                                 
 

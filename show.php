@@ -80,7 +80,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Utnämning / semesterinformation</h1>
+					<h1 class="h3 mb-3" id="tt">Utnämning</h1>
 
 					<div class="row">
 						<div class="col-md-12">
@@ -173,7 +173,11 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				<div style='float:center	'>
 					<button class='btn btn-danger'>
 						<i class='fas fa-times'></i>
-						<a style='color:white;text-decoration: none;' href='holiday-delete.php?id=<?php echo $event_id; ?>'>Cancel Holiday</a>
+						<a style='color:white;text-decoration: none;' href='holiday-delete.php?id=<?php echo $event_id; ?>'>Ta bort semester</a>
+						<script>
+							var a=document.getElementById('tt');
+							a.innerHTML="Semesterinformation";
+						</script>
 					</button>
 				</div>
 

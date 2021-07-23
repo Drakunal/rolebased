@@ -18,7 +18,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<title>Form Layouts | AdminKit Demo</title>
+	<!-- <title>Form Layouts | AdminKit Demo</title> -->
 
 	<link href="css/app.css" rel="stylesheet">
 </head>
@@ -73,15 +73,15 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Edit Customer Details form</h1>
+					<h1 class="h3 mb-3">Redigera kund</h1>
 
 					<div class="row">
 						<div class="">
 							<div class="card">
-								<div class="card-header">
+								<!-- <div class="card-header"> -->
 									<!-- <h5 class="card-title">Add Employee form</h5> -->
-									<h6 class="card-subtitle text-muted">Edit your customer details here.</h6>
-								</div>
+									<!-- <h6 class="card-subtitle text-muted">Edit your customer details here.</h6> -->
+								<!-- </div> -->
 								<div class="card-body">
 									<form enctype="multipart/form-data" method="post" action="">
 										<!-- <div class="mb-3">
@@ -89,8 +89,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 											<input type="text" name="email" class="form-control" placeholder="customer id">
 										</div> -->
 										<div class="mb-3">
-											<label class="form-label">Time alloted in hours<span style="color:red">*</span></label>
-											<input type="number" step="0.1" name="time" class="form-control" placeholder="number of hours" value="<?php echo $res['time_alloted']; ?>">
+											<label class="form-label">Antal timmar per tillfälle<span style="color:red">*</span></label>
+											<input type="number" required step="0.1" name="time" class="form-control" placeholder="timmar" value="<?php echo $res['time_alloted']; ?>">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Name</label>
@@ -98,14 +98,14 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										</div> -->
 
 										<div class="mb-3">
-											<label class="form-label">Details</label>
-											<textarea class="form-control" name="details" placeholder="Details" rows="1"><?php echo $res['details']; ?></textarea>
+											<label class="form-label">Detaljer</label>
+											<textarea class="form-control" name="details" placeholder="Detaljer" rows="1"><?php echo $res['details']; ?></textarea>
 										</div>
 
 
 										<div class="mb-3">
-											<label class="form-label">Base Price<span style="color:red">*</span></label>
-											<input type="number" name="base-price" class="form-control" placeholder="base price" value="<?php echo $res['base_price']; ?>">
+											<label class="form-label">Timpris<span style="color:red">*</span></label>
+											<input type="number" required name="base-price" class="form-control" placeholder="Timpris" value="<?php echo $res['base_price']; ?>">
 										</div>
 										<!-- <div class="mb-3">
 											<label class="form-label">Base Price</label>
@@ -113,8 +113,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										</div> -->
 
 										<div class="mb-3">
-											<label class="form-label">Admin's Note</label>
-											<textarea class="form-control" name="admin_note" placeholder="only visible by admin" rows="1"><?php echo $res['admin_note']; ?></textarea>
+											<label class="form-label">Admin Detaljer</label>
+											<textarea class="form-control" name="admin_note" placeholder="Admin" rows="1"><?php echo $res['admin_note']; ?></textarea>
 										</div>
 										<div class="mb-3">
 										    <label class="form-label">Bokningstyp<span style="color:red">*</span></label>
@@ -211,7 +211,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
                                             <span class="form-check-label">Check me out</span>
                                             </label>
 										</div> -->
-										<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+										<button type="submit" name="submit" class="btn btn-primary">Spara</button>
 									</form>
 								</div>
 							</div>

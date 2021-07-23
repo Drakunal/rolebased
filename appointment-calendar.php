@@ -19,6 +19,8 @@ error_reporting(0);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/gcal.min.js" integrity="sha512-7a/GdV+Yb2nLt7zgXbufsOsTJ3NHu4zF1Vdtsn50oRjdeVwAU8EcE4twos9YAnj9MhpvFnEewM4QsbLhSeAH0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- <script src=" js/lang-all.js"></script> -->
 
     <!-- <script src="https://www.officeholidays.com/ics-local-name/sweden"></script> -->
@@ -42,7 +44,7 @@ error_reporting(0);
         /* } */
         .fc-title {
             /* background-color: black; */
-            color: black;
+            /* color: black; */
             font-size: 10px;
         }
     </style>
@@ -53,88 +55,6 @@ error_reporting(0);
     <script>
         $(document).ready(function() {
 
-            //  var d='load.php';
-            // var calendar = $('#calendar').fullCalendar({
-            //     editable:false,
-            //     header:{
-            //     left:'prev,next today',
-            //     center:'title',
-            //     right:'',
-            //     display:'none',
-            //     //  right:'month,agendaWeek,agendaDay'
-            //     },
-            //     if(True){
-            //         var c=2;
-            //         console.log(c);
-            //     },
-            //     events: d,
-
-
-            //     selectable:false,
-            //     displayEventTime: false,
-            //     selectHelper:false,
-            //     weekends: true,
-            //     // select: function(start, end, allDay)
-            //     // {
-            //     //  var title = prompt("Enter Event Title");
-            //     //  if(title)
-            //     //  {
-            //     //   var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-            //     //   var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-            //     //   $.ajax({
-            //     //    url:"insert.php",
-            //     //    type:"POST",
-            //     //    data:{title:title, start:start, end:end},
-            //     //    success:function()
-            //     //    {
-            //     //     calendar.fullCalendar('refetchEvents');
-            //     //     alert("Added Successfully");
-            //     //    }
-            //     //   })
-            //     //  }
-            //     // },
-            //     editable:false,
-            //     // eventResize:function(event)
-            //     // {
-            //     //  var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-            //     //  var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-            //     //  var title = event.title;
-            //     //  var id = event.id;
-            //     //  $.ajax({
-            //     //   url:"update.php",
-            //     //   type:"POST",
-            //     //   data:{title:title, start:start, end:end, id:id},
-            //     //   success:function(){
-            //     //    calendar.fullCalendar('refetchEvents');
-            //     //    alert('Event Update');
-            //     //   }
-            //     //  })
-            //     // },
-
-            //     // eventDrop:function(event)
-            //     // {
-            //     //  var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-            //     //  var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-            //     //  var title = event.title;
-            //     //  var id = event.id;
-            //     //  $.ajax({
-            //     //   url:"update.php",
-            //     //   type:"POST",
-            //     //   data:{title:title, start:start, end:end, id:id},
-            //     //   success:function()
-            //     //   {
-            //     //    calendar.fullCalendar('refetchEvents');
-            //     //    alert("Event Updated");
-            //     //   }
-            //     //  });
-            //     // },
-
-
-
-            // });
-
-
-            // window.location.reload();
             var employee = $("#employee-id").val();
             console.log(employee);
             if (employee != "") {
@@ -142,6 +62,7 @@ error_reporting(0);
                 console.log(d);
                 // loadData("employeeData", employee);
                 $('#calendar').fullCalendar({
+                    googleCalendarApiKey: 'AIzaSyBu6oWtoif6GSDLpFJXrnhpMsJTgEiLXyM',
                     monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
                     monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
                     dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
@@ -159,7 +80,16 @@ error_reporting(0);
                         right: '',
                         display: 'none',
                     },
-                    events: d,
+                    eventSources: [{
+                            googleCalendarId: 'g630hdv4f9aa3j745447hsom2cbhiq3p@import.calendar.google.com',
+                            color: 'red',
+                            textColor:'white'
+                        },
+                        {
+                            url:d,
+                            textColor:'black'
+                        }
+                    ],
                     selectable: true,
                     displayEventTime: false,
 
@@ -170,51 +100,28 @@ error_reporting(0);
 
                     selectHelper: true,
 
-
-
-
-
-
-
                     eventClick: function(event) {
-                        // if (confirm("View details?")) {
+                      
                             var id = event.id;
-                            //   $.ajax({
+                           
                             var url = "show.php?id=" + id;
-                            //    type:"POST",
-                            //    data:{id:id},
-                            //    success:function()
-                            //    {
-                            //     calendar.fullCalendar('refetchEvents');
-                            //     alert("Event Removed");
-                            //    }
-                            //   })
-
+ 
                             window.location.href = url;
-                        // }
+                       
                     },
                     select: function(start, end, allDay) {
-                        // var title = prompt("Add appointment in this day?");
+
                         if (confirm("Lägg till bokning den här dagen?")) {
                             var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
-                            // var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                            // $.ajax({
+                        
+                           
                             var url = "add-extra-appointment.php?date=" + start;
                             window.location.href = url;
-                            // type:"POST",
-                            // data:{title:title, start:start, end:end},
-                            // success:function()
-                            // {
-                            //     calendar.fullCalendar('refetchEvents');
-                            //     alert("Added Successfully");
-                            // }
-                            // })
+                          
                         }
                     },
 
-                    // eventRender: function eventRender(event, element, view) {
-                    //     return ['all', event.customer_id].indexOf($('#customer-id').val()) >= 0
-                    // }
+                    
 
                 });
 
@@ -224,17 +131,7 @@ error_reporting(0);
             }
 
 
-            //   else{
-            // 	// $("#calendar").html("");
-            // }
-
-
-            // $('#customer-id').on('change', function() {
-            //     $('#calendar').fullCalendar('rerenderEvents');
-            // });
-            // $('#search').on('change',function(){
-            //     $('#calendar').fullCalendar('rerenderEvents');
-            // });
+           
 
 
 

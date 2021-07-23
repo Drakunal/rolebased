@@ -1,10 +1,10 @@
 <?php
-$servername = "swipemedia.se.mysql";
-$username = "swipemedia_semonika2";
-$password = "qwerty1234";
+$servername = "localhost";
+$username = "root";
+$password = "";
 
 // Create connection
-$db = new mysqli($servername, $username, $password,"swipemedia_semonika2");
+$db = new mysqli($servername, $username, $password,"rolebased");
 
 // Check connection
 if ($db->connect_error) {
