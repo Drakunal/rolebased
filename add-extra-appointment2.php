@@ -93,8 +93,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										<select class="form-control mb-3" id="customer-id" name="customer-id">
 											<option value="0" selected>Välj en kund</option>
 											<?php
-											//while ($customer_list_row = $customer_list_query->fetch_assoc())
-												//echo "<option value='" . $customer_list_row['id'] . "'>" . $customer_list_row['name'] . "</option>"
+											while ($customer_list_row = $customer_list_query->fetch_assoc())
+												echo "<option value='" . $customer_list_row['id'] . "'>" . $customer_list_row['name'] . "</option>"
 											?>
 										</select>
 										<div class="mb-3">
@@ -103,13 +103,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Tid<span style="color:red">*</span></label>
-											<input type="time" required name="time" class="form-control" placeholder="appointment-time">
-										</div>
-                                        <div class="mb-3">
-											<label class="form-label">Antal timmar per möte<span style="color:red">*</span></label>
-                                            <div id="time">
-											
-                                            </div>
+											<input type="time" name="time" class="form-control" placeholder="appointment-time">
 										</div>
 
 										<div class="mb-3">
@@ -200,7 +194,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 				$customer_details_row = $customer_details->fetch_assoc();
 
 
-				$time_alloted = $_POST['time_alloted'];
+				$time_alloted = $customer_details_row['time_alloted'];
 				$base_price = $customer_details_row['base_price'];
 				$pos = strpos($time_alloted, '.');
 				if ($pos === false) { // it is integer number
@@ -236,7 +230,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 									$customer_row = $customer_user_id->fetch_assoc();
 									$c_id = $customer_row["user_id"];
 
-									$c_id = $c_id . " " . $customer_name . " " . $times . " " . $time_alloted . "timmar";
+									$c_id = $c_id . " " . $customer_name . " " . $times . " " . $time_alloted . "hr";
 									mysqli_query($db, "INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');") or die("Unsuccessful");
 									$date = date('Y-m-d', strtotime($date . ' + 7 days'));
 								}
@@ -245,7 +239,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 								$customer_user_id = mysqli_query($db, "SELECT user_id from `users` where id=$customer_id;");
 								$customer_row = $customer_user_id->fetch_assoc();
 								$c_id = $customer_row["user_id"];
-								$c_id = $c_id . " " . $customer_name . " " . $times . " " . $time_alloted . "timmar";
+								$c_id = $c_id . " " . $customer_name . " " . $times . " " . $time_alloted . "hr";
 								mysqli_query($db, "INSERT INTO `events` (title,start_event,customer_id, employee_id, date, time,color) VALUES('$c_id', '$date','$customer_id','$employee_id', '$date','$time','$employee_color');") or die("Unsuccessful");
 							}
 							// 		mysqli_query($db, "INSERT INTO `appointments` (customer_id, employee_id, date, time,time_alloted,base_price) VALUES('$customer_id','$employee_id', '$date','$time','$time_alloted','$base_price');") or die("Unsuccessful");
@@ -311,44 +305,6 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "admin") {
 					loadData("stateData", country);
 				} else {
 					$("#appointments").html("");
-				}
-
-
-			})
-		});
-	</script>
-
-
-<script type="text/javascript">
-		$(document).ready(function() {
-			function loadData(type, category_id) {
-				$.ajax({
-					url: "time-ajax.php",
-					type: "POST",
-					data: {
-						type: type,
-						id: category_id
-					},
-					success: function(data) {
-						if (type == "stateData") {
-							$("#time").html(data);
-						} else {
-							$("#customer-id").append(data);
-						}
-
-					}
-				});
-			}
-
-			loadData();
-
-			$("#customer-id").on("change", function() {
-				var country = $("#customer-id").val();
-
-				if (country != "") {
-					loadData("stateData", country);
-				} else {
-					$("#time").html("");
 				}
 
 

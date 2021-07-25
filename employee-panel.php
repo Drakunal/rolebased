@@ -9,7 +9,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 <html lang="en">
 
 <head>
-	<title>Kalendar</title>
+	<title>Monika</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -20,6 +20,8 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/gcal.min.js" integrity="sha512-7a/GdV+Yb2nLt7zgXbufsOsTJ3NHu4zF1Vdtsn50oRjdeVwAU8EcE4twos9YAnj9MhpvFnEewM4QsbLhSeAH0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <style>
 	#calendar {
@@ -28,7 +30,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 	}
 
 	.fc-title {
-		color: black;
+		
 		font-size: 10px;
 	}
 </style>
@@ -36,6 +38,7 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "employee") {
 <?php
 $id = $_SESSION['id'];
 ?>
+ <script src="sc/a.js"></script>
 <script>
 	$(document).ready(function() {
 		var employee = $("#employee-id").val();
@@ -45,6 +48,7 @@ $id = $_SESSION['id'];
 			console.log(d);
 
 			$('#calendar').fullCalendar({
+				googleCalendarApiKey: bc,
 				monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
 				monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
 				dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
@@ -61,7 +65,16 @@ $id = $_SESSION['id'];
 					right: '',
 					display: 'none',
 				},
-				events: d,
+				eventSources: [{
+                            googleCalendarId: 'g630hdv4f9aa3j745447hsom2cbhiq3p@import.calendar.google.com',
+                            color: 'red',
+                            textColor:'white'
+                        },
+                        {
+                            url:d,
+                            textColor:'black'
+                        }
+                    ],
 				selectable: true,
 				displayEventTime: false,
 				weekends: true,

@@ -8,7 +8,89 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include("head.php"); ?>
+<head>
+	<title>Monika</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link href="css/app.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/gcal.min.js" integrity="sha512-7a/GdV+Yb2nLt7zgXbufsOsTJ3NHu4zF1Vdtsn50oRjdeVwAU8EcE4twos9YAnj9MhpvFnEewM4QsbLhSeAH0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<style>
+	#calendar {
+
+		margin: 0 auto;
+	}
+
+	.fc-title {
+		
+		font-size: 10px;
+	}
+</style>
+
+<?php
+$id = $_SESSION['id'];
+?>
+ <script src="sc/a.js"></script>
+<script>
+	$(document).ready(function() {
+		var employee = $("#employee-id").val();
+		console.log(employee);
+		if (employee != "") {
+			d = 'load.php?ids=' + employee;
+			console.log(d);
+
+			$('#calendar').fullCalendar({
+				googleCalendarApiKey: bc,
+				monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+				monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+				dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
+				dayNamesShort: ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör'],
+				buttonText: {
+					today: 'I dag',
+					week: 'Vecka',
+				},
+				weekNumberTitle: 'V',
+				editable: false,
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: '',
+					display: 'none',
+				},
+				eventSources: [{
+                            googleCalendarId: 'g630hdv4f9aa3j745447hsom2cbhiq3p@import.calendar.google.com',
+                            color: 'red',
+                            textColor:'white'
+                        },
+                        {
+                            url:d,
+                            textColor:'black'
+                        }
+                    ],
+				selectable: true,
+				displayEventTime: false,
+				weekends: true,
+				editable: false,
+				weekNumbers: true,
+				firstDay: 1,
+				selectHelper: true,
+				
+			});
+
+
+		}
+
+	});
+</script>
+
 
 <body>
 	<div class="wrapper">
@@ -90,335 +172,21 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 					}
 					?>
 					<!-- <div class="col-12 col-md-12 col-xxl-3 d-flex order-1 order-xxl-1"> -->
-						<div class="card flex-fill w-100">
-							<div class="card-header">
-							Bokade tider
-							</div>
-							<div class="card-body py-3">
-								<div class="card flex-fill">
-									<div class="card-header">
-										<div class="flatpickr-months">
-											<div class="flatpickr-month">
-												<div class="flatpickr-current-month">
-													<?php
-													$month = date("F");
-													?>
-													<select class="flatpickr-monthDropdown-months" id="employee_id2" aria-label="Month" tabindex="-1">
-														<?php
-														if ($month == "January") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1" selected>Januari</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">Januari</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "February") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1" selected>Februari</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">Februari</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "March") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1" selected>Mars</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">Mars</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "April") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="4" tabindex="-1" selected>April</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">April</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "May") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1" selected>Maj</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">Maj</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "June") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1" selected>Juni</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">Juni</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "July") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1" selected>Juli</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">Juli</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "August") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1" selected>Augusti</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">Augusti</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "September") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="9" tabindex="-1" selected>September</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">September</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "October") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1" selected>Oktober</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">Oktober</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "November") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="11" tabindex="-1" selected>November</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">November</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($month == "December") {
-														?>
-															<option class="flatpickr-monthDropdown-month" value="12" tabindex="-1" selected>December</option>
-														<?php } else {
-														?>
-
-															<option class="flatpickr-monthDropdown-month" value="12" tabindex="-1">December</option>
-														<?php
-														}
-														?>
-
-													</select>
-
-												</div>
-											</div>
-											<div class="numInputWrapper">
-												<div>
-													<!-- <input class="numInput cur-year" type="number" tabindex="-1"aria-label="Year" value="2021"> -->
-													<select class="form-control mb-3" id="year2" aria-label="Month" tabindex="-1">
-														<?php
-
-														$year = date("Y");
-
-														?>
-
-														<?php
-														if ($year == 2020) {
-														?>
-															<option value="2020" tabindex="-1" selected>2020</option>
-														<?php } else {
-														?>
-
-															<option value="2020" tabindex="-1">2020</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2021) {
-														?>
-															<option value="2021" tabindex="-1" selected>2021</option>
-														<?php } else {
-														?>
-
-															<option value="2021" tabindex="-1">2021</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2022) {
-														?>
-															<option value="2022" tabindex="-1" selected>2022</option>
-														<?php } else {
-														?>
-
-															<option value="2022" tabindex="-1">2022</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2023) {
-														?>
-															<option value="2023" tabindex="-1" selected>2023</option>
-														<?php } else {
-														?>
-
-															<option value="2023" tabindex="-1">2023</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2024) {
-														?>
-															<option value="2024" tabindex="-1" selected>2024</option>
-														<?php } else {
-														?>
-
-															<option value="2024" tabindex="-1">2024</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2025) {
-														?>
-															<option value="2025" tabindex="-1" selected>2025</option>
-														<?php } else {
-														?>
-
-															<option value="2025" tabindex="-1">2025</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2026) {
-														?>
-															<option value="2026" tabindex="-1" selected>2026</option>
-														<?php } else {
-														?>
-
-															<option value="2026" tabindex="-1">2026</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2027) {
-														?>
-															<option value="2027" tabindex="-1" selected>2027</option>
-														<?php } else {
-														?>
-
-															<option value="2027" tabindex="-1">2027</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2028) {
-														?>
-															<option value="2028" tabindex="-1" selected>2028</option>
-														<?php } else {
-														?>
-
-															<option value="2028" tabindex="-1">2028</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2029) {
-														?>
-															<option value="2029" tabindex="-1" selected>2029</option>
-														<?php } else {
-														?>
-
-															<option value="2029" tabindex="-1">2029</option>
-														<?php
-														}
-														?>
-
-														<?php
-														if ($year == 2030) {
-														?>
-															<option value="2030" tabindex="-1" selected>2030</option>
-														<?php } else {
-														?>
-
-															<option value="2030" tabindex="-1">2030</option>
-														<?php
-														}
-														?>
-
-
-
-
-
-													</select>
-												</div>
-												<!-- <span class="arrowUp"></span>
-														<span class="arrowDown"></span> -->
-											</div>
-											<!-- <span class="flatpickr-next-month">
-											<span class="fas fa-chevron-right" title="Next month"></span>
-										</span> -->
+					<div class="row">
+						<div class="card">
+							<div class="card-body">
+								<div class="container">
+									<div>
+										<div class="col-sm-4">
 										</div>
 										</br>
-										<div class="ajax2">
-
-											<div id="hours-worked">
-												<!-- <p>hi</p> -->
-
-											</div>
-										</div>
+										<input type=number id="employee-id" hidden value="<?php echo $id ?>">
 									</div>
+									<div id="calendar"></div>
 								</div>
 							</div>
 						</div>
+					</div>
 					<!-- </div> -->
 
 
@@ -435,98 +203,6 @@ if (!isset($_SESSION['login_user']) || $_SESSION['role'] != "customer") {
 	</div>
 
 	<script src="js/app.js"></script>
-
-
-
-
-
-	<script type="text/javascript" src="jquery/jquery.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			function loadData(type, category_id, year_id) {
-				$.ajax({
-					url: "customer-ajax.php",
-					type: "POST",
-					data: {
-						type: type,
-						id: category_id,
-						year: year_id
-					},
-					success: function(data) {
-						if (type == "stateData" || type == "yearData" || type == "employeeData") {
-							$("#hours-worked").html(data);
-						} else {
-							$("#employee_id2").append(data);
-						}
-
-					}
-				});
-			}
-			var country = $("#employee_id2").val();
-			var year = $("#year2").val();
-
-			loadData("stateData", country, year);
-
-			$("#employee_id2").on("change", function() {
-				var country = $("#employee_id2").val();
-				var year = $("#year2").val();
-
-				console.log(country);
-				if (country != "") {
-					loadData("stateData", country, year);
-				} else {
-					$("#hours-worked").html("");
-				}
-
-
-			})
-
-			$("#year2").on("change", function() {
-				var country = $("#employee_id2").val();
-				var year = $("#year2").val();
-
-				console.log(year);
-				if (year != "") {
-					loadData("yearData", country, year);
-				} else {
-					$("#hours-worked").html("");
-				}
-
-
-			})
-
-			//   $("#e-id2").on("change",function(){
-			// 	var country = $("#employee_id2").val();
-			// 	var year = $("#year2").val();
-			// 	var e_id = $("#e-id2").val();
-			// console.log(e_id);
-			// 	if(e_id != ""){
-			// 		loadData("employeeData",country, year, e_id);
-			// 	}else{
-			// 		$("#hours-worked").html("");
-			// 	}
-
-
-			// })
-		});
-	</script>
-
-
-
-
-
-
-
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			document.getElementById("datetimepicker-dashboard").flatpickr({
-				inline: true,
-				prevArrow: "<span class=\"fas fa-chevron-left\" title=\"Previous month\"></span>",
-				nextArrow: "<span class=\"fas fa-chevron-right\" title=\"Next month\"></span>",
-			});
-		});
-	</script>
 
 
 </body>

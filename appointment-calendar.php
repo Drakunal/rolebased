@@ -52,9 +52,10 @@ error_reporting(0);
     <?php
     $id = $_GET['id'];
     ?>
+    <script src="sc/a.js"></script>
     <script>
         $(document).ready(function() {
-
+            
             var employee = $("#employee-id").val();
             console.log(employee);
             if (employee != "") {
@@ -62,7 +63,7 @@ error_reporting(0);
                 console.log(d);
                 // loadData("employeeData", employee);
                 $('#calendar').fullCalendar({
-                    googleCalendarApiKey: 'AIzaSyBu6oWtoif6GSDLpFJXrnhpMsJTgEiLXyM',
+                    googleCalendarApiKey: bc,
                     monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
                     monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
                     dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],

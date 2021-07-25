@@ -66,11 +66,8 @@ error_reporting(0);
                             googleCalendarId: 'g630hdv4f9aa3j745447hsom2cbhiq3p@import.calendar.google.com',
                             color: 'red',
                             textColor:'white'
-                        },
-                        {
-                            url:d,
-                            textColor:'black'
                         }
+                        
                     ],
 
 

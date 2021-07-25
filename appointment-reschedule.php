@@ -60,6 +60,10 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
                             $query2=mysqli_query($db,$sql2);
                             $row2=$query2->fetch_assoc();
 
+							$customer_details=mysqli_query($db,"SELECT time_alloted from `customer_details` where user_id='$customer_id';");
+							$customer_details_row= $customer_details->fetch_assoc();
+							$tt=$customer_details_row['time_alloted'];
+
 							// $role='employee';
 							// $customer_details=mysqli_query($db,"SELECT appointment_type,user_id from `customer_details` where user_id='$customer_id';");
 							// $result = mysqli_query($db,"SELECT id,name from `users` where role='$role';");
@@ -109,6 +113,11 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 											<div class="mb-3">
 												<label class="form-label">Tid<span style="color:red">*</span></label>
 												<input type="time" name="time" class="form-control" placeholder="appointment-time"value="<?php  echo date('H:i', strtotime($row["time"]));?>">
+											</div>
+
+											<div class="mb-3">
+												<label class="form-label">Antal timmar per möte<span style="color:red">*</span></label>
+												<input type='number' required step='0.1' name='time_alloted' class='form-control' placeholder='Ange timmar' value='<?php echo $tt; ?>'>
 											</div>
 
  
@@ -173,7 +182,8 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$c_id=  $customer_user_id;
 
 
-						$customer_details=mysqli_query($db,"SELECT time_alloted from `customer_details` where user_id='$customer_id';");
+						
+
 						$employee = mysqli_query($db,"SELECT id,name from `users` where id='$employee_id';");
 						$row99=$employee->fetch_assoc();
 						$employee_name=$row99['name'];
@@ -184,8 +194,9 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						$employee_color=$employee_details_row['color'];
 
 
-						$customer_details_row= $customer_details->fetch_assoc();
-						$time_alloted=$customer_details_row['time_alloted'];
+						
+
+						$time_alloted=$_POST['time_alloted'];
 						$pos = strpos($time_alloted, '.');
 										if($pos === false) { // it is integer number
 											$time_alloted=$time_alloted;
@@ -203,7 +214,7 @@ if(!isset($_SESSION['login_user'])||$_SESSION['role']!="admin")
 						// $c_id=$customer_row["user_id"];
 						$c_id=$c_id." ".$customer_name." ".$times." ".$time_alloted."timmar";
 
-                        $p=mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id', date = '$date', time = '$time' WHERE id='$appointment_id' ;");
+                        $p=mysqli_query($db,"UPDATE `appointments` SET employee_id = '$employee_id', date = '$date', time = '$time', time_alloted='$time_alloted' WHERE id='$appointment_id' ;");
                         $event_id_query=mysqli_query($db,"SELECT id FROM `events` WHERE date = '$prev_date' AND time = '$prev_time' AND customer_id='$customer_id' ;");
                         $row_event=$event_id_query->fetch_assoc();
                         $event_id=$row_event['id'];

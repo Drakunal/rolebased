@@ -19,6 +19,8 @@ error_reporting(0);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/gcal.min.js" integrity="sha512-7a/GdV+Yb2nLt7zgXbufsOsTJ3NHu4zF1Vdtsn50oRjdeVwAU8EcE4twos9YAnj9MhpvFnEewM4QsbLhSeAH0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- <script src=" js/lang-all.js"></script> -->
 
     <!-- <script src="https://www.officeholidays.com/ics-local-name/sweden"></script> -->
@@ -42,7 +44,7 @@ error_reporting(0);
         /* } */
         .fc-title {
             /* background-color: black; */
-            color: black;
+            
             font-size: 10px;
         }
     </style>
@@ -50,6 +52,7 @@ error_reporting(0);
     <?php
     $id = $_GET['id'];
     ?>
+     <script src="sc/a.js"></script>
     <script>
         $(document).ready(function() {
 
@@ -142,6 +145,7 @@ error_reporting(0);
                 console.log(d);
                 // loadData("employeeData", employee);
                 $('#calendar').fullCalendar({
+                    googleCalendarApiKey: bc,
                     monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
                     monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
                     dayNames: ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
@@ -159,7 +163,16 @@ error_reporting(0);
                         right: '',
                         display: 'none',
                     },
-                    events: d,
+                    eventSources: [{
+                            googleCalendarId: 'g630hdv4f9aa3j745447hsom2cbhiq3p@import.calendar.google.com',
+                            color: 'red',
+                            textColor:'white'
+                        },
+                        {
+                            url:d,
+                            textColor:'black'
+                        }
+                    ],
                     selectable: true,
                     displayEventTime: false,
 
